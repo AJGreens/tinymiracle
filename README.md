@@ -1,4 +1,5 @@
-# Tiny Miracle
+# Tiny Miracle 
+#### Jordan Altomare and Abdelmonem Khedr
 
 ## Layout 
 * Home
@@ -41,7 +42,7 @@
 we need on the site.
 3. Application Submission page functionality
 4. Regular User pages
-5. (Check in back later)
+5. (Check in back later!)
 
 
 ## Questions
