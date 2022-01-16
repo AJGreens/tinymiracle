@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {database} from './Firebase'
-import { getDatabase, ref, push, set, onValue} from "firebase/database";
-
+import {ref, onValue} from "firebase/database";
+import AdminNav from "./AdminNav"
 
 
 
@@ -26,8 +26,10 @@ function AdoptableDogs(){
   },[])
     
     return(
+      <>
+      <AdminNav/>
         <div>
-    
+          
             <h1>AdoptableDogs</h1>
         
             {dogs.map(dog=> 
@@ -39,7 +41,7 @@ function AdoptableDogs(){
             )}
         </div>
         
-        
+      </>
         
         )
     

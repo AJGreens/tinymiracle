@@ -1,18 +1,24 @@
-import React, {useState, useEffect } from 'react';
-import {database} from './Firebase'
-import { getDatabase, ref, push, set, onValue } from "firebase/database";
-import {Form,Button} from 'react-bootstrap'
+import React from 'react';
 import Admin from './Admin'
+import AdoptableDogs from './AdoptableDogs'
+import AddContact from './AddContact'
+import DogForm from './DogForm'
+import Home from './Home'
+import {HashRouter as Router, Route, Routes} from 'react-router-dom'
 
 function App() {
-
-  
-
-
   
   return (
     <div>
-      <Admin/>
+        <Router>
+            <Routes>
+                <Route exact path="/" element={<Home/>}/>
+                <Route exact path="/admin" element={<Admin/>}/>
+                <Route path="/dogform" element={<DogForm/>}/>
+                <Route path="/adoptabledogs" element={<AdoptableDogs/>}/>
+                <Route path="/addcontact" element={<AddContact/>}/>
+            </Routes>
+        </Router>
     </div>  
   );
 }

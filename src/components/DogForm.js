@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {database} from './Firebase'
 import { getDatabase, ref, push, set} from "firebase/database";
 import {Form,Button} from 'react-bootstrap'
-
+import AdminNav from "./AdminNav"
 
 function DogForm(){
     
@@ -55,6 +55,8 @@ function DogForm(){
     }
 
     return (
+      <>
+      <AdminNav/>
         <div className="container">
           <h2>Dog Form</h2>
           <Form onSubmit={addDog} >
@@ -104,6 +106,8 @@ function DogForm(){
             <Button type = "submit" variant="primary">Submit</Button>
           </Form>
         </div>
+        
+    </>
   );
     
 }
