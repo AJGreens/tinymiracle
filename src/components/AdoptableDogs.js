@@ -16,7 +16,7 @@ function AdoptableDogs(){
       const data = snapshot.val();
       let allDogs=[]
       Object.entries(data).map(([key, value]) => {
-        allDogs.push({id: key,name:value["name"], description:value["description"], age: value["age"],breed:value["breed"],gender:value["gender"]})
+        allDogs.push({id: key,name:value["name"], description:value["description"], age: value["age"],breed:value["breed"],gender:value["gender"],img:value["img"]})
         // Pretty straightforward - use key for the key and value for the value.
         // Just to clarify: unlike object destructuring, the parameter names don't matter here.
       })
@@ -33,9 +33,9 @@ function AdoptableDogs(){
             <h1>AdoptableDogs</h1>
         
             {dogs.map(dog=> 
-            <div>
+            <div key={dog.id}>
                 <h2>{dog.name}</h2>
-                <h3>test</h3>
+                <img src={dog.img} />
             </div>
             
             )}

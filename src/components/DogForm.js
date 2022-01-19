@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import {database} from './Firebase'
-import { getDatabase, ref, push, set} from "firebase/database";
+import React, {useState,useEffect} from 'react';
+import {database, storage} from './Firebase'
+import {ref, push, set} from "firebase/database";
+import {ref as sRef,uploadBytesResumable, getDownloadURL,deleteObject} from "firebase/storage";
 import {Form,Button} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
 
@@ -11,7 +12,23 @@ function DogForm(){
     const [gender, setGender] = useState("Male");
     const [description, setDescription] = useState("");
     const [age, setAge] = useState("Baby");
-    const [image, setImage] = useState();
+    const [imageFile, setImageFile] = useState();
+    const [imageUrl, setImageUrl]=useState()
+    
+    
+    useEffect(() => {
+      return () => {
+        console.log("RELOAD")
+      if(imageUrl){
+         handleDelete()
+      }
+      }
+    }, [])
+    //understand useEffect as component unmount
+    
+    
+    
+    
     
     function handleChange(event){
         switch(event.target.name){
@@ -30,8 +47,59 @@ function DogForm(){
           case "age":
             setAge(event.target.value)
             break
+          default:
+            console.log("Case Error")
+            break
         }
         
+    }
+    
+    function handleChangeImg(e){
+      
+      if (imageUrl){
+        handleDelete()
+      }
+      //Do we need async?
+      const tempFile=e.target.files[0];
+      const uploadRef = sRef(storage, `/images/adoptable/${tempFile.name+tempFile.lastModified+tempFile.size}`)
+      const uploadTask = uploadBytesResumable(uploadRef, tempFile)
+      
+      uploadTask.on('state_changed',
+        (snapshot) => {
+        }, 
+        (error) => {
+          switch (error.code) {
+            case 'storage/unauthorized':
+              break;
+            case 'storage/canceled':
+              break;
+            case 'storage/unknown':
+              break;
+        }
+      }, 
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setImageUrl(downloadURL)
+          setImageFile(tempFile)
+      });
+      }
+      );
+      
+    }
+    
+    
+    function handleDelete(){
+      console.log("it did not delete anything")
+      const desertRef =  sRef(storage, `/images/adoptable/${imageFile.name+imageFile.lastModified+imageFile.size}`);
+      // Delete the file
+            deleteObject(desertRef).then(() => {
+        // File deleted successfully
+      }).catch((error) => {
+        // Uh-oh, an error occurred!
+      });
+
+      setImageFile();
+      setImageUrl();
     }
     
     function addDog(event){
@@ -44,7 +112,8 @@ function DogForm(){
           breed: breed,
           age: age,
           gender: gender,
-          description: description
+          description: description,
+          img: imageUrl
         })
         setName("")
         setAge("")
@@ -52,7 +121,10 @@ function DogForm(){
         setGender("")
         setDescription("")
         
+  
     }
+    
+  
 
     return (
       <>
@@ -72,8 +144,12 @@ function DogForm(){
     
             <Form.Group className="mb-3">
               <Form.Label>Dog Picture</Form.Label>
-              <Form.Control name = "picture" type = "file" placeholder="image" accept="image/*"/>
+              <Form.Control name = "picture" onChange = {handleChangeImg} type = "file" placeholder="image" accept="image/*"/>
+              <br/>
+              {imageFile&&<div><h6>{imageFile.name}</h6></div>}
+              {imageUrl&&<img src={imageUrl}/>}
             </Form.Group>
+            
             <Form.Group className="mb-3">
               <Form.Label>Age</Form.Label>
               <select class="form-select" name = "age" onChange = {handleChange} aria-label="Default select example">
@@ -93,7 +169,7 @@ function DogForm(){
     
             <Form.Group className="mb-3">
             <Form.Label>Breed</Form.Label>
-            <select class="form-select" aria-label="Default select example" name = "breed" onChange = {handleChange}>
+            <select className="form-select" aria-label="Default select example" name = "breed" onChange = {handleChange}>
                 <option value="Heeler">Heeler</option>
                 <option value="Hound">Hound</option>
                 <option value="Laborador Retriever">Laborador Retriever</option>
