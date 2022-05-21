@@ -1,17 +1,15 @@
 import React from 'react'
-import {Button} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
 import HomeNav from './HomeNav'
 
-function Home(){
+function Donate(){
     return(
         <>
         <HomeNav />
         <div className="container">
-            <h2>Hello World</h2>
+            <h2>Donate</h2>
         </div>
         </>
     )
 }
 
-export default Home
+export default Donate
