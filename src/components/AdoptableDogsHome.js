@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {database} from './Firebase'
 import {ref, onValue} from "firebase/database";
 import HomeNav from './HomeNav';
+import {Button, Row, Col} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDog, faFaceLaughBeam} from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -16,8 +19,10 @@ function AdoptableDogsHome(){
       const data = snapshot.val();
       let allDogs=[]
       Object.entries(data).map(([key, value]) => {
-        allDogs.push({id: key,name:value["name"], description:value["description"], age: value["age"],breed:value["breed"],gender:value["gender"],img:value["img"]})
-        // Pretty straightforward - use key for the key and value for the value.
+        if(key!=="counter"){//think about a better implementation
+          allDogs.push({id: key,name:value["name"], description:value["description"], age: value["age"],breed:value["breed"],gender:value["gender"],img:value["img"]})
+        }
+          // Pretty straightforward - use key for the key and value for the value.
         // Just to clarify: unlike object destructuring, the parameter names don't matter here.
       })
       console.log(allDogs)
@@ -28,16 +33,24 @@ function AdoptableDogsHome(){
     return(
       <>
       <HomeNav/>
-        <div>
-          
-            <h1>AdoptableDogs</h1>
-        
+        <div className='container text-center'>
+            {/* <FontAwesomeIcon icon={faDog} /> */}
+            <h1>Adoptable Dogs</h1>
             {dogs.map(dog=> 
-            <div key={dog.id}>
+              <div className="container mt-4 dogContainer" key={dog.id}>
                 <h2>{dog.name}</h2>
-                <img src={dog.img} />
-            </div>
-            
+                <h4>{dog.age} {dog.gender} {dog.breed}</h4>
+                <Row>
+                  <Col>
+                    <img src={dog.img} />
+                  </Col>
+                  <Col>
+                    <p className='mt-4'>{dog.description}</p>
+                    <Button variant="primary">Apply <FontAwesomeIcon icon={faDog} /></Button>
+                  </Col>                  
+                </Row>
+                
+              </div>
             )}
         </div>
         
