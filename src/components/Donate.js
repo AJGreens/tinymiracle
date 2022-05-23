@@ -50,7 +50,7 @@ We appreciate everyone’s help.
 
 
 <li>
-<p style = {bullet}>We Can Accept Donations Via PayPal <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" 
+<p style = {bullet}>Donate via PayPal <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" 
 style={{verticalAlign: 'middle'}} name="submit" alt="PayPal - The safer, easier way to pay online!"/>
 
 </p><p id = "minorText"> Make a direct, tax deductible donation. </p>
