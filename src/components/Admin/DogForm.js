@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { database, storage } from './Firebase'
+import { database, storage } from '../Firebase'
 import { ref, push, set, onValue} from "firebase/database";
 import { ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { Form, Button, Col, Row} from 'react-bootstrap'
@@ -148,12 +148,13 @@ function DogForm() {
     
     const counterRef= ref(database,'adoptableDogs/counter')
     const newCounter = push(counterRef)
+    console.log()
     set(counterRef, id+1)
     set(newDogRef, {
       id:id,
       name: name,
       aka:aka,
-      primbreed: primBreed,
+      primBreed: primBreed,
       secBreed: secBreed,
       gender: gender,
       birthDate: birthDate,
@@ -170,10 +171,7 @@ function DogForm() {
     setPrimBreed("")
     setSecBreed("")
     setGender("")
-    
     setBirthDate("")
-    
-    
     setAgeGroup("")
     setFoster("")
     setStatus("")

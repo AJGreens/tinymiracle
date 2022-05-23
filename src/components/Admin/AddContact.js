@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Button, Form} from 'react-bootstrap'
-import {database} from './Firebase'
+import {database} from '../Firebase'
 import {ref, push, set} from "firebase/database";
 import AdminNav from "./AdminNav"
 

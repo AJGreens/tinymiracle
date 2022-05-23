@@ -1,13 +1,13 @@
 import React from 'react';
-import Admin from './Admin'
-import AdoptableDogs from './AdoptableDogs'
-import AddContact from './AddContact'
-import DogForm from './DogForm'
-import Home from './Home'
-import Contact from './Contact'
-import Donate from './Donate'
-import PetCare from './PetCare'
-import AdoptableDogsHome from './AdoptableDogsHome';
+import Admin from './Admin/Admin'
+import AdoptableDogs from './Admin/AdoptableDogs'
+import AddContact from './Admin/AddContact'
+import DogForm from './Admin/DogForm'
+import Home from './User/Home'
+import Contact from './User/Contact'
+import Donate from './User/Donate'
+import PetCare from './User/PetCare'
+import AdoptableDogsHome from './User/AdoptableDogsHome';
 import {HashRouter as Router, Route, Routes} from 'react-router-dom'
 
 function App() {

@@ -7,7 +7,6 @@ function AdminNav(){
         <>
             <Navbar bg="light" variant="light">
                 <Container>
-                    <Navbar.Brand as={Link} to="/">TinyMiracle</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
                         <Nav.Link as={Link} to="/adoptabledogs">AdoptableDogs</Nav.Link>

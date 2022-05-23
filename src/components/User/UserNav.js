@@ -2,12 +2,11 @@ import React from 'react'
 import{Navbar,Nav, Container} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 
-function HomeNav(){
+function UserNav(){
     return(
         <>
             <Navbar bg="light" variant="light">
                 <Container>
-                    <Navbar.Brand as={Link} to="/">TinyMiracle</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/adoptabledogshome">Adoptable Dogs</Nav.Link>
@@ -25,4 +24,4 @@ function HomeNav(){
     
 }
 
-export default HomeNav
+export default UserNav

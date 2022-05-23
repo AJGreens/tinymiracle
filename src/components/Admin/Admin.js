@@ -3,6 +3,7 @@ import DogForm from './DogForm'
 import AdoptableDogs from './AdoptableDogs'
 import {Button, Card,Container} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
+import UserNav from '../User/UserNav'
 import {Link} from 'react-router-dom'
 
 
@@ -10,7 +11,7 @@ import {Link} from 'react-router-dom'
 function Admin(){
     return(
         <>
-            <AdminNav/>
+            <UserNav/>
             <Container>
                 <Card>
                     <Card.Body className="d-grid gap-3 text-center">

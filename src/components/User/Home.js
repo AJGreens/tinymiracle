@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { faTractor,faPaw, faKitMedical} from '@fortawesome/free-solid-svg-icons'
 
-import HomeNav from './HomeNav'
+import HomeNav from './UserNav'
 
 function Home(){
     return(

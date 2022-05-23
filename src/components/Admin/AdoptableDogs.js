@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {database} from './Firebase'
+import {database} from '../Firebase'
 import {ref, onValue} from "firebase/database";
 import AdminNav from "./AdminNav"
 

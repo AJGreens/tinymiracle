@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {database} from './Firebase'
+import {database} from '../Firebase'
 import {ref, onValue} from "firebase/database";
-import HomeNav from './HomeNav';
+import HomeNav from './UserNav';
 import {Button, Row, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDog, faFaceLaughBeam} from '@fortawesome/free-solid-svg-icons'
+import { faDog} from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -20,7 +20,7 @@ function AdoptableDogsHome(){
       let allDogs=[]
       Object.entries(data).map(([key, value]) => {
         if(key!=="counter"){//think about a better implementation
-          allDogs.push({id: key,name:value["name"], description:value["description"], age: value["age"],breed:value["breed"],gender:value["gender"],img:value["img"]})
+          allDogs.push({id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]})
         }
           // Pretty straightforward - use key for the key and value for the value.
         // Just to clarify: unlike object destructuring, the parameter names don't matter here.
