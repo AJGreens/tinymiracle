@@ -8,7 +8,7 @@ function Contact(){
         <div className="container"  style={{marginTop:40}}>
 
         <h3 style = {{marginLeft: "25%"}}>
-        Contact Information For Pet Care and Day Care
+        Pet Care & Day Care Contact
             </h3>
 
 <div id = "contactOptions">           
@@ -28,7 +28,7 @@ tiny_miracles@msn.com
 </div>
 
 <h3 style = {{marginTop: 50, marginLeft: "25%"}}>
-Contact Information For Rescue
+Rescue Contact
             </h3>
 
 <div id = "contactOptions" >

@@ -15,14 +15,14 @@ function Donate(){
         <HomeNav />
         <div className="container">
             {/* <h2>Donate</h2> */}
-            <p style = {{fontSize: 20, marginTop: "40px"}}>
+            {/* <p style = {{fontSize: 20, marginTop: "40px"}}>
             We Appreciate Anything Donated!
 
 If it weren’t for donations, our rescue wouldn’t be able to save as many lives as we do. 
 We thank everyone for everything that they will do, are doing, or have done! 
 We appreciate everyone’s help. 
 
-            </p>
+            </p> */}
 
 
 
@@ -34,13 +34,13 @@ We appreciate everyone’s help.
 
 			
 				
-<br/>
+{/* <br/> */}
 
 
 							
-				<h1>Many Ways To Give!</h1><br/>
+				<h1 style = {{marginTop: 40}}>Many Ways To Give!</h1><br/>
 					<div id="donateOptions">
-                    <ul>
+                    <ul style = {{listStyle: 'none'}}>
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
 <input type="hidden" name="cmd" value="_donations"/>
