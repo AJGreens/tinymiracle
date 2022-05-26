@@ -102,10 +102,10 @@ function handleChange(event){
 return(
     <>
     <AdminNav/>
-    <div>
-        <h1>
-        SUCK IT
-        </h1>
+    <div class="container">
+        <h2>
+        AddContact
+        </h2>
         
         <Form onSubmit = {handleSubmit}>
             <Form.Group>

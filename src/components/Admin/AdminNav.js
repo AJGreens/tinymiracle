@@ -9,9 +9,10 @@ function AdminNav(){
                 <Container>
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
-                        <Nav.Link as={Link} to="/adoptabledogs">AdoptableDogs</Nav.Link>
-                        <Nav.Link as={Link} to="/addcontact">AddContact</Nav.Link>
-                        <Nav.Link as={Link} to="/dogform">DogForm</Nav.Link>
+                        <Nav.Link as={Link} to="/manageAnimals">ManageAnimals</Nav.Link>
+                        <Nav.Link as={Link} to="/manageContacts">ManageContacts</Nav.Link>
+                        <Nav.Link as={Link} to="/addContact">AddContact</Nav.Link>
+                        <Nav.Link as={Link} to="/addAnimal">AddAnimal</Nav.Link>
                     </Nav>
                 </Container>
           </Navbar>

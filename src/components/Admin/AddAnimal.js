@@ -187,7 +187,7 @@ function DogForm() {
     <>
       <AdminNav/>
         <div className="container">
-          <h2>Dog Form</h2>
+          <h2>AddAnimal</h2>
           <Form onSubmit={addDog} >
             <Form.Group as = {Row} className="mb-3">
               

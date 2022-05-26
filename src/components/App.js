@@ -1,12 +1,13 @@
 import React from 'react';
 import Admin from './Admin/Admin'
-import AdoptableDogs from './Admin/AdoptableDogs'
+import ManageAnimals from './Admin/ManageAnimals'
 import AddContact from './Admin/AddContact'
-import DogForm from './Admin/DogForm'
+import AddAnimal from './Admin/AddAnimal'
 import Home from './User/Home'
 import Contact from './User/Contact'
 import Donate from './User/Donate'
 import PetCare from './User/PetCare'
+import ManageContacts from './Admin/ManageContacts';
 import AdoptableDogsHome from './User/AdoptableDogsHome';
 import {HashRouter as Router, Route, Routes} from 'react-router-dom'
 
@@ -21,10 +22,11 @@ function App() {
                 <Route exact path="/donate" element={<Donate/>}/>
                 <Route exact path="/contact" element={<Contact/>}/>
                 <Route exact path="/admin" element={<Admin/>}/>
-                <Route path="/dogform" element={<DogForm/>}/>
+                <Route path="/addAnimal" element={<AddAnimal/>}/>
                 <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
-                <Route path="/adoptabledogs" element={<AdoptableDogs/>}/>
-                <Route path="/addcontact" element={<AddContact/>}/>
+                <Route path="/manageAnimals" element={<ManageAnimals/>}/>
+                <Route path="/manageContacts" element={<ManageContacts/>}/>
+                <Route path="/addContact" element={<AddContact/>}/>
             </Routes>
         </Router>
     </div>  

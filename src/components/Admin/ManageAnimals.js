@@ -5,7 +5,7 @@ import AdminNav from "./AdminNav"
 
 
 
-function AdoptableDogs(){
+function ManageAnimals(){
     
     
   const [dogs, setDogs] = useState([]);
@@ -47,4 +47,4 @@ function AdoptableDogs(){
     
 }
 
-export default AdoptableDogs
+export default ManageAnimals
