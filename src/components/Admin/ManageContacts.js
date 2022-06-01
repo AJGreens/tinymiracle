@@ -10,10 +10,10 @@ function ManageContacts(){
     
     
   const [contacts, setContacts] = useState([]);
-  const contactsRef = ref(database, 'contacts/');
   const navigate= useNavigate()
   
   useEffect(()=>{
+    const contactsRef = ref(database, 'contacts/');
     onValue(contactsRef, (snapshot) => {
       const data = snapshot.val();
       let allContacts= Object.entries(data).map(([key, value]) => {
@@ -22,8 +22,10 @@ function ManageContacts(){
         // Pretty straightforward - use key for the key and value for the value.
         // Just to clarify: unlike object destructuring, the parameter names don't matter here.
       })
-      console.log(allContacts)
       setContacts(allContacts);
+      return ()=>{
+        setContacts()
+      }
     });
   },[])
 

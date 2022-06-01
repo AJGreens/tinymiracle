@@ -20,7 +20,7 @@ function AddContact(){
     const [MobPhone, setMobPhone]= useState("");
     const [HomePhone, setHomePhone]= useState("");
     const [Username, setUsername]= useState("");
-    const [ActiveFost, setActiveFost]= useState("false");
+    const [ActiveFost, setActiveFost]= useState(false);
     const [id, setId]= useState(0);
     const contactsCounterRef= ref(database, "contactsCounter")
     const navigate= useNavigate()
@@ -97,10 +97,10 @@ function AddContact(){
                 break;
             case "Check":
                 if (event.target.checked){
-                    setActiveFost("true")
+                    setActiveFost(true)
                 }
                 else {
-                    setActiveFost("false")
+                    setActiveFost(false)
                 }
                 break;
             default:
@@ -171,7 +171,7 @@ function AddContact(){
                     <Form.Group className="mt-4">
                         <Form.Check
                             type="checkbox" name = "Check"
-                            value = {ActiveFost}
+                            checked = {ActiveFost}
                             label="Active Foster?"
                             onChange = {handleChange}
                         />

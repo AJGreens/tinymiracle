@@ -20,32 +20,39 @@ function UpdateContact(){
     const [MobPhone, setMobPhone]= useState("");
     const [HomePhone, setHomePhone]= useState("");
     const [Username, setUsername]= useState("");
-    const [ActiveFost, setActiveFost]= useState("false");
+    const [ActiveFost, setActiveFost]= useState(false);
     const [id, setId]= useState();
+    const [allowFirebase, setAllowFirebase]=useState(true)
     const navigate= useNavigate()
     const {token}= useParams()
+    
 
     useEffect(()=>{
         const updateContactRef= ref(database, "contacts/"+token)
-        onValue(updateContactRef, snapshot=>{
-            const data=snapshot.val()
-            setName(data["name"])
-            setAddress(data["address"])
-            setCity(data["city"])
-            setState(data["state"])
-            setZip(data["zip"])
-            setPrimEmail(data["primaryEmail"])
-            setSecEmail(data["secondaryEmail"])
-            setMobPhone(data["mobilePhone"])
-            setHomePhone(data["homePhone"])
-            setUsername(data["username"])
-            setState(data["state"])
-            setActiveFost(data["activeFoster"])
-            setId(data["id"])
+        if(allowFirebase){
+            onValue(updateContactRef, snapshot=>{
+                const data=snapshot.val()
+                setName(data["name"])
+                setAddress(data["address"])
+                setCity(data["city"])
+                setState(data["state"])
+                setZip(data["zip"])
+                setPrimEmail(data["primaryEmail"])
+                setSecEmail(data["secondaryEmail"])
+                setMobPhone(data["mobilePhone"])
+                setHomePhone(data["homePhone"])
+                setUsername(data["username"])
+                setState(data["state"])
+                setActiveFost(data["activeFoster"])
+                setId(data["id"])
+            })
+        }
+        return ()=>{
+            setAllowFirebase(false)
+        }
+  
 
-        })
-
-    },[])
+    },[allowFirebase,token])
 
 
 
@@ -67,7 +74,6 @@ function UpdateContact(){
             activeFoster: ActiveFost,
             id:id
         });
-
         navigate("/manageContacts")
     }
 
@@ -105,10 +111,10 @@ function UpdateContact(){
                 break;
             case "Check":
                 if (event.target.checked){
-                    setActiveFost("true")
+                    setActiveFost(true)
                 }
                 else {
-                    setActiveFost("false")
+                    setActiveFost(false)
                 }
                 break;
             default:
@@ -178,13 +184,14 @@ function UpdateContact(){
                     
                     <Form.Group className="mt-4">
                         <Form.Check
-                            type="checkbox" name = "Check"
-                            value = {ActiveFost}
+                            type="checkbox" 
+                            name = "Check"
+                            checked = {ActiveFost}
                             label="Active Foster?"
                             onChange = {handleChange}
                         />
                     </Form.Group>
-                    <Button className="mt-4" type = "submit">Submit</Button>
+                    <Button className="mt-4" type = "submit">Update Contact</Button>
                 </Form>
             </div>
         </>  
