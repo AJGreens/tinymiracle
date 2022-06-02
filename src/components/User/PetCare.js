@@ -130,7 +130,7 @@ function PetCare(){
 
     <Col>          
     <div style = {{border: 'red solid 0px', marginTop: '30px'}}>
-      <h2  class="entry-title" itemprop="headline">Drop-off/Pick-up Hours</h2> 
+      <h2  className="entry-title" itemprop="headline">Drop-off/Pick-up Hours</h2> 
             <div style = {{textAlign: 'left', margin: 'auto', width: '290px', border: 'red solid 0px'}}>
             <p style = {{marginBottom: "0"}}>Monday-Saturday:  
             <div style = {{float: 'right'}}><p style = {{marginBottom: "0"}}>8AM-10AM</p><p style = {{marginBottom: "0"}}>4PM-6PM</p></div></p>
@@ -201,7 +201,7 @@ function PetCare(){
 </div>
 </Col>
 <Col>
-<h2 class="entry-title" itemprop="headline">Rates</h2> 
+<h2 className="entry-title" itemprop="headline">Rates</h2> 
 
 
 <div style = {{textAlign:'left'}}>

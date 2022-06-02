@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import {Button, Form} from 'react-bootstrap'
 import {database} from '../Firebase'
-import {ref, push, set, onValue} from "firebase/database";
+import {ref, set, onValue} from "firebase/database";
 import AdminNav from "./AdminNav"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 
 
 
-function AddContact(){
+function UpdateContact(){
     const [Name, setName] = useState("");
     const [Address, setAddress] = useState("");
     const [City, setCity]= useState("");
@@ -21,30 +21,47 @@ function AddContact(){
     const [HomePhone, setHomePhone]= useState("");
     const [Username, setUsername]= useState("");
     const [ActiveFost, setActiveFost]= useState(false);
-    const [id, setId]= useState(0);
-    const contactsCounterRef= ref(database, "contactsCounter")
+    const [id, setId]= useState();
+    const [allowFirebase, setAllowFirebase]=useState(true)
     const navigate= useNavigate()
+    const {token}= useParams()
+    
 
     useEffect(()=>{
+        const updateContactRef= ref(database, "contacts/"+token)
+        if(allowFirebase){
+            onValue(updateContactRef, snapshot=>{
+                const data=snapshot.val()
+                setName(data["name"])
+                setAddress(data["address"])
+                setCity(data["city"])
+                setState(data["state"])
+                setZip(data["zip"])
+                setPrimEmail(data["primaryEmail"])
+                setSecEmail(data["secondaryEmail"])
+                setMobPhone(data["mobilePhone"])
+                setHomePhone(data["homePhone"])
+                setUsername(data["username"])
+                setState(data["state"])
+                setActiveFost(data["activeFoster"])
+                setId(data["id"])
+            })
+        }
+        return ()=>{
+            
+            navigate("/manageContacts")
+        }
+  
 
-        onValue(contactsCounterRef, (snapshot)=>{
-            const counter=snapshot.val();
-            if(counter!=null){
-                setId(counter)
-            }
-        })
-
-
-    },[])
+    },[allowFirebase,token])
 
 
 
-    function handleSubmit(e){
+    function handleUpdate(e){
         e.preventDefault();
-        const contactsRef = ref(database, 'contacts');
-        const newContactRef = push(contactsRef);
+        const updateContactRef = ref(database, 'contacts/'+token);
 
-        set(newContactRef, {
+        set(updateContactRef, {
             name: Name,
             address: Address,
             city: City,
@@ -56,11 +73,9 @@ function AddContact(){
             homePhone: HomePhone,
             username: Username,
             activeFoster: ActiveFost,
-            id: id
+            id:id
         });
-
-        set(contactsCounterRef, id+1) 
-        navigate("/manageContacts")
+        setAllowFirebase(false)
     }
 
     function handleChange(event){
@@ -116,8 +131,8 @@ function AddContact(){
         <>
             <AdminNav/>
             <div className="container">
-                <h2>Add Contact</h2>
-                <Form onSubmit = {handleSubmit}>
+                <h2>Update Contact</h2>
+                <Form onSubmit = {handleUpdate}>
                     <Form.Group className="mt-4">
                         <Form.Label>Name</Form.Label>
                         <Form.Control name = "Name" onChange = {handleChange} type = "text" value = {Name}/>
@@ -170,13 +185,14 @@ function AddContact(){
                     
                     <Form.Group className="mt-4">
                         <Form.Check
-                            type="checkbox" name = "Check"
+                            type="checkbox" 
+                            name = "Check"
                             checked = {ActiveFost}
                             label="Active Foster?"
                             onChange = {handleChange}
                         />
                     </Form.Group>
-                    <Button className="mt-4" type = "submit">Add Contact</Button>
+                    <Button className="mt-4" type = "submit">Update Contact</Button>
                 </Form>
             </div>
         </>  
@@ -186,4 +202,4 @@ function AddContact(){
     
 }
 
-export default AddContact
+export default UpdateContact
