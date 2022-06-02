@@ -10,6 +10,9 @@ import PetCare from './User/PetCare'
 import ManageContacts from './Admin/ManageContacts';
 import AdoptableDogsHome from './User/AdoptableDogsHome';
 import {HashRouter as Router, Route, Routes} from 'react-router-dom'
+import EditAnimal from './Admin/EditAnimal';
+
+
 
 function App() {
   
@@ -23,6 +26,7 @@ function App() {
                 <Route exact path="/contact" element={<Contact/>}/>
                 <Route exact path="/admin" element={<Admin/>}/>
                 <Route path="/addAnimal" element={<AddAnimal/>}/>
+                <Route path="/editAnimal/:token" element={<EditAnimal/>}/>
                 <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
                 <Route path="/manageAnimals" element={<ManageAnimals/>}/>
                 <Route path="/manageContacts" element={<ManageContacts/>}/>

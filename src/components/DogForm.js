@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { database, storage } from '../Firebase'
+import { database, storage } from './Firebase'
 import { ref, push, set, onValue} from "firebase/database";
 import { ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { Form, Button, Col, Row} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
-import {Circles} from 'react-loader-spinner';
-import { useNavigate } from 'react-router-dom';
+
 function DogForm() {
-
-  const navigate = useNavigate()
-
-  const [loading, setLoading] = useState(false)
 
   const [id, setId] = useState(0)
   const [name, setName] = useState("");
@@ -29,12 +24,6 @@ function DogForm() {
   const [imageUrl, setImageUrl] = useState("")
 
 
-  const current = new Date();
-  const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
-
-
-
-
   // useEffect(() => {
   //   return () => {
   //     console.log("RELOAD")
@@ -47,12 +36,13 @@ function DogForm() {
 
   useEffect(() => {
     //have a call to the database and get counter to set equal to id
-    const animalRef = ref(database, 'animalsCounter');
-    onValue(animalRef, (snapshot) => {
+    const dogRef = ref(database, 'adoptableDogs/counter');
+    onValue(dogRef, (snapshot) => {
       const data = snapshot.val();
       if(data){
         setId(data)
       }
+      console.log(data)
     });
   }, [])
 
@@ -103,16 +93,12 @@ function DogForm() {
   }
 
   function handleChangeImg(e) {
-    setLoading(true)
 
     if (imageUrl) {
       handleDelete()
     }
     //Do we need async?
-
     const tempFile = e.target.files[0];
-
-    if (tempFile !== undefined){
     const uploadRef = sRef(storage, `/images/adoptable/${tempFile.name+tempFile.lastModified+tempFile.size}`)
     const uploadTask = uploadBytesResumable(uploadRef, tempFile)
 
@@ -121,13 +107,10 @@ function DogForm() {
       (error) => {
         switch (error.code) {
           case 'storage/unauthorized':
-            setLoading(false)
             break;
           case 'storage/canceled':
-            setLoading(false)
             break;
           case 'storage/unknown':
-            setLoading(false)
             break;
         }
       },
@@ -135,21 +118,15 @@ function DogForm() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImageUrl(downloadURL)
           setImageFile(tempFile)
-          setLoading(false)
-
         });
       }
     );
-    }
-    else{
-      setLoading(false)
-
-    }
 
   }
 
 
   function handleDelete() {
+    console.log("it did not delete anything")
     const desertRef = sRef(storage, `/images/adoptable/${imageFile.name+imageFile.lastModified+imageFile.size}`);
     // Delete the file
     deleteObject(desertRef).then(() => {
@@ -162,29 +139,21 @@ function DogForm() {
     setImageUrl();
   }
 
-function goToManageAnimals(){
-  navigate('/manageAnimals')
-}
-
-
   function addDog(event) {
-console.log(name)
 
     event.preventDefault()
     
-    const animalRef = ref(database, 'animals')
-    const newanimalRef = push(animalRef)
+    const dogRef = ref(database, 'adoptableDogs')
+    const newDogRef = push(dogRef)
     
-    const counterRef= ref(database,'animalsCounter')
+    const counterRef= ref(database,'adoptableDogs/counter')
     const newCounter = push(counterRef)
-
     set(counterRef, id+1)
-    if (imageUrl && imageFile){
-    set(newanimalRef, {
+    set(newDogRef, {
       id:id,
       name: name,
       aka:aka,
-      primBreed: primBreed,
+      primbreed: primBreed,
       secBreed: secBreed,
       gender: gender,
       birthDate: birthDate,
@@ -193,40 +162,23 @@ console.log(name)
       status: status,
       shelter:shelter,
       dateDue:dateDue,
-      dateChanged: date,
       description: description,
-      img: imageUrl,
-      imgFileName: imageFile.name,
-      imgFileLastModified:imageFile.lastModified,
-      imgFileSize: imageFile.size
+      img: imageUrl
     })
-  }
-
-  else{
-    set(newanimalRef, {
-      id:id,
-      name: name,
-      aka:aka,
-      primBreed: primBreed,
-      secBreed: secBreed,
-      gender: gender,
-      birthDate: birthDate,
-      ageGroup: ageGroup,
-      foster:foster,
-      status: status,
-      shelter:shelter,
-      dateDue:dateDue,
-      dateChanged: date,
-      description: description,
-      img: "",
-      imgFileName: "",
-      imgFileLastModified: "",
-      imgFileSize: ""
-    })
-
-  }
-
-  goToManageAnimals();
+    setName("")
+    setAka("")
+    setPrimBreed("")
+    setSecBreed("")
+    setGender("")
+    
+    setBirthDate("")
+    
+    
+    setAgeGroup("")
+    setFoster("")
+    setStatus("")
+    setShelter("")
+    setDescription("")
 
 
   }
@@ -237,7 +189,7 @@ console.log(name)
     <>
       <AdminNav/>
         <div className="container">
-          <h2>AddAnimal</h2>
+          <h2>Dog Form</h2>
           <Form onSubmit={addDog} >
             <Form.Group as = {Row} className="mb-3">
               
@@ -259,7 +211,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Primary Breed</Form.Label>
-              <select className="form-select" aria-label="Default select example" name = "primBreed" onChange = {handleChange}>
+              <select className="form-select" aria-label="Default select example" name = "primBreed" onChange = {handleChange} required>
 <option value="">
 </option><option value="American Bulldog">American Bulldog
 </option><option value="Australian Cattle Dog">Australian Cattle Dog
@@ -419,7 +371,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Gender</Form.Label>
-              <select className="form-select" aria-label="Default select example" name = "gender" onChange = {handleChange} >
+              <select className="form-select" aria-label="Default select example" name = "gender" onChange = {handleChange} required>
                 <option value=""></option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -431,7 +383,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Age Group</Form.Label>
-              <select className="form-select" name = "ageGroup" onChange = {handleChange} aria-label="Default select example" >
+              <select className="form-select" name = "ageGroup" onChange = {handleChange} aria-label="Default select example" required>
                 <option value=""></option>
                 <option value="Baby">Baby</option>
                 <option value="Young">Young</option>
@@ -441,7 +393,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Foster</Form.Label>
-              <select className="form-select" name = "foster" onChange = {handleChange} aria-label="Default select example" >
+              <select className="form-select" name = "foster" onChange = {handleChange} aria-label="Default select example" required>
                 <option value=""></option>
                 <option value="Jordan">Jordan</option>
                 <option value="Abdel">Abdel</option>
@@ -453,7 +405,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Status</Form.Label>
-              <select className="form-select" name = "status" onChange = {handleChange} aria-label="Default select example" >
+              <select className="form-select" name = "status" onChange = {handleChange} aria-label="Default select example" required>
                 <option value=""></option>
                 <option value="Adoptable">Adoptable</option>
                 <option value="Adopted">Adopted</option>
@@ -465,7 +417,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Shelter</Form.Label>
-              <Form.Control name="shelter" onChange={handleChange}  value={shelter} type="text" />
+              <Form.Control name="shelter" onChange={handleChange}  value={shelter} type="text" required/>
             </Form.Group>
             
             <Form.Group className="mb-3">
@@ -479,16 +431,13 @@ console.log(name)
     
             <Form.Group className="mb-3">
               <Form.Label>Picture</Form.Label>
-       
               <Form.Control name = "picture" onChange = {handleChangeImg} type = "file" placeholder="image" accept="image/*"/>
               <br/>
-              {loading && <Circles color="#00BFFF" height={80} width={80}/>}
-
               {imageFile&&<div><h6>{imageFile.name}</h6></div>}
               {imageUrl&&<img src={imageUrl}/>}
             </Form.Group>
     
-            <Button type = "submit" disabled={loading} variant="primary">Submit</Button>
+            <Button type = "submit" variant="primary">Submit</Button>
           </Form>
         </div>
         

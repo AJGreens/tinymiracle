@@ -4,59 +4,89 @@ import { ref, push, set, onValue} from "firebase/database";
 import { ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { Form, Button, Col, Row} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
+import { useLocation } from "react-router-dom"
+import { useParams } from "react-router";
 import {Circles} from 'react-loader-spinner';
-import { useNavigate } from 'react-router-dom';
-function DogForm() {
+import {useNavigate} from 'react-router-dom';
 
-  const navigate = useNavigate()
 
-  const [loading, setLoading] = useState(false)
+function EditAnimal() {
 
-  const [id, setId] = useState(0)
-  const [name, setName] = useState("");
-  const [aka, setAka] = useState("")
-  const [primBreed, setPrimBreed] = useState("");
-  const [secBreed, setSecBreed] = useState("");
-  const [gender, setGender] = useState("");
-  const [birthDate, setBirthDate] = useState("")
-  const [ageGroup, setAgeGroup] = useState("");
-  const [foster, setFoster] = useState("")
-  const [status, setStatus] = useState("")
-  const [shelter, setShelter] = useState("");
-  const [dateDue, setDateDue] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageFile, setImageFile] = useState();
-  const [imageUrl, setImageUrl] = useState("")
+    const [loading, setLoading] = useState(false)
+
+    const {token} = useParams();
+
+    const navigate = useNavigate();
+
+
+  const [id, setId] = useState()
+  const [name, setName] = useState();
+  const [aka, setAka] = useState()
+  const [primBreed, setPrimBreed] = useState();
+  const [secBreed, setSecBreed] = useState();
+  const [gender, setGender] = useState();
+  const [birthDate, setBirthDate] = useState()
+  const [ageGroup, setAgeGroup] = useState();
+  const [foster, setFoster] = useState()
+  const [status, setStatus] = useState()
+  const [shelter, setShelter] = useState();
+  const [dateDue, setDateDue] = useState();
+  const [description, setDescription] = useState();
+  const [imageFile, setImageFile] = useState();   //We never saved the image file name in firebase so we have to fix that first in order to fix this
+  const [imgFileName, setImgFileName] = useState();
+  const [imgFileLastModified, setImgFileLastModified] = useState();
+  const [imgFileSize, setImgFileSize] = useState();
+  const [imageUrl, setImageUrl] = useState()
 
 
   const current = new Date();
   const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
 
 
-
-
-  // useEffect(() => {
-  //   return () => {
-  //     console.log("RELOAD")
-  //   if(imageUrl){
-  //     handleDelete()
-  //   }
-  //   }
-  // }, [])
-  //understand useEffect as component unmount
-
   useEffect(() => {
+   const tokenRef = ref(database, "animals/"+token);
+onValue(tokenRef, (snapshot) => {
+  const data = snapshot.val();
+  if(data){
+setId(data["id"])
+setName(data["name"]);
+setAka(data["aka"])
+setPrimBreed(data["primBreed"]);
+setSecBreed(data["secBreed"]);
+setGender(data["gender"]);
+setBirthDate(data["birthDate"])
+setAgeGroup(data["ageGroup"]);
+setFoster(data["foster"])
+setStatus(data["status"])
+setShelter(data["shelter"]);
+setDateDue(data["dateDue"]);
+setDescription(data["description"]);
+setImgFileName(data["imgFileName"]);
+setImgFileLastModified(data["imgFileLastModified"]);
+setImgFileSize(data["imgFileSize"]);
+setImageUrl(data["img"])
+
+  }
+
+});
+
+
     //have a call to the database and get counter to set equal to id
-    const animalRef = ref(database, 'animalsCounter');
+    const animalRef = ref(database, 'animals/counter');
     onValue(animalRef, (snapshot) => {
       const data = snapshot.val();
       if(data){
         setId(data)
       }
+    //   console.log(data)
     });
   }, [])
 
 
+
+  function goToManageAnimals(){
+    navigate('/manageAnimals')
+  }
 
   function handleChange(event) {
     switch (event.target.name) {
@@ -109,9 +139,7 @@ function DogForm() {
       handleDelete()
     }
     //Do we need async?
-
     const tempFile = e.target.files[0];
-
     if (tempFile !== undefined){
     const uploadRef = sRef(storage, `/images/adoptable/${tempFile.name+tempFile.lastModified+tempFile.size}`)
     const uploadTask = uploadBytesResumable(uploadRef, tempFile)
@@ -136,13 +164,13 @@ function DogForm() {
           setImageUrl(downloadURL)
           setImageFile(tempFile)
           setLoading(false)
-
         });
       }
     );
     }
-    else{
-      setLoading(false)
+
+    else {
+        setLoading(false)
 
     }
 
@@ -150,83 +178,99 @@ function DogForm() {
 
 
   function handleDelete() {
-    const desertRef = sRef(storage, `/images/adoptable/${imageFile.name+imageFile.lastModified+imageFile.size}`);
-    // Delete the file
-    deleteObject(desertRef).then(() => {
-      // File deleted successfully
-    }).catch((error) => {
-      // Uh-oh, an error occurred!
-    });
+    console.log("it did not delete anything")
 
-    setImageFile();
-    setImageUrl();
+
+    if (imgFileName && imgFileLastModified && imgFileSize){
+        const desertRef = sRef(storage, `/images/adoptable/${imgFileName+imgFileLastModified+imgFileSize}`);  //referencing previous image data for the first change
+            // Delete the file
+    deleteObject(desertRef).then(() => {
+        // File deleted successfully
+      }).catch((error) => {
+        // Uh-oh, an error occurred!
+      });
+      setImgFileLastModified();
+      setImgFileName();
+      setImgFileSize();
+      setImageFile();
+      setImageUrl();
+    }
+    else {
+       const desertRef = sRef(storage, `/images/adoptable/${imageFile.name+imageFile.lastModified+imageFile.size}`);
+           // Delete the file
+    deleteObject(desertRef).then(() => {
+        // File deleted successfully
+      }).catch((error) => {
+        // Uh-oh, an error occurred!
+      });
+      setImageFile();
+      setImageUrl();
+    
+    }
+
+
+
   }
 
-function goToManageAnimals(){
-  navigate('/manageAnimals')
+
+
+
+  function updateAnimal(event) {
+
+    event.preventDefault()
+
+
+    
+    const animalRef = ref(database, 'animals/' + token)
+
+    if (imageFile){
+    set(animalRef,{
+        id:id,
+        name: name,
+        aka:aka,
+        primBreed: primBreed,
+        secBreed: secBreed,
+        gender: gender,
+        birthDate: birthDate,
+        ageGroup: ageGroup,
+        foster:foster,
+        status: status,
+        shelter:shelter,
+        dateDue:dateDue,
+        dateChanged: date,
+        description: description,
+        img: imageUrl,
+        imgFileName: imageFile.name,
+        imgFileLastModified:imageFile.lastModified,
+        imgFileSize: imageFile.size
+    })
+}
+
+else{
+    set(animalRef,{
+        id:id,
+        name: name,
+        aka:aka,
+        primBreed: primBreed,
+        secBreed: secBreed,
+        gender: gender,
+        birthDate: birthDate,
+        ageGroup: ageGroup,
+        foster:foster,
+        status: status,
+        shelter:shelter,
+        dateDue:dateDue,
+        dateChanged: date,
+        description: description,
+        img: imageUrl,
+        imgFileName: imgFileName,
+        imgFileLastModified:imgFileLastModified,
+        imgFileSize: imgFileSize
+    })
 }
 
 
-  function addDog(event) {
-console.log(name)
-
-    event.preventDefault()
-    
-    const animalRef = ref(database, 'animals')
-    const newanimalRef = push(animalRef)
-    
-    const counterRef= ref(database,'animalsCounter')
-    const newCounter = push(counterRef)
-
-    set(counterRef, id+1)
-    if (imageUrl && imageFile){
-    set(newanimalRef, {
-      id:id,
-      name: name,
-      aka:aka,
-      primBreed: primBreed,
-      secBreed: secBreed,
-      gender: gender,
-      birthDate: birthDate,
-      ageGroup: ageGroup,
-      foster:foster,
-      status: status,
-      shelter:shelter,
-      dateDue:dateDue,
-      dateChanged: date,
-      description: description,
-      img: imageUrl,
-      imgFileName: imageFile.name,
-      imgFileLastModified:imageFile.lastModified,
-      imgFileSize: imageFile.size
-    })
-  }
-
-  else{
-    set(newanimalRef, {
-      id:id,
-      name: name,
-      aka:aka,
-      primBreed: primBreed,
-      secBreed: secBreed,
-      gender: gender,
-      birthDate: birthDate,
-      ageGroup: ageGroup,
-      foster:foster,
-      status: status,
-      shelter:shelter,
-      dateDue:dateDue,
-      dateChanged: date,
-      description: description,
-      img: "",
-      imgFileName: "",
-      imgFileLastModified: "",
-      imgFileSize: ""
-    })
-
-  }
-
-  goToManageAnimals();
+goToManageAnimals()
 
 
   }
@@ -237,8 +281,9 @@ console.log(name)
     <>
       <AdminNav/>
         <div className="container">
-          <h2>AddAnimal</h2>
-          <Form onSubmit={addDog} >
+          <h2>Edit Animal</h2>
+          {/* <h2>Prevanme: {prevName} prevPrimBreed: {prevPrimBreed} age: {prevAgeGroup}</h2> */}
+          <Form onSubmit={updateAnimal} >
             <Form.Group as = {Row} className="mb-3">
               
               <Form.Label column sm="3">Id</Form.Label>
@@ -259,7 +304,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Primary Breed</Form.Label>
-              <select className="form-select" aria-label="Default select example" name = "primBreed" onChange = {handleChange}>
+              <select className="form-select" aria-label="Default select example" name = "primBreed" value = {primBreed} onChange = {handleChange}>
 <option value="">
 </option><option value="American Bulldog">American Bulldog
 </option><option value="Australian Cattle Dog">Australian Cattle Dog
@@ -339,7 +384,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Secondary Breed</Form.Label>
-              <select className="form-select" aria-label="Default select example" name = "secBreed" onChange = {handleChange}>
+              <select className="form-select" aria-label="Default select example" name = "secBreed" value = {secBreed} onChange = {handleChange}>
 <option value="">
 </option><option value="American Bulldog">American Bulldog
 </option><option value="Australian Cattle Dog">Australian Cattle Dog
@@ -419,7 +464,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Gender</Form.Label>
-              <select className="form-select" aria-label="Default select example" name = "gender" onChange = {handleChange} >
+              <select className="form-select" aria-label="Default select example" value = {gender} name = "gender" onChange = {handleChange} >
                 <option value=""></option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -431,7 +476,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Age Group</Form.Label>
-              <select className="form-select" name = "ageGroup" onChange = {handleChange} aria-label="Default select example" >
+              <select className="form-select" name = "ageGroup" value = {ageGroup} onChange = {handleChange} aria-label="Default select example" >
                 <option value=""></option>
                 <option value="Baby">Baby</option>
                 <option value="Young">Young</option>
@@ -441,7 +486,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Foster</Form.Label>
-              <select className="form-select" name = "foster" onChange = {handleChange} aria-label="Default select example" >
+              <select className="form-select" name = "foster" onChange = {handleChange} value = {foster} aria-label="Default select example" >
                 <option value=""></option>
                 <option value="Jordan">Jordan</option>
                 <option value="Abdel">Abdel</option>
@@ -453,7 +498,7 @@ console.log(name)
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Status</Form.Label>
-              <select className="form-select" name = "status" onChange = {handleChange} aria-label="Default select example" >
+              <select className="form-select" name = "status" onChange = {handleChange} value = {status} aria-label="Default select example" >
                 <option value=""></option>
                 <option value="Adoptable">Adoptable</option>
                 <option value="Adopted">Adopted</option>
@@ -478,13 +523,14 @@ console.log(name)
             </Form.Group>
     
             <Form.Group className="mb-3">
-              <Form.Label>Picture</Form.Label>
-       
-              <Form.Control name = "picture" onChange = {handleChangeImg} type = "file" placeholder="image" accept="image/*"/>
+
+              <Form.Control name = "picture" onChange = {handleChangeImg} style = {{display: 'none'}} id = "unique" type = "file" placeholder="image" accept="image/*"/> 
+              <Form.Label for = "unique" className = "btn btn-primary">Upload Picture</Form.Label>
+ 
               <br/>
               {loading && <Circles color="#00BFFF" height={80} width={80}/>}
-
               {imageFile&&<div><h6>{imageFile.name}</h6></div>}
+              {imgFileName &&<div><h6>{imgFileName}</h6></div>}
               {imageUrl&&<img src={imageUrl}/>}
             </Form.Group>
     
@@ -497,4 +543,4 @@ console.log(name)
 
 }
 
-export default DogForm;
+export default EditAnimal;
