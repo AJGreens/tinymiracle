@@ -48,7 +48,8 @@ function UpdateContact(){
             })
         }
         return ()=>{
-            setAllowFirebase(false)
+            
+            navigate("/manageContacts")
         }
   
 
@@ -74,7 +75,7 @@ function UpdateContact(){
             activeFoster: ActiveFost,
             id:id
         });
-        navigate("/manageContacts")
+        setAllowFirebase(false)
     }
 
     function handleChange(event){
