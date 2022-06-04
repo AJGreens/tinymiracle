@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, Card,Container} from 'react-bootstrap'
-import UserNav from '../User/UserNav'
+import AdminNav from './AdminNav'
 import {Link} from 'react-router-dom'
 
 
@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 function Admin(){
     return(
         <>
-            <UserNav/>
+            <AdminNav/>
             <Container>
                 <Card>
                     <Card.Body className="d-grid gap-3 text-center">
@@ -17,6 +17,9 @@ function Admin(){
                         </Link>
                         <Link to="/manageContacts">
                             <Button size="lg">ManageContacts</Button>
+                        </Link>
+                        <Link to="/downloadDocs">
+                            <Button size="lg">Download Docs</Button>
                         </Link>
                     </Card.Body>
                 </Card>

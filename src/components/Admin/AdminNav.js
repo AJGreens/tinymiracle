@@ -13,6 +13,8 @@ function AdminNav(){
                         <Nav.Link as={Link} to="/manageContacts">ManageContacts</Nav.Link>
                         <Nav.Link as={Link} to="/addContact">AddContact</Nav.Link>
                         <Nav.Link as={Link} to="/addAnimal">AddAnimal</Nav.Link>
+                        <Nav.Link as={Link} to="/downloadDocs">Download Docs</Nav.Link>
+                        <Nav.Link as={Link} to="/">Logout</Nav.Link>
                     </Nav>
                 </Container>
           </Navbar>

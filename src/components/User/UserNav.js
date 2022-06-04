@@ -13,7 +13,7 @@ function UserNav(){
                         <Nav.Link as={Link} to="/petcare">Pet Care</Nav.Link>
                         <Nav.Link as={Link} to="/donate">Donate</Nav.Link>
                         <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-                        <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
+                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
                     </Nav>
                 </Container>
           </Navbar>
