@@ -12,6 +12,9 @@ import UpdateContact from './Admin/UpdateContact';
 import AdoptableDogsHome from './User/AdoptableDogsHome';
 import {HashRouter as Router, Route, Routes} from 'react-router-dom'
 import EditAnimal from './Admin/EditAnimal';
+import AdoptionProcess from './User/AdoptionProcess';
+import AdoptionForm from './User/AdoptionForm';
+import ThankYou from './User/ThankYou';
 
 
 
@@ -27,12 +30,15 @@ function App() {
                 <Route exact path="/contact" element={<Contact/>}/>
                 <Route exact path="/admin" element={<Admin/>}/>
                 <Route path="/addAnimal" element={<AddAnimal/>}/>
-                <Route path="/editAnimal/:token" element={<EditAnimal/>}/>
+                <Route path="/editAnimal/:prevStatus/:token" element={<EditAnimal/>}/>
                 <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
                 <Route path="/manageAnimals" element={<ManageAnimals/>}/>
                 <Route path="/manageContacts" element={<ManageContacts/>}/>
                 <Route path="/addContact" element={<AddContact/>}/>
                 <Route path="/updateContact/:token" element={<UpdateContact/>}/>
+                <Route path="/adoptionProcess/:token" element={<AdoptionProcess/>}/>
+                <Route path="/adoptionForm/:token" element={<AdoptionForm/>}/>
+                <Route path="/thankyou" element={<ThankYou/>}/>
             </Routes>
         </Router>
     </div>  

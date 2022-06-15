@@ -13,8 +13,11 @@ function ManageContacts(){
   const navigate= useNavigate()
   
   useEffect(()=>{
+
+    
     const contactsRef = ref(database, 'contacts/');
     onValue(contactsRef, (snapshot) => {
+      console.log("this called")
       const data = snapshot.val();
       let allContacts= Object.entries(data).map(([key, value]) => {
         return {token: key, id: value["id"], name:value["name"], address:value["address"], city: value["city"], state:value["state"], zip:value["zip"], primaryEmail:value["primaryEmail"], secondaryEmail:value["secondaryEmail"], mobilePhone:value["mobilePhone"], homePhone:value["homePhone"], username:value["username"], activeFoster:value["activeFoster"]}
@@ -36,6 +39,8 @@ function ManageContacts(){
   function handleDeleteContact(token){
       const deleteContactRef= ref(database, "contacts/"+token)
       remove(deleteContactRef)
+
+      console.log(contacts[0])
   }
   function handleUpdateContact(token){
     navigate("/updateContact/"+token)

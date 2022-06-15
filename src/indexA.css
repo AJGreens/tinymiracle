@@ -6,3 +6,6 @@
     border: black solid 5px;
     padding: 20px;
 }
+.sr-only{
+    display: none
+}

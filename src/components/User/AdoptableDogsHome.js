@@ -5,16 +5,29 @@ import HomeNav from './UserNav';
 import {Button, Row, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDog} from '@fortawesome/free-solid-svg-icons'
+import {useNavigate} from 'react-router-dom';
+
 
 
 
 function AdoptableDogsHome(){
+
+  const navigate = useNavigate()
+
+
+
+
+  function goToAdoptionProcess(dogToken){
+    console.log("Wellit was called to go the thing")
+    console.log("dogtoken:"+dogToken)
+navigate("/adoptionProcess/"+dogToken)
+  }
     
     
   const [dogs, setDogs] = useState([]);
   
   useEffect(()=>{
-    const dogRef = ref(database, 'adoptableDogs/');
+    const dogRef = ref(database, 'animals/adoptable');
     onValue(dogRef, (snapshot) => {
       const data = snapshot.val();
       let allDogs=[]
@@ -25,7 +38,7 @@ function AdoptableDogsHome(){
           // Pretty straightforward - use key for the key and value for the value.
         // Just to clarify: unlike object destructuring, the parameter names don't matter here.
       })
-      console.log(allDogs)
+      console.log("the page reloaded")
       setDogs(allDogs);
     });
   },[])
@@ -46,7 +59,7 @@ function AdoptableDogsHome(){
                   </Col>
                   <Col>
                     <p className='mt-4'>{dog.description}</p>
-                    <Button variant="primary">Apply <FontAwesomeIcon icon={faDog} /></Button>
+                    <Button variant="primary" onClick = {()=> goToAdoptionProcess(dog.id)}>Apply <FontAwesomeIcon icon={faDog}/></Button>
                   </Col>                  
                 </Row>
                 
