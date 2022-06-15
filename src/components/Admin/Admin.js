@@ -21,6 +21,9 @@ function Admin(){
                         <Link to="/downloadDocs">
                             <Button size="lg">Download Docs</Button>
                         </Link>
+                        <Link to="/dogWarden">
+                            <Button size="lg">Dog Warden Report</Button>
+                        </Link>
                     </Card.Body>
                 </Card>
             </Container>

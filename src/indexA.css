@@ -21,3 +21,6 @@
 .loginInner{
     padding: 10px;
 }
+.sr-only{
+    display: none;
+}

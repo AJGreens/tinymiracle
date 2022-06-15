@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Button, Form} from 'react-bootstrap'
 import {database} from '../Firebase'
-import {ref, set, onValue} from "firebase/database";
+import {ref, set, onValue,remove,push} from "firebase/database";
 import AdminNav from "./AdminNav"
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -24,11 +24,11 @@ function UpdateContact(){
     const [id, setId]= useState();
     const [allowFirebase, setAllowFirebase]=useState(true)
     const navigate= useNavigate()
-    const {token}= useParams()
+    const {sub,token}= useParams()
     
 
     useEffect(()=>{
-        const updateContactRef= ref(database, "contacts/"+token)
+        const updateContactRef= ref(database, "contacts/"+sub+"/"+token)
         if(allowFirebase){
             onValue(updateContactRef, snapshot=>{
                 const data=snapshot.val()
@@ -48,33 +48,102 @@ function UpdateContact(){
             })
         }
         return ()=>{
-            
             navigate("/manageContacts")
         }
   
 
-    },[allowFirebase,token])
+    },[allowFirebase,token,navigate, sub])
 
 
 
     function handleUpdate(e){
         e.preventDefault();
-        const updateContactRef = ref(database, 'contacts/'+token);
 
-        set(updateContactRef, {
-            name: Name,
-            address: Address,
-            city: City,
-            state: State,
-            zip: Zip,
-            primaryEmail: PrimEmail,
-            secondaryEmail: SecEmail,
-            mobilePhone: MobPhone,
-            homePhone: HomePhone,
-            username: Username,
-            activeFoster: ActiveFost,
-            id:id
-        });
+        if(sub==="active"){
+            const updateContactRef = ref(database, 'contacts/active/'+token);
+            if(ActiveFost){
+                set(updateContactRef, {
+                    name: Name,
+                    address: Address,
+                    city: City,
+                    state: State,
+                    zip: Zip,
+                    primaryEmail: PrimEmail,
+                    secondaryEmail: SecEmail,
+                    mobilePhone: MobPhone,
+                    homePhone: HomePhone,
+                    username: Username,
+                    activeFoster: ActiveFost,
+                    id:id
+                });
+            }
+            else{
+                remove(updateContactRef)
+                const nonactiveRef = ref(database, 'contacts/nonactive');
+                const newNonActiveRef = push(nonactiveRef);
+                set(newNonActiveRef, {
+                    name: Name,
+                    address: Address,
+                    city: City,
+                    state: State,
+                    zip: Zip,
+                    primaryEmail: PrimEmail,
+                    secondaryEmail: SecEmail,
+                    mobilePhone: MobPhone,
+                    homePhone: HomePhone,
+                    username: Username,
+                    activeFoster: ActiveFost,
+                    id: id
+                });
+
+
+            }
+        }
+        else{
+            const updateContactRef = ref(database, 'contacts/nonactive/'+token);
+            if(ActiveFost){
+                remove(updateContactRef)
+                const activeRef = ref(database, 'contacts/active');
+                const newActiveRef = push(activeRef);
+                set(newActiveRef, {
+                    name: Name,
+                    address: Address,
+                    city: City,
+                    state: State,
+                    zip: Zip,
+                    primaryEmail: PrimEmail,
+                    secondaryEmail: SecEmail,
+                    mobilePhone: MobPhone,
+                    homePhone: HomePhone,
+                    username: Username,
+                    activeFoster: ActiveFost,
+                    id: id
+                });
+
+            }
+            else{
+                set(updateContactRef, {
+                    name: Name,
+                    address: Address,
+                    city: City,
+                    state: State,
+                    zip: Zip,
+                    primaryEmail: PrimEmail,
+                    secondaryEmail: SecEmail,
+                    mobilePhone: MobPhone,
+                    homePhone: HomePhone,
+                    username: Username,
+                    activeFoster: ActiveFost,
+                    id:id
+                });
+                
+            }
+
+        }
+
+
+
+
         setAllowFirebase(false)
     }
 

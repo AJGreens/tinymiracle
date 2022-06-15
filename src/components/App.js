@@ -8,6 +8,7 @@ import Contact from './User/Contact'
 import Donate from './User/Donate'
 import PetCare from './User/PetCare'
 import Login from './Admin/Login';
+import DogWarden from './Admin/DogWarden';
 import ManageContacts from './Admin/ManageContacts';
 import UpdateContact from './Admin/UpdateContact';
 import AdoptableDogsHome from './User/AdoptableDogsHome';
@@ -36,7 +37,8 @@ function App() {
                 <Route path="/manageContacts" element={<ManageContacts/>}/>
                 <Route path="/addContact" element={<AddContact/>}/>
                 <Route path="/downloadDocs" element={<DownloadDocs/>}/>
-                <Route path="/updateContact/:token" element={<UpdateContact/>}/>
+                <Route path="/dogWarden" element={<DogWarden/>}/>
+                <Route path="/updateContact/:sub/:token" element={<UpdateContact/>}/>
             </Routes>
         </Router>
     </div>  

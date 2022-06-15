@@ -41,23 +41,45 @@ function AddContact(){
 
     function handleSubmit(e){
         e.preventDefault();
-        const contactsRef = ref(database, 'contacts');
-        const newContactRef = push(contactsRef);
+        if(ActiveFost){
+            const activeRef = ref(database, 'contacts/active');
+            const newActiveRef = push(activeRef);
 
-        set(newContactRef, {
-            name: Name,
-            address: Address,
-            city: City,
-            state: State,
-            zip: Zip,
-            primaryEmail: PrimEmail,
-            secondaryEmail: SecEmail,
-            mobilePhone: MobPhone,
-            homePhone: HomePhone,
-            username: Username,
-            activeFoster: ActiveFost,
-            id: id
-        });
+            set(newActiveRef, {
+                name: Name,
+                address: Address,
+                city: City,
+                state: State,
+                zip: Zip,
+                primaryEmail: PrimEmail,
+                secondaryEmail: SecEmail,
+                mobilePhone: MobPhone,
+                homePhone: HomePhone,
+                username: Username,
+                activeFoster: ActiveFost,
+                id: id
+            });
+        }
+        else{
+            const nonactiveRef = ref(database, 'contacts/nonactive');
+            const newNonActiveRef = push(nonactiveRef);
+
+            set(newNonActiveRef, {
+                name: Name,
+                address: Address,
+                city: City,
+                state: State,
+                zip: Zip,
+                primaryEmail: PrimEmail,
+                secondaryEmail: SecEmail,
+                mobilePhone: MobPhone,
+                homePhone: HomePhone,
+                username: Username,
+                activeFoster: ActiveFost,
+                id: id
+            });
+
+        }
 
         set(contactsCounterRef, id+1) 
         navigate("/manageContacts")

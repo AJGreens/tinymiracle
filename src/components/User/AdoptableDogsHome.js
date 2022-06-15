@@ -18,14 +18,15 @@ function AdoptableDogsHome(){
     onValue(dogRef, (snapshot) => {
       const data = snapshot.val();
       let allDogs=[]
-      Object.entries(data).map(([key, value]) => {
-        if(key!=="counter"){//think about a better implementation
-          allDogs.push({id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]})
-        }
-          // Pretty straightforward - use key for the key and value for the value.
-        // Just to clarify: unlike object destructuring, the parameter names don't matter here.
-      })
-      console.log(allDogs)
+      if(data!=null){
+        Object.entries(data).map(([key, value]) => {
+          if(key!=="counter"){//think about a better implementation
+            allDogs.push({id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]})
+          }
+            // Pretty straightforward - use key for the key and value for the value.
+          // Just to clarify: unlike object destructuring, the parameter names don't matter here.
+        })
+      }
       setDogs(allDogs);
     });
   },[])
