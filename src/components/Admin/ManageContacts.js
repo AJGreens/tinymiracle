@@ -21,6 +21,7 @@ function ManageContacts(){
   useEffect(()=>{
     const contactsRef = ref(database, 'contacts');
     onValue(contactsRef, (snapshot) => {
+      console.log("this called")
       const data = snapshot.val();
       if(data!=null){
         let allActive= data.active==null? []: Object.entries(data.active).map(([key, value]) => {

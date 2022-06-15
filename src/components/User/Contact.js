@@ -1,11 +1,11 @@
 import React from 'react'
-import HomeNav from './UserNav'
+import UserNav from './UserNav'
 
 
 function Contact(){
     return(
         <>
-        <HomeNav />
+        <UserNav />
         <div className="container"  style={{marginTop:40}}>
 
         <h3 style = {{marginLeft: "25%"}}>

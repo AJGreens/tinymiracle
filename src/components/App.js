@@ -15,6 +15,9 @@ import AdoptableDogsHome from './User/AdoptableDogsHome';
 import DownloadDocs from './Admin/DownloadDocs';
 import {HashRouter as Router, Route, Routes} from 'react-router-dom'
 import EditAnimal from './Admin/EditAnimal';
+import AdoptionProcess from './User/AdoptionProcess';
+import AdoptionForm from './User/AdoptionForm';
+import ThankYou from './User/ThankYou';
 
 
 
@@ -31,7 +34,7 @@ function App() {
                 <Route exact path="/admin" element={<Admin/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/addAnimal" element={<AddAnimal/>}/>
-                <Route path="/editAnimal/:token" element={<EditAnimal/>}/>
+                <Route path="/editAnimal/:prevStatus/:token" element={<EditAnimal/>}/>
                 <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
                 <Route path="/manageAnimals" element={<ManageAnimals/>}/>
                 <Route path="/manageContacts" element={<ManageContacts/>}/>
@@ -39,6 +42,9 @@ function App() {
                 <Route path="/downloadDocs" element={<DownloadDocs/>}/>
                 <Route path="/dogWarden" element={<DogWarden/>}/>
                 <Route path="/updateContact/:sub/:token" element={<UpdateContact/>}/>
+                <Route path="/adoptionProcess/:token" element={<AdoptionProcess/>}/>
+                <Route path="/adoptionForm/:token" element={<AdoptionForm/>}/>
+                <Route path="/thankyou" element={<ThankYou/>}/>
             </Routes>
         </Router>
     </div>  

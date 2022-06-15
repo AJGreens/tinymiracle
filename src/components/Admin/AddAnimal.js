@@ -27,13 +27,19 @@ function DogForm() {
   const [description, setDescription] = useState("");
   const [imageFile, setImageFile] = useState();
   const [imageUrl, setImageUrl] = useState("")
+  const [dateAdopted, setDateAdopted] = useState("");
 
 
   const current = new Date();
   const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
 
 
+  useEffect(()=>{
+    if (status!="adopted"){
+      setDateAdopted("")
+    }
 
+},[status])
 
   // useEffect(() => {
   //   return () => {
@@ -95,6 +101,9 @@ function DogForm() {
         break
       case "dateDue":
         setDateDue(event.target.value)
+        break
+      case "dateAdopted":
+          setDateAdopted(event.target.value)
         break
       default:
         console.log("Case Error")
@@ -172,7 +181,12 @@ console.log(name)
 
     event.preventDefault()
     
-    const animalRef = ref(database, 'animals')
+    let animalRef = ref(database, 'animals/'+'other/')
+    if (status === "Adoptable"){
+      animalRef = ref(database, 'animals/'+'adoptable/')
+    }
+
+
     const newanimalRef = push(animalRef)
     
     const counterRef= ref(database,'animalsCounter')
@@ -193,12 +207,13 @@ console.log(name)
       status: status,
       shelter:shelter,
       dateDue:dateDue,
-      dateChanged: date,
+      dateAdded: date,
       description: description,
       img: imageUrl,
       imgFileName: imageFile.name,
       imgFileLastModified:imageFile.lastModified,
-      imgFileSize: imageFile.size
+      imgFileSize: imageFile.size,
+      dateAdopted: dateAdopted
     })
   }
 
@@ -216,12 +231,13 @@ console.log(name)
       status: status,
       shelter:shelter,
       dateDue:dateDue,
-      dateChanged: date,
+      dateAdded: date,
       description: description,
       img: "",
       imgFileName: "",
       imgFileLastModified: "",
-      imgFileSize: ""
+      imgFileSize: "",
+      dateAdopted: dateAdopted
     })
 
   }
@@ -238,7 +254,7 @@ console.log(name)
       <AdminNav/>
         <div className="container">
           <h2>AddAnimal</h2>
-          <Form onSubmit={addDog} >
+          <Form onSubmit={addDog}>
             <Form.Group as = {Row} className="mb-3">
               
               <Form.Label column sm="3">Id</Form.Label>
@@ -425,7 +441,7 @@ console.log(name)
                 <option value="Female">Female</option>
               </select>
             </Form.Group>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 dateField">
               <Form.Label>Approx Birth Date</Form.Label>
               <Form.Control type = "date" name="birthDate" onChange={handleChange} value={birthDate}/>
             </Form.Group>
@@ -463,18 +479,32 @@ console.log(name)
                 <option value="Removed">Removed</option>
               </select>
             </Form.Group>
+            {status==="Adopted" &&
+               <Form.Group className="mb-3 dateField">
+                    <Form.Label>Date Adopted</Form.Label>
+                    <Form.Control type = "date" onChange = {handleChange} name = "dateAdopted" value = {dateAdopted}/>
+                </Form.Group>
+            
+            }
+            
+            
+
+
+
+
+
             <Form.Group className="mb-3">
               <Form.Label>Shelter</Form.Label>
               <Form.Control name="shelter" onChange={handleChange}  value={shelter} type="text" />
             </Form.Group>
             
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 dateField">
               <Form.Label>Date Due</Form.Label>
                <Form.Control type = "date" onChange = {handleChange} name = "dateDue" value = {dateDue}/>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Dog Description</Form.Label>
-              <Form.Control name = "description" onChange = {handleChange} value = {description} type = "text"/>
+              <Form.Control as="textarea" rows={3} name = "description" onChange = {handleChange} value = {description} type = "text"/>
             </Form.Group>
     
             <Form.Group className="mb-3">

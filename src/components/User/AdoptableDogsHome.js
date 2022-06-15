@@ -1,39 +1,51 @@
 import React, {useState, useEffect} from 'react';
 import {database} from '../Firebase'
 import {ref, onValue} from "firebase/database";
-import HomeNav from './UserNav';
+import UserNav from './UserNav';
 import {Button, Row, Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDog} from '@fortawesome/free-solid-svg-icons'
+import {useNavigate} from 'react-router-dom';
+
 
 
 
 function AdoptableDogsHome(){
+
+  const navigate = useNavigate()
+
+
+
+
+  function goToAdoptionProcess(dogToken){
+    console.log("Wellit was called to go the thing")
+    console.log("dogtoken:"+dogToken)
+navigate("/adoptionProcess/"+dogToken)
+  }
     
     
   const [dogs, setDogs] = useState([]);
   
   useEffect(()=>{
-    const dogRef = ref(database, 'adoptableDogs/');
+    const dogRef = ref(database, 'animals/adoptable');
     onValue(dogRef, (snapshot) => {
       const data = snapshot.val();
       let allDogs=[]
-      if(data!=null){
-        Object.entries(data).map(([key, value]) => {
-          if(key!=="counter"){//think about a better implementation
-            allDogs.push({id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]})
-          }
-            // Pretty straightforward - use key for the key and value for the value.
-          // Just to clarify: unlike object destructuring, the parameter names don't matter here.
-        })
-      }
+      Object.entries(data).map(([key, value]) => {
+        if(key!=="counter"){//think about a better implementation
+          allDogs.push({id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]})
+        }
+          // Pretty straightforward - use key for the key and value for the value.
+        // Just to clarify: unlike object destructuring, the parameter names don't matter here.
+      })
+      console.log("the page reloaded")
       setDogs(allDogs);
     });
   },[])
     
     return(
       <>
-      <HomeNav/>
+      <UserNav/>
         <div className='container text-center'>
             {/* <FontAwesomeIcon icon={faDog} /> */}
             <h1>Adoptable Dogs</h1>
@@ -47,7 +59,7 @@ function AdoptableDogsHome(){
                   </Col>
                   <Col>
                     <p className='mt-4'>{dog.description}</p>
-                    <Button variant="primary">Apply <FontAwesomeIcon icon={faDog} /></Button>
+                    <Button variant="primary" onClick = {()=> goToAdoptionProcess(dog.id)}>Apply <FontAwesomeIcon icon={faDog}/></Button>
                   </Col>                  
                 </Row>
                 

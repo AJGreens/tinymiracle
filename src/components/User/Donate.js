@@ -1,5 +1,5 @@
 import React from 'react'
-import HomeNav from './UserNav'
+import UserNav from './UserNav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAmazon, faPaypal } from "@fortawesome/free-brands-svg-icons"
 
@@ -14,7 +14,7 @@ function Donate(){
     return(
         <>
         
-        <HomeNav />
+        <UserNav />
         <div className="container">
             <div id="centerColumn">
 			    <h1 style = {{marginTop: 40}}>Many Ways To Give!</h1><br/>

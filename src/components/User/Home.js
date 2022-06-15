@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { faTractor,faPaw, faKitMedical} from '@fortawesome/free-solid-svg-icons'
 
-import HomeNav from './UserNav'
+import UserNav from './UserNav'
 
 function Home(){
     return(
         <>
-        <HomeNav />
+        <UserNav />
         <div className="container text-center mt-4">
             <h1 className="display-2 font-weight-bold">Tiny Miracles</h1>
              <Row className="mt-4">

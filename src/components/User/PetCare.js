@@ -1,5 +1,5 @@
 import React from 'react'
-import HomeNav from './UserNav'
+import UserNav from './UserNav'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -18,7 +18,7 @@ function PetCare(){
 
     return(
         <>
-        <HomeNav />
+        <UserNav />
         <div className="container"  style={{marginTop:40, textAlign: 'center'}}>
 
 

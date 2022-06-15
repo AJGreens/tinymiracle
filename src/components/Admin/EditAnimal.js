@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { database, storage } from '../Firebase'
-import { ref, push, set, onValue} from "firebase/database";
+import { ref, push, set, onValue, remove} from "firebase/database";
 import { ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { Form, Button, Col, Row} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
@@ -15,6 +15,7 @@ function EditAnimal() {
     const [loading, setLoading] = useState(false)
 
     const {token} = useParams();
+    const {prevStatus} = useParams();  //is either 'other' or 'adoptable'
 
     const navigate = useNavigate();
 
@@ -37,14 +38,16 @@ function EditAnimal() {
   const [imgFileLastModified, setImgFileLastModified] = useState();
   const [imgFileSize, setImgFileSize] = useState();
   const [imageUrl, setImageUrl] = useState()
+  const [dateAdded, setDateAdded] = useState()
+  const [dateAdopted, setDateAdopted] = useState();
 
 
-  const current = new Date();
-  const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
+  // const current = new Date();
+  // const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
 
 
   useEffect(() => {
-   const tokenRef = ref(database, "animals/"+token);
+   const tokenRef = ref(database, "animals/"+prevStatus+"/"+token);
 onValue(tokenRef, (snapshot) => {
   const data = snapshot.val();
   if(data){
@@ -65,6 +68,8 @@ setImgFileName(data["imgFileName"]);
 setImgFileLastModified(data["imgFileLastModified"]);
 setImgFileSize(data["imgFileSize"]);
 setImageUrl(data["img"])
+setDateAdded(data["dateAdded"])
+setDateAdopted(data["dateAdopted"])
 
   }
 
@@ -81,6 +86,15 @@ setImageUrl(data["img"])
     //   console.log(data)
     });
   }, [])
+
+
+
+  useEffect(()=>{
+    if (status!="adopted"){
+      setDateAdopted("")
+    }
+
+},[status])
 
 
 
@@ -125,6 +139,9 @@ setImageUrl(data["img"])
         break
       case "dateDue":
         setDateDue(event.target.value)
+        break
+        case "dateAdopted":
+          setDateAdopted(event.target.value)
         break
       default:
         console.log("Case Error")
@@ -219,9 +236,35 @@ setImageUrl(data["img"])
 
     event.preventDefault()
 
+//CASE 1: Animal was previously adoptable and is now not adoptable
+if (prevStatus ==="adoptable"  && status != "Adoptable"){
+  const deleteable = ref(database, 'animals/adoptable/'+token)
+  remove(deleteable)
+}
 
+//CASE 2: Animal was previously not adoptable and is now adoptable
+else if (prevStatus ==="other"  && status === "Adoptable"){
+  const deleteable = ref(database, 'animals/other/'+token)
+  remove(deleteable)
+}
+
+
+//CASE 3: Animal was previously adoptable and still adoptable
+
+//CASE 4: Animal was previously not adoptable and is still not adoptable
     
-    const animalRef = ref(database, 'animals/' + token)
+
+let animalRef = ref(database, 'animals/other/' + token)
+
+if (status ==="Adoptable"){
+  animalRef = ref(database, 'animals/adoptable/' + token)
+}
+
+
+
+
+    //BELOW IS THE ORIGNAL FUNCTIONALITY
+  
 
     if (imageFile){
     set(animalRef,{
@@ -237,12 +280,13 @@ setImageUrl(data["img"])
         status: status,
         shelter:shelter,
         dateDue:dateDue,
-        dateChanged: date,
+        dateAdded: dateAdded,
         description: description,
         img: imageUrl,
         imgFileName: imageFile.name,
         imgFileLastModified:imageFile.lastModified,
-        imgFileSize: imageFile.size
+        imgFileSize: imageFile.size,
+        dateAdopted: dateAdopted
     })
 }
 
@@ -260,12 +304,13 @@ else{
         status: status,
         shelter:shelter,
         dateDue:dateDue,
-        dateChanged: date,
+        dateAdded: dateAdded,
         description: description,
         img: imageUrl,
         imgFileName: imgFileName,
         imgFileLastModified:imgFileLastModified,
-        imgFileSize: imgFileSize
+        imgFileSize: imgFileSize,
+        dateAdopted: dateAdopted
     })
 }
 
@@ -470,7 +515,7 @@ goToManageAnimals()
                 <option value="Female">Female</option>
               </select>
             </Form.Group>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 dateField">
               <Form.Label>Approx Birth Date</Form.Label>
               <Form.Control type = "date" name="birthDate" onChange={handleChange} value={birthDate}/>
             </Form.Group>
@@ -508,18 +553,25 @@ goToManageAnimals()
                 <option value="Removed">Removed</option>
               </select>
             </Form.Group>
+            {status==="Adopted" &&
+               <Form.Group className="mb-3 dateField">
+                    <Form.Label>Date Adopted</Form.Label>
+                    <Form.Control type = "date" onChange = {handleChange} name = "dateAdopted" value = {dateAdopted}/>
+                </Form.Group>
+            }
+
             <Form.Group className="mb-3">
               <Form.Label>Shelter</Form.Label>
               <Form.Control name="shelter" onChange={handleChange}  value={shelter} type="text" />
             </Form.Group>
             
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 dateField">
               <Form.Label>Date Due</Form.Label>
                <Form.Control type = "date" onChange = {handleChange} name = "dateDue" value = {dateDue}/>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Dog Description</Form.Label>
-              <Form.Control name = "description" onChange = {handleChange} value = {description} type = "text"/>
+              <Form.Control as="textarea" rows={3} name = "description" onChange = {handleChange} value = {description} type = "text"/>
             </Form.Group>
     
             <Form.Group className="mb-3">
