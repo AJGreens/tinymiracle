@@ -95,6 +95,8 @@ function DogWarden(){
                         <th>Address</th>
                         <th>City</th>
                         <th>State</th>
+                        <th>Current</th>
+                        <th>Current Year</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -106,6 +108,8 @@ function DogWarden(){
                                 <td>{foster.address}</td>
                                 <td>{foster.city}</td>
                                 <td>{foster.state}</td>
+                                <td>0</td>
+                                <td>0</td>
                             </tr>
 
                         )
