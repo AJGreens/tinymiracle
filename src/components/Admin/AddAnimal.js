@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { database, storage } from '../Firebase'
-import { ref, push, set, onValue} from "firebase/database";
+import { ref, push, set, onValue, update} from "firebase/database";
 import { ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { Form, Button, Col, Row} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
@@ -8,10 +8,11 @@ import {Circles} from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 function DogForm() {
 
+  const [allFosters, setAllFosters]=useState([])
+
   const navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
-
   const [id, setId] = useState(0)
   const [name, setName] = useState("");
   const [aka, setAka] = useState("")
@@ -20,7 +21,8 @@ function DogForm() {
   const [gender, setGender] = useState("");
   const [birthDate, setBirthDate] = useState("")
   const [ageGroup, setAgeGroup] = useState("");
-  const [foster, setFoster] = useState("")
+  const [currFosterName, setCurrFosterName] = useState("")
+  const [currFosterToken, setCurrFosterToken] = useState("")
   const [status, setStatus] = useState("")
   const [shelter, setShelter] = useState("");
   const [dateDue, setDateDue] = useState("");
@@ -32,27 +34,15 @@ function DogForm() {
 
   const current = new Date();
   const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
-
-
+ 
   useEffect(()=>{
-    if (status!="adopted"){
+    if (status!=="adopted"){
       setDateAdopted("")
     }
+  },[status])
 
-},[status])
-
-  // useEffect(() => {
-  //   return () => {
-  //     console.log("RELOAD")
-  //   if(imageUrl){
-  //     handleDelete()
-  //   }
-  //   }
-  // }, [])
-  //understand useEffect as component unmount
 
   useEffect(() => {
-    //have a call to the database and get counter to set equal to id
     const animalRef = ref(database, 'animalsCounter');
     onValue(animalRef, (snapshot) => {
       const data = snapshot.val();
@@ -60,8 +50,15 @@ function DogForm() {
         setId(data)
       }
     });
+    const fostersRef= ref(database, 'contacts/active')
+    onValue(fostersRef, (snapshot)=>{
+      const data=snapshot.val()
+      let allTempFosters= Object.entries(data).map(([key,value])=>{
+        return {token: key, name: value["name"]}
+      })
+      setAllFosters(allTempFosters)
+    })
   }, [])
-
 
 
   function handleChange(event) {
@@ -91,7 +88,9 @@ function DogForm() {
         setAgeGroup(event.target.value)
         break
       case "foster":
-        setFoster(event.target.value)
+        const condVal= event.target.value===""? ["",""]:event.target.value.split(",")
+        setCurrFosterToken(condVal[0])
+        setCurrFosterName(condVal[1])
         break
       case "status":
         setStatus(event.target.value)
@@ -103,7 +102,7 @@ function DogForm() {
         setDateDue(event.target.value)
         break
       case "dateAdopted":
-          setDateAdopted(event.target.value)
+        setDateAdopted(event.target.value)
         break
       default:
         console.log("Case Error")
@@ -138,6 +137,8 @@ function DogForm() {
           case 'storage/unknown':
             setLoading(false)
             break;
+          default:
+            console.log("storage error")
         }
       },
       () => {
@@ -171,80 +172,75 @@ function DogForm() {
     setImageUrl();
   }
 
-function goToManageAnimals(){
-  navigate('/manageAnimals')
-}
-
 
   function addDog(event) {
-console.log(name)
-
     event.preventDefault()
-    
-    let animalRef = ref(database, 'animals/'+'other/')
+    let animalRef = ref(database, 'animals/other/')
     if (status === "Adoptable"){
-      animalRef = ref(database, 'animals/'+'adoptable/')
+      animalRef = ref(database, 'animals/adoptable/')
     }
 
-
     const newanimalRef = push(animalRef)
-    
     const counterRef= ref(database,'animalsCounter')
-    const newCounter = push(counterRef)
-
     set(counterRef, id+1)
     if (imageUrl && imageFile){
-    set(newanimalRef, {
-      id:id,
-      name: name,
-      aka:aka,
-      primBreed: primBreed,
-      secBreed: secBreed,
-      gender: gender,
-      birthDate: birthDate,
-      ageGroup: ageGroup,
-      foster:foster,
-      status: status,
-      shelter:shelter,
-      dateDue:dateDue,
-      dateAdded: date,
-      description: description,
-      img: imageUrl,
-      imgFileName: imageFile.name,
-      imgFileLastModified:imageFile.lastModified,
-      imgFileSize: imageFile.size,
-      dateAdopted: dateAdopted
-    })
-  }
+      set(newanimalRef, {
+        id:id,
+        name: name,
+        aka:aka,
+        primBreed: primBreed,
+        secBreed: secBreed,
+        gender: gender,
+        birthDate: birthDate,
+        ageGroup: ageGroup,
+        fosterToken: currFosterToken ,
+        fosterName: currFosterName,
+        status: status,
+        shelter:shelter,
+        dateDue:dateDue,
+        dateAdded: date,
+        description: description,
+        img: imageUrl,
+        imgFileName: imageFile.name,
+        imgFileLastModified:imageFile.lastModified,
+        imgFileSize: imageFile.size,
+        dateAdopted: dateAdopted
+      })
+    }
+    else{
+      set(newanimalRef, {
+        id:id,
+        name: name,
+        aka:aka,
+        primBreed: primBreed,
+        secBreed: secBreed,
+        gender: gender,
+        birthDate: birthDate,
+        ageGroup: ageGroup,
+        fosterToken: currFosterToken,
+        fosterName: currFosterName,
+        status: status,
+        shelter:shelter,
+        dateDue:dateDue,
+        dateAdded: date,
+        description: description,
+        img: "",
+        imgFileName: "",
+        imgFileLastModified: "",
+        imgFileSize: "",
+        dateAdopted: dateAdopted
+      })
+    }
 
-  else{
-    set(newanimalRef, {
-      id:id,
-      name: name,
-      aka:aka,
-      primBreed: primBreed,
-      secBreed: secBreed,
-      gender: gender,
-      birthDate: birthDate,
-      ageGroup: ageGroup,
-      foster:foster,
-      status: status,
-      shelter:shelter,
-      dateDue:dateDue,
-      dateAdded: date,
-      description: description,
-      img: "",
-      imgFileName: "",
-      imgFileLastModified: "",
-      imgFileSize: "",
-      dateAdopted: dateAdopted
-    })
-
-  }
-
-  goToManageAnimals();
-
-
+    if(currFosterName!==""){
+      const currFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+newanimalRef.key)
+      const allFosterRef= ref(database, "contacts/active/"+currFosterToken+"/allFoster/"+newanimalRef.key)
+      update(allFosterRef,{name: name})
+      if(status!=="Adopted"){
+        update(currFosterRef,{name: name})
+      }
+    }
+    navigate('/manageAnimals')
   }
 
 
@@ -256,11 +252,9 @@ console.log(name)
           <h2>AddAnimal</h2>
           <Form onSubmit={addDog}>
             <Form.Group as = {Row} className="mb-3">
-              
               <Form.Label column sm="3">Id</Form.Label>
-              
               <Col sm="5">
-              <Form.Control name="id" value={id} type="number"/>
+                <Form.Control name="id" value={id} type="number"/>
               </Col>
             </Form.Group>
             <Form.Group as = {Row} className="mb-3">
@@ -276,161 +270,161 @@ console.log(name)
             <Form.Group className="mb-3">
               <Form.Label>Primary Breed</Form.Label>
               <select className="form-select" aria-label="Default select example" name = "primBreed" onChange = {handleChange}>
-<option value="">
-</option><option value="American Bulldog">American Bulldog
-</option><option value="Australian Cattle Dog">Australian Cattle Dog
-</option><option value="Australian Shepherd">Australian Shepherd
-</option><option value="Basset Hound">Basset Hound
-</option><option value="Beagle">Beagle
-</option><option value="Bernese Mountain Dog">Bernese Mountain Dog
-</option><option value="Bichon">Bichon
-</option><option value="Bloodhound">Bloodhound
-</option><option value="Blue Heeler">Blue Heeler
-</option><option value="Border Collie">Border Collie
-</option><option value="Boston Terrier">Boston Terrier
-</option><option value="Boxer">Boxer
-</option><option value="Brussels Griffon">Brussels Griffon
-</option><option value="Bull Terrier">Bull Terrier
-</option><option value="Bullmastiff">Bullmastiff
-</option><option value="Cairn Terrier">Cairn Terrier
-</option><option value="Carolina">Carolina
-</option><option value="Cat">Cat
-</option><option value="Catahoula Dog">Catahoula Dog
-</option><option value="Chihuahua">Chihuahua
-</option><option value="Cocker Spaniel">Cocker Spaniel
-</option><option value="Collie">Collie
-</option><option value="Coonhound">Coonhound
-</option><option value="Corgi">Corgi
-</option><option value="Cur">Cur
-</option><option value="Dachshund">Dachshund
-</option><option value="Dalmation">Dalmation
-</option><option value="Doberman">Doberman
-</option><option value="English Bulldog">English Bulldog
-</option><option value="English Setter">English Setter
-</option><option value="Feist">Feist
-</option><option value="Fox Terrier">Fox Terrier
-</option><option value="Foxhound">Foxhound
-</option><option value="French Bulldog">French Bulldog
-</option><option value="German Shepherd">German Shepherd
-</option><option value="Great Dane">Great Dane
-</option><option value="Great Pyrenesse">Great Pyrenesse
-</option><option value="Greyhound">Greyhound
-</option><option value="Havanese">Havanese
-</option><option value="Heeler">Heeler
-</option><option value="Hound">Hound
-</option><option value="Husky">Husky
-</option><option value="Irish Wolfhound">Irish Wolfhound
-</option><option value="Jack Russell Terrier">Jack Russell Terrier
-</option><option value="Labrador Retreiver">Labrador Retreiver
-</option><option value="Malamute">Malamute
-</option><option value="Maltese">Maltese
-</option><option value="Mastiff">Mastiff
-</option><option value="Miniature Pinscher">Miniature Pinscher
-</option><option value="Mountain Cur">Mountain Cur
-</option><option value="Olde English Bulldogge">Olde English Bulldogge
-</option><option value="Papillon">Papillon
-</option><option value="Pekingese">Pekingese
-</option><option value="Pit Bull Terrier">Pit Bull Terrier
-</option><option value="Pointer">Pointer
-</option><option value="Pomeranian">Pomeranian
-</option><option value="Poodle">Poodle
-</option><option value="Pug">Pug
-</option><option value="Rotweiler">Rotweiler
-</option><option value="Schnauzer">Schnauzer
-</option><option value="Scottish Terrier">Scottish Terrier
-</option><option value="Sheltie">Sheltie
-</option><option value="Shepherd">Shepherd
-</option><option value="Shih Tzu">Shih Tzu
-</option><option value="Spaniel">Spaniel
-</option><option value="Staffordshire Terrier">Staffordshire Terrier
-</option><option value="Terrier">Terrier
-</option><option value="Unknown">Unknown
-</option><option value="Weimaraner">Weimaraner
-</option><option value="West Highland Terrier (Westie)">West Highland Terrier (Westie)
-</option><option value="Whippet">Whippet
-</option><option value="Wire Haired Terrier">Wire Haired Terrier
-</option><option value="Yorkshire Terrier">Yorkshire Terrier
-</option>
+                  <option value="">
+                  </option><option value="American Bulldog">American Bulldog
+                  </option><option value="Australian Cattle Dog">Australian Cattle Dog
+                  </option><option value="Australian Shepherd">Australian Shepherd
+                  </option><option value="Basset Hound">Basset Hound
+                  </option><option value="Beagle">Beagle
+                  </option><option value="Bernese Mountain Dog">Bernese Mountain Dog
+                  </option><option value="Bichon">Bichon
+                  </option><option value="Bloodhound">Bloodhound
+                  </option><option value="Blue Heeler">Blue Heeler
+                  </option><option value="Border Collie">Border Collie
+                  </option><option value="Boston Terrier">Boston Terrier
+                  </option><option value="Boxer">Boxer
+                  </option><option value="Brussels Griffon">Brussels Griffon
+                  </option><option value="Bull Terrier">Bull Terrier
+                  </option><option value="Bullmastiff">Bullmastiff
+                  </option><option value="Cairn Terrier">Cairn Terrier
+                  </option><option value="Carolina">Carolina
+                  </option><option value="Cat">Cat
+                  </option><option value="Catahoula Dog">Catahoula Dog
+                  </option><option value="Chihuahua">Chihuahua
+                  </option><option value="Cocker Spaniel">Cocker Spaniel
+                  </option><option value="Collie">Collie
+                  </option><option value="Coonhound">Coonhound
+                  </option><option value="Corgi">Corgi
+                  </option><option value="Cur">Cur
+                  </option><option value="Dachshund">Dachshund
+                  </option><option value="Dalmation">Dalmation
+                  </option><option value="Doberman">Doberman
+                  </option><option value="English Bulldog">English Bulldog
+                  </option><option value="English Setter">English Setter
+                  </option><option value="Feist">Feist
+                  </option><option value="Fox Terrier">Fox Terrier
+                  </option><option value="Foxhound">Foxhound
+                  </option><option value="French Bulldog">French Bulldog
+                  </option><option value="German Shepherd">German Shepherd
+                  </option><option value="Great Dane">Great Dane
+                  </option><option value="Great Pyrenesse">Great Pyrenesse
+                  </option><option value="Greyhound">Greyhound
+                  </option><option value="Havanese">Havanese
+                  </option><option value="Heeler">Heeler
+                  </option><option value="Hound">Hound
+                  </option><option value="Husky">Husky
+                  </option><option value="Irish Wolfhound">Irish Wolfhound
+                  </option><option value="Jack Russell Terrier">Jack Russell Terrier
+                  </option><option value="Labrador Retreiver">Labrador Retreiver
+                  </option><option value="Malamute">Malamute
+                  </option><option value="Maltese">Maltese
+                  </option><option value="Mastiff">Mastiff
+                  </option><option value="Miniature Pinscher">Miniature Pinscher
+                  </option><option value="Mountain Cur">Mountain Cur
+                  </option><option value="Olde English Bulldogge">Olde English Bulldogge
+                  </option><option value="Papillon">Papillon
+                  </option><option value="Pekingese">Pekingese
+                  </option><option value="Pit Bull Terrier">Pit Bull Terrier
+                  </option><option value="Pointer">Pointer
+                  </option><option value="Pomeranian">Pomeranian
+                  </option><option value="Poodle">Poodle
+                  </option><option value="Pug">Pug
+                  </option><option value="Rotweiler">Rotweiler
+                  </option><option value="Schnauzer">Schnauzer
+                  </option><option value="Scottish Terrier">Scottish Terrier
+                  </option><option value="Sheltie">Sheltie
+                  </option><option value="Shepherd">Shepherd
+                  </option><option value="Shih Tzu">Shih Tzu
+                  </option><option value="Spaniel">Spaniel
+                  </option><option value="Staffordshire Terrier">Staffordshire Terrier
+                  </option><option value="Terrier">Terrier
+                  </option><option value="Unknown">Unknown
+                  </option><option value="Weimaraner">Weimaraner
+                  </option><option value="West Highland Terrier (Westie)">West Highland Terrier (Westie)
+                  </option><option value="Whippet">Whippet
+                  </option><option value="Wire Haired Terrier">Wire Haired Terrier
+                  </option><option value="Yorkshire Terrier">Yorkshire Terrier
+                  </option>
               </select>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Secondary Breed</Form.Label>
               <select className="form-select" aria-label="Default select example" name = "secBreed" onChange = {handleChange}>
-<option value="">
-</option><option value="American Bulldog">American Bulldog
-</option><option value="Australian Cattle Dog">Australian Cattle Dog
-</option><option value="Australian Shepherd">Australian Shepherd
-</option><option value="Basset Hound">Basset Hound
-</option><option value="Beagle">Beagle
-</option><option value="Bernese Mountain Dog">Bernese Mountain Dog
-</option><option value="Bichon">Bichon
-</option><option value="Bloodhound">Bloodhound
-</option><option value="Blue Heeler">Blue Heeler
-</option><option value="Border Collie">Border Collie
-</option><option value="Boston Terrier">Boston Terrier
-</option><option value="Boxer">Boxer
-</option><option value="Brussels Griffon">Brussels Griffon
-</option><option value="Bull Terrier">Bull Terrier
-</option><option value="Bullmastiff">Bullmastiff
-</option><option value="Cairn Terrier">Cairn Terrier
-</option><option value="Carolina">Carolina
-</option><option value="Cat">Cat
-</option><option value="Catahoula Dog">Catahoula Dog
-</option><option value="Chihuahua">Chihuahua
-</option><option value="Cocker Spaniel">Cocker Spaniel
-</option><option value="Collie">Collie
-</option><option value="Coonhound">Coonhound
-</option><option value="Corgi">Corgi
-</option><option value="Cur">Cur
-</option><option value="Dachshund">Dachshund
-</option><option value="Dalmation">Dalmation
-</option><option value="Doberman">Doberman
-</option><option value="English Bulldog">English Bulldog
-</option><option value="English Setter">English Setter
-</option><option value="Feist">Feist
-</option><option value="Fox Terrier">Fox Terrier
-</option><option value="Foxhound">Foxhound
-</option><option value="French Bulldog">French Bulldog
-</option><option value="German Shepherd">German Shepherd
-</option><option value="Great Dane">Great Dane
-</option><option value="Great Pyrenesse">Great Pyrenesse
-</option><option value="Greyhound">Greyhound
-</option><option value="Havanese">Havanese
-</option><option value="Heeler">Heeler
-</option><option value="Hound">Hound
-</option><option value="Husky">Husky
-</option><option value="Irish Wolfhound">Irish Wolfhound
-</option><option value="Jack Russell Terrier">Jack Russell Terrier
-</option><option value="Labrador Retreiver">Labrador Retreiver
-</option><option value="Malamute">Malamute
-</option><option value="Maltese">Maltese
-</option><option value="Mastiff">Mastiff
-</option><option value="Miniature Pinscher">Miniature Pinscher
-</option><option value="Mountain Cur">Mountain Cur
-</option><option value="Olde English Bulldogge">Olde English Bulldogge
-</option><option value="Papillon">Papillon
-</option><option value="Pekingese">Pekingese
-</option><option value="Pit Bull Terrier">Pit Bull Terrier
-</option><option value="Pointer">Pointer
-</option><option value="Pomeranian">Pomeranian
-</option><option value="Poodle">Poodle
-</option><option value="Pug">Pug
-</option><option value="Rotweiler">Rotweiler
-</option><option value="Schnauzer">Schnauzer
-</option><option value="Scottish Terrier">Scottish Terrier
-</option><option value="Sheltie">Sheltie
-</option><option value="Shepherd">Shepherd
-</option><option value="Shih Tzu">Shih Tzu
-</option><option value="Spaniel">Spaniel
-</option><option value="Staffordshire Terrier">Staffordshire Terrier
-</option><option value="Terrier">Terrier
-</option><option value="Unknown">Unknown
-</option><option value="Weimaraner">Weimaraner
-</option><option value="West Highland Terrier (Westie)">West Highland Terrier (Westie)
-</option><option value="Whippet">Whippet
-</option><option value="Wire Haired Terrier">Wire Haired Terrier
-</option><option value="Yorkshire Terrier">Yorkshire Terrier
-</option>
+                <option value="">
+                </option><option value="American Bulldog">American Bulldog
+                </option><option value="Australian Cattle Dog">Australian Cattle Dog
+                </option><option value="Australian Shepherd">Australian Shepherd
+                </option><option value="Basset Hound">Basset Hound
+                </option><option value="Beagle">Beagle
+                </option><option value="Bernese Mountain Dog">Bernese Mountain Dog
+                </option><option value="Bichon">Bichon
+                </option><option value="Bloodhound">Bloodhound
+                </option><option value="Blue Heeler">Blue Heeler
+                </option><option value="Border Collie">Border Collie
+                </option><option value="Boston Terrier">Boston Terrier
+                </option><option value="Boxer">Boxer
+                </option><option value="Brussels Griffon">Brussels Griffon
+                </option><option value="Bull Terrier">Bull Terrier
+                </option><option value="Bullmastiff">Bullmastiff
+                </option><option value="Cairn Terrier">Cairn Terrier
+                </option><option value="Carolina">Carolina
+                </option><option value="Cat">Cat
+                </option><option value="Catahoula Dog">Catahoula Dog
+                </option><option value="Chihuahua">Chihuahua
+                </option><option value="Cocker Spaniel">Cocker Spaniel
+                </option><option value="Collie">Collie
+                </option><option value="Coonhound">Coonhound
+                </option><option value="Corgi">Corgi
+                </option><option value="Cur">Cur
+                </option><option value="Dachshund">Dachshund
+                </option><option value="Dalmation">Dalmation
+                </option><option value="Doberman">Doberman
+                </option><option value="English Bulldog">English Bulldog
+                </option><option value="English Setter">English Setter
+                </option><option value="Feist">Feist
+                </option><option value="Fox Terrier">Fox Terrier
+                </option><option value="Foxhound">Foxhound
+                </option><option value="French Bulldog">French Bulldog
+                </option><option value="German Shepherd">German Shepherd
+                </option><option value="Great Dane">Great Dane
+                </option><option value="Great Pyrenesse">Great Pyrenesse
+                </option><option value="Greyhound">Greyhound
+                </option><option value="Havanese">Havanese
+                </option><option value="Heeler">Heeler
+                </option><option value="Hound">Hound
+                </option><option value="Husky">Husky
+                </option><option value="Irish Wolfhound">Irish Wolfhound
+                </option><option value="Jack Russell Terrier">Jack Russell Terrier
+                </option><option value="Labrador Retreiver">Labrador Retreiver
+                </option><option value="Malamute">Malamute
+                </option><option value="Maltese">Maltese
+                </option><option value="Mastiff">Mastiff
+                </option><option value="Miniature Pinscher">Miniature Pinscher
+                </option><option value="Mountain Cur">Mountain Cur
+                </option><option value="Olde English Bulldogge">Olde English Bulldogge
+                </option><option value="Papillon">Papillon
+                </option><option value="Pekingese">Pekingese
+                </option><option value="Pit Bull Terrier">Pit Bull Terrier
+                </option><option value="Pointer">Pointer
+                </option><option value="Pomeranian">Pomeranian
+                </option><option value="Poodle">Poodle
+                </option><option value="Pug">Pug
+                </option><option value="Rotweiler">Rotweiler
+                </option><option value="Schnauzer">Schnauzer
+                </option><option value="Scottish Terrier">Scottish Terrier
+                </option><option value="Sheltie">Sheltie
+                </option><option value="Shepherd">Shepherd
+                </option><option value="Shih Tzu">Shih Tzu
+                </option><option value="Spaniel">Spaniel
+                </option><option value="Staffordshire Terrier">Staffordshire Terrier
+                </option><option value="Terrier">Terrier
+                </option><option value="Unknown">Unknown
+                </option><option value="Weimaraner">Weimaraner
+                </option><option value="West Highland Terrier (Westie)">West Highland Terrier (Westie)
+                </option><option value="Whippet">Whippet
+                </option><option value="Wire Haired Terrier">Wire Haired Terrier
+                </option><option value="Yorkshire Terrier">Yorkshire Terrier
+                </option>
               </select>
             </Form.Group>
             <Form.Group className="mb-3">
@@ -459,12 +453,11 @@ console.log(name)
               <Form.Label>Foster</Form.Label>
               <select className="form-select" name = "foster" onChange = {handleChange} aria-label="Default select example" >
                 <option value=""></option>
-                <option value="Jordan">Jordan</option>
-                <option value="Abdel">Abdel</option>
-                <option value="Ahmed">Ahmed</option>
-                <option value="Harris">Harris</option>
-                <option value="Piyush">Piyush</option>
-                <option value="Kareem">Kareem</option>
+                {
+                  allFosters.map(foster=>{
+                    return <option key={foster.token} value={[foster.token, foster.name]}>{foster.name}</option>
+                  })
+                }
               </select>
             </Form.Group>
             <Form.Group className="mb-3">
@@ -484,7 +477,6 @@ console.log(name)
                     <Form.Label>Date Adopted</Form.Label>
                     <Form.Control type = "date" onChange = {handleChange} name = "dateAdopted" value = {dateAdopted}/>
                 </Form.Group>
-            
             }
             
             
@@ -513,7 +505,6 @@ console.log(name)
               <Form.Control name = "picture" onChange = {handleChangeImg} type = "file" placeholder="image" accept="image/*"/>
               <br/>
               {loading && <Circles color="#00BFFF" height={80} width={80}/>}
-
               {imageFile&&<div><h6>{imageFile.name}</h6></div>}
               {imageUrl&&<img src={imageUrl}/>}
             </Form.Group>

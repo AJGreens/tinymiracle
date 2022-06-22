@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Button, Form} from 'react-bootstrap'
 import {database} from '../Firebase'
-import {ref, set, onValue,remove,push} from "firebase/database";
+import {ref, set, onValue,remove} from "firebase/database";
 import AdminNav from "./AdminNav"
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -79,9 +79,8 @@ function UpdateContact(){
             }
             else{
                 remove(updateContactRef)
-                const nonactiveRef = ref(database, 'contacts/nonactive');
-                const newNonActiveRef = push(nonactiveRef);
-                set(newNonActiveRef, {
+                const nonactiveRef = ref(database, 'contacts/nonactive/'+token);
+                set(nonactiveRef, {
                     name: Name,
                     address: Address,
                     city: City,
@@ -103,9 +102,8 @@ function UpdateContact(){
             const updateContactRef = ref(database, 'contacts/nonactive/'+token);
             if(ActiveFost){
                 remove(updateContactRef)
-                const activeRef = ref(database, 'contacts/active');
-                const newActiveRef = push(activeRef);
-                set(newActiveRef, {
+                const activeRef = ref(database, 'contacts/active/'+token);
+                set(activeRef, {
                     name: Name,
                     address: Address,
                     city: City,

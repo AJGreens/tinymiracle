@@ -118,7 +118,6 @@ function ManageContacts(){
     <>
       <AdminNav/>
       <div className='container'>
-          <div></div>
           <h2>Manage Contacts</h2>
           <Button onClick={handleAddContact} className="mb-4">Add Contact</Button>
           <ToolkitProvider

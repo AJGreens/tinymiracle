@@ -28,7 +28,11 @@ function EditAnimal() {
   const [gender, setGender] = useState();
   const [birthDate, setBirthDate] = useState()
   const [ageGroup, setAgeGroup] = useState();
-  const [foster, setFoster] = useState()
+  const [allFosters, setAllFosters] = useState([])
+  const [currFosterName, setCurrFosterName] = useState()
+  const [currFosterToken, setCurrFosterToken] = useState()
+  const [prevFosterToken, setPrevFosterToken] = useState()
+  const [orgStatus, setOrgStatus] = useState()
   const [status, setStatus] = useState()
   const [shelter, setShelter] = useState();
   const [dateDue, setDateDue] = useState();
@@ -40,41 +44,39 @@ function EditAnimal() {
   const [imageUrl, setImageUrl] = useState()
   const [dateAdded, setDateAdded] = useState()
   const [dateAdopted, setDateAdopted] = useState();
-
-
-  // const current = new Date();
-  // const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
-
+  
 
   useEffect(() => {
-   const tokenRef = ref(database, "animals/"+prevStatus+"/"+token);
-onValue(tokenRef, (snapshot) => {
-  const data = snapshot.val();
-  if(data){
-setId(data["id"])
-setName(data["name"]);
-setAka(data["aka"])
-setPrimBreed(data["primBreed"]);
-setSecBreed(data["secBreed"]);
-setGender(data["gender"]);
-setBirthDate(data["birthDate"])
-setAgeGroup(data["ageGroup"]);
-setFoster(data["foster"])
-setStatus(data["status"])
-setShelter(data["shelter"]);
-setDateDue(data["dateDue"]);
-setDescription(data["description"]);
-setImgFileName(data["imgFileName"]);
-setImgFileLastModified(data["imgFileLastModified"]);
-setImgFileSize(data["imgFileSize"]);
-setImageUrl(data["img"])
-setDateAdded(data["dateAdded"])
-setDateAdopted(data["dateAdopted"])
+    const tokenRef = ref(database, "animals/"+prevStatus+"/"+token);
+    onValue(tokenRef, (snapshot) => {
+      const data = snapshot.val();
 
-  }
+      if(data){
+        setId(data["id"])
+        setName(data["name"]);
+        setAka(data["aka"])
+        setPrimBreed(data["primBreed"]);
+        setSecBreed(data["secBreed"]);
+        setGender(data["gender"]);
+        setBirthDate(data["birthDate"])
+        setAgeGroup(data["ageGroup"]);
+        setPrevFosterToken(data["fosterToken"])
+        setCurrFosterName(data["fosterName"])
+        setCurrFosterToken(data["fosterToken"])
+        setStatus(data["status"])
+        setOrgStatus(data["status"])
+        setShelter(data["shelter"]);
+        setDateDue(data["dateDue"]);
+        setDescription(data["description"]);
+        setImgFileName(data["imgFileName"]);
+        setImgFileLastModified(data["imgFileLastModified"]);
+        setImgFileSize(data["imgFileSize"]);
+        setImageUrl(data["img"])
+        setDateAdded(data["dateAdded"])
+        setDateAdopted(data["dateAdopted"])
 
-});
-
+      }
+    });
 
     //have a call to the database and get counter to set equal to id
     const animalRef = ref(database, 'animals/counter');
@@ -85,6 +87,16 @@ setDateAdopted(data["dateAdopted"])
       }
     //   console.log(data)
     });
+
+    const fostersRef= ref(database, 'contacts/active')
+    onValue(fostersRef, (snapshot)=>{
+     
+      const data=snapshot.val()
+      let allTempFosters= Object.entries(data).map(([key,value])=>{
+        return {token: key, name: value["name"]}
+      })
+      setAllFosters(allTempFosters)
+    })
   }, [])
 
 
@@ -129,7 +141,9 @@ setDateAdopted(data["dateAdopted"])
         setAgeGroup(event.target.value)
         break
       case "foster":
-        setFoster(event.target.value)
+        const condVal= event.target.value===""? ["",""]:event.target.value.split(",")
+        setCurrFosterToken(condVal[0])
+        setCurrFosterName(condVal[1])
         break
       case "status":
         setStatus(event.target.value)
@@ -276,7 +290,8 @@ if (status ==="Adoptable"){
         gender: gender,
         birthDate: birthDate,
         ageGroup: ageGroup,
-        foster:foster,
+        fosterToken: currFosterToken ,
+        fosterName:currFosterName,
         status: status,
         shelter:shelter,
         dateDue:dateDue,
@@ -300,7 +315,8 @@ else{
         gender: gender,
         birthDate: birthDate,
         ageGroup: ageGroup,
-        foster:foster,
+        fosterToken: currFosterToken ,
+        fosterName: currFosterName,
         status: status,
         shelter:shelter,
         dateDue:dateDue,
@@ -314,11 +330,54 @@ else{
     })
 }
 
+//scenarios for foster
+//foster stays same
+  // other-->adopted
+  // adopted-->other
+//foster changes
+  // other
+  // adopted
+    if(currFosterToken!==prevFosterToken){
+      console.log("Changed Fosters")
+      //currFoster-1 from previous foster
+      const currAnimalFosterRef= ref(database, "contacts/active/"+prevFosterToken+"/currFostering/"+token)
+      remove(currAnimalFosterRef)
+      if(currFosterName!==""){
+        const currFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+token)
+        const allFosterRef= ref(database, "contacts/active/"+currFosterToken+"/allFoster/"+token)
+        set(allFosterRef,{name: name})
+        if(status!=="Adopted"){
+          set(currFosterRef,{name: name})
+        }
+      }
+  }
+  else{
+    console.log("Same Fosters")
+    if(currFosterName!==""){
+      //other-->adopted
+      if(orgStatus!=="Adopted"&&status==="Adopted"){
+        const currAnimalFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+token)
+        remove(currAnimalFosterRef)
+      }
+      //adopted-->other
+      else if(orgStatus==="Adopted"&&status!=="Adopted"){
+        //increase currFostering from currFoster
+        const currAnimalFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+token)
+        set(currAnimalFosterRef,{name: name})
+      }
+      
+    }
+  }
+
+
+
 
 goToManageAnimals()
 
 
   }
+
+
 
 
 
@@ -531,14 +590,13 @@ goToManageAnimals()
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Foster</Form.Label>
-              <select className="form-select" name = "foster" onChange = {handleChange} value = {foster} aria-label="Default select example" >
+              <select className="form-select" value={[currFosterToken,currFosterName]} name = "foster" onChange = {handleChange} aria-label="Default select example" >
                 <option value=""></option>
-                <option value="Jordan">Jordan</option>
-                <option value="Abdel">Abdel</option>
-                <option value="Ahmed">Ahmed</option>
-                <option value="Harris">Harris</option>
-                <option value="Piyush">Piyush</option>
-                <option value="Kareem">Kareem</option>
+                {
+                  allFosters.map(foster=>{
+                    return <option key={foster.token} value={[foster.token, foster.name]}>{foster.name}</option>
+                  })
+                }
               </select>
             </Form.Group>
             <Form.Group className="mb-3">
