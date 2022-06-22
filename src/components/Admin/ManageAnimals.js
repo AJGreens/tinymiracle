@@ -103,7 +103,7 @@ function ManageAnimals(){
       },
       filter: selectFilter({
         options: selectOptions,
-        style: {color: option1? 'grey': 'black'},
+        // style: {color: option1? 'grey': 'black'},
         onFilter: (filterValue) => {if (filterValue===""){
           setOption1(true)
           console.log('yip')

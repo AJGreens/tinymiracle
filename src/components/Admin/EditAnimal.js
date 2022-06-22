@@ -261,11 +261,8 @@ if (status ==="Adoptable"){
 }
 
 
-
-
     //BELOW IS THE ORIGNAL FUNCTIONALITY
   
-
     if (imageFile){
     set(animalRef,{
         id:id,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { database, storage } from '../Firebase'
-import { ref, push, set, onValue} from "firebase/database";
+import { ref, push, set, onValue, update} from "firebase/database";
 import { ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { Form, Button, Col, Row} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
@@ -21,6 +21,7 @@ function DogForm() {
   const [birthDate, setBirthDate] = useState("")
   const [ageGroup, setAgeGroup] = useState("");
   const [foster, setFoster] = useState("")
+  const [fosterToken, setFosterToken] = useState("")
   const [status, setStatus] = useState("")
   const [shelter, setShelter] = useState("");
   const [dateDue, setDateDue] = useState("");
@@ -28,7 +29,8 @@ function DogForm() {
   const [imageFile, setImageFile] = useState();
   const [imageUrl, setImageUrl] = useState("")
   const [dateAdopted, setDateAdopted] = useState("");
-
+  const [activeFosters, setActiveFosters] = useState([]);
+ 
 
   const current = new Date();
   const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
@@ -60,6 +62,24 @@ function DogForm() {
         setId(data)
       }
     });
+
+const fosters = ref(database, 'contacts/active')
+onValue(fosters, (snapshot)=>{
+  const data = snapshot.val()
+  let allFosters=[]
+  Object.entries(data).map(([key, value]) => {
+    allFosters.push({token: key, name:value["name"]})
+    // Pretty straightforward - use key for the key and value for the value.
+    // Just to clarify: unlike object destructuring, the parameter names don't matter here.
+  })
+  setActiveFosters(allFosters)
+}
+)
+
+
+
+
+
   }, [])
 
 
@@ -91,7 +111,29 @@ function DogForm() {
         setAgeGroup(event.target.value)
         break
       case "foster":
-        setFoster(event.target.value)
+        console.log(event.target.value)
+        const text = event.target.value.split(',')
+        console.log(text)
+        console.log(text[0])
+        console.log(text[1])
+        setFosterToken(text[0])
+        setFoster(text[1])
+
+        // console.log(event.target.value["token"])
+        // console.log(event.target.value.token)
+        // console.log(event.target.value["fname"])
+
+      // const fos = ref(database, 'contacts/active/'+event.target.value)
+      //   onValue(fos, (snapshot)=>{
+      //     const data = snapshot.val()
+      //     console.log(data["name"])
+      //     setFoster(data["name"])
+
+      //   })
+
+      //   setFosterToken(event.target.value)
+      //   console.log(id)
+   
         break
       case "status":
         setStatus(event.target.value)
@@ -188,9 +230,36 @@ console.log(name)
 
 
     const newanimalRef = push(animalRef)
+
+
+
+    // console.log(text)note
+    let newAnimalToken = newanimalRef.key
     
     const counterRef= ref(database,'animalsCounter')
+
+
     const newCounter = push(counterRef)
+
+const fosterRef = ref(database, 'contacts/active/'+fosterToken+"/currAnimals/"+newAnimalToken)
+update(fosterRef, {name: name})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     set(counterRef, id+1)
     if (imageUrl && imageFile){
@@ -203,7 +272,7 @@ console.log(name)
       gender: gender,
       birthDate: birthDate,
       ageGroup: ageGroup,
-      foster:foster,
+      foster:{name: foster, fosterToken: fosterToken},
       status: status,
       shelter:shelter,
       dateDue:dateDue,
@@ -227,7 +296,7 @@ console.log(name)
       gender: gender,
       birthDate: birthDate,
       ageGroup: ageGroup,
-      foster:foster,
+      foster:{name: foster, fosterToken: fosterToken},
       status: status,
       shelter:shelter,
       dateDue:dateDue,
@@ -458,13 +527,24 @@ console.log(name)
             <Form.Group className="mb-3">
               <Form.Label>Foster</Form.Label>
               <select className="form-select" name = "foster" onChange = {handleChange} aria-label="Default select example" >
+
                 <option value=""></option>
+
+              {activeFosters.map(foster=>{
+                return <option value = {[foster.token, foster.name]}>{foster.name}</option>
+              })
+              }
+
+    
+
+{/* 
                 <option value="Jordan">Jordan</option>
                 <option value="Abdel">Abdel</option>
                 <option value="Ahmed">Ahmed</option>
                 <option value="Harris">Harris</option>
                 <option value="Piyush">Piyush</option>
-                <option value="Kareem">Kareem</option>
+                <option value="Kareem">Kareem</option> */}
+            
               </select>
             </Form.Group>
             <Form.Group className="mb-3">
