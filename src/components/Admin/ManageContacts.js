@@ -156,8 +156,7 @@ function ManageContacts(){
 
       </div>
 
-      
-        
+         
     </>
         
   )

@@ -8,7 +8,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 
-
 function UpdateContact(){
     const [Name, setName] = useState("");
     const [Address, setAddress] = useState("");
@@ -56,92 +55,39 @@ function UpdateContact(){
 
 
 
+
+
     function handleUpdate(e){
         e.preventDefault();
-
-        if(sub==="active"){
-            const updateContactRef = ref(database, 'contacts/active/'+token);
-            if(ActiveFost){
-                set(updateContactRef, {
-                    name: Name,
-                    address: Address,
-                    city: City,
-                    state: State,
-                    zip: Zip,
-                    primaryEmail: PrimEmail,
-                    secondaryEmail: SecEmail,
-                    mobilePhone: MobPhone,
-                    homePhone: HomePhone,
-                    username: Username,
-                    activeFoster: ActiveFost,
-                    id:id
-                });
-            }
-            else{
-                remove(updateContactRef)
-                const nonactiveRef = ref(database, 'contacts/nonactive/'+token);
-                set(nonactiveRef, {
-                    name: Name,
-                    address: Address,
-                    city: City,
-                    state: State,
-                    zip: Zip,
-                    primaryEmail: PrimEmail,
-                    secondaryEmail: SecEmail,
-                    mobilePhone: MobPhone,
-                    homePhone: HomePhone,
-                    username: Username,
-                    activeFoster: ActiveFost,
-                    id: id
-                });
-
-
-            }
+        let dbUpdateRef;
+        if((sub==="active"&&ActiveFost)||(sub==="nonactive"&&!ActiveFost)){
+            dbUpdateRef= ref(database,"contacts/"+sub+"/"+token )
         }
         else{
-            const updateContactRef = ref(database, 'contacts/nonactive/'+token);
+            remove(ref(database, "contacts/"+sub+"/"+token))
             if(ActiveFost){
-                remove(updateContactRef)
-                const activeRef = ref(database, 'contacts/active/'+token);
-                set(activeRef, {
-                    name: Name,
-                    address: Address,
-                    city: City,
-                    state: State,
-                    zip: Zip,
-                    primaryEmail: PrimEmail,
-                    secondaryEmail: SecEmail,
-                    mobilePhone: MobPhone,
-                    homePhone: HomePhone,
-                    username: Username,
-                    activeFoster: ActiveFost,
-                    id: id
-                });
-
+                dbUpdateRef= ref(database,"contacts/active/"+token )
             }
             else{
-                set(updateContactRef, {
-                    name: Name,
-                    address: Address,
-                    city: City,
-                    state: State,
-                    zip: Zip,
-                    primaryEmail: PrimEmail,
-                    secondaryEmail: SecEmail,
-                    mobilePhone: MobPhone,
-                    homePhone: HomePhone,
-                    username: Username,
-                    activeFoster: ActiveFost,
-                    id:id
-                });
-                
+                dbUpdateRef= ref(database,"contacts/nonactive/"+token )
             }
-
         }
 
-
-
-
+        set(dbUpdateRef, {
+            name: Name,
+            address: Address,
+            city: City,
+            state: State,
+            zip: Zip,
+            primaryEmail: PrimEmail,
+            secondaryEmail: SecEmail,
+            mobilePhone: MobPhone,
+            homePhone: HomePhone,
+            username: Username,
+            activeFoster: ActiveFost,
+            id: id
+        });
+        
         setAllowFirebase(false)
     }
 
