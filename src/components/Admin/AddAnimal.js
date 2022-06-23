@@ -34,6 +34,8 @@ function DogForm() {
 
   const current = new Date();
   const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
+  
+  const currYear= new Date().getFullYear()
  
   useEffect(()=>{
     if (status!=="adopted"){
@@ -234,7 +236,7 @@ function DogForm() {
 
     if(currFosterName!==""){
       const currFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+newanimalRef.key)
-      const allFosterRef= ref(database, "contacts/active/"+currFosterToken+"/allFoster/"+newanimalRef.key)
+      const allFosterRef= ref(database, "contacts/active/"+currFosterToken+"/allFoster/"+currYear+"/"+newanimalRef.key)
       update(allFosterRef,{name: name})
       if(status!=="Adopted"){
         update(currFosterRef,{name: name})

@@ -19,6 +19,8 @@ function EditAnimal() {
 
     const navigate = useNavigate();
 
+    const currYear= new Date().getFullYear()
+
 
   const [id, setId] = useState()
   const [name, setName] = useState();
@@ -344,7 +346,7 @@ else{
       remove(currAnimalFosterRef)
       if(currFosterName!==""){
         const currFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+token)
-        const allFosterRef= ref(database, "contacts/active/"+currFosterToken+"/allFoster/"+token)
+        const allFosterRef= ref(database, "contacts/active/"+currFosterToken+"/allFoster/"+currYear+"/"+token)
         set(allFosterRef,{name: name})
         if(status!=="Adopted"){
           set(currFosterRef,{name: name})
