@@ -15,9 +15,7 @@ function DogWarden(){
 
     useEffect(()=>{
         const adoptableRef= ref(database, 'animals/adoptable')
-        const pendingRef= ref(database, 'animals/other')
-        const adoptedCurrRef= ref(database, 'animals/adoptedNum'+currentYear)
-        const adoptedPastRef= ref(database, 'animals/adoptedNum'+lastYear)
+        const otherRef= ref(database, 'animals/other')
         const fostersRef= ref(database, 'contacts/active')
         onValue(adoptableRef, (snapshot)=>{
             const data= snapshot.val()
@@ -25,50 +23,45 @@ function DogWarden(){
                 setAdoptableDogs(Object.keys(data).length)
             }
         })
-        onValue(adoptedCurrRef, (snapshot)=>{
-            const data= snapshot.val()
-            if(data!=null){
-                setAdoptedDogsCurr(data)
-            }
-        })
-        onValue(adoptedPastRef, (snapshot)=>{
-            const data= snapshot.val()
-            if(data!=null){
-                setAdoptedDogsPast(data)
-            }
-        })
 
-        onValue(pendingRef, (snapshot)=>{
+        onValue(otherRef, (snapshot)=>{
             const data= snapshot.val()
             if(data!=null){
-                let allPending= Object.entries(data).filter(([key,val])=>{
-                    if(val.status==="Pending"){
-                        return val.status
-                    }
+                let allPending= Object.entries(data).filter((([key,val])=>val.status==="Pending")).map(([key,val])=>{
+                    return val.status
                 })
-
                 setPendingAdoptions(allPending.length)
+
+                let allAdoptedCurr= Object.entries(data).filter(([key,val])=> val.status==="Adopted"&&(parseInt(val.dateAdopted.split("-")[0],10))===currentYear).map(([key,val])=>{
+                    return key
+                })
+                setAdoptedDogsCurr(allAdoptedCurr.length)
+
+                let allAdoptedPast= Object.entries(data).filter(([key,val])=> val.status==="Adopted"&&(parseInt(val.dateAdopted.split("-")[0],10))===lastYear).map(([key,val])=>{
+                    return key
+                })
+                setAdoptedDogsPast(allAdoptedPast.length)
+
+
             }
         })
-
 
         onValue(fostersRef, (snapshot)=>{
             const data= snapshot.val()
             if(data!=null){
                 let allFosters= Object.entries(data).map(([key, value])=>{
-                    return {id:value.id, name: value.name, address: value.address, city: value.city, state: value.state }
+                    return {id:value.id, name: value.name, address: value.address, city: value.city, state: value.state,
+                        currFostering: value.currFostering? Object.keys(value.currFostering).length:0, currYearFostered: value.allFoster? value.allFoster[currentYear]?Object.keys(value.allFoster[currentYear]).length:0:0}
                 })
                 setFosters(allFosters)
+
 
             }
         })
 
 
 
-
-
-
-    },[])
+    },[currentYear, lastYear])
 
 
 
@@ -108,8 +101,8 @@ function DogWarden(){
                                 <td>{foster.address}</td>
                                 <td>{foster.city}</td>
                                 <td>{foster.state}</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td>{foster.currFostering}</td>
+                                <td>{foster.currYearFostered}</td>
                             </tr>
 
                         )
@@ -117,7 +110,6 @@ function DogWarden(){
                     })}
 
                 </tbody>
-
 
             </Table>
 
