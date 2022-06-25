@@ -235,42 +235,16 @@ function EditAnimal() {
       const deleteable = ref(database, 'animals/other/'+token)
       remove(deleteable)
     }
-
-<<<<<<< HEAD
-//CASE 1: Animal was previously adoptable and is now not adoptable
-if (prevStatus ==="adoptable"  && status != "Adoptable"){
-  const deleteable = ref(database, 'animals/adoptable/'+token)
-  remove(deleteable)
-}
-
-//CASE 2: Animal was previously not adoptable and is now adoptable
-else if (prevStatus ==="other"  && status === "Adoptable"){
-  const deleteable = ref(database, 'animals/other/'+token)
-  remove(deleteable)
-}
-
-
-//CASE 3: Animal was previously adoptable and still adoptable
-
-//CASE 4: Animal was previously not adoptable and is still not adoptable
     
 
-let animalRef = ref(database, 'animals/other/' + token)
+    let animalRef = ref(database, 'animals/other/' + token)
 
-if (status ==="Adoptable"){
-  animalRef = ref(database, 'animals/adoptable/' + token)
-}
-
+    if (status ==="Adoptable"){
+      animalRef = ref(database, 'animals/adoptable/' + token)
+    }
 
     //BELOW IS THE ORIGNAL FUNCTIONALITY
   
-=======
-    let animalRef = ref(database, 'animals/other/' + token)
-    if (status ==="Adoptable"){
-       animalRef = ref(database, 'animals/adoptable/' + token)
-    }
-    //BELOW IS THE ORIGNAL FUNCTIONALITY
->>>>>>> 795f7d47e36a714087b57131813d6f1bfe7728e3
     if (imageFile){
       set(animalRef,{
           id:id,
