@@ -69,55 +69,77 @@ function ManageAnimals(){
    };
  
    const columns = [
-     {
-       dataField: "id",
-       text: "ID"
-     },
-     {
-       dataField: "name",
-       text: "Name",
-       filter: textFilter(),
-       formatter: (cell, row) => {
-         if (row.status ==="Adoptable"){
-           return <Link to ={"/editAnimal/adoptable/"+row.token}>{row.name}</Link>
-         }
-         else {
-           return <Link to ={"/editAnimal/other/"+row.token}>{row.name}</Link>
-         }
-       }
-     },
-     {
-       dataField: "primBreed",
-       text: "Breed",
-       filter: textFilter(),
-     },
-     {
-       dataField: "fosterName",
-       text: "Foster",
-       filter: textFilter(),
-     },
-     {
-       dataField: "status",
-       text: "Status",
-       formatter: cell => selectOptions[cell],
-       formatter: (cell, row) => {
-         return <div key={row.id}>{row.status + " " + row.dateAdopted}</div>;
-       },
-       filter: selectFilter({options: selectOptions})
-     },
-     {
-       dataField: "dateAdded",
-       text: "Date Added",
-       filter: textFilter(),
-     },
-     {
-       text: "Delete",
-       formatter: (cell, row) => {
-         return <Button onClick = {()=> deleteFunc(row.token, row.status)} variant = "danger">Delete</Button>
-       }
-     },
+    {
+      dataField: "id",
+      text: "ID"
+    },
+    {
+      dataField: "name",
+      text: "Name",
+      filter: textFilter(),
+      formatter: (cell, row) => {
+        if (row.status ==="Adoptable"){
+          return <Link to ={"/editAnimal/adoptable/"+row.token}>{row.name}</Link>
+        }
+        else {
+          return <Link to ={"/editAnimal/other/"+row.token}>{row.name}</Link>
+        }
+      }
+    },
+    {
+      dataField: "primBreed",
+      text: "Breed",
+      filter: textFilter(),
+    },
+    {
+      dataField: "fosterName",
+      text: "Foster",
+      filter: textFilter(),
+    },
+    {
+      dataField: "status",
+      text: "Status",
+      formatter: cell => selectOptions[cell],
+      formatter: (cell, row) => {
+        return <div key={row.id}>{row.dateAdopted? row.status + " " + row.dateAdopted: row.status}</div>;
+      },
+      filter: selectFilter({options: selectOptions})
+    },
+    {
+      dataField: "dateAdded",
+      text: "Date Added",
+      filter: textFilter(),
+    },
+    {
+      dataField: "delete",
+      text: "Delete",
+      formatter: (cell, row) => {
+        return <Button onClick = {()=> deleteFunc(row.token, row.status)} variant = "danger">Delete</Button>
+      }
+    },
    
    ];
+   const ClearSearchButton= props=>{
+    const handleClick= ()=>{
+      props.onSearch("")
+    }
+
+    return(
+      <Button className="m-2" variant='secondary' onClick={handleClick}>
+        Clear
+      </Button>
+    )
+  }
+  const ExportCSV=props=>{
+    const handleClick=()=>{
+      props.onExport();
+    }
+    return(
+    <Button className="m-2" variant='success' onClick={handleClick}>
+      Download List
+    </Button>
+    )
+  }
 
 
 
@@ -136,10 +158,20 @@ function ManageAnimals(){
             data={dogs}
             columns={columns}
             search
+            exportCSV ={{
+              exportAll:false,
+              onlyExportFiltered: true
+            }}
           >
             {props => (
               <>
-                <SearchBar { ...props.searchProps } className="mb-4" />
+                <div className="mb-4 text-center">
+                  <h4>General Search</h4>
+                  <SearchBar {...props.searchProps}/>
+                  <br/>
+                  <ClearSearchButton {...props.searchProps}/>
+                  <ExportCSV {...props.csvProps}/>
+                </div>
                 <BootstrapTable
                   { ...props.baseProps }
                   pagination={paginationFactory({ sizePerPage: 10 })}

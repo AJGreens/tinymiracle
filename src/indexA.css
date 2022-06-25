@@ -27,3 +27,6 @@
 .sr-only{
     display: none
 }
+#readOnly {
+    background-color: white;
+  }

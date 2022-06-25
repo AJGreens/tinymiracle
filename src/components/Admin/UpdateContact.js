@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Button, Form} from 'react-bootstrap'
 import {database} from '../Firebase'
-import {ref, set, onValue,remove} from "firebase/database";
+import {ref, update, onValue,remove} from "firebase/database";
 import AdminNav from "./AdminNav"
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -73,7 +73,7 @@ function UpdateContact(){
             }
         }
 
-        set(dbUpdateRef, {
+        update(dbUpdateRef, {
             name: Name,
             address: Address,
             city: City,

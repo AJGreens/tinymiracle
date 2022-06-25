@@ -21,7 +21,6 @@ const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear(
 
 const navigate = useNavigate()
 
-
 const [dogName, setDogName] = useState("")
 const [applicantName, setApplicantName] = useState("")
 const [partnerName, setPartnerName] = useState("")
@@ -197,6 +196,7 @@ function handleChange(event){
             const newAdoptionFormRef = push(adoptionFormRef)
 
             set(newAdoptionFormRef, {
+                date: date,
                 name: dogName,
                 applicantName: applicantName,
                 partnerName: partnerName,

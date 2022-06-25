@@ -18,6 +18,8 @@ import EditAnimal from './Admin/EditAnimal';
 import AdoptionProcess from './User/AdoptionProcess';
 import AdoptionForm from './User/AdoptionForm';
 import ThankYou from './User/ThankYou';
+import ViewApplications from './Admin/ViewApplications';
+import SpecificApplication from './Admin/SpecificApplication';
 
 
 
@@ -45,6 +47,8 @@ function App() {
                 <Route path="/adoptionProcess/:token" element={<AdoptionProcess/>}/>
                 <Route path="/adoptionForm/:token" element={<AdoptionForm/>}/>
                 <Route path="/thankyou" element={<ThankYou/>}/>
+                <Route path="/viewApplications" element={<ViewApplications/>}/>
+                <Route path="/viewApplications/:token" element={<SpecificApplication/>}/>
             </Routes>
         </Router>
     </div>  

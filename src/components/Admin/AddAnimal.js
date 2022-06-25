@@ -35,7 +35,6 @@ function DogForm() {
 
   const current = new Date();
   const date = current.getMonth()+1+"/"+current.getDate()+"/"+current.getFullYear()
-  
   const currYear= new Date().getFullYear()
  
   useEffect(()=>{
@@ -257,13 +256,13 @@ function DogForm() {
             <Form.Group as = {Row} className="mb-3">
               <Form.Label column sm="3">Id</Form.Label>
               <Col sm="5">
-                <Form.Control name="id" value={id} type="number"/>
+                <Form.Control id="readOnly" name="id" value={id} readOnly={true} type="number"/>
               </Col>
             </Form.Group>
             <Form.Group as = {Row} className="mb-3">
               <Form.Label column sm="3">Dog Name</Form.Label>
               <Col sm="5">
-              <Form.Control name="name" onChange={handleChange}  value={name} type="text" required/>
+                <Form.Control name="name" onChange={handleChange}  value={name} type="text" required/>
               </Col>
             </Form.Group>
             <Form.Group className="mb-3">
@@ -273,161 +272,159 @@ function DogForm() {
             <Form.Group className="mb-3">
               <Form.Label>Primary Breed</Form.Label>
               <select className="form-select" aria-label="Default select example" name = "primBreed" onChange = {handleChange}>
-                  <option value="">
-                  </option><option value="American Bulldog">American Bulldog
-                  </option><option value="Australian Cattle Dog">Australian Cattle Dog
-                  </option><option value="Australian Shepherd">Australian Shepherd
-                  </option><option value="Basset Hound">Basset Hound
-                  </option><option value="Beagle">Beagle
-                  </option><option value="Bernese Mountain Dog">Bernese Mountain Dog
-                  </option><option value="Bichon">Bichon
-                  </option><option value="Bloodhound">Bloodhound
-                  </option><option value="Blue Heeler">Blue Heeler
-                  </option><option value="Border Collie">Border Collie
-                  </option><option value="Boston Terrier">Boston Terrier
-                  </option><option value="Boxer">Boxer
-                  </option><option value="Brussels Griffon">Brussels Griffon
-                  </option><option value="Bull Terrier">Bull Terrier
-                  </option><option value="Bullmastiff">Bullmastiff
-                  </option><option value="Cairn Terrier">Cairn Terrier
-                  </option><option value="Carolina">Carolina
-                  </option><option value="Cat">Cat
-                  </option><option value="Catahoula Dog">Catahoula Dog
-                  </option><option value="Chihuahua">Chihuahua
-                  </option><option value="Cocker Spaniel">Cocker Spaniel
-                  </option><option value="Collie">Collie
-                  </option><option value="Coonhound">Coonhound
-                  </option><option value="Corgi">Corgi
-                  </option><option value="Cur">Cur
-                  </option><option value="Dachshund">Dachshund
-                  </option><option value="Dalmation">Dalmation
-                  </option><option value="Doberman">Doberman
-                  </option><option value="English Bulldog">English Bulldog
-                  </option><option value="English Setter">English Setter
-                  </option><option value="Feist">Feist
-                  </option><option value="Fox Terrier">Fox Terrier
-                  </option><option value="Foxhound">Foxhound
-                  </option><option value="French Bulldog">French Bulldog
-                  </option><option value="German Shepherd">German Shepherd
-                  </option><option value="Great Dane">Great Dane
-                  </option><option value="Great Pyrenesse">Great Pyrenesse
-                  </option><option value="Greyhound">Greyhound
-                  </option><option value="Havanese">Havanese
-                  </option><option value="Heeler">Heeler
-                  </option><option value="Hound">Hound
-                  </option><option value="Husky">Husky
-                  </option><option value="Irish Wolfhound">Irish Wolfhound
-                  </option><option value="Jack Russell Terrier">Jack Russell Terrier
-                  </option><option value="Labrador Retreiver">Labrador Retreiver
-                  </option><option value="Malamute">Malamute
-                  </option><option value="Maltese">Maltese
-                  </option><option value="Mastiff">Mastiff
-                  </option><option value="Miniature Pinscher">Miniature Pinscher
-                  </option><option value="Mountain Cur">Mountain Cur
-                  </option><option value="Olde English Bulldogge">Olde English Bulldogge
-                  </option><option value="Papillon">Papillon
-                  </option><option value="Pekingese">Pekingese
-                  </option><option value="Pit Bull Terrier">Pit Bull Terrier
-                  </option><option value="Pointer">Pointer
-                  </option><option value="Pomeranian">Pomeranian
-                  </option><option value="Poodle">Poodle
-                  </option><option value="Pug">Pug
-                  </option><option value="Rotweiler">Rotweiler
-                  </option><option value="Schnauzer">Schnauzer
-                  </option><option value="Scottish Terrier">Scottish Terrier
-                  </option><option value="Sheltie">Sheltie
-                  </option><option value="Shepherd">Shepherd
-                  </option><option value="Shih Tzu">Shih Tzu
-                  </option><option value="Spaniel">Spaniel
-                  </option><option value="Staffordshire Terrier">Staffordshire Terrier
-                  </option><option value="Terrier">Terrier
-                  </option><option value="Unknown">Unknown
-                  </option><option value="Weimaraner">Weimaraner
-                  </option><option value="West Highland Terrier (Westie)">West Highland Terrier (Westie)
-                  </option><option value="Whippet">Whippet
-                  </option><option value="Wire Haired Terrier">Wire Haired Terrier
-                  </option><option value="Yorkshire Terrier">Yorkshire Terrier
-                  </option>
+                  <option value=""></option>
+                  <option value="American Bulldog">American Bulldog</option>
+                  <option value="Australian Cattle Dog">Australian Cattle Dog</option>
+                  <option value="Australian Shepherd">Australian Shepherd</option>
+                  <option value="Basset Hound">Basset Hound</option>
+                  <option value="Beagle">Beagle</option>
+                  <option value="Bernese Mountain Dog">Bernese Mountain Dog</option>
+                  <option value="Bichon">Bichon</option>
+                  <option value="Bloodhound">Bloodhound</option>
+                  <option value="Blue Heeler">Blue Heeler</option>
+                  <option value="Border Collie">Border Collie</option>
+                  <option value="Boston Terrier">Boston Terrier</option>
+                  <option value="Boxer">Boxer</option>
+                  <option value="Brussels Griffon">Brussels Griffon</option>
+                  <option value="Bull Terrier">Bull Terrier</option>
+                  <option value="Bullmastiff">Bullmastiff</option>
+                  <option value="Cairn Terrier">Cairn Terrier</option>
+                  <option value="Carolina">Carolina</option>
+                  <option value="Cat">Cat</option>
+                  <option value="Catahoula Dog">Catahoula Dog</option>
+                  <option value="Chihuahua">Chihuahua</option>
+                  <option value="Cocker Spaniel">Cocker Spaniel</option>
+                  <option value="Collie">Collie</option>
+                  <option value="Coonhound">Coonhound</option>
+                  <option value="Corgi">Corgi</option>
+                  <option value="Cur">Cur</option>
+                  <option value="Dachshund">Dachshund</option>
+                  <option value="Dalmation">Dalmation</option>
+                  <option value="Doberman">Doberman</option>
+                  <option value="English Bulldog">English Bulldog</option>
+                  <option value="English Setter">English Setter</option>
+                  <option value="Feist">Feist</option>
+                  <option value="Fox Terrier">Fox Terrier</option>
+                  <option value="Foxhound">Foxhound</option>
+                  <option value="French Bulldog">French Bulldog</option>
+                  <option value="German Shepherd">German Shepherd</option>
+                  <option value="Great Dane">Great Dane</option>
+                  <option value="Great Pyrenesse">Great Pyrenesse</option>
+                  <option value="Greyhound">Greyhound</option>
+                  <option value="Havanese">Havanese</option>
+                  <option value="Heeler">Heeler</option>
+                  <option value="Hound">Hound</option>
+                  <option value="Husky">Husky</option>
+                  <option value="Irish Wolfhound">Irish Wolfhound</option>
+                  <option value="Jack Russell Terrier">Jack Russell Terrier</option>
+                  <option value="Labrador Retreiver">Labrador Retreiver</option>
+                  <option value="Malamute">Malamute</option>
+                  <option value="Maltese">Maltese</option>
+                  <option value="Mastiff">Mastiff</option>
+                  <option value="Miniature Pinscher">Miniature Pinscher</option>
+                  <option value="Mountain Cur">Mountain Cur</option>
+                  <option value="Olde English Bulldogge">Olde English Bulldogge</option>
+                  <option value="Papillon">Papillon</option>
+                  <option value="Pekingese">Pekingese</option>
+                  <option value="Pit Bull Terrier">Pit Bull Terrier</option>
+                  <option value="Pointer">Pointer</option>
+                  <option value="Pomeranian">Pomeranian</option>
+                  <option value="Poodle">Poodle</option>
+                  <option value="Pug">Pug</option>
+                  <option value="Rotweiler">Rotweiler</option>
+                  <option value="Schnauzer">Schnauzer</option>
+                  <option value="Scottish Terrier">Scottish Terrier</option>
+                  <option value="Sheltie">Sheltie</option>
+                  <option value="Shepherd">Shepherd</option>
+                  <option value="Shih Tzu">Shih Tzu</option>
+                  <option value="Spaniel">Spaniel</option>
+                  <option value="Staffordshire Terrier">Staffordshire Terrier</option>
+                  <option value="Terrier">Terrier</option>
+                  <option value="Unknown">Unknown</option>
+                  <option value="Weimaraner">Weimaraner</option>
+                  <option value="West Highland Terrier (Westie)">West Highland Terrier (Westie)</option>
+                  <option value="Whippet">Whippet</option>
+                  <option value="Wire Haired Terrier">Wire Haired Terrier</option>
+                  <option value="Yorkshire Terrier">Yorkshire Terrier</option>
               </select>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Secondary Breed</Form.Label>
               <select className="form-select" aria-label="Default select example" name = "secBreed" onChange = {handleChange}>
-                <option value="">
-                </option><option value="American Bulldog">American Bulldog
-                </option><option value="Australian Cattle Dog">Australian Cattle Dog
-                </option><option value="Australian Shepherd">Australian Shepherd
-                </option><option value="Basset Hound">Basset Hound
-                </option><option value="Beagle">Beagle
-                </option><option value="Bernese Mountain Dog">Bernese Mountain Dog
-                </option><option value="Bichon">Bichon
-                </option><option value="Bloodhound">Bloodhound
-                </option><option value="Blue Heeler">Blue Heeler
-                </option><option value="Border Collie">Border Collie
-                </option><option value="Boston Terrier">Boston Terrier
-                </option><option value="Boxer">Boxer
-                </option><option value="Brussels Griffon">Brussels Griffon
-                </option><option value="Bull Terrier">Bull Terrier
-                </option><option value="Bullmastiff">Bullmastiff
-                </option><option value="Cairn Terrier">Cairn Terrier
-                </option><option value="Carolina">Carolina
-                </option><option value="Cat">Cat
-                </option><option value="Catahoula Dog">Catahoula Dog
-                </option><option value="Chihuahua">Chihuahua
-                </option><option value="Cocker Spaniel">Cocker Spaniel
-                </option><option value="Collie">Collie
-                </option><option value="Coonhound">Coonhound
-                </option><option value="Corgi">Corgi
-                </option><option value="Cur">Cur
-                </option><option value="Dachshund">Dachshund
-                </option><option value="Dalmation">Dalmation
-                </option><option value="Doberman">Doberman
-                </option><option value="English Bulldog">English Bulldog
-                </option><option value="English Setter">English Setter
-                </option><option value="Feist">Feist
-                </option><option value="Fox Terrier">Fox Terrier
-                </option><option value="Foxhound">Foxhound
-                </option><option value="French Bulldog">French Bulldog
-                </option><option value="German Shepherd">German Shepherd
-                </option><option value="Great Dane">Great Dane
-                </option><option value="Great Pyrenesse">Great Pyrenesse
-                </option><option value="Greyhound">Greyhound
-                </option><option value="Havanese">Havanese
-                </option><option value="Heeler">Heeler
-                </option><option value="Hound">Hound
-                </option><option value="Husky">Husky
-                </option><option value="Irish Wolfhound">Irish Wolfhound
-                </option><option value="Jack Russell Terrier">Jack Russell Terrier
-                </option><option value="Labrador Retreiver">Labrador Retreiver
-                </option><option value="Malamute">Malamute
-                </option><option value="Maltese">Maltese
-                </option><option value="Mastiff">Mastiff
-                </option><option value="Miniature Pinscher">Miniature Pinscher
-                </option><option value="Mountain Cur">Mountain Cur
-                </option><option value="Olde English Bulldogge">Olde English Bulldogge
-                </option><option value="Papillon">Papillon
-                </option><option value="Pekingese">Pekingese
-                </option><option value="Pit Bull Terrier">Pit Bull Terrier
-                </option><option value="Pointer">Pointer
-                </option><option value="Pomeranian">Pomeranian
-                </option><option value="Poodle">Poodle
-                </option><option value="Pug">Pug
-                </option><option value="Rotweiler">Rotweiler
-                </option><option value="Schnauzer">Schnauzer
-                </option><option value="Scottish Terrier">Scottish Terrier
-                </option><option value="Sheltie">Sheltie
-                </option><option value="Shepherd">Shepherd
-                </option><option value="Shih Tzu">Shih Tzu
-                </option><option value="Spaniel">Spaniel
-                </option><option value="Staffordshire Terrier">Staffordshire Terrier
-                </option><option value="Terrier">Terrier
-                </option><option value="Unknown">Unknown
-                </option><option value="Weimaraner">Weimaraner
-                </option><option value="West Highland Terrier (Westie)">West Highland Terrier (Westie)
-                </option><option value="Whippet">Whippet
-                </option><option value="Wire Haired Terrier">Wire Haired Terrier
-                </option><option value="Yorkshire Terrier">Yorkshire Terrier
-                </option>
+                <option value=""></option>
+                <option value="American Bulldog">American Bulldog</option>
+                <option value="Australian Cattle Dog">Australian Cattle Dog</option>
+                <option value="Australian Shepherd">Australian Shepherd</option>
+                <option value="Basset Hound">Basset Hound</option>
+                <option value="Beagle">Beagle</option>
+                <option value="Bernese Mountain Dog">Bernese Mountain Dog</option>
+                <option value="Bichon">Bichon</option>
+                <option value="Bloodhound">Bloodhound</option>
+                <option value="Blue Heeler">Blue Heeler</option>
+                <option value="Border Collie">Border Collie</option>
+                <option value="Boston Terrier">Boston Terrier</option>
+                <option value="Boxer">Boxer</option>
+                <option value="Brussels Griffon">Brussels Griffon</option>
+                <option value="Bull Terrier">Bull Terrier</option>
+                <option value="Bullmastiff">Bullmastiff</option>
+                <option value="Cairn Terrier">Cairn Terrier</option>
+                <option value="Carolina">Carolina</option>
+                <option value="Cat">Cat</option>
+                <option value="Catahoula Dog">Catahoula Dog</option>
+                <option value="Chihuahua">Chihuahua</option>
+                <option value="Cocker Spaniel">Cocker Spaniel</option>
+                <option value="Collie">Collie</option>
+                <option value="Coonhound">Coonhound</option>
+                <option value="Corgi">Corgi</option>
+                <option value="Cur">Cur</option>
+                <option value="Dachshund">Dachshund</option>
+                <option value="Dalmation">Dalmation</option>
+                <option value="Doberman">Doberman</option>
+                <option value="English Bulldog">English Bulldog</option>
+                <option value="English Setter">English Setter</option>
+                <option value="Feist">Feist</option>
+                <option value="Fox Terrier">Fox Terrier</option>
+                <option value="Foxhound">Foxhound</option>
+                <option value="French Bulldog">French Bulldog</option>
+                <option value="German Shepherd">German Shepherd</option>
+                <option value="Great Dane">Great Dane</option>
+                <option value="Great Pyrenesse">Great Pyrenesse</option>
+                <option value="Greyhound">Greyhound</option>
+                <option value="Havanese">Havanese</option>
+                <option value="Heeler">Heeler</option>
+                <option value="Hound">Hound</option>
+                <option value="Husky">Husky</option>
+                <option value="Irish Wolfhound">Irish Wolfhound</option>
+                <option value="Jack Russell Terrier">Jack Russell Terrier</option>
+                <option value="Labrador Retreiver">Labrador Retreiver</option>
+                <option value="Malamute">Malamute</option>
+                <option value="Maltese">Maltese</option>
+                <option value="Mastiff">Mastiff</option>
+                <option value="Miniature Pinscher">Miniature Pinscher</option>
+                <option value="Mountain Cur">Mountain Cur</option>
+                <option value="Olde English Bulldogge">Olde English Bulldogge</option>
+                <option value="Papillon">Papillon</option>
+                <option value="Pekingese">Pekingese</option>
+                <option value="Pit Bull Terrier">Pit Bull Terrier</option>
+                <option value="Pointer">Pointer</option>
+                <option value="Pomeranian">Pomeranian</option>
+                <option value="Poodle">Poodle</option>
+                <option value="Pug">Pug</option>
+                <option value="Rotweiler">Rotweiler</option>
+                <option value="Schnauzer">Schnauzer</option>
+                <option value="Scottish Terrier">Scottish Terrier</option>
+                <option value="Sheltie">Sheltie</option>
+                <option value="Shepherd">Shepherd</option>
+                <option value="Shih Tzu">Shih Tzu</option>
+                <option value="Spaniel">Spaniel</option>
+                <option value="Staffordshire Terrier">Staffordshire Terrier</option>
+                <option value="Terrier">Terrier</option>
+                <option value="Unknown">Unknown</option>
+                <option value="Weimaraner">Weimaraner</option>
+                <option value="West Highland Terrier (Westie)">West Highland Terrier (Westie)</option>
+                <option value="Whippet">Whippet</option>
+                <option value="Wire Haired Terrier">Wire Haired Terrier</option>
+                <option value="Yorkshire Terrier">Yorkshire Terrier</option>
               </select>
             </Form.Group>
             <Form.Group className="mb-3">
@@ -483,12 +480,6 @@ function DogForm() {
                 </Form.Group>
             }
             
-            
-
-
-
-
-
             <Form.Group className="mb-3">
               <Form.Label>Shelter</Form.Label>
               <Form.Control name="shelter" onChange={handleChange}  value={shelter} type="text" />
@@ -505,7 +496,6 @@ function DogForm() {
     
             <Form.Group className="mb-3">
               <Form.Label>Picture</Form.Label>
-       
               <Form.Control name = "picture" onChange = {handleChangeImg} type = "file" placeholder="image" accept="image/*"/>
               <br/>
               {loading && <Circles color="#00BFFF" height={80} width={80}/>}
