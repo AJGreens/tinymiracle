@@ -20,6 +20,7 @@ import AdoptionForm from './User/AdoptionForm';
 import ThankYou from './User/ThankYou';
 import ViewApplications from './Admin/ViewApplications';
 import SpecificApplication from './Admin/SpecificApplication';
+import AuthProvider from "./Admin/AuthContext"
 
 
 
@@ -28,7 +29,9 @@ function App() {
   return (
     <div>
         <Router>
+        <AuthProvider>
             <Routes>
+                
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/petcare" element={<PetCare/>}/>
                 <Route exact path="/donate" element={<Donate/>}/>
@@ -50,6 +53,7 @@ function App() {
                 <Route path="/viewApplications" element={<ViewApplications/>}/>
                 <Route path="/viewApplications/:token" element={<SpecificApplication/>}/>
             </Routes>
+          </AuthProvider>
         </Router>
     </div>  
   );

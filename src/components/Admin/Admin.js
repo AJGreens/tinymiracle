@@ -59,6 +59,9 @@ function Admin(){
                         <Link to="/dogWarden">
                             <Button size="lg">Dog Warden Report</Button>
                         </Link>
+                        <Link to="/viewApplications">
+                            <Button size="lg">View Applications</Button>
+                        </Link>
                     </Card.Body>
                 </Card>
             </Container>

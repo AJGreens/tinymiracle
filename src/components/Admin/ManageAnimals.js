@@ -24,11 +24,11 @@ function ManageAnimals(){
       const data= snapshot.val();
       if(data!=null){
         let adoptableDogs=data.adoptable==null? []: Object.entries(data.adoptable).map(([key, value]) => {
-          return ({token: key, id:value["id"], name:value["name"], status:value["status"],fosterName:value["fosterName"],primBreed:value["primBreed"], dateAdded: value["dateAdded"],
+          return ({token: key, id:value["id"], name:value["name"], status:value["status"],fosterName:value["fosterName"],fosterToken:value["fosterToken"],primBreed:value["primBreed"], dateAdded: value["dateAdded"],
           dateAdopted: value["dateAdopted"]})
         })
         let otherDogs= data.other==null? []: Object.entries(data.other).map(([key, value]) => {
-          return ({token: key, id:value["id"], name:value["name"], status:value["status"],fosterName:value["fosterName"],primBreed:value["primBreed"], dateAdded: value["dateAdded"],
+          return ({token: key, id:value["id"], name:value["name"], status:value["status"],fosterName:value["fosterName"],fosterToken:value["fosterToken"],primBreed:value["primBreed"], dateAdded: value["dateAdded"],
           dateAdopted: value["dateAdopted"]})
         })
         setDogs([...adoptableDogs,...otherDogs])
@@ -44,7 +44,7 @@ function ManageAnimals(){
     navigate('/addAnimal')
    }
  
-   function deleteFunc(token, status){
+   function deleteFunc(token, status, fosterToken){
      let deleteable;
      if (status==='Adoptable'){
        deleteable = ref(database, 'animals/adoptable/'+token)
@@ -54,6 +54,7 @@ function ManageAnimals(){
      }
      if (window.confirm('Are you sure you want to delete this item?')){
        remove(deleteable)
+       remove(ref(database, "contacts/active/"+fosterToken+"/currFostering/"+token))
      }
    }
  
@@ -114,7 +115,7 @@ function ManageAnimals(){
       dataField: "delete",
       text: "Delete",
       formatter: (cell, row) => {
-        return <Button onClick = {()=> deleteFunc(row.token, row.status)} variant = "danger">Delete</Button>
+        return <Button onClick = {()=> deleteFunc(row.token, row.status, row.fosterToken)} variant = "danger">Delete</Button>
       }
     },
    
