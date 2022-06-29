@@ -8,10 +8,11 @@ import UserNav from './UserNav'
 
 function Home(){
     return(
-        <>
+        
+        <div className='background theme'>
         <UserNav />
         <div className="container text-center mt-4">
-            <h1 className="display-2 font-weight-bold">Tiny Miracles</h1>
+            {/* <h1 className="display-2 font-weight-bold">Tiny Miracles</h1> */}
              <Row className="mt-4">
                 <Col>
                     <FontAwesomeIcon icon={faTractor} size="3x" />
@@ -50,7 +51,7 @@ function Home(){
                 </Col>
             </Row>
         </div>
-        </>
+        </div>
     )
 }
 
