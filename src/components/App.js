@@ -20,6 +20,8 @@ import AdoptionForm from './User/AdoptionForm';
 import ThankYou from './User/ThankYou';
 import ViewApplications from './Admin/ViewApplications';
 import SpecificApplication from './Admin/SpecificApplication';
+import AuthProvider from "./Admin/AuthContext"
+import PrivateRoute from './Admin/PrivateRoute'
 
 
 
@@ -28,28 +30,62 @@ function App() {
   return (
     <div>
         <Router>
+        <AuthProvider>
             <Routes>
+                
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/petcare" element={<PetCare/>}/>
                 <Route exact path="/donate" element={<Donate/>}/>
                 <Route exact path="/contact" element={<Contact/>}/>
-                <Route exact path="/admin" element={<Admin/>}/>
                 <Route path="/login" element={<Login/>}/>
-                <Route path="/addAnimal" element={<AddAnimal/>}/>
-                <Route path="/editAnimal/:prevStatus/:token" element={<EditAnimal/>}/>
-                <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
-                <Route path="/manageAnimals" element={<ManageAnimals/>}/>
-                <Route path="/manageContacts" element={<ManageContacts/>}/>
-                <Route path="/addContact" element={<AddContact/>}/>
-                <Route path="/downloadDocs" element={<DownloadDocs/>}/>
-                <Route path="/dogWarden" element={<DogWarden/>}/>
-                <Route path="/updateContact/:sub/:token" element={<UpdateContact/>}/>
                 <Route path="/adoptionProcess/:token" element={<AdoptionProcess/>}/>
                 <Route path="/adoptionForm/:token" element={<AdoptionForm/>}/>
                 <Route path="/thankyou" element={<ThankYou/>}/>
-                <Route path="/viewApplications" element={<ViewApplications/>}/>
-                <Route path="/viewApplications/:token" element={<SpecificApplication/>}/>
+
+
+                <Route exact path="/admin" element={<PrivateRoute/>}>
+                  <Route exact path="/admin" element={<Admin/>}/>
+                </Route>
+                
+                <Route exact path="/addAnimal" element={<PrivateRoute/>}>
+                  <Route path="/addAnimal" element={<AddAnimal/>}/>
+                </Route>
+                <Route exact path="/editAnimal/:prevStatus/:token" element={<PrivateRoute/>}>
+                  <Route path="/editAnimal/:prevStatus/:token" element={<EditAnimal/>}/>
+                </Route>
+                <Route exact path="/adoptabledogshome" element={<PrivateRoute/>}>
+                  <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
+                </Route>
+                <Route exact path="/manageAnimals" element={<PrivateRoute/>}>
+                  <Route path="/manageAnimals" element={<ManageAnimals/>}/>
+                </Route>
+                <Route exact path="/manageContacts" element={<PrivateRoute/>}>
+                  <Route path="/manageContacts" element={<ManageContacts/>}/>
+                </Route>
+                <Route exact path="/addContact" element={<PrivateRoute/>}>
+                  <Route path="/addContact" element={<AddContact/>}/>
+                </Route>
+                <Route exact path="/downloadDocs" element={<PrivateRoute/>}>
+                  <Route path="/downloadDocs" element={<DownloadDocs/>}/>
+                </Route>
+                <Route exact path="/dogWarden" element={<PrivateRoute/>}>
+                  <Route path="/dogWarden" element={<DogWarden/>}/>
+                </Route>
+                <Route exact path="/updateContact/:sub/:token" element={<PrivateRoute/>}>
+                  <Route path="/updateContact/:sub/:token" element={<UpdateContact/>}/>
+                </Route>
+                <Route exact path="/viewApplications" element={<PrivateRoute/>}>
+                  <Route path="/viewApplications" element={<ViewApplications/>}/>
+                </Route>
+                <Route exact path="/viewApplications/:token" element={<PrivateRoute/>}>
+                  <Route path="/viewApplications/:token" element={<SpecificApplication/>}/>
+                </Route>
+
+
+               
+
             </Routes>
+          </AuthProvider>
         </Router>
     </div>  
   );
