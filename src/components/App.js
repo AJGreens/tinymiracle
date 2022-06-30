@@ -41,6 +41,7 @@ function App() {
                 <Route path="/adoptionProcess/:token" element={<AdoptionProcess/>}/>
                 <Route path="/adoptionForm/:token" element={<AdoptionForm/>}/>
                 <Route path="/thankyou" element={<ThankYou/>}/>
+                <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
 
 
                 <Route exact path="/admin" element={<PrivateRoute/>}>
@@ -52,9 +53,6 @@ function App() {
                 </Route>
                 <Route exact path="/editAnimal/:prevStatus/:token" element={<PrivateRoute/>}>
                   <Route path="/editAnimal/:prevStatus/:token" element={<EditAnimal/>}/>
-                </Route>
-                <Route exact path="/adoptabledogshome" element={<PrivateRoute/>}>
-                  <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
                 </Route>
                 <Route exact path="/manageAnimals" element={<PrivateRoute/>}>
                   <Route path="/manageAnimals" element={<ManageAnimals/>}/>

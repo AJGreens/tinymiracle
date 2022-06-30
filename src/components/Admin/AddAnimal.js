@@ -185,54 +185,31 @@ function DogForm() {
     const newanimalRef = push(animalRef)
     const counterRef= ref(database,'animalsCounter')
     set(counterRef, id+1)
-    if (imageUrl && imageFile){
-      set(newanimalRef, {
-        id:id,
-        name: name,
-        aka:aka,
-        primBreed: primBreed,
-        secBreed: secBreed,
-        gender: gender,
-        birthDate: birthDate,
-        ageGroup: ageGroup,
-        fosterToken: currFosterToken ,
-        fosterName: currFosterName,
-        status: status,
-        shelter:shelter,
-        dateDue:dateDue,
-        dateAdded: date,
-        description: description,
-        img: imageUrl,
-        imgFileName: imageFile.name,
-        imgFileLastModified:imageFile.lastModified,
-        imgFileSize: imageFile.size,
-        dateAdopted: dateAdopted
-      })
-    }
-    else{
-      set(newanimalRef, {
-        id:id,
-        name: name,
-        aka:aka,
-        primBreed: primBreed,
-        secBreed: secBreed,
-        gender: gender,
-        birthDate: birthDate,
-        ageGroup: ageGroup,
-        fosterToken: currFosterToken,
-        fosterName: currFosterName,
-        status: status,
-        shelter:shelter,
-        dateDue:dateDue,
-        dateAdded: date,
-        description: description,
-        img: "",
-        imgFileName: "",
-        imgFileLastModified: "",
-        imgFileSize: "",
-        dateAdopted: dateAdopted
-      })
-    }
+
+
+    set(newanimalRef, {
+      id:id,
+      name: name,
+      aka:aka,
+      primBreed: primBreed,
+      secBreed: secBreed,
+      gender: gender,
+      birthDate: birthDate,
+      ageGroup: ageGroup,
+      fosterToken: currFosterToken ,
+      fosterName: currFosterName,
+      status: status,
+      shelter:shelter,
+      dateDue:dateDue,
+      dateAdded: date,
+      description: description,
+      img: imageUrl && imageFile? imageUrl: "",
+      imgFileName: imageUrl && imageFile? imageFile.name: "",
+      imgFileLastModified: imageUrl && imageFile? imageFile.lastModified:"",
+      imgFileSize: imageUrl && imageFile? imageFile.size:"",
+      dateAdopted: dateAdopted
+    })
+
 
     if(currFosterName!==""){
       const currFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+newanimalRef.key)

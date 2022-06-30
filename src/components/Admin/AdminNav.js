@@ -11,7 +11,6 @@ function AdminNav(){
     
 
     async function handleSignOut(){
-        console.log("flhalshjas")
         try{
             await signingOut()
             navigate("/")
@@ -26,11 +25,12 @@ function AdminNav(){
             <Navbar bg="light" variant="light">
                 <Container>
                     <Nav className="me-auto">
+                        <Nav.Link as={Link} to="/">View Site</Nav.Link>
                         <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
-                        <Nav.Link as={Link} to="/manageAnimals">ManageAnimals</Nav.Link>
-                        <Nav.Link as={Link} to="/manageContacts">ManageContacts</Nav.Link>
-                        <Nav.Link as={Link} to="/addContact">AddContact</Nav.Link>
-                        <Nav.Link as={Link} to="/addAnimal">AddAnimal</Nav.Link>
+                        <Nav.Link as={Link} to="/manageAnimals">Manage Animals</Nav.Link>
+                        <Nav.Link as={Link} to="/manageContacts">Manage Contacts</Nav.Link>
+                        <Nav.Link as={Link} to="/addContact">Add Contact</Nav.Link>
+                        <Nav.Link as={Link} to="/addAnimal">Add Animal</Nav.Link>
                         <Nav.Link as={Link} to="/downloadDocs">Download Docs</Nav.Link>
                         <Nav.Link as={Link} to="/dogWarden">Dog Warden</Nav.Link>
                         <Nav.Link as={Link} to="/viewApplications">View Applications</Nav.Link>

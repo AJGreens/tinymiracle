@@ -48,10 +48,10 @@ function Admin(){
                 <Card>
                     <Card.Body className="d-grid gap-3 text-center">
                         <Link to="/manageAnimals">
-                            <Button size="lg">ManageAnimals</Button>
+                            <Button size="lg">Manage Animals</Button>
                         </Link>
                         <Link to="/manageContacts">
-                            <Button size="lg">ManageContacts</Button>
+                            <Button size="lg">Manage Contacts</Button>
                         </Link>
                         <Link to="/downloadDocs">
                             <Button size="lg">Download Docs</Button>

@@ -174,7 +174,6 @@ function handleChange(event){
         onValue(animals, (snapshot)=>{
             const data = snapshot.val()
             Object.entries(data).map(([key, value]) => {
-              
 
                 // if (value["status"]==="Adoptable"){
                   adoptableDogsArr.push({id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]})
@@ -252,12 +251,8 @@ function handleChange(event){
         <>
             <UserNav/>
             <Container className = 'mt-4'>
-                <h1>
-                    eat ass everyday {token} 
-                </h1>
-
+                <h1 className='text-center mb-4'>Adoption Application</h1>
                 <Form onSubmit = {handleSubmit}>
-
                     <Form.Group className="mb-3">
                         <Form.Label>Animal Name</Form.Label>
                         <Form.Select required value = {dogName} name = "animalName" onChange = {handleChange}>

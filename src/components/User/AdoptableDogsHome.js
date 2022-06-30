@@ -28,17 +28,12 @@ navigate("/adoptionProcess/"+dogToken)
   
   useEffect(()=>{
     const dogRef = ref(database, 'animals/adoptable');
+    const otherRef = ref(database, 'animals/other');
     onValue(dogRef, (snapshot) => {
       const data = snapshot.val();
-      let allDogs=[]
-      Object.entries(data).map(([key, value]) => {
-        if(key!=="counter"){//think about a better implementation
-          allDogs.push({id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]})
-        }
-          // Pretty straightforward - use key for the key and value for the value.
-        // Just to clarify: unlike object destructuring, the parameter names don't matter here.
+      let allDogs=Object.entries(data).map(([key, value]) => {
+          return {id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]}
       })
-      console.log("the page reloaded")
       setDogs(allDogs);
     });
   },[])

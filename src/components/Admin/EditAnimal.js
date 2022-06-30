@@ -12,14 +12,14 @@ import {useNavigate} from 'react-router-dom';
 
 function EditAnimal() {
 
-    const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-    const {token} = useParams();
-    const {prevStatus} = useParams();  //is either 'other' or 'adoptable'
+  const {token} = useParams();
+  const {prevStatus} = useParams();  //is either 'other' or 'adoptable'
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const currYear= new Date().getFullYear()
+  const currYear= new Date().getFullYear()
 
 
   const [id, setId] = useState()
@@ -165,7 +165,7 @@ function EditAnimal() {
     }
   }
 
-  function handleChangeImg(e) {
+  async function handleChangeImg(e) {
     setLoading(true)
 
     if (imageUrl) {
@@ -193,7 +193,7 @@ function EditAnimal() {
         }
       },
       () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImageUrl(downloadURL)
           setImageFile(tempFile)
           setLoading(false)
@@ -252,34 +252,22 @@ function EditAnimal() {
 
     event.preventDefault()
 
-//CASE 1: Animal was previously adoptable and is now not adoptable
-if (prevStatus ==="adoptable"  && status != "Adoptable"){
-  const deleteable = ref(database, 'animals/adoptable/'+token)
-  remove(deleteable)
-}
+    //CASE 1: Animal was previously adoptable and is now not adoptable
+    if (prevStatus ==="adoptable"  && status != "Adoptable"){
+      const deleteable = ref(database, 'animals/adoptable/'+token)
+      remove(deleteable)
+    }
+    //CASE 2: Animal was previously not adoptable and is now adoptable
+    else if (prevStatus ==="other"  && status === "Adoptable"){
+      const deleteable = ref(database, 'animals/other/'+token)
+      remove(deleteable)
+    }
 
-//CASE 2: Animal was previously not adoptable and is now adoptable
-else if (prevStatus ==="other"  && status === "Adoptable"){
-  const deleteable = ref(database, 'animals/other/'+token)
-  remove(deleteable)
-}
+    let animalRef = ref(database, 'animals/other/' + token)
+    if (status ==="Adoptable"){
+      animalRef = ref(database, 'animals/adoptable/' + token)
+    }
 
-
-//CASE 3: Animal was previously adoptable and still adoptable
-
-//CASE 4: Animal was previously not adoptable and is still not adoptable
-    
-
-let animalRef = ref(database, 'animals/other/' + token)
-
-if (status ==="Adoptable"){
-  animalRef = ref(database, 'animals/adoptable/' + token)
-}
-
-
-    //BELOW IS THE ORIGNAL FUNCTIONALITY
-  
-    if (imageFile){
     set(animalRef,{
         id:id,
         name: name,
@@ -297,45 +285,19 @@ if (status ==="Adoptable"){
         dateAdded: dateAdded,
         description: description,
         img: imageUrl,
-        imgFileName: imageFile.name,
-        imgFileLastModified:imageFile.lastModified,
-        imgFileSize: imageFile.size,
+        imgFileName:imageFile? imageFile.name:imgFileName ,
+        imgFileLastModified:imageFile? imageFile.lastModified:imgFileLastModified,
+        imgFileSize: imageFile? imageFile.size: imgFileSize,
         dateAdopted: dateAdopted
     })
-}
 
-else{
-    set(animalRef,{
-        id:id,
-        name: name,
-        aka:aka,
-        primBreed: primBreed,
-        secBreed: secBreed,
-        gender: gender,
-        birthDate: birthDate,
-        ageGroup: ageGroup,
-        fosterToken: currFosterToken ,
-        fosterName: currFosterName,
-        status: status,
-        shelter:shelter,
-        dateDue:dateDue,
-        dateAdded: dateAdded,
-        description: description,
-        img: imageUrl,
-        imgFileName: imgFileName,
-        imgFileLastModified:imgFileLastModified,
-        imgFileSize: imgFileSize,
-        dateAdopted: dateAdopted
-    })
-}
-
-//scenarios for foster
-//foster stays same
-  // other-->adopted
-  // adopted-->other
-//foster changes
-  // other
-  // adopted
+      //scenarios for foster
+      //foster stays same
+        // other-->adopted
+        // adopted-->other
+      //foster changes
+        // other
+        // adopted
     if(currFosterToken!==prevFosterToken){
       console.log("Changed Fosters")
       //currFoster-1 from previous foster
@@ -349,30 +311,26 @@ else{
           set(currFosterRef,{name: name})
         }
       }
-  }
-  else{
-    console.log("Same Fosters")
-    if(currFosterName!==""){
-      //other-->adopted
-      if(orgStatus!=="Adopted"&&status==="Adopted"){
-        const currAnimalFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+token)
-        remove(currAnimalFosterRef)
-      }
-      //adopted-->other
-      else if(orgStatus==="Adopted"&&status!=="Adopted"){
-        //increase currFostering from currFoster
-        const currAnimalFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+token)
-        set(currAnimalFosterRef,{name: name})
-      }
-      
     }
-  }
+    else{
+      console.log("Same Fosters")
+      if(currFosterName!==""){
+        //other-->adopted
+        if(orgStatus!=="Adopted"&&status==="Adopted"){
+          const currAnimalFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+token)
+          remove(currAnimalFosterRef)
+        }
+        //adopted-->other
+        else if(orgStatus==="Adopted"&&status!=="Adopted"){
+          //increase currFostering from currFoster
+          const currAnimalFosterRef= ref(database, "contacts/active/"+currFosterToken+"/currFostering/"+token)
+          set(currAnimalFosterRef,{name: name})
+        }
+        
+      }
+    }
 
-
-
-
-goToManageAnimals()
-
+    goToManageAnimals()
 
   }
 

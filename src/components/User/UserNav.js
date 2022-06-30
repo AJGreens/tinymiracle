@@ -2,9 +2,25 @@ import React from 'react'
 import{Navbar,Nav, Container} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import logo from './DogImages/fantasticlogo.png'
-
+import {useAuth} from "../Admin/AuthContext"
 
 function UserNav(){
+
+    const {user,signingOut}= useAuth()
+
+    async function handleSignOut(){
+        try{
+            await signingOut()
+        }
+        catch{
+            console.log("error signing out")
+        }
+    }
+
+
+
+
+
     return(
         <>
         <div style = {{'height': '140px', backgroundColor: '#4ECDC4', textAlign: 'center'}}>
@@ -20,7 +36,8 @@ function UserNav(){
                         <Nav.Link clasName = "navLink" as={Link} to="/petcare">Pet Care</Nav.Link>
                         <Nav.Link clasName = "navLink" as={Link} to="/donate">Donate</Nav.Link>
                         <Nav.Link clasName = "navLink" as={Link} to="/contact">Contact</Nav.Link>
-                        <Nav.Link clasName = "navLink" as={Link} to="/login">Login</Nav.Link>
+                        {user?<Nav.Link clasName = "navLink" as={Link} to="/admin">Admin</Nav.Link>: <Nav.Link clasName = "navLink" as={Link} to="/login">Login</Nav.Link>}
+                        {user && <Nav.Link clasName = "navLink" onClick={handleSignOut}>Logout</Nav.Link>}
                     </Nav>
                 </Container>
           </Navbar>

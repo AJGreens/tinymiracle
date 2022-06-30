@@ -77,28 +77,8 @@ const [allAdoptionForms, setAllAdoptionForms] = useState([])
     
     ];
  
- 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
 
     return(
@@ -106,11 +86,6 @@ const [allAdoptionForms, setAllAdoptionForms] = useState([])
 
         <>
          <AdminNav/>
-
-
-        <h1>
-            REceivedi iappliaitoins
-        </h1>
 
         { (allAdoptionForms!=null) &&
         <div className = 'container'>
