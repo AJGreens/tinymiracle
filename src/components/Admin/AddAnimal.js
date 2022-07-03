@@ -31,6 +31,7 @@ function DogForm() {
   const [imageUrl, setImageUrl] = useState("")
   const [dateAdopted, setDateAdopted] = useState("");
   const [activeFosters, setActiveFosters] = useState([]);
+  const [microChipNum, setMicroChipNum] = useState("");
  
 
   const current = new Date();
@@ -191,6 +192,7 @@ function DogForm() {
       id:id,
       name: name,
       aka:aka,
+      microChipNum: microChipNum,
       primBreed: primBreed,
       secBreed: secBreed,
       gender: gender,
@@ -245,6 +247,10 @@ function DogForm() {
             <Form.Group className="mb-3">
               <Form.Label>Also Known As</Form.Label>
               <Form.Control name="aka" onChange={handleChange}  value={aka} type="text"/>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Microchip Number</Form.Label>
+              <Form.Control onChange={(e)=>{setMicroChipNum(e.target.value)}}  value={microChipNum} type="text"/>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Primary Breed</Form.Label>
@@ -477,7 +483,7 @@ function DogForm() {
               <br/>
               {loading && <Circles color="#00BFFF" height={80} width={80}/>}
               {imageFile&&<div><h6>{imageFile.name}</h6></div>}
-              {imageUrl&&<img src={imageUrl}/>}
+              {imageUrl&&<img src={imageUrl} className="adoptableImg"/>}
             </Form.Group>
     
             <Button type = "submit" disabled={loading} variant="primary">Submit</Button>

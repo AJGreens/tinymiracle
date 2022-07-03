@@ -46,6 +46,7 @@ function EditAnimal() {
   const [imageUrl, setImageUrl] = useState()
   const [dateAdded, setDateAdded] = useState()
   const [dateAdopted, setDateAdopted] = useState();
+  const [microChipNum, setMicroChipNum] = useState();
   
 
   useEffect(() => {
@@ -76,6 +77,7 @@ function EditAnimal() {
         setImageUrl(data["img"])
         setDateAdded(data["dateAdded"])
         setDateAdopted(data["dateAdopted"])
+        setMicroChipNum(data["microChipNum"])
 
       }
     });
@@ -272,6 +274,7 @@ function EditAnimal() {
         id:id,
         name: name,
         aka:aka,
+        microChipNum: microChipNum,
         primBreed: primBreed,
         secBreed: secBreed,
         gender: gender,
@@ -362,6 +365,10 @@ function EditAnimal() {
             <Form.Group className="mb-3">
               <Form.Label>Also Known As</Form.Label>
               <Form.Control name="aka" onChange={handleChange}  value={aka} type="text"/>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Microchip Number</Form.Label>
+              <Form.Control onChange={(e)=>{setMicroChipNum(e.target.value)}}  value={microChipNum} type="text"/>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Primary Breed</Form.Label>
@@ -598,7 +605,7 @@ function EditAnimal() {
               {loading && <Circles color="#00BFFF" height={80} width={80}/>}
               {imageFile&&<div><h6>{imageFile.name}</h6></div>}
               {imgFileName &&<div><h6>{imgFileName}</h6></div>}
-              {imageUrl&&<img src={imageUrl}/>}
+              {imageUrl&&<img src={imageUrl} className = 'adoptableImg'/>}
             </Form.Group>
     
             <Button type = "submit" disabled={loading} variant="primary">Submit</Button>

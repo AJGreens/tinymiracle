@@ -50,7 +50,7 @@ navigate("/adoptionProcess/"+dogToken)
                 <h4>{dog.age} {dog.gender} {dog.breed}</h4>
                 <Row>
                   <Col>
-                    <img src={dog.img} />
+                    <img src={dog.img} className = 'adoptableImg'/>
                   </Col>
                   <Col>
                     <p className='mt-4'>{dog.description}</p>

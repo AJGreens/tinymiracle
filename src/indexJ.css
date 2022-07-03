@@ -85,10 +85,16 @@ text-align: left;
     color: red;
 }
 
-/* .background{
-    background-color: #F2E2D2;
-} */
+.background{
+    color: #386A92;
+    background-color: #FFEFD3;
+}
 .navLink{
     padding-top: 0px !important;
     /* border: red solid 2px; */
+}
+
+.adoptableImg{
+    max-height: 400px;
+    max-width: 400px;
 }
