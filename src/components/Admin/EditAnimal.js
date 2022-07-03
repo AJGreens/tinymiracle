@@ -42,10 +42,12 @@ function EditAnimal() {
   const [dateAdded, setDateAdded] = useState()
   const [dateAdopted, setDateAdopted] = useState();
   
-  const [allFiles,setAllFiles]=useState([])
+  const [allFiles,setAllFiles]=useState([{name:"joey",isUrl:true, url:"fhasfhjsakhfjksah"}])
+  const [deletableFiles, setDeleteableFiles]=useState([])
   const [fileCountError,setFileCountError]=useState('')
   const [currImgFile, setCurrImgFile] = useState();
   const [imageUrl,setImageUrl]= useState()
+
 
 
 
@@ -231,6 +233,16 @@ function EditAnimal() {
       )
     }
 
+   addAllFilesToStorage().then(value=>{
+      update(animalRef, {pdfDocs: value})
+   })
+
+    // update(animalRef, {pdfDocs:[...onlyUrls, ...allFilesToUrl]})
+
+
+
+
+
 
       //scenarios for foster
       //foster stays same
@@ -290,7 +302,7 @@ function EditAnimal() {
 
     //[ "hafsjkhfajjkhf","fkshalkhflas", "lhsfjahfj"]
 
-    goToManageAnimals()
+    // goToManageAnimals()
 
   }
 
@@ -330,6 +342,53 @@ function EditAnimal() {
       }
     }
     setAllFiles(temp)
+
+  }
+
+
+
+  async function addAllFilesToStorage(){
+
+    let onlyFiles= allFiles.filter(file=> file.type).map(file=>{
+      return file
+    })
+    let onlyUrls= allFiles.filter(file=> file.isUrl).map(file=>{
+      return file.url
+    })
+
+    let allFilesToUrl=[]
+
+    onlyFiles.forEach(item=>{
+      const uploadRef = sRef(storage, `${token}/files/${item.name}`)
+      const uploadTask = uploadBytesResumable(uploadRef, item)
+
+      uploadTask.on('state_changed',
+        (snapshot) => {},
+        (error) => {
+          switch (error.code) {
+            case 'storage/unauthorized':
+              console.log('storage/unauthorized')
+              break;
+            case 'storage/canceled':
+              console.log('storage/canceled')
+              break;
+            case 'storage/unknown':
+              console.log('storage/unknown')
+              break;
+            default:
+              console.log("unseen error")
+          }
+        },
+        () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              allFilesToUrl.push(downloadURL)
+          });
+        }
+      )
+      
+    })
+
+    return [...allFilesToUrl,...onlyUrls]
 
   }
 
