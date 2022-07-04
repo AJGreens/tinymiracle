@@ -42,7 +42,7 @@ function EditAnimal() {
   const [description, setDescription] = useState();
   const [dateAdded, setDateAdded] = useState()
   const [dateAdopted, setDateAdopted] = useState();
-  const [microChipNum, setMicroChipNum] = useState("");
+  const [microChipNum, setMicroChipNum] = useState();
 
   const [allFiles,setAllFiles]=useState([])
   const [fileCountError,setFileCountError]=useState('')
@@ -229,7 +229,6 @@ function EditAnimal() {
         // other
         // adopted
     if(currFosterToken!==prevFosterToken){
-      console.log("Changed Fosters")
       //currFoster-1 from previous foster
       const currAnimalFosterRef= ref(database, "contacts/active/"+prevFosterToken+"/currFostering/"+token)
       remove(currAnimalFosterRef)
@@ -243,7 +242,6 @@ function EditAnimal() {
       }
     }
     else{
-      console.log("Same Fosters")
       if(currFosterName!==""){
         //other-->adopted
         if(orgStatus!=="Adopted"&&status==="Adopted"){
@@ -336,12 +334,10 @@ function EditAnimal() {
 
 
   function handleChangeFiles(e){
-    console.log(e.target.files.length)
     let sameFileName= false;
 
     for(const newFile of e.target.files){
       for(const oldFile of allFiles){
-        console.log(newFile.name, oldFile.name)
         if(newFile.name.split(".")[0]===oldFile.name.split(".")[0]){
           sameFileName=true
           break
@@ -397,7 +393,7 @@ function EditAnimal() {
             <Form.Group as = {Row} className="mb-3">
               <Form.Label column sm="3">Id</Form.Label>
               <Col sm="5">
-              <Form.Control name="id" value={id} type="number"/>
+              <Form.Control name="id" value={id} readOnly id="readOnly" type="number"/>
               </Col>
             </Form.Group>
             <Form.Group as = {Row} className="mb-3">
@@ -598,7 +594,7 @@ function EditAnimal() {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Foster</Form.Label>
-              <select className="form-select" value={[currFosterToken,currFosterName]} name = "foster" onChange = {handleChange} aria-label="Default select example" >
+              <select className="form-select" value={currFosterToken+","+currFosterName} name = "foster" onChange = {handleChange} aria-label="Default select example" >
                 <option value=""></option>
                 {
                   allFosters.map(foster=>{
@@ -655,7 +651,7 @@ function EditAnimal() {
               <Form.Label htmlFor = "uniqueFiles" className = "btn btn-success">Upload Files</Form.Label>
               <br/>
               {allFiles.map((file,i)=>{
-                return <div className="m-2" ><FontAwesomeIcon icon={faFilePdf}/> <a target="_blank"  rel="noreferrer" href={file.url? file.url: URL.createObjectURL(file)} className="link-primary">{file.name}</a> <FontAwesomeIcon onClick={()=>handleDeleteFile(i)} icon={faXmark}/> </div>
+                return <div key={i} className="m-2" ><FontAwesomeIcon icon={faFilePdf}/> <a target="_blank"  rel="noreferrer" href={file.url? file.url: URL.createObjectURL(file)} className="link-primary">{file.name}</a> <FontAwesomeIcon onClick={()=>handleDeleteFile(i)} icon={faXmark}/> </div>
               })}
             </Form.Group>
             <br/>
