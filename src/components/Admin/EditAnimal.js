@@ -42,13 +42,13 @@ function EditAnimal() {
   const [description, setDescription] = useState();
   const [dateAdded, setDateAdded] = useState()
   const [dateAdopted, setDateAdopted] = useState();
-  const [microChipNum, setMicroChipNum] = useState();
   
   const [allFiles,setAllFiles]=useState([])
   const [deletableFiles, setDeleteableFiles]=useState([])
   const [fileCountError,setFileCountError]=useState('')
   const [currImgFile, setCurrImgFile] = useState();
   const [imageUrl,setImageUrl]= useState()
+  const [microChipNum, setMicroChipNum] = useState("");
 
 
 
@@ -65,6 +65,7 @@ function EditAnimal() {
     })
 
   },[])
+
 
   useEffect(() => {
     const tokenRef = ref(database, "animals/"+prevStatus+"/"+token);
@@ -106,27 +107,6 @@ function EditAnimal() {
     })
 
   }, [prevStatus,token])
-
-  useEffect(()=>{
-    const filesRef = ref(database, "animals/"+prevStatus+"/"+token+"/files");
-    onValue(filesRef, (snapshot) => {
-      console.log("OH NO TIS CALL")
-      const data = snapshot.val();
-      // console.log("THEse are files"+data)
-      let urlArr = [];
-
-      if(typeof data!=='undefined' && data!=null){
-        Object.entries(data).map(([key,value])=>{
-          console.log("COUNT")
-        urlArr.push({token: key, name: value["name"], url: value["fileURL"]})
-        }
-        )
-      
-      }
-      setAllFiles(urlArr)
-     
-    });
-  },[])
 
 
 
@@ -194,7 +174,7 @@ function EditAnimal() {
 
 
 
-function updateAnimal(event) {
+  async function updateAnimal(event) {
 
     event.preventDefault()
 
@@ -236,7 +216,8 @@ function updateAnimal(event) {
       dateDue:dateDue,
       dateAdded: dateAdded,
       description: description,
-      dateAdopted: dateAdopted
+      dateAdopted: dateAdopted,
+      microChipNum: microChipNum
   })
 
     if (currImgFile !== undefined){
@@ -348,101 +329,7 @@ function updateAnimal(event) {
         
       }
     }
-    
 
-
-
-
-
-
-
-    if (allFiles !== undefined){
-      for (let i =0;i<allFiles.length; i++){
-        let fileRef = ref(database, 'animals/other/' + token + '/files/' + i)
-        if (status ==="Adoptable"){
-          fileRef = ref(database, 'animals/adoptable/' + token+ '/files/' + i)
-        }
-
-        console.log(allFiles[i].name)
-        let uploadRef = sRef(storage, `${token}/files/${allFiles[i].name}`)
-        const uploadTask = uploadBytesResumable(uploadRef, allFiles[i])
-  
-      uploadTask.on('state_changed',
-          (snapshot) => {},
-          (error) => {
-            switch (error.code) {
-              case 'storage/unauthorized':
-                console.log('storage/unauthorized')
-                break;
-              case 'storage/canceled':
-                console.log('storage/canceled')
-                break;
-              case 'storage/unknown':
-                console.log('storage/unknown')
-                break;
-              default:
-                console.log("unseen error")
-            }
-          },
-          () => {
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                console.log(i)
-              update(fileRef,{
-                token: i,
-                name: allFiles[i].name,
-                fileURL: downloadURL,
-
-            })
-            });
-          }
-        )
-
-      }
-
-
-
-    }
-
-
-
-
-
-
-    // let lastRef = ref(database, 'animals/other/' + token + '/files/')
-    //     if (status ==="Adoptable"){
-    //       lastRef = ref(database, 'animals/adoptable/' + token+ '/files/')
-    //     }
-    //     get(lastRef).then((snapshot)=>{
-    //       console.log('hey')
-
-    //       const data = snapshot.val()
-    //       if (data!=null){
-    //       data.map(item=>{
-    //         for (let i = 0; i<allDeleteables.length;i++){
-    //           if (item.name===allDeleteables[i].name){
-
-    //           }
-    //         }
-
-            
-    //         console.log(item)
-    //       })
-    //     }
-
-    //     })
-
-       
-        // onValue(lastRef, (snapshot)=>{
-        //   const data=snapshot.val()
-        //   for (let i=0; i<data.length;i++){
-        //     console.log("YIP"+data[i].name)
-
-        //   }
-        // })
-
-
-
-    
 
     //[File, "hafsjkhfajjkhf", File]
 
@@ -503,13 +390,29 @@ function updateAnimal(event) {
 
 
     if(allFiles[j].url){
+      if(window.confirm('Are you sure you want to delete this item?')){
       deleteObject(sRef(storage,allFiles[j].url))
       const deleteFromRTDatabase= ref(database,"animals/"+prevStatus+"/"+token+"/pdfs/"+allFiles[j].name.split(".")[0])
       remove(deleteFromRTDatabase)
+      }
     }
 
 
+    let temp=[]
+    for(let i=0; i<allFiles.length;i++){
+      if(i!==j){
+        temp.push(allFiles[i])
+        
+      }
+    }
+    setAllFiles(temp)
+
+
+
+
   }
+
+
 
   return (
     <>
@@ -769,7 +672,7 @@ function updateAnimal(event) {
               <Form.Control name = "picture" onChange = {handleChangeImgTwo} style = {{display: 'none'}} id = "uniqueImg" type = "file" placeholder="image" accept="image/*"/> 
               <Form.Label htmlFor = "uniqueImg" className = "btn btn-primary">Upload Picture</Form.Label>
               <br/>
-              {imageUrl &&<img src={imageUrl} alt="Cute Dog"/>}
+              {imageUrl &&<img src={imageUrl} className="adoptableImg" alt="Cute Dog"/>}
             </Form.Group>
 
 
