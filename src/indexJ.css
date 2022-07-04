@@ -78,15 +78,19 @@ text-align: left;
 }
 
 .theme{
-    color: black;
+    color: #144771;
    
+}
+h2, h1, h3{
+    color: #144771;
+
 }
 .secondaryTheme{
     color: red;
 }
 
 .background{
-    color: #386A92;
+    /* color: #386A92; */
     background-color: #FFEFD3;
 }
 .navLink{
@@ -98,3 +102,6 @@ text-align: left;
     max-height: 400px;
     max-width: 400px;
 }
+
+html {background-color: #FFEFD3;}
+

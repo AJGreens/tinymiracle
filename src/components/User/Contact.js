@@ -5,7 +5,9 @@ import UserNav from './UserNav'
 function Contact(){
     return(
         <>
+         <div className='background'>
         <UserNav />
+       
         <div className="container"  style={{marginTop:40}}>
 
         <h3 style = {{marginLeft: "25%"}}>
@@ -51,6 +53,7 @@ TO MEET RESCUE DOGS: Please submit an application and we will have a representat
 
 
 
+        </div>
         </div>
         </>
     )

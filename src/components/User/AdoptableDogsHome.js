@@ -40,6 +40,7 @@ navigate("/adoptionProcess/"+dogToken)
     
     return(
       <>
+      <div className = "background">
       <UserNav/>
         <div className='container text-center'>
             {/* <FontAwesomeIcon icon={faDog} /> */}
@@ -61,7 +62,7 @@ navigate("/adoptionProcess/"+dogToken)
               </div>
             )}
         </div>
-        
+        </div>
       </>
         
         )

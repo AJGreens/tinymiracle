@@ -9,11 +9,11 @@ import UserNav from './UserNav'
 function Home(){
     return(
         
-        <div className='background theme'>
+        <div className='background'>
         <UserNav />
         <div className="container text-center mt-4">
             {/* <h1 className="display-2 font-weight-bold">Tiny Miracles</h1> */}
-             <Row className="mt-4">
+             <Row className="mt-4 theme">
                 <Col>
                     <FontAwesomeIcon icon={faTractor} size="3x" />
                     <h2 className="mt-2">Farm</h2>

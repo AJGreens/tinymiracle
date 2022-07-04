@@ -18,6 +18,7 @@ function PetCare(){
 
     return(
         <>
+        <div className = "background">
         <UserNav />
         <div className="container"  style={{marginTop:40, textAlign: 'center'}}>
 
@@ -282,7 +283,7 @@ Our rates and services are the same for all pets no matter the size, amount of m
     
 
 
-
+</div>
 
 
         </>
