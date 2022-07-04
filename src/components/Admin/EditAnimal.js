@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { database, storage } from '../Firebase'
-import { ref, set, onValue, remove, update} from "firebase/database";
+import { ref, set, onValue, get, remove, update} from "firebase/database";
 import { ref as sRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { Form, Button, Col, Row,Alert} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
@@ -9,7 +9,6 @@ import { useParams } from "react-router";
 import {useNavigate} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFilePdf, faXmark} from '@fortawesome/free-solid-svg-icons'
-
 
 function EditAnimal() {
 
@@ -43,12 +42,11 @@ function EditAnimal() {
   const [dateAdopted, setDateAdopted] = useState();
   const [microChipNum, setMicroChipNum] = useState();
   
-  const [allFiles,setAllFiles]=useState([{name:"joey",isUrl:true, url:"fhasfhjsakhfjksah"}])
-  const [deletableFiles, setDeleteableFiles]=useState([])
+  const [allFiles,setAllFiles]=useState([])
+  const [allDeleteables,setAllDeleteables]=useState([])
   const [fileCountError,setFileCountError]=useState('')
   const [currImgFile, setCurrImgFile] = useState();
   const [imageUrl,setImageUrl]= useState()
-
 
 
 
@@ -95,6 +93,27 @@ function EditAnimal() {
     })
 
   }, [prevStatus,token])
+
+  useEffect(()=>{
+    const filesRef = ref(database, "animals/"+prevStatus+"/"+token+"/files");
+    onValue(filesRef, (snapshot) => {
+      console.log("OH NO TIS CALL")
+      const data = snapshot.val();
+      // console.log("THEse are files"+data)
+      let urlArr = [];
+
+      if(typeof data!=='undefined' && data!=null){
+        Object.entries(data).map(([key,value])=>{
+          console.log("COUNT")
+        urlArr.push({token: key, name: value["name"], url: value["fileURL"]})
+        }
+        )
+      
+      }
+      setAllFiles(urlArr)
+     
+    });
+  },[])
 
 
 
@@ -161,7 +180,7 @@ function EditAnimal() {
 
 
 
-  async function updateAnimal(event) {
+function updateAnimal(event) {
 
     event.preventDefault()
 
@@ -235,52 +254,6 @@ function EditAnimal() {
       )
     }
 
-    let onlyFiles= allFiles.filter(file=> file.type).map(file=>{
-      return file
-    })
-    let onlyUrls= allFiles.filter(file=> file.isUrl).map(file=>{
-      return file.url
-    })
-
-    let allFilesToUrl=[]
-    let promises =[]
-    onlyFiles.forEach(item=>{
-      const uploadRef = sRef(storage, `${token}/files/${item.name}`)
-      const uploadTask = uploadBytesResumable(uploadRef, item)
-      promises.push(uploadTask)
-      uploadTask.on('state_changed',
-        (snapshot) => {},
-        (error) => {
-          switch (error.code) {
-            case 'storage/unauthorized':
-              console.log('storage/unauthorized')
-              break;
-            case 'storage/canceled':
-              console.log('storage/canceled')
-              break;
-            case 'storage/unknown':
-              console.log('storage/unknown')
-              break;
-            default:
-              console.log("unseen error")
-          }
-        },
-        () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              allFilesToUrl.push(downloadURL)
-          });
-        }
-      )
-      
-    })
-    Promise.all(promises).then(tasks=>{
-      update(animalRef, {pdfDocs:[...onlyUrls, ...allFilesToUrl]})
-    })
-
-
-
-
-
 
       //scenarios for foster
       //foster stays same
@@ -320,7 +293,111 @@ function EditAnimal() {
         
       }
     }
+    
 
+
+    console.log("Delete thsese:" + allDeleteables)
+
+    for (let i = 0; i<allDeleteables.length;i++){
+      console.log("individual delete:" +JSON.stringify(allDeleteables[i]))
+      let removeRef = ref(database, 'animals/other/' + token + '/files/' + allDeleteables[i].token)
+        if (status ==="Adoptable"){
+          removeRef = ref(database, 'animals/adoptable/' + token+ '/files/'+allDeleteables[i].token)
+        }
+        console.log('removing!' + allDeleteables[i].token)
+        remove(removeRef)
+    }
+
+
+
+
+    if (allFiles !== undefined){
+      for (let i =0;i<allFiles.length; i++){
+        let fileRef = ref(database, 'animals/other/' + token + '/files/' + i)
+        if (status ==="Adoptable"){
+          fileRef = ref(database, 'animals/adoptable/' + token+ '/files/' + i)
+        }
+
+        console.log(allFiles[i].name)
+        let uploadRef = sRef(storage, `${token}/files/${allFiles[i].name}`)
+        const uploadTask = uploadBytesResumable(uploadRef, allFiles[i])
+  
+      uploadTask.on('state_changed',
+          (snapshot) => {},
+          (error) => {
+            switch (error.code) {
+              case 'storage/unauthorized':
+                console.log('storage/unauthorized')
+                break;
+              case 'storage/canceled':
+                console.log('storage/canceled')
+                break;
+              case 'storage/unknown':
+                console.log('storage/unknown')
+                break;
+              default:
+                console.log("unseen error")
+            }
+          },
+          () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                console.log(i)
+              update(fileRef,{
+                token: i,
+                name: allFiles[i].name,
+                fileURL: downloadURL,
+
+            })
+            });
+          }
+        )
+
+      }
+
+
+
+    }
+
+
+
+
+
+
+    // let lastRef = ref(database, 'animals/other/' + token + '/files/')
+    //     if (status ==="Adoptable"){
+    //       lastRef = ref(database, 'animals/adoptable/' + token+ '/files/')
+    //     }
+    //     get(lastRef).then((snapshot)=>{
+    //       console.log('hey')
+
+    //       const data = snapshot.val()
+    //       if (data!=null){
+    //       data.map(item=>{
+    //         for (let i = 0; i<allDeleteables.length;i++){
+    //           if (item.name===allDeleteables[i].name){
+
+    //           }
+    //         }
+
+            
+    //         console.log(item)
+    //       })
+    //     }
+
+    //     })
+
+       
+        // onValue(lastRef, (snapshot)=>{
+        //   const data=snapshot.val()
+        //   for (let i=0; i<data.length;i++){
+        //     console.log("YIP"+data[i].name)
+
+        //   }
+        // })
+
+
+
+    
 
     //[File, "hafsjkhfajjkhf", File]
 
@@ -340,7 +417,7 @@ function EditAnimal() {
 
     //[ "hafsjkhfajjkhf","fkshalkhflas", "lhsfjahfj"]
 
-    // goToManageAnimals()
+    goToManageAnimals()
 
   }
 
@@ -368,21 +445,24 @@ function EditAnimal() {
     //check whether deleted file (allFiles[j]) is a string
       // use firebase method refFromURL(allFiles[j]) and delete from storage
 
-
-
-
+    let deleteables = []
 
     let temp=[]
     for(let i=0; i<allFiles.length;i++){
       if(i!==j){
         temp.push(allFiles[i])
-        
+      }
+      else{
+        if(allFiles[i].type==null)
+        console.log('success')
+        deleteables.push(allFiles[i])
       }
     }
     setAllFiles(temp)
+    setAllDeleteables([...allDeleteables, ...deleteables])
+    
 
   }
-
 
 
   return (
