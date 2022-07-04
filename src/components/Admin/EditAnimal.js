@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { database, storage } from '../Firebase'
 import { ref, set, onValue, remove, update} from "firebase/database";
-import { ref as sRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 import { Form, Button, Col, Row,Alert} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
 import { useParams } from "react-router";
@@ -9,6 +9,7 @@ import { useParams } from "react-router";
 import {useNavigate} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFilePdf, faXmark} from '@fortawesome/free-solid-svg-icons'
+
 
 
 function EditAnimal() {
@@ -42,7 +43,7 @@ function EditAnimal() {
   const [dateAdded, setDateAdded] = useState()
   const [dateAdopted, setDateAdopted] = useState();
   
-  const [allFiles,setAllFiles]=useState([{name:"joey",isUrl:true, url:"fhasfhjsakhfjksah"}])
+  const [allFiles,setAllFiles]=useState([])
   const [deletableFiles, setDeleteableFiles]=useState([])
   const [fileCountError,setFileCountError]=useState('')
   const [currImgFile, setCurrImgFile] = useState();
@@ -52,6 +53,17 @@ function EditAnimal() {
 
 
 
+  useEffect(()=>{
+    const tokenRef = ref(database, "animals/"+prevStatus+"/"+token+"/pdfs");
+    onValue(tokenRef, snapshot=>{
+      const data=snapshot.val()
+      let tempArr= Object.entries(data).map(([key,val])=>{
+        return {url: val["url"], name: val["name"]}
+      })
+      setAllFiles(tempArr)
+    })
+
+  },[])
 
 
   useEffect(() => {
@@ -101,6 +113,7 @@ function EditAnimal() {
       setDateAdopted("")
     }
   },[status])
+
 
 
 
@@ -174,9 +187,11 @@ function EditAnimal() {
       remove(deleteable)
     }
 
+    let animalRefStr= 'animals/other/' + token;
     let animalRef = ref(database, 'animals/other/' + token)
     if (status ==="Adoptable"){
       animalRef = ref(database, 'animals/adoptable/' + token)
+      animalRefStr='animals/adoptable/' + token
     }
 
 
@@ -236,16 +251,11 @@ function EditAnimal() {
     let onlyFiles= allFiles.filter(file=> file.type).map(file=>{
       return file
     })
-    let onlyUrls= allFiles.filter(file=> file.isUrl).map(file=>{
-      return file.url
-    })
 
-    let allFilesToUrl=[]
-    let promises =[]
+
     onlyFiles.forEach(item=>{
       const uploadRef = sRef(storage, `${token}/files/${item.name}`)
       const uploadTask = uploadBytesResumable(uploadRef, item)
-      promises.push(uploadTask)
       uploadTask.on('state_changed',
         (snapshot) => {},
         (error) => {
@@ -264,17 +274,15 @@ function EditAnimal() {
           }
         },
         () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              allFilesToUrl.push(downloadURL)
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                update(ref(database, animalRefStr+"/pdfs/"+(item.name.split(".")[0])),{url:downloadURL, name:item.name})
           });
         }
       )
       
     })
-    Promise.all(promises).then(tasks=>{
-      update(animalRef, {pdfDocs:[...onlyUrls, ...allFilesToUrl]})
-    })
-
+ 
+    
 
 
 
@@ -355,19 +363,19 @@ function EditAnimal() {
     }
   }
 
-  console.log(allFiles)
   function handleChangeImgTwo(e){
     setCurrImgFile(e.target.files[0])
     setImageUrl(URL.createObjectURL(e.target.files[0]))
   }
 
   function handleDeleteFile(j){
-    
-    //check whether deleted file (allFiles[j]) is a string
-      // use firebase method refFromURL(allFiles[j]) and delete from storage
 
 
-
+    if(allFiles[j].url){
+      deleteObject(sRef(storage,allFiles[j].url))
+      const deleteFromRTDatabase= ref(database,"animals/"+prevStatus+"/"+token+"/pdfs/"+allFiles[j].name.split(".")[0])
+      remove(deleteFromRTDatabase)
+    }
 
 
     let temp=[]
@@ -378,6 +386,9 @@ function EditAnimal() {
       }
     }
     setAllFiles(temp)
+
+
+
 
   }
 
