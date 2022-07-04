@@ -233,11 +233,47 @@ function EditAnimal() {
       )
     }
 
-   addAllFilesToStorage().then(value=>{
-      update(animalRef, {pdfDocs: value})
-   })
+    let onlyFiles= allFiles.filter(file=> file.type).map(file=>{
+      return file
+    })
+    let onlyUrls= allFiles.filter(file=> file.isUrl).map(file=>{
+      return file.url
+    })
 
-    // update(animalRef, {pdfDocs:[...onlyUrls, ...allFilesToUrl]})
+    let allFilesToUrl=[]
+    let promises =[]
+    onlyFiles.forEach(item=>{
+      const uploadRef = sRef(storage, `${token}/files/${item.name}`)
+      const uploadTask = uploadBytesResumable(uploadRef, item)
+      promises.push(uploadTask)
+      uploadTask.on('state_changed',
+        (snapshot) => {},
+        (error) => {
+          switch (error.code) {
+            case 'storage/unauthorized':
+              console.log('storage/unauthorized')
+              break;
+            case 'storage/canceled':
+              console.log('storage/canceled')
+              break;
+            case 'storage/unknown':
+              console.log('storage/unknown')
+              break;
+            default:
+              console.log("unseen error")
+          }
+        },
+        () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              allFilesToUrl.push(downloadURL)
+          });
+        }
+      )
+      
+    })
+    Promise.all(promises).then(tasks=>{
+      update(animalRef, {pdfDocs:[...onlyUrls, ...allFilesToUrl]})
+    })
 
 
 
@@ -345,52 +381,6 @@ function EditAnimal() {
 
   }
 
-
-
-  async function addAllFilesToStorage(){
-
-    let onlyFiles= allFiles.filter(file=> file.type).map(file=>{
-      return file
-    })
-    let onlyUrls= allFiles.filter(file=> file.isUrl).map(file=>{
-      return file.url
-    })
-
-    let allFilesToUrl=[]
-
-    onlyFiles.forEach(item=>{
-      const uploadRef = sRef(storage, `${token}/files/${item.name}`)
-      const uploadTask = uploadBytesResumable(uploadRef, item)
-
-      uploadTask.on('state_changed',
-        (snapshot) => {},
-        (error) => {
-          switch (error.code) {
-            case 'storage/unauthorized':
-              console.log('storage/unauthorized')
-              break;
-            case 'storage/canceled':
-              console.log('storage/canceled')
-              break;
-            case 'storage/unknown':
-              console.log('storage/unknown')
-              break;
-            default:
-              console.log("unseen error")
-          }
-        },
-        () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              allFilesToUrl.push(downloadURL)
-          });
-        }
-      )
-      
-    })
-
-    return [...allFilesToUrl,...onlyUrls]
-
-  }
 
 
   return (
