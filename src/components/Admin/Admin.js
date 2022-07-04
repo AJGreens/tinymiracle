@@ -17,7 +17,13 @@ function Admin(){
         get(lastAccessRef).then((snapshot)=>{
             const data= snapshot.val()
             if(data!==currYear||data===null){
-                Object.entries(allFosters).map(([key,value])=>{
+                // Object.entries(allFosters).map(([key,value])=>{
+                //     if(value["currFostering"]){
+                //         const newAllFosteredForCurrFoster= ref(database, "contacts/active/"+key+"/allFoster/"+currYear)
+                //         update(newAllFosteredForCurrFoster, value["currFostering"])
+                //     }
+                // })
+                allFosters.forEach(([key,value])=>{
                     if(value["currFostering"]){
                         const newAllFosteredForCurrFoster= ref(database, "contacts/active/"+key+"/allFoster/"+currYear)
                         update(newAllFosteredForCurrFoster, value["currFostering"])
@@ -29,7 +35,7 @@ function Admin(){
 
         })
 
-    },[allFosters])
+    },[allFosters,currYear])
 
 
     useEffect(()=>{

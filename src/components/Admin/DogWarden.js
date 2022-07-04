@@ -70,52 +70,54 @@ function DogWarden(){
 
 
     return(
-        <div className='container text-center'>
+        <>
             <AdminNav/>
-            <h1>Dog Warden Report</h1>
-            <hr/>
-            <h4>Adoptable Dogs Currently in the Rescue: {adoptableDogs}</h4>
-            <h4>Pending Adoptions: {pendingAdoptions}</h4>
-            <h4>Dogs Adopted to Date ({currentYear}): {adoptedDogsCurr}</h4>
-            <h4>Dogs Adopted Last Year ({lastYear}): {adoptedDogsPast}</h4>
-            <br/>
-            <h2>Active Fosters</h2>
-            <Table bordered striped hover>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Current</th>
-                        <th>Current Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {fosters.map(foster=>{
-                        return(
-                            <tr key={foster.id}>
-                                <td>{foster.id}</td>
-                                <td>{foster.name}</td>
-                                <td>{foster.address}</td>
-                                <td>{foster.city}</td>
-                                <td>{foster.state}</td>
-                                <td>{foster.currFostering}</td>
-                                <td>{foster.currYearFostered}</td>
-                            </tr>
+            <div className='container text-center'>
+                <h1>Dog Warden Report</h1>
+                <hr/>
+                <h4>Adoptable Dogs Currently in the Rescue: {adoptableDogs}</h4>
+                <h4>Pending Adoptions: {pendingAdoptions}</h4>
+                <h4>Dogs Adopted to Date ({currentYear}): {adoptedDogsCurr}</h4>
+                <h4>Dogs Adopted Last Year ({lastYear}): {adoptedDogsPast}</h4>
+                <br/>
+                <h2>Active Fosters</h2>
+                <Table bordered striped hover>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Current</th>
+                            <th>Current Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {fosters.map(foster=>{
+                            return(
+                                <tr key={foster.id}>
+                                    <td>{foster.id}</td>
+                                    <td>{foster.name}</td>
+                                    <td>{foster.address}</td>
+                                    <td>{foster.city}</td>
+                                    <td>{foster.state}</td>
+                                    <td>{foster.currFostering}</td>
+                                    <td>{foster.currYearFostered}</td>
+                                </tr>
 
-                        )
+                            )
 
-                    })}
+                        })}
 
-                </tbody>
+                    </tbody>
 
-            </Table>
+                </Table>
 
 
-        
-        </div>
+            
+            </div>
+        </>
     )
 }
 

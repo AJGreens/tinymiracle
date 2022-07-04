@@ -4,14 +4,13 @@ import { ref, push, set, onValue, update} from "firebase/database";
 import { ref as sRef, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import { Form, Button, Col, Row, Alert} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
-// import {Circles} from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFilePdf, faXmark} from '@fortawesome/free-solid-svg-icons'
 function DogForm() {
 
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [id, setId] = useState(0)
   const [name, setName] = useState("");
   const [aka, setAka] = useState("")
@@ -64,6 +63,7 @@ function DogForm() {
       })
       setAllFosters(allTempFosters)
     })
+    setLoading(false)
   }, [])
 
 
@@ -289,7 +289,7 @@ function DogForm() {
   return (
     <>
       <AdminNav/>
-        <div className="container">
+        {!loading&&<div className="container">
           <h2>AddAnimal</h2>
           <Form onSubmit={addDog}>
             <Form.Group as = {Row} className="mb-3">
@@ -556,9 +556,9 @@ function DogForm() {
             </Form.Group>
             <br/>
     
-            <Button type = "submit" disabled={loading} variant="primary">Submit</Button>
+            <Button type = "submit" variant="primary">Submit</Button>
           </Form>
-        </div>
+        </div>}
         
     </>
   );
