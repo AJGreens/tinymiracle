@@ -42,13 +42,12 @@ function EditAnimal() {
   const [description, setDescription] = useState();
   const [dateAdded, setDateAdded] = useState()
   const [dateAdopted, setDateAdopted] = useState();
-  
+  const [microChipNum, setMicroChipNum] = useState("");
+
   const [allFiles,setAllFiles]=useState([])
-  const [deletableFiles, setDeleteableFiles]=useState([])
   const [fileCountError,setFileCountError]=useState('')
   const [currImgFile, setCurrImgFile] = useState();
   const [imageUrl,setImageUrl]= useState()
-  const [microChipNum, setMicroChipNum] = useState("");
 
 
 
@@ -64,7 +63,7 @@ function EditAnimal() {
       setAllFiles(tempArr)
     })
 
-  },[])
+  },[prevStatus,token])
 
 
   useEffect(() => {
@@ -106,7 +105,7 @@ function EditAnimal() {
       setAllFosters(allTempFosters)
     })
 
-  }, [prevStatus,token])
+  },[prevStatus,token])
 
 
 
@@ -177,6 +176,7 @@ function EditAnimal() {
   async function updateAnimal(event) {
 
     event.preventDefault()
+    
 
     //CASE 1: Animal was previously adoptable and is now not adoptable
     if (prevStatus ==="adoptable"  && status !== "Adoptable"){
@@ -220,76 +220,6 @@ function EditAnimal() {
       microChipNum: microChipNum
   })
 
-    if (currImgFile !== undefined){
-      const uploadRef = sRef(storage, `${token}/img`)
-      const uploadTask = uploadBytesResumable(uploadRef, currImgFile)
-
-      uploadTask.on('state_changed',
-        (snapshot) => {},
-        (error) => {
-          switch (error.code) {
-            case 'storage/unauthorized':
-              console.log('storage/unauthorized')
-              break;
-            case 'storage/canceled':
-              console.log('storage/canceled')
-              break;
-            case 'storage/unknown':
-              console.log('storage/unknown')
-              break;
-            default:
-              console.log("unseen error")
-          }
-        },
-        () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            update(animalRef,{
-              img: downloadURL
-          })
-          });
-        }
-      )
-    }
-
-    let onlyFiles= allFiles.filter(file=> file.type).map(file=>{
-      return file
-    })
-
-
-    onlyFiles.forEach(item=>{
-      const uploadRef = sRef(storage, `${token}/files/${item.name}`)
-      const uploadTask = uploadBytesResumable(uploadRef, item)
-      uploadTask.on('state_changed',
-        (snapshot) => {},
-        (error) => {
-          switch (error.code) {
-            case 'storage/unauthorized':
-              console.log('storage/unauthorized')
-              break;
-            case 'storage/canceled':
-              console.log('storage/canceled')
-              break;
-            case 'storage/unknown':
-              console.log('storage/unknown')
-              break;
-            default:
-              console.log("unseen error")
-          }
-        },
-        () => {
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                update(ref(database, animalRefStr+"/pdfs/"+(item.name.split(".")[0])),{url:downloadURL, name:item.name})
-          });
-        }
-      )
-      
-    })
- 
-    
-
-
-
-
 
       //scenarios for foster
       //foster stays same
@@ -331,30 +261,81 @@ function EditAnimal() {
     }
 
 
-    //[File, "hafsjkhfajjkhf", File]
+
+    //Image in storage
+    if (currImgFile !== undefined){
+      const uploadRef = sRef(storage, `${token}/img`)
+      const uploadTask = uploadBytesResumable(uploadRef, currImgFile)
+
+      uploadTask.on('state_changed',
+        (snapshot) => {},
+        (error) => {
+          switch (error.code) {
+            case 'storage/unauthorized':
+              console.log('storage/unauthorized')
+              break;
+            case 'storage/canceled':
+              console.log('storage/canceled')
+              break;
+            case 'storage/unknown':
+              console.log('storage/unknown')
+              break;
+            default:
+              console.log("unseen error")
+          }
+        },
+        () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            update(animalRef,{
+              img: downloadURL
+          })
+          });
+        }
+      )
+    }
+
+    //Files in storage
+
+    let onlyFiles= allFiles.filter(file=> file.type).map(file=>{
+      return file
+    })
 
 
-
-    //iterate through allFiles
-      //if a file
-        //push to storage--> get url--> set it to temp array
-
-
-    //["fkshalkhflas", "lhsfjahfj"]
-
-    //iterate through allFiles array
-      //if File
-        //delete
-    //temp=[...allFiles, temp]--> set to realtime databse ref
-
-    //[ "hafsjkhfajjkhf","fkshalkhflas", "lhsfjahfj"]
-
+    onlyFiles.forEach(item=>{
+      const uploadRef = sRef(storage, `${token}/files/${item.name}`)
+      const uploadTask = uploadBytesResumable(uploadRef, item)
+      uploadTask.on('state_changed',
+        (snapshot) => {},
+        (error) => {
+          switch (error.code) {
+            case 'storage/unauthorized':
+              console.log('storage/unauthorized')
+              break;
+            case 'storage/canceled':
+              console.log('storage/canceled')
+              break;
+            case 'storage/unknown':
+              console.log('storage/unknown')
+              break;
+            default:
+              console.log("unseen error")
+          }
+        },
+        () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                update(ref(database, animalRefStr+"/pdfs/"+(item.name.split(".")[0])),{url:downloadURL, name:item.name})
+          });
+        }
+      )
+      
+    })
+ 
     goToManageAnimals()
 
   }
 
 
-  function handleAddFiles(e){
+  function handleChangeFiles(e){
     console.log(e.target.files.length)
     let sameFileName= false;
 
@@ -381,14 +362,12 @@ function EditAnimal() {
     }
   }
 
-  function handleChangeImgTwo(e){
+  function handleChangeImg(e){
     setCurrImgFile(e.target.files[0])
     setImageUrl(URL.createObjectURL(e.target.files[0]))
   }
 
   function handleDeleteFile(j){
-
-
     if(allFiles[j].url){
       if(window.confirm('Are you sure you want to delete this item?')){
       deleteObject(sRef(storage,allFiles[j].url))
@@ -396,8 +375,6 @@ function EditAnimal() {
       remove(deleteFromRTDatabase)
       }
     }
-
-
     let temp=[]
     for(let i=0; i<allFiles.length;i++){
       if(i!==j){
@@ -406,10 +383,6 @@ function EditAnimal() {
       }
     }
     setAllFiles(temp)
-
-
-
-
   }
 
 
@@ -669,7 +642,7 @@ function EditAnimal() {
     
 
             <Form.Group className="mb-3">
-              <Form.Control name = "picture" onChange = {handleChangeImgTwo} style = {{display: 'none'}} id = "uniqueImg" type = "file" placeholder="image" accept="image/*"/> 
+              <Form.Control name = "picture" onChange = {handleChangeImg} style = {{display: 'none'}} id = "uniqueImg" type = "file" placeholder="image" accept="image/*"/> 
               <Form.Label htmlFor = "uniqueImg" className = "btn btn-primary">Upload Picture</Form.Label>
               <br/>
               {imageUrl &&<img src={imageUrl} className="adoptableImg" alt="Cute Dog"/>}
@@ -678,11 +651,11 @@ function EditAnimal() {
 
             <Form.Group>
               {fileCountError!==''&&<Alert variant='danger'>{fileCountError}</Alert>}
-              <Form.Control name = "files" onChange = {handleAddFiles} style = {{display: 'none'}} id = "uniqueFiles" type = "file" multiple={true} /> 
+              <Form.Control name = "files" onChange = {handleChangeFiles} style = {{display: 'none'}} id = "uniqueFiles" type = "file" multiple={true} /> 
               <Form.Label htmlFor = "uniqueFiles" className = "btn btn-success">Upload Files</Form.Label>
               <br/>
               {allFiles.map((file,i)=>{
-                return <div className="m-2" ><FontAwesomeIcon icon={faFilePdf}/>  {file.name} <FontAwesomeIcon onClick={()=>handleDeleteFile(i)} icon={faXmark}/> </div>
+                return <div className="m-2" ><FontAwesomeIcon icon={faFilePdf}/> <a target="_blank"  rel="noreferrer" href={file.url? file.url: URL.createObjectURL(file)} className="link-primary">{file.name}</a> <FontAwesomeIcon onClick={()=>handleDeleteFile(i)} icon={faXmark}/> </div>
               })}
             </Form.Group>
             <br/>

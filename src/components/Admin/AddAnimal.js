@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { database, storage } from '../Firebase'
 import { ref, push, set, onValue, update} from "firebase/database";
-import { ref as sRef, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
-import { Form, Button, Col, Row} from 'react-bootstrap'
+import { ref as sRef, uploadBytesResumable, getDownloadURL} from "firebase/storage";
+import { Form, Button, Col, Row, Alert} from 'react-bootstrap'
 import AdminNav from "./AdminNav"
-import {Circles} from 'react-loader-spinner';
+// import {Circles} from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faFilePdf, faXmark} from '@fortawesome/free-solid-svg-icons'
 function DogForm() {
 
-  const [allFosters, setAllFosters]=useState([])
-
   const navigate = useNavigate()
-
   const [loading, setLoading] = useState(false)
   const [id, setId] = useState(0)
   const [name, setName] = useState("");
@@ -27,11 +26,15 @@ function DogForm() {
   const [shelter, setShelter] = useState("");
   const [dateDue, setDateDue] = useState("");
   const [description, setDescription] = useState("");
-  const [imageFile, setImageFile] = useState();
-  const [imageUrl, setImageUrl] = useState("")
   const [dateAdopted, setDateAdopted] = useState("");
-  const [activeFosters, setActiveFosters] = useState([]);
+  const [allFosters, setAllFosters]=useState([])
   const [microChipNum, setMicroChipNum] = useState("");
+
+
+  const [allFiles,setAllFiles]=useState([])
+  const [fileCountError,setFileCountError]=useState('')
+  const [currImgFile, setCurrImgFile] = useState();
+  const [imageUrl,setImageUrl]= useState()
  
 
   const current = new Date();
@@ -113,77 +116,27 @@ function DogForm() {
     }
   }
 
-  function handleChangeImg(e) {
-    setLoading(true)
-
-    if (imageUrl) {
-      handleDelete()
-    }
-    //Do we need async?
-
-    const tempFile = e.target.files[0];
-
-    if (tempFile !== undefined){
-    const uploadRef = sRef(storage, `/images/adoptable/${tempFile.name+tempFile.lastModified+tempFile.size}`)
-    const uploadTask = uploadBytesResumable(uploadRef, tempFile)
-
-    uploadTask.on('state_changed',
-      (snapshot) => {},
-      (error) => {
-        switch (error.code) {
-          case 'storage/unauthorized':
-            setLoading(false)
-            break;
-          case 'storage/canceled':
-            setLoading(false)
-            break;
-          case 'storage/unknown':
-            setLoading(false)
-            break;
-          default:
-            console.log("storage error")
-        }
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImageUrl(downloadURL)
-          setImageFile(tempFile)
-          setLoading(false)
-
-        });
-      }
-    );
-    }
-    else{
-      setLoading(false)
-
-    }
-
-  }
-
-
-  function handleDelete() {
-    const desertRef = sRef(storage, `/images/adoptable/${imageFile.name+imageFile.lastModified+imageFile.size}`);
-    // Delete the file
-    deleteObject(desertRef).then(() => {
-      // File deleted successfully
-    }).catch((error) => {
-      // Uh-oh, an error occurred!
-    });
-
-    setImageFile();
-    setImageUrl();
-  }
-
-
+  
+  
   function addDog(event) {
     event.preventDefault()
+    
     let animalRef = ref(database, 'animals/other/')
     if (status === "Adoptable"){
       animalRef = ref(database, 'animals/adoptable/')
     }
 
     const newanimalRef = push(animalRef)
+    const token= newanimalRef.key
+
+    let animalRefStr ='animals/other/'+token
+    if (status === "Adoptable"){
+      animalRefStr = 'animals/adoptable/'+token
+    }
+    
+    console.log(animalRefStr)
+    
+    
     const counterRef= ref(database,'animalsCounter')
     set(counterRef, id+1)
 
@@ -205,10 +158,6 @@ function DogForm() {
       dateDue:dateDue,
       dateAdded: date,
       description: description,
-      img: imageUrl && imageFile? imageUrl: "",
-      imgFileName: imageUrl && imageFile? imageFile.name: "",
-      imgFileLastModified: imageUrl && imageFile? imageFile.lastModified:"",
-      imgFileSize: imageUrl && imageFile? imageFile.size:"",
       dateAdopted: dateAdopted
     })
 
@@ -221,7 +170,118 @@ function DogForm() {
         update(currFosterRef,{name: name})
       }
     }
+
+     //Image in storage
+     if (currImgFile !== undefined){
+      const uploadRef = sRef(storage, `${token}/img`)
+      const uploadTask = uploadBytesResumable(uploadRef, currImgFile)
+
+      uploadTask.on('state_changed',
+        (snapshot) => {},
+        (error) => {
+          switch (error.code) {
+            case 'storage/unauthorized':
+              console.log('storage/unauthorized')
+              break;
+            case 'storage/canceled':
+              console.log('storage/canceled')
+              break;
+            case 'storage/unknown':
+              console.log('storage/unknown')
+              break;
+            default:
+              console.log("unseen error")
+          }
+        },
+        () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            update(ref(database, animalRefStr),{img: downloadURL})
+          });
+        }
+      )
+    }
+
+    //Files in storage
+
+    let onlyFiles= allFiles.filter(file=> file.type).map(file=>{
+      return file
+    })
+
+
+    onlyFiles.forEach(item=>{
+      const uploadRef = sRef(storage, `${token}/files/${item.name}`)
+      const uploadTask = uploadBytesResumable(uploadRef, item)
+      uploadTask.on('state_changed',
+        (snapshot) => {},
+        (error) => {
+          switch (error.code) {
+            case 'storage/unauthorized':
+              console.log('storage/unauthorized')
+              break;
+            case 'storage/canceled':
+              console.log('storage/canceled')
+              break;
+            case 'storage/unknown':
+              console.log('storage/unknown')
+              break;
+            default:
+              console.log("unseen error")
+          }
+        },
+        () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                update(ref(database, animalRefStr+"/pdfs/"+(item.name.split(".")[0])),{url:downloadURL, name:item.name})
+          });
+        }
+      )
+      
+    })
+
+
     navigate('/manageAnimals')
+  }
+
+  function handleChangeFiles(e){
+    console.log(e.target.files.length)
+    let sameFileName= false;
+
+    for(const newFile of e.target.files){
+      for(const oldFile of allFiles){
+        console.log(newFile.name, oldFile.name)
+        if(newFile.name.split(".")[0]===oldFile.name.split(".")[0]){
+          sameFileName=true
+          break
+        }
+      }
+
+    }
+
+    if(allFiles.length+e.target.files.length>5){
+      setFileCountError('Can not add more than five files')
+    }
+    else if(sameFileName){
+      setFileCountError('Can not have same file names')
+    }
+    else{
+      setFileCountError('')
+      setAllFiles([...allFiles,...e.target.files])
+    }
+  }
+
+  function handleChangeImg(e){
+    setCurrImgFile(e.target.files[0])
+    setImageUrl(URL.createObjectURL(e.target.files[0]))
+  }
+
+  function handleDeleteFile(j){
+    let temp=[]
+    for(let i=0; i<allFiles.length;i++){
+      if(i!==j){
+        temp.push(allFiles[i])
+        
+      }
+    }
+    setAllFiles(temp)
   }
 
 
@@ -476,15 +536,25 @@ function DogForm() {
               <Form.Label>Dog Description</Form.Label>
               <Form.Control as="textarea" rows={3} name = "description" onChange = {handleChange} value = {description} type = "text"/>
             </Form.Group>
-    
+
             <Form.Group className="mb-3">
-              <Form.Label>Picture</Form.Label>
-              <Form.Control name = "picture" onChange = {handleChangeImg} type = "file" placeholder="image" accept="image/*"/>
+              <Form.Control name = "picture" onChange = {handleChangeImg} style = {{display: 'none'}} id = "uniqueImg" type = "file" placeholder="image" accept="image/*"/> 
+              <Form.Label htmlFor = "uniqueImg" className = "btn btn-primary">Upload Picture</Form.Label>
               <br/>
-              {loading && <Circles color="#00BFFF" height={80} width={80}/>}
-              {imageFile&&<div><h6>{imageFile.name}</h6></div>}
-              {imageUrl&&<img src={imageUrl} className="adoptableImg"/>}
+              {imageUrl &&<img src={imageUrl} className="adoptableImg" alt="Cute Dog"/>}
             </Form.Group>
+
+
+            <Form.Group>
+              {fileCountError!==''&&<Alert variant='danger'>{fileCountError}</Alert>}
+              <Form.Control name = "files" onChange = {handleChangeFiles} style = {{display: 'none'}} id = "uniqueFiles" type = "file" multiple={true} /> 
+              <Form.Label htmlFor = "uniqueFiles" className = "btn btn-success">Upload Files</Form.Label>
+              <br/>
+              {allFiles.map((file,i)=>{
+                return <div className="m-2" ><FontAwesomeIcon icon={faFilePdf}/> <a target="_blank"  rel="noreferrer" href={file.url? file.url: URL.createObjectURL(file)} className="link-primary">{file.name}</a> <FontAwesomeIcon onClick={()=>handleDeleteFile(i)} icon={faXmark}/> </div>
+              })}
+            </Form.Group>
+            <br/>
     
             <Button type = "submit" disabled={loading} variant="primary">Submit</Button>
           </Form>
