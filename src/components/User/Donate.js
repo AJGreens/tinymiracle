@@ -13,11 +13,11 @@ function Donate(){
 
     return(
         <>
-        <div className = "background">
+        <div className = "container-fluid text-center userHtml" id="noPadding">
         <UserNav />
-        <div className="container">
+        <div className="container" id="extra3Padding">
             <div id="centerColumn">
-			    <h1 style = {{marginTop: 40}}>Many Ways To Give!</h1><br/>
+			    <h1>Many Ways To Give!</h1><br/>
 				<div id="donateOptions">
                     <ul style = {{listStyle: 'none'}}>
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">

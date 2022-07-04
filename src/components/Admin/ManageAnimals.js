@@ -10,7 +10,6 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 import filterFactory, { textFilter, selectFilter} from 'react-bootstrap-table2-filter';
 
-
 function ManageAnimals(){
         
   const [dogs, setDogs]= useState([])

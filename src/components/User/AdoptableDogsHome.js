@@ -9,18 +9,14 @@ import {useNavigate} from 'react-router-dom';
 
 
 
-
 function AdoptableDogsHome(){
 
   const navigate = useNavigate()
 
-
-
-
   function goToAdoptionProcess(dogToken){
     console.log("Wellit was called to go the thing")
     console.log("dogtoken:"+dogToken)
-navigate("/adoptionProcess/"+dogToken)
+    navigate("/adoptionProcess/"+dogToken)
   }
     
     
@@ -40,9 +36,9 @@ navigate("/adoptionProcess/"+dogToken)
     
     return(
       <>
-      <div className = "background">
-      <UserNav/>
-        <div className='container text-center'>
+      <div className = "container-fluid text-center userHtml" id="noPadding">
+        <UserNav/>
+        <div id="extra3Padding">
             {/* <FontAwesomeIcon icon={faDog} /> */}
             <h1>Adoptable Dogs</h1>
             {dogs.map(dog=> 

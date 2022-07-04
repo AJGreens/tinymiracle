@@ -1,6 +1,4 @@
 #centerColumn{
-   
-
     text-align: center;
 }
 
@@ -89,10 +87,6 @@ h2, h1, h3{
     color: red;
 }
 
-.background{
-    /* color: #386A92; */
-    background-color: #FFEFD3;
-}
 .navLink{
     padding-top: 0px !important;
     /* border: red solid 2px; */
@@ -103,5 +97,36 @@ h2, h1, h3{
     max-width: 400px;
 }
 
-html {background-color: #FFEFD3;}
 
+.homeMid{
+    margin: 30px;
+}
+.dogContainer{
+    border-radius: 25px;
+    border: black solid 5px;
+    padding: 20px;
+}
+
+.outerFlex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+.downloadBtns{
+    margin: 5px;
+    width:100%;
+}
+.loginInner{
+    padding: 10px;
+}
+.sr-only{
+    display: none;
+}
+.sr-only{
+    display: none
+}
+#readOnly {
+    background-color: white;
+  }

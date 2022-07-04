@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import {database} from '../Firebase'
 import {ref, get, update,set} from "firebase/database";
 
-
 function Admin(){
 
     const currYear= new Date().getFullYear()

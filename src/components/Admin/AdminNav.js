@@ -24,7 +24,7 @@ function AdminNav(){
         <>
             <Navbar bg="light" variant="light">
                 <Container>
-                    <Nav className="me-auto">
+                    <Nav className="m-auto">
                         <Nav.Link as={Link} to="/">View Site</Nav.Link>
                         <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
                         <Nav.Link as={Link} to="/manageAnimals">Manage Animals</Nav.Link>

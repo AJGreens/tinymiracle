@@ -7,7 +7,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 
-
 function UpdateContact(){
     const [Name, setName] = useState("");
     const [Address, setAddress] = useState("");

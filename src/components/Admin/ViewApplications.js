@@ -10,7 +10,6 @@ import {Link} from 'react-router-dom';
 
 
 
-
 function ViewApplications(){
 
   const [allAdoptionForms, setAllAdoptionForms] = useState([]) 

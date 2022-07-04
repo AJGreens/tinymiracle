@@ -10,7 +10,6 @@ import AdminNav from './AdminNav'
 
 
 
-
 function SpecificApplication(){
 
     const {token} = useParams();

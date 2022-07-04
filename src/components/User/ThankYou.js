@@ -6,7 +6,6 @@ import dog from './DogImages/wink.png'
 
 
 
-
 function ThankYou(){
 
 

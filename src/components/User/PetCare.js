@@ -5,29 +5,19 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Carousel from 'react-bootstrap/Carousel'
 import dogA from './DogImages/A.jpeg'
-import dogB from './DogImages/dogB.jpeg'
 import dogC from './DogImages/dogC.jpeg'
 import dogD from './DogImages/dogD.jpeg'
 import dogE from './DogImages/dogE.jpeg'
 import dogF from './DogImages/dogF.jpeg'
-import dogG from './DogImages/dogG.jpeg'
-
 
 
 function PetCare(){
 
     return(
         <>
-        <div className = "background">
+        <div className='container-fluid userHtml' id="noPadding">
         <UserNav />
-        <div className="container"  style={{marginTop:40, textAlign: 'center'}}>
-
-
-
- 
-
-            {/* <h2>Pet Care</h2> */}
-
+        <div className="container text-center" id="extra3Padding">
 
             <h1>Your Pet’s Favorite Bucks County Bed & Breakfast!</h1>
             <div style = {{textAlign: "left"}}>

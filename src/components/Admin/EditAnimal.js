@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFilePdf, faXmark} from '@fortawesome/free-solid-svg-icons'
 
 
-
 function EditAnimal() {
 
   

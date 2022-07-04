@@ -1,16 +1,15 @@
 import React from 'react'
 import UserNav from './UserNav'
 
-
 function Contact(){
     return(
         <>
-         <div className='background'>
+         <div className = "container-fluid userHtml text-center" id="noPadding">
         <UserNav />
        
-        <div className="container"  style={{marginTop:40}}>
+        <div className="container" id="extra3Padding" >
 
-        <h3 style = {{marginLeft: "25%"}}>
+        <h3>
         Pet Care & Day Care Contact
             </h3>
 
@@ -30,7 +29,7 @@ tiny_miracles@msn.com
 </p>
 </div>
 
-<h3 style = {{marginTop: 50, marginLeft: "25%"}}>
+<h3 >
 Rescue Contact
             </h3>
 
