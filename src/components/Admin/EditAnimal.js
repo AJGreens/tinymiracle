@@ -469,13 +469,28 @@ function updateAnimal(event) {
 
   function handleAddFiles(e){
     console.log(e.target.files.length)
+    let sameFileName= false;
+
+    for(const newFile of e.target.files){
+      for(const oldFile of allFiles){
+        console.log(newFile.name, oldFile.name)
+        if(newFile.name.split(".")[0]===oldFile.name.split(".")[0]){
+          sameFileName=true
+          break
+        }
+      }
+
+    }
+
     if(allFiles.length+e.target.files.length>5){
       setFileCountError('Can not add more than five files')
+    }
+    else if(sameFileName){
+      setFileCountError('Can not have same file names')
     }
     else{
       setFileCountError('')
       setAllFiles([...allFiles,...e.target.files])
-      
     }
   }
 
