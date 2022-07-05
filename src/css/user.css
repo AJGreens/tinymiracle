@@ -165,8 +165,24 @@ h2, h1, h3{
 }
 
 .homeNavLink{
-    color:white !important;
+    color:#FFEFD3 !important;
 }
 .homeNavLink:hover{
     text-decoration: underline;
+}
+.beegDogFrame{
+    width: 100%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+
+}
+.beegDog{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    position: absolute;
+
+
+    /* object-position: -100px 50px; */
 }

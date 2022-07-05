@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { faTractor,faPaw, faKitMedical} from '@fortawesome/free-solid-svg-icons'
 import UserNav from './UserNav'
+import widedog from './DogImages/widedog.jpg'
 
 function Home(){
     return(
@@ -11,10 +12,14 @@ function Home(){
         <>
             <div className='container-fluid userHtml' id="noPadding">
                 <UserNav />
+                <div className = "beegDogFrame">
+                    <img className ="beegDog" src = {widedog} alt ="cutedoggie"/>
+                </div>
                 <div id="extra3Padding">
-                    <div className="container text-center mt-4">
+                    <div className="container text-center">
                         {/* <h1 className="display-2 font-weight-bold">Tiny Miracles</h1> */}
-                        <Row className="mt-4 theme">
+                   
+                        <Row className=" theme">
                             <Col>
                                 <FontAwesomeIcon icon={faTractor} size="3x" />
                                 <h2 className="mt-2">Farm</h2>
