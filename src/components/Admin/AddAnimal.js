@@ -135,7 +135,6 @@ function DogForm() {
       animalRefStr = 'animals/adoptable/'+token
     }
     
-    console.log(animalRefStr)
     
     
     const counterRef= ref(database,'animalsCounter')

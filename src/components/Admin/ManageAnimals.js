@@ -32,10 +32,12 @@ function ManageAnimals(){
         })
         setDogs([...adoptableDogs,...otherDogs])
       }
+      else{
+        setDogs([])
+      }
     })
 
   },[])
-
 
 
 
@@ -176,6 +178,9 @@ function ManageAnimals(){
                   { ...props.baseProps }
                   pagination={paginationFactory({ sizePerPage: 10 })}
                   filter={ filterFactory() }
+                  noDataIndication="No Match"
+                  striped
+                  hover
                 />
               </>
             )}

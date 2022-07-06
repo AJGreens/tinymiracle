@@ -26,3 +26,36 @@
 #readOnly {
     background-color: white;
   }
+
+.adminNavActiveLink{
+    color:black !important;
+}
+
+.adminNavActiveLink::after{
+    content: '';
+    background-color: black;
+    display: block;
+    height: 4px;
+    width: 100%;
+}
+
+
+.adminNavLink{
+    color:black !important;
+}
+
+.adminNavLink::after{
+    content: '';
+    background-color: transparent;
+    display: block;
+    height: 4px;
+    width: 0;
+    transition: width .5s ease, background-color .5s ease;
+
+}
+
+.adminNavLink:hover::after{
+   width: 100%;
+   background-color: black;
+    
+}

@@ -10,17 +10,14 @@ import {useNavigate} from 'react-router-dom';
 
 
 function AdoptableDogsHome(){
-
+  const [dogs, setDogs] = useState([]);
+  
   const navigate = useNavigate()
 
   function goToAdoptionProcess(dogToken){
-    console.log("Wellit was called to go the thing")
-    console.log("dogtoken:"+dogToken)
     navigate("/adoptionProcess/"+dogToken)
   }
     
-    
-  const [dogs, setDogs] = useState([]);
   
   useEffect(()=>{
     const dogRef = ref(database, 'animals/adoptable');
@@ -34,13 +31,12 @@ function AdoptableDogsHome(){
     });
   },[])
     
-    return(
-      <>
-      <div className = "container-fluid text-center userHtml" id="noPadding">
+  return(
+    <>
+      <div className = "container-fluid text-center userHtml themeBlue" id="noPadding">
         <UserNav/>
         <div id="extra3Padding">
-            {/* <FontAwesomeIcon icon={faDog} /> */}
-            <h1>Adoptable Dogs</h1>
+          <h1>Adoptable Dogs</h1>
             {dogs.map(dog=> 
               <div className="container mt-4 dogContainer" key={dog.id}>
                 <h2>{dog.name}</h2>
@@ -58,10 +54,10 @@ function AdoptableDogsHome(){
               </div>
             )}
         </div>
-        </div>
-      </>
+      </div>
+    </>
         
-        )
+  )
     
 }
 
