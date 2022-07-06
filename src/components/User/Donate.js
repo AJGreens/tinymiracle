@@ -1,7 +1,7 @@
 import React from "react";
 import UserNav from "./UserNav";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAmazon, faPaypal } from "@fortawesome/free-brands-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faAmazon, faPaypal } from "@fortawesome/free-brands-svg-icons";
 
 function Donate() {
   const bullet = {
@@ -50,7 +50,7 @@ function Donate() {
                   </li>
                 </form>
                 <li>
-                  <p class="txt1" className="theme" style={bullet}>
+                  <p className="theme" style={bullet}>
                     Sign in with{" "}
                     <a href="https://smile.amazon.com/charity?orig=%2F">
                       {" "}
@@ -81,7 +81,7 @@ function Donate() {
                 </li>
                 <li style={{ padding: "50px, 0px", marginTop: "30px" }}>
                   <form action="https://barkbox.com/tinymiracles" method="post">
-                    <p class="txt1" className="theme" style={bullet}>
+                    <p className="theme" style={bullet}>
                       Sign up for Bark Box for your pup&nbsp;&nbsp;
                       <input
                         type="image"

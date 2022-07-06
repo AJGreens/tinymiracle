@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {database} from '../Firebase'
+import {database,storage} from '../Firebase'
 import {ref, onValue, remove} from "firebase/database";
+import { ref as sRef, deleteObject, listAll } from "firebase/storage";
 import AdminNav from "./AdminNav"
 import {Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
@@ -56,6 +57,12 @@ function ManageAnimals(){
      if (window.confirm('Are you sure you want to delete this item?')){
        remove(deleteable)
        remove(ref(database, "contacts/active/"+fosterToken+"/currFostering/"+token))
+       deleteObject(sRef(storage, token+"/img"))
+       listAll(sRef(storage, token+"/files")).then((res)=>{
+        res.items.forEach((item)=>{
+          deleteObject(item)
+        })
+       })
      }
    }
  

@@ -144,7 +144,6 @@ function AdoptionForm() {
   let { token } = useParams();
 
   useEffect(() => {
-    console.log(token);
     const animalToken = ref(database, "animals/adoptable/" + token);
     onValue(animalToken, (snapshot) => {
       const data = snapshot.val();
@@ -276,8 +275,8 @@ function AdoptionForm() {
               onChange={handleChange}
             >
               <option>General (any Dog)</option>
-              {adoptableDogs.map((dog) => (
-                <option>{dog.name}</option>
+              {adoptableDogs.map((dog, i) => (
+                <option key={i}>{dog.name}</option>
               ))}
             </Form.Select>
           </Form.Group>
