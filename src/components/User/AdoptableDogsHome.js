@@ -21,13 +21,17 @@ function AdoptableDogsHome(){
   
   useEffect(()=>{
     const dogRef = ref(database, 'animals/adoptable');
-    const otherRef = ref(database, 'animals/other');
     onValue(dogRef, (snapshot) => {
       const data = snapshot.val();
-      let allDogs=Object.entries(data).map(([key, value]) => {
-          return {id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]}
-      })
-      setDogs(allDogs);
+      if(data!==null){
+        let allDogs=Object.entries(data).map(([key, value]) => {
+            return {id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]}
+        })
+        setDogs(allDogs);
+      }
+      else{
+        setDogs([])
+      }
     });
   },[])
     
