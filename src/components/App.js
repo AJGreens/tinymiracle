@@ -37,11 +37,11 @@ function App() {
                 <Route exact path="/petcare" element={<PetCare/>}/>
                 <Route exact path="/donate" element={<Donate/>}/>
                 <Route exact path="/contact" element={<Contact/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/adoptionProcess/:token" element={<AdoptionProcess/>}/>
-                <Route path="/adoptionForm/:token" element={<AdoptionForm/>}/>
-                <Route path="/thankyou" element={<ThankYou/>}/>
-                <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
+                <Route exact path="/login" element={<Login/>}/>
+                <Route exact path="/adoptionProcess/:token" element={<AdoptionProcess/>}/>
+                <Route exact path="/adoptionForm/:token" element={<AdoptionForm/>}/>
+                <Route exact path="/thankyou" element={<ThankYou/>}/>
+                <Route exact path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
 
 
                 <Route exact path="/admin" element={<PrivateRoute/>}>

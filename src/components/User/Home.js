@@ -15,9 +15,8 @@ function Home(){
                 <div className = "beegDogFrame">
                     <img className ="beegDog" src = {widedog} alt ="cutedoggie"/>
                 </div>
-                <div id="extra3Padding">
+                <div id="extra3Padding" className='themeBlue'>
                     <div className="container text-center">
-                        {/* <h1 className="display-2 font-weight-bold">Tiny Miracles</h1> */}
                    
                         <Row className=" theme">
                             <Col>
@@ -34,7 +33,7 @@ function Home(){
                             </Col>
                         </Row>
                     </div>
-                    <div className='container text-center homeMid'>
+                    <div className='container text-center' id="extra30MarginTB">
                         <Row>
                             <Col>
                                 <h2>Our Inspiration</h2>

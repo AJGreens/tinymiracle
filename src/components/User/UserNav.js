@@ -1,6 +1,6 @@
 import React from 'react'
 import{Navbar,Nav, Container} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 import logo from './DogImages/weblogo.png'
 import {useAuth} from "../Admin/AuthContext"
 
@@ -25,17 +25,20 @@ function UserNav(){
         <>
             <div className="container-fluid userNav text-center">
                 <img src = {logo} id="logoPic"/>
-                <Navbar>
+                <Navbar collapseOnSelect expand="lg">
                     <Container>
-                        <Nav className="m-auto">
-                            <Nav.Link as={Link} className="homeNavLink" to="/">Home</Nav.Link>
-                            <Nav.Link as={Link} className="homeNavLink" to="/adoptabledogshome">Adoptable Dogs</Nav.Link>
-                            <Nav.Link as={Link} className="homeNavLink" to="/petcare">Pet Care</Nav.Link>
-                            <Nav.Link as={Link} className="homeNavLink" to="/donate">Donate</Nav.Link>
-                            <Nav.Link as={Link} className="homeNavLink" to="/contact">Contact</Nav.Link>
-                            {user?<Nav.Link as={Link} className="homeNavLink" to="/admin">Admin</Nav.Link>: <Nav.Link clasName = "navLink" as={Link} to="/login">Login</Nav.Link>}
-                            {user && <Nav.Link className="homeNavLink" onClick={handleSignOut}>Logout</Nav.Link>}
-                        </Nav>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="m-auto">
+                                <NavLink  className={({isActive})=> "nav-link "+ (isActive? "homeNavActiveLink": "homeNavLink")}  to="/">Home</NavLink>
+                                <NavLink  className={({isActive})=> "nav-link "+ (isActive? "homeNavActiveLink": "homeNavLink")} to="/adoptabledogshome">Adoptable Dogs</NavLink>
+                                <NavLink  className={({isActive})=> "nav-link "+ (isActive? "homeNavActiveLink": "homeNavLink")} to="/petcare">Pet Care</NavLink>
+                                <NavLink  className={({isActive})=> "nav-link "+ (isActive? "homeNavActiveLink": "homeNavLink")} to="/donate">Donate</NavLink>
+                                <NavLink  className={({isActive})=> "nav-link "+ (isActive? "homeNavActiveLink": "homeNavLink")} to="/contact">Contact</NavLink>
+                                {user?<NavLink  className= "nav-link homeNavLink" to="/admin">Admin</NavLink>: <NavLink className = "nav-link homeNavLink" to="/login">Login</NavLink>}
+                                {user && <NavLink  className="nav-link homeNavLink" onClick={handleSignOut}>Logout</NavLink>}
+                            </Nav>
+                        </Navbar.Collapse>
                     </Container>
                 </Navbar>
             </div>

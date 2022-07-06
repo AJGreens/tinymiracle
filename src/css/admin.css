@@ -2,109 +2,8 @@
     text-align: center;
 }
 
-
-.legend{
-    width: 400px;
-    border: red solid 9px;
-}
 .dateField{
     width: 140px;
-}
-
-
-
-
-#donateOptions{
-    margin-left: 20%;
-    margin-right: 20%;
-
-    text-align: left;
-}
-#contactOptions{
-    margin-left: 30%;
-    margin-right: 30%;
-
-    text-align: left;
-}
-
-#minorText{
-    font-size: 12 !important;
-    color: #686868;
-    margin-top: 0;
-    padding-top: 0;
-    border: black, solid, 2px;
-}
-
-.main{
-    margin-top: 30px;
-}
-
-.box{
-    margin-right: 5px;
-    margin-left: 5px;
-    vertical-align: top;
-    padding: 5px 10px 5px 10px;
-    display: inline-block;
-    border: black solid 2px;
-    border-radius: 15px;
-}
-
-.specificRow{
-    border: blue solid 0px;
-     width: 100%;
-     margin: auto !important;
-}
-
-.inSpecificCol{
-display: inline-block;
-border: blue solid 0px;
-float: left;
-text-align: left;
-}
-.inSpecificColB{
-display: inline-block;
-border: blue solid 0px;
-float: right;
-text-align: left;
-}
-
-
-.specificBigDiv{
-    margin: 0 auto;
-    width: 80%;
-    border: red solid 0px;
-}
-
-.theme{
-    color: #144771;
-   
-}
-h2, h1, h3{
-    color: #144771;
-
-}
-.secondaryTheme{
-    color: red;
-}
-
-.navLink{
-    padding-top: 0px !important;
-    /* border: red solid 2px; */
-}
-
-.adoptableImg{
-    max-height: 400px;
-    max-width: 400px;
-}
-
-
-.homeMid{
-    margin: 30px;
-}
-.dogContainer{
-    border-radius: 25px;
-    border: black solid 5px;
-    padding: 20px;
 }
 
 .outerFlex{
@@ -123,9 +22,6 @@ h2, h1, h3{
 }
 .sr-only{
     display: none;
-}
-.sr-only{
-    display: none
 }
 #readOnly {
     background-color: white;

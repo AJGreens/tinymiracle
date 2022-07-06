@@ -2,16 +2,34 @@
     border: 4px solid red
 } */
 
+/* 
+
+.specificRow{
+    border: blue solid 0px;
+     width: 100%;
+     margin: auto !important;
+}
+
+.inSpecificCol{
+display: inline-block;
+border: blue solid 0px;
+float: left;
+text-align: left;
+}
+.inSpecificColB{
+display: inline-block;
+border: blue solid 0px;
+float: right;
+text-align: left;
+} */
+
+
+
 
 #centerColumn{
     text-align: center;
 }
 
-
-/* .legend{
-    width: 400px;
-    border: red solid 9px;
-} */
 .dateField{
     width: 140px;
 }
@@ -25,7 +43,6 @@
 #contactOptions{
     margin-left: 30%;
     margin-right: 30%;
-
     text-align: left;
 }
 
@@ -51,42 +68,10 @@
     border-radius: 15px;
 }
 
-.specificRow{
-    border: blue solid 0px;
-     width: 100%;
-     margin: auto !important;
-}
 
-.inSpecificCol{
-display: inline-block;
-border: blue solid 0px;
-float: left;
-text-align: left;
-}
-.inSpecificColB{
-display: inline-block;
-border: blue solid 0px;
-float: right;
-text-align: left;
-}
-
-
-.specificBigDiv{
-    margin: 0 auto;
-    width: 80%;
-    border: red solid 0px;
-}
-
-.theme{
+.themeBlue{
     color: #144771;
    
-}
-h2, h1, h3{
-    color: #144771;
-
-}
-.secondaryTheme{
-    color: red;
 }
 
 
@@ -97,9 +82,6 @@ h2, h1, h3{
 }
 
 
-.homeMid{
-    margin: 30px;
-}
 .dogContainer{
     border-radius: 25px;
     border: black solid 5px;
@@ -113,27 +95,7 @@ h2, h1, h3{
     height: 100vh;
     width: 100vw;
 }
-.downloadBtns{
-    margin: 5px;
-    width:100%;
-}
-.loginInner{
-    padding: 10px;
-}
-.sr-only{
-    display: none;
-}
-.sr-only{
-    display: none
-}
-#readOnly {
-    background-color: white;
-  }
 
-
-#customUserBackground{
-    
-}
 
 .userHtml{
     background: #FFEFD3;
@@ -142,14 +104,11 @@ h2, h1, h3{
 
 }
 
+
 .userNav{
     background-color: #386A92;
 }
 
-/* .navLink{
-    padding-top: 0px !important;
-    color:white;
-} */
 
 #noPadding{
     padding: 0;
@@ -167,9 +126,34 @@ h2, h1, h3{
 .homeNavLink{
     color:#FFEFD3 !important;
 }
-.homeNavLink:hover{
-    text-decoration: underline;
+
+.homeNavLink::after{
+    content: "";
+    background-color: transparent;
+    height: 4px;
+    width: 0;
+    display: block;
+    transition: width .5s ease, background-color .5s ease;
+
 }
+
+.homeNavLink:hover::after{
+    width: 100%;
+    background-color: white;
+}
+
+.homeNavActiveLink{
+    color:#FFEFD3 !important;
+}
+.homeNavActiveLink::after{
+    content: "";
+    background-color: white;
+    height: 4px;
+    width: 100%;
+    display: block;
+}
+
+
 .beegDogFrame{
     width: 100%;
     height: 350px;
@@ -181,8 +165,11 @@ h2, h1, h3{
     width: 100%;
     height: 400px;
     object-fit: cover;
-    position: absolute;
-
-
-    /* object-position: -100px 50px; */
+    /* position: absolute; */
 }
+
+
+#extra30MarginTB{
+    margin: 3% auto;
+}
+
