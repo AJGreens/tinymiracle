@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import { Container, Form, Button } from "react-bootstrap";
 
 import { useParams } from "react-router-dom";
@@ -7,6 +7,7 @@ import { database } from "../Firebase";
 import { ref, onValue, set, push } from "firebase/database";
 import UserNav from "./UserNav";
 import { useNavigate } from "react-router-dom";
+import emailjs from '@emailjs/browser';
 
 function AdoptionForm() {
   const current = new Date();
@@ -80,6 +81,21 @@ function AdoptionForm() {
   const [readDisclaimer, setReadDisclaimer] = useState(false);
 
   const [adoptableDogs, setAdoptableDogs] = useState([]);
+
+  const form = useRef();
+
+function sendEmail(){
+
+    emailjs.sendForm('service_6sdkij8', 'template_lel7rzp', form.current, 'xKLZsRGD8_RqxumuA')
+    .then((result) => {
+        console.log(result.text);
+    }, (error) => {
+        console.log(error.text);
+    });
+
+}
+
+
 
   function handleChange(event) {
     switch (event.target.name) {
@@ -249,6 +265,8 @@ function AdoptionForm() {
       readDisclaimer: readDisclaimer,
     });
 
+    sendEmail()
+
     navigate("/thankyou");
   }
 
@@ -257,7 +275,7 @@ function AdoptionForm() {
       <UserNav />
       <Container className="mt-4">
         <h1 className="text-center mb-4">Adoption Application</h1>
-        <Form onSubmit={handleSubmit}>
+        <Form ref = {form} onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Label>Animal Name</Form.Label>
             <Form.Select
