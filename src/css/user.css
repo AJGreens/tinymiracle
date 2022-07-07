@@ -26,20 +26,12 @@ text-align: left;
 
 
 
-#centerColumn{
-    text-align: center;
-}
 
 .dateField{
     width: 140px;
 }
 
-#donateOptions{
-    margin-left: 20%;
-    margin-right: 20%;
 
-    text-align: left;
-}
 #contactOptions{
     margin-left: 30%;
     margin-right: 30%;
@@ -177,4 +169,57 @@ text-align: left;
 .petCareCarouselPics{
     height: 30vh;
     object-fit: cover;
+}
+
+.donatePics{
+    max-width: 200px;
+    display:inline-block;
+    vertical-align: middle;
+
+  
+}
+
+.donateList{
+    list-style: none;
+}
+.donateList>li{
+    margin: 3% 20%;
+}
+
+#paypalHeader{
+    background-color: transparent;
+    border: 0px;
+    color:#144771;
+    font-weight: 500;
+}
+
+.donateHeaders{
+    text-decoration: none;
+    color:#144771;
+    display: inline-block;
+
+}
+.donateHeaders:hover{
+    color:#144771;
+
+}
+
+.donateHeaders::after{
+    content: '';
+    height: 4px;
+    width: 0;
+    background-color: transparent;
+    display: block;
+    margin-top: 5px;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+.donateHeaders:hover::after{
+    width: 100%;
+    background-color: #144771;
+}
+
+.donateP{
+    font-size: large;
+    text-align: center;
 }

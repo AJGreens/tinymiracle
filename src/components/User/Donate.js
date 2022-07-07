@@ -1,105 +1,115 @@
 import React from "react";
 import UserNav from "./UserNav";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faAmazon, faPaypal } from "@fortawesome/free-brands-svg-icons";
+import amazonSmile from "./DonatePics/amazonSmile.png";
+import barkBox from "./DonatePics/barkBox.svg";
+import paybal from "./DonatePics/paybal.gif";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGift } from "@fortawesome/free-solid-svg-icons";
 
 function Donate() {
-  const bullet = {
-    fontSize: 25,
-    marginBottom: 0,
-  };
-
   return (
     <>
-      <div className="container-fluid text-center userHtml" id="noPadding">
+      <div className="container-fluid userHtml" id="noPadding">
         <UserNav />
-        <div className="container" id="extra3Padding">
-          <div id="centerColumn">
-            <h1>Many Ways To Give!</h1>
-            <br />
-            <div id="donateOptions">
-              <ul style={{ listStyle: "none" }}>
-                <form
-                  action="https://www.paypal.com/cgi-bin/webscr"
-                  method="post"
-                >
-                  <input type="hidden" name="cmd" value="_donations" />
-                  <input
-                    type="hidden"
-                    name="business"
-                    value="tinymiraclesfarm@gmail.com"
-                  />
-                  <input
-                    type="hidden"
-                    name="item_name"
-                    value="Tiny Miracles Rescue"
-                  />
-                  <input type="hidden" name="currency_code" value="USD" />
-                  <li>
-                    <p className="theme" style={bullet}>
-                      Donate via PayPal{" "}
+        <div className="container themeBlue" id="extra3Padding">
+          <div>
+            <h1 className="text-center">Many Ways To Give <FontAwesomeIcon icon={faGift}/></h1>
+            <ul className="donateList">
+              <li>
+                <div className="container">
+                  <form
+                    action="https://www.paypal.com/cgi-bin/webscr"
+                    method="post"
+                  >
+                    <input type="hidden" name="cmd" value="_donations" />
+                    <input
+                      type="hidden"
+                      name="business"
+                      value="tinymiraclesfarm@gmail.com"
+                    />
+                    <input
+                      type="hidden"
+                      name="item_name"
+                      value="Tiny Miracles Rescue"
+                    />
+                    <input type="hidden" name="currency_code" value="USD" />
+
+                    <h2 className="text-center">
+                      <a
+                        className="donateHeaders"
+                        target="_blank"
+                        href="https://www.paypal.com/donate?business=tinymiraclesfarm@gmail.com&no_recurring=0&item_name=Tiny Miracles Rescue&currency_code=USD"
+                        rel="noreferrer"
+                      >
+                        Donate via PayPal &nbsp;
+                        <img
+                            src={paybal}
+                            className="donatePics"
+                        />
+                        {/* <input
+                            type="image"
+                            src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif"
+                            className="donatePics"
+                            name="submit"
+                            alt="PayPal - The safer, easier way to pay online!"
+                            /> */}
+                      </a>
+                    </h2>
+                    <p className="donateP"> Make a direct, tax deductible donation. </p>
+                  </form>
+                </div>
+              </li>
+              <li>
+                <div className="container">
+                  <h2 className="text-center">
+                    <a
+                      className="donateHeaders"
+                      target="_blank"
+                      href="https://smile.amazon.com/charity?orig=%2F"
+                      rel="noreferrer"
+                    >
+                      Sign in with&nbsp;
                       <input
                         type="image"
-                        src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif"
-                        style={{ verticalAlign: "middle" }}
-                        name="submit"
-                        alt="PayPal - The safer, easier way to pay online!"
-                      />
-                    </p>
-                    <p id=""> Make a direct, tax deductible donation. </p>
-                  </li>
-                </form>
-                <li>
-                  <p className="theme" style={bullet}>
-                    Sign in with{" "}
-                    <a href="https://smile.amazon.com/charity?orig=%2F">
-                      {" "}
-                      <input
-                        type="image"
-                        style={{
-                          width: 180,
-                          verticalAlign: "middle",
-                          marginTop: 10,
-                          paddingBottom: -20,
-                        }}
-                        src="https://www.globaldownsyndrome.org/wp-content/uploads/2019/12/Amazon-Smile-Logo-e1457724074257-768x263.jpg"
+                        className="donatePics"
+                        src={amazonSmile}
                         name="submit"
                         alt="AmazonSmile"
                       />
                     </a>
+                  </h2>
+                  <p className="donateP">
+                    Instead of shopping with your account on amazon.com, start
+                    shopping on smile.amazon.com supporting Tiny Miracles
+                    Rescue. Each time you shop amazon sends us a donation. It
+                    doesn’t cost you anything extra.
                   </p>
-                  <p id="" style={{ marginTop: -10 }}>
-                    {" "}
-                    <mark style={{ background: "#FFEFD3" }}>
-                      Instead of shopping with your account on amazon.com, start
-                      shopping on smile.amazon.com supporting Tiny Miracles
-                      Rescue.
-                    </mark>{" "}
-                    Each time you shop amazon sends us a donation. It doesn’t
-                    cost you anything extra.
-                  </p>
-                </li>
-                <li style={{ padding: "50px, 0px", marginTop: "30px" }}>
-                  <form action="https://barkbox.com/tinymiracles" method="post">
-                    <p className="theme" style={bullet}>
-                      Sign up for Bark Box for your pup&nbsp;&nbsp;
-                      <input
-                        type="image"
-                        style={{ height: 32, verticalAlign: "middle" }}
-                        src="https://assets.barkbox.com/assets/logo/rebrand-product-logos/box-f3a20a5bfd39980fd458f19cc2b5714d99a72876ffce61520ed21e7ee275db89.svg"
-                        name="submit"
-                        alt="BarkBox"
-                      />
-                    </p>
-                    <p id="">
+                </div>
+              </li>
+              <li>
+                <div className="container">
+                  <form id="barkForm" action="https://barkbox.com/tinymiracles" method="post">
+                    <h2 className="text-center">
+                      <a onClick={()=>{document.getElementById("barkForm").submit()}} className="donateHeaders">
+                        Sign up for Bark Box&nbsp;
+                        <input
+                          type="image"
+                          className="donatePics"
+                          src={barkBox}
+                          name="submit"
+                          alt="BarkBox"
+                        />
+                      </a>
+                    </h2>
+                    <p className="donateP">
                       Support us AND get 10% off when you use our special code:
                       TINYMIRACLES. Help us raise some serious bones – we get a
                       $15 donation with every order! Get started at BarkBox.com!
                     </p>
                   </form>
-                </li>
-              </ul>
-            </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

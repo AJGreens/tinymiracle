@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 import { database } from "../Firebase";
 import { ref, onValue, set, push } from "firebase/database";
-import Feedback from "react-bootstrap/esm/Feedback";
 import UserNav from "./UserNav";
 import { useNavigate } from "react-router-dom";
 
@@ -132,10 +131,6 @@ function AdoptionForm() {
       case "landLordPhone":
         setLandLordPhone(event.target.value);
         break;
-
-      case "rentOwn":
-        setRentOwn(event.target.value);
-        break;
       default:
         return;
     }
@@ -151,32 +146,29 @@ function AdoptionForm() {
     });
 
     const animals = ref(database, "animals/adoptable");
-    let adoptableDogsArr = [];
     onValue(animals, (snapshot) => {
       const data = snapshot.val();
-      Object.entries(data).map(([key, value]) => {
-        // if (value["status"]==="Adoptable"){
-        adoptableDogsArr.push({
-          id: key,
-          name: value["name"],
-          description: value["description"],
-          age: value["ageGroup"],
-          breed: value["primBreed"],
-          gender: value["gender"],
-          img: value["img"],
+      if (data !== null) {
+        let adoptableDogsArr = Object.entries(data).map(([key, value]) => {
+          return {
+            id: key,
+            name: value["name"],
+            description: value["description"],
+            age: value["ageGroup"],
+            breed: value["primBreed"],
+            gender: value["gender"],
+            img: value["img"],
+          };
         });
-        // }
-
-        // Pretty straightforward - use key for the key and value for the value.
-        // Just to clarify: unlike object destructuring, the parameter names don't matter here.
-      });
-      setAdoptableDogs(adoptableDogsArr);
+        setAdoptableDogs(adoptableDogsArr);
+      } else {
+        setAdoptableDogs([]);
+      }
     });
-  }, []);
+  }, [token]);
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("What");
 
     const adoptionFormRef = ref(database, "adoptionForms");
     const newAdoptionFormRef = push(adoptionFormRef);
