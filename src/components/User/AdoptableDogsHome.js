@@ -1,68 +1,91 @@
-import React, {useState, useEffect} from 'react';
-import {database} from '../Firebase'
-import {ref, onValue} from "firebase/database";
-import UserNav from './UserNav';
-import {Button, Row, Col} from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDog} from '@fortawesome/free-solid-svg-icons'
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { database } from "../Firebase";
+import { ref, onValue } from "firebase/database";
+import UserNav from "./UserNav";
+import { Button, Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDog } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
-
-
-function AdoptableDogsHome(){
+function AdoptableDogsHome() {
   const [dogs, setDogs] = useState([]);
-  
-  const navigate = useNavigate()
 
-  function goToAdoptionProcess(dogToken){
-    navigate("/adoptionProcess/"+dogToken)
+  const navigate = useNavigate();
+
+  function goToAdoptionProcess(dogToken) {
+    navigate("/adoptionProcess/" + dogToken);
   }
-    
-  
-  useEffect(()=>{
-    const dogRef = ref(database, 'animals/adoptable');
+
+  useEffect(() => {
+    const dogRef = ref(database, "animals/adoptable");
     onValue(dogRef, (snapshot) => {
       const data = snapshot.val();
-      if(data!==null){
-        let allDogs=Object.entries(data).map(([key, value]) => {
-            return {id: key,name:value["name"], description:value["description"], age: value["ageGroup"],breed:value["primBreed"],gender:value["gender"],img:value["img"]}
-        })
+      if (data !== null) {
+        let allDogs = Object.entries(data).map(([key, value]) => {
+          return {
+            id: key,
+            name: value["name"],
+            description: value["description"],
+            age: value["ageGroup"],
+            breed: value["primBreed"],
+            gender: value["gender"],
+            img: value["img"],
+          };
+        });
         setDogs(allDogs);
-      }
-      else{
-        setDogs([])
+      } else {
+        setDogs([]);
       }
     });
-  },[])
-    
-  return(
+  }, []);
+
+  return (
     <>
-      <div className = "container-fluid text-center userHtml themeBlue" id="noPadding">
-        <UserNav/>
+      <div
+        className="container-fluid text-center userHtml themeBlue"
+        id="noPadding"
+      >
+        <UserNav />
         <div id="extra3Padding">
           <h1>Adoptable Dogs</h1>
-            {dogs.map(dog=> 
-              <div className="container mt-4 dogContainer" key={dog.id}>
-                <h2>{dog.name}</h2>
-                <h4>{dog.age} {dog.gender} {dog.breed}</h4>
-                <Row>
-                  <Col>
-                    <img src={dog.img} className = 'adoptableImg'/>
-                  </Col>
-                  <Col>
-                    <p className='mt-4'>{dog.description}</p>
-                    <Button variant="primary" onClick = {()=> goToAdoptionProcess(dog.id)}>Apply <FontAwesomeIcon icon={faDog}/></Button>
-                  </Col>                  
-                </Row>
-                
-              </div>
-            )}
+          {dogs.map((dog) => (
+            <div className="container mt-4 dogContainer" key={dog.id}>
+              <Row>
+                <Col className="dogImgContainer d-flex justify-content-center align-items-center">
+                  <div>
+                    {/* <h2>{dog.name}</h2>
+                    <h4>
+                      {dog.age} {dog.gender} {dog.breed}
+                    </h4> */}
+                    <img
+                      src={dog.img}
+                      alt={dog.name}
+                      className="adoptableImg"
+                    />
+                  </div>
+                </Col>
+                <Col className="dogTextContainer d-flex justify-content-center align-items-center">
+                  <div>
+                    <h2>{dog.name}</h2>
+                    <h4>
+                      {dog.age} {dog.gender} {dog.breed}
+                    </h4>
+                    <p className="mt-4">{dog.description}</p>
+                    <Button
+                      variant="primary"
+                      onClick={() => goToAdoptionProcess(dog.id)}
+                    >
+                      Apply <FontAwesomeIcon icon={faDog} />
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          ))}
         </div>
       </div>
     </>
-        
-  )
-    
+  );
 }
 
-export default AdoptableDogsHome
+export default AdoptableDogsHome;

@@ -11,7 +11,7 @@ function ThankYou() {
         <h2>
           Thank you for your application! We will be in touch with you soon!
         </h2>
-        <img src={dog} style={{ width: "50%" }} />
+        <img src={dog} alt="Cute Puppy" style={{ width: "50%" }} />
       </Container>
     </>
   );

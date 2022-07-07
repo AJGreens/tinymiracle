@@ -13,7 +13,9 @@ function Donate() {
         <UserNav />
         <div className="container themeBlue" id="extra3Padding">
           <div>
-            <h1 className="text-center">Many Ways To Give <FontAwesomeIcon icon={faGift}/></h1>
+            <h1 className="text-center">
+              Many Ways To Give <FontAwesomeIcon icon={faGift} />
+            </h1>
             <ul className="donateList">
               <li>
                 <div className="container">
@@ -42,10 +44,7 @@ function Donate() {
                         rel="noreferrer"
                       >
                         Donate via PayPal &nbsp;
-                        <img
-                            src={paybal}
-                            className="donatePics"
-                        />
+                        <img alt="Paybal" src={paybal} className="donatePics" />
                         {/* <input
                             type="image"
                             src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif"
@@ -55,7 +54,10 @@ function Donate() {
                             /> */}
                       </a>
                     </h2>
-                    <p className="donateP"> Make a direct, tax deductible donation. </p>
+                    <p className="donateP">
+                      {" "}
+                      Make a direct, tax deductible donation.{" "}
+                    </p>
                   </form>
                 </div>
               </li>
@@ -88,15 +90,26 @@ function Donate() {
               </li>
               <li>
                 <div className="container">
-                  <form id="barkForm" action="https://barkbox.com/tinymiracles" method="post">
+                  <form
+                    id="barkForm"
+                    action="https://barkbox.com/tinymiracles"
+                    method="post"
+                    target="_blank"
+                  >
                     <h2 className="text-center">
-                      <a onClick={()=>{document.getElementById("barkForm").submit()}} className="donateHeaders">
+                      <a
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document.getElementById("barkForm").submit();
+                        }}
+                        href="/"
+                        className="donateHeaders"
+                      >
                         Sign up for Bark Box&nbsp;
-                        <input
+                        <img
                           type="image"
                           className="donatePics"
                           src={barkBox}
-                          name="submit"
                           alt="BarkBox"
                         />
                       </a>

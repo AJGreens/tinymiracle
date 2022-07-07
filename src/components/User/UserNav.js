@@ -18,7 +18,7 @@ function UserNav() {
   return (
     <>
       <div className="container-fluid userNav text-center">
-        <img src={logo} id="logoPic" />
+        <img src={logo} alt="Tiny Miracles" id="logoPic" />
         <Navbar collapseOnSelect expand="lg" variant="dark">
           <Container className="justify-content-center">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
