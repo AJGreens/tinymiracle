@@ -22,6 +22,7 @@ import ViewApplications from "./Admin/ViewApplications";
 import SpecificApplication from "./Admin/SpecificApplication";
 import AuthProvider from "./Admin/AuthContext";
 import PrivateRoute from "./Admin/PrivateRoute";
+import ChangePassword from "./Admin/ChangePassword";
 
 function App() {
   return (
@@ -95,6 +96,9 @@ function App() {
             </Route>
             <Route exact path="/viewApplications" element={<PrivateRoute />}>
               <Route path="/viewApplications" element={<ViewApplications />} />
+            </Route>
+            <Route exact path="/changePassword" element={<PrivateRoute />}>
+              <Route path="/changePassword" element={<ChangePassword />} />
             </Route>
             <Route
               exact
