@@ -6,12 +6,20 @@ import dogC from "./DogImages/dogC.jpeg";
 import dogD from "./DogImages/dogD.jpeg";
 import dogE from "./DogImages/dogE.jpeg";
 import dogF from "./DogImages/dogF.jpeg";
+import {useEffect, useState} from 'react';
 
 function PetCare() {
-  const allPics = [dogA, dogC, dogD, dogE, dogE, dogF];
+
+  const [loaded, setLoaded] =useState(false)
+  useEffect(() => {
+    setLoaded(true)
+  }, [])
+
+  const allPics = [dogA, dogC, dogD, dogE, dogF];
 
   return (
     <>
+    {loaded &&
       <div className="container-fluid userHtml" id="noPadding">
         <UserNav />
         <div className="container text-center themeBlue" id="extra3Padding">
@@ -243,6 +251,7 @@ function PetCare() {
           </div>
         </div>
       </div>
+}
     </>
   );
 }

@@ -41,11 +41,11 @@ function Login(){
                         <Form onSubmit={handleSubmit}>
                             <Form.Group>
                                 <Form.Label>Email</Form.Label>
-                                <Form.Control onChange={(e)=>{setEmail(e.target.value)}} value={email} type="text" />
+                                <Form.Control onChange={(e)=>{setEmail(e.target.value)}} value={email} type="text" className = "login" />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control onChange={(e)=>{setPassword(e.target.value)}} value={password} type="password"/>
+                                <Form.Control onChange={(e)=>{setPassword(e.target.value)}} value={password} type="password" className = "login"/>
                             </Form.Group>
                             <Button disabled = {loading} type="submit" className="mt-4">Submit</Button>
                         </Form>

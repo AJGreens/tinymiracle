@@ -9,10 +9,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import UserNav from "./UserNav";
 import widedog from "./DogImages/widedog.jpg";
+import {useEffect, useState} from 'react';
+
+
 
 function Home() {
+  const [loaded, setLoaded] =useState(false)
+  useEffect(() => {
+    setLoaded(true)
+  }, [])
+  // window.onbeforeunload = function () {
+  //   window.scrollTo(0, 0);
+  // }
+  
   return (
-    <>
+    <>{loaded&&
       <div className="container-fluid userHtml" id="noPadding">
         <UserNav />
         <div className="beegDogFrame">
@@ -84,6 +95,7 @@ function Home() {
           </div>
         </div>
       </div>
+}
     </>
   );
 }

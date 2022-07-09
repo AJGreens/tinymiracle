@@ -28,7 +28,7 @@ function SpecificApplication() {
 
             <div className="row text-center specificRow">
               <div className="col-sm">
-                <div className="inSpecificCol">
+                <div className="inSpecificCol leftAlignDiv">
                   <p>
                     <b>Dog Name: </b>
                     {info["name"]}
@@ -75,7 +75,7 @@ function SpecificApplication() {
                 </div>
               </div>
               <div className="col-sm">
-                <div className="inSpecificColB">
+                <div className="inSpecificColB leftAlignDiv">
                   {info["occupation"] && (
                     <p>
                       <b>Occupation:</b> {info["occupation"]}
@@ -222,7 +222,7 @@ function SpecificApplication() {
               </div>
 
               <div className="col-sm">
-                <div className="inSpecificCol">
+                <div className="inSpecificCol leftAlignDiv">
                   {info["aboutYourself"] && (
                     <p>
                       <b>Tell Us About Yourself:</b> {info["aboutYourself"]}
@@ -253,7 +253,7 @@ function SpecificApplication() {
               </div>
 
               <div className="col-sm">
-                <div className="inSpecificCol">
+                <div className="inSpecificColB leftAlignDiv">
                   {info["whereKeptDay"] && (
                     <p>
                       <b>Where Will Dog be Kept During Day:</b>{" "}

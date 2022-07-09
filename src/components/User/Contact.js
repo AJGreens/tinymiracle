@@ -4,31 +4,38 @@ import UserNav from "./UserNav";
 function Contact() {
   return (
     <>
-      <div className="container-fluid userHtml text-center" id="noPadding">
+      <div className="container-fluid userHtml text-center themeBlue" id="noPadding">
         <UserNav />
 
         <div className="container" id="extra3Padding">
-          <h3>Pet Care & Day Care Contact</h3>
+          <div className = "row">
+            <div className = "col-sm">
+              <div style = {{display: 'inline-block', textAlign: 'left'}}>
+              <h3>Pet Care & Day Care</h3> 
+                <div id = 'contactOptions'>
+                <p><b>Address:</b> 696 New Galena Rd Chalfont, PA 18914</p>
+                <p><b>Phone:</b> 215-997-2844</p>
+                <p><b>Email:</b> tiny_miracles@msn.com</p>
+                </div>
+              </div>
+            </div>
+            <div className = "col-sm" >
+            <div style = {{ display: 'inline-block', textAlign: 'left'}}> 
+            <h3>Rescue</h3>
+              <div id="contactOptions">
+                <p><b>Phone:</b> 215-997-2844</p>
+                <p><b>Email:</b> info@tinymiraclesrescue.com</p>
 
-          <div id="contactOptions">
-            <p>Address: 696 New Galena Rd Chalfont, PA 18914</p>
-            <p>Phone Number: 215-997-2844</p>
-            <p>Email: tiny_miracles@msn.com</p>
-          </div>
-
-          <h3>Rescue Contact</h3>
-
-          <div id="contactOptions">
-            <p>Phone Number: 215-997-2844</p>
-            <p>Email: info@tinymiraclesrescue.com</p>
-
-            <p>
-              TO MEET RESCUE DOGS: Please submit an application and we will have
-              a representative get back to you ASAP.
-              <br />
-              ***Most of our rescue dogs are going/are in foster care and not at
-              the farm.***
-            </p>
+                <p>
+                  <b>TO MEET RESCUE DOGS:</b> Please submit an application and we will have
+                  a representative get back to you ASAP.
+                  <br />
+                  ***Most of our rescue dogs are going/are in foster care and not at
+                  the farm.***
+                </p>
+              </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

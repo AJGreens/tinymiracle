@@ -265,17 +265,18 @@ function sendEmail(){
       readDisclaimer: readDisclaimer,
     });
 
-    sendEmail()
+    // sendEmail()  //commented out so we dont send too many emails
 
     navigate("/thankyou");
   }
 
   return (
     <>
+    <div className = "userHtml container-fluid" id = "noPadding"> 
       <UserNav />
-      <Container className="mt-4">
+      <Container className="mt-4 themeBlue">
         <h1 className="text-center mb-4">Adoption Application</h1>
-        <Form ref = {form} onSubmit={handleSubmit}>
+        <Form ref = {form} onSubmit={handleSubmit} >
           <Form.Group className="mb-3">
             <Form.Label>Animal Name</Form.Label>
             <Form.Select
@@ -1069,6 +1070,7 @@ function sendEmail(){
           </Button>
         </Form>
       </Container>
+      </div>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import logo from "./DogImages/weblogo.png";
+import logo from "./DogImages/weblogo2.png";
 import { useAuth } from "../Admin/AuthContext";
 
 function UserNav() {
@@ -19,7 +19,8 @@ function UserNav() {
     <>
       <div className="container-fluid userNav text-center">
         <img src={logo} alt="Tiny Miracles" id="logoPic" />
-        <Navbar collapseOnSelect expand="lg" variant="dark">
+      </div>
+        <Navbar collapseOnSelect expand="lg" variant="dark" className = "stickyNav userNav">
           <Container className="justify-content-center">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -87,7 +88,7 @@ function UserNav() {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-      </div>
+
     </>
   );
 }

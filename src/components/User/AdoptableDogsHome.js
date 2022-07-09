@@ -16,6 +16,7 @@ function AdoptableDogsHome() {
     navigate("/adoptionProcess/" + dogToken);
   }
 
+
   useEffect(() => {
     const dogRef = ref(database, "animals/adoptable");
     onValue(dogRef, (snapshot) => {
@@ -70,7 +71,7 @@ function AdoptableDogsHome() {
                     <h4>
                       {dog.age} {dog.gender} {dog.breed}
                     </h4>
-                    <p className="mt-4">{dog.description}</p>
+                    <p className="mt-4" style = {{textAlign: 'left'}}>{dog.description}</p>
                     <Button
                       variant="primary"
                       onClick={() => goToAdoptionProcess(dog.id)}
