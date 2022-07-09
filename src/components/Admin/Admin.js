@@ -65,6 +65,9 @@ function Admin() {
             <Link to="/viewApplications">
               <Button size="lg">View Applications</Button>
             </Link>
+            <Link to="/changePassword">
+              <Button size="lg">Change Password</Button>
+            </Link>
           </Card.Body>
         </Card>
       </Container>

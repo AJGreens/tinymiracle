@@ -110,14 +110,6 @@ text-align: left;
     border-bottom: 5px solid  #144771; */
 }
 
-.outerFlex{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-}
-
 
 .userHtml{
     background: #FFEFD3;

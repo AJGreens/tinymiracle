@@ -1,4 +1,4 @@
-import { onAuthStateChanged, signInWithEmailAndPassword,signOut} from 'firebase/auth'
+import { onAuthStateChanged, signInWithEmailAndPassword,signOut, updatePassword} from 'firebase/auth'
 import React, {createContext,useContext,useEffect,useState} from 'react'
 import {auth} from '../Firebase'
 
@@ -40,10 +40,15 @@ export default function AuthProvider({children}) {
        return signOut(auth)
     }
 
+    function updatePass(newPass){
+        return updatePassword(user, newPass)
+    }
+
     const value={
         user, 
         signIn, 
-        signingOut
+        signingOut,
+        updatePass
 
     }
 
