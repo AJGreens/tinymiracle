@@ -9,6 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import UserNav from "./UserNav";
 import widedog from "./DogImages/widedog.jpg";
+// import pawtrail from "./DogImages/pawtrail.png";
+import longtrail from "./DogImages/longtrail-removebg.png";
 import {useEffect, useState} from 'react';
 
 
@@ -50,7 +52,7 @@ function Home() {
             <Row>
               <Col>
                 <h2>Our Inspiration</h2>
-                <p className="text-justify">
+                <p className="text-justify tan">
                   Kim Rutherford is a lifelong animal lover, who’s caring and
                   kindness to all creatures is well known in the community. She
                   was able to turn her passion for animals into a business that
@@ -62,7 +64,7 @@ function Home() {
               </Col>
               <Col>
                 <h2>Our History</h2>
-                <p className="text-justify">
+                <p className="text-justify tan">
                   Kim wanted to help animals by finding them their forever
                   homes. She started her rescue in 2011. Every rescue becomes
                   her child, just like her pet care kids. No matter the
@@ -78,6 +80,8 @@ function Home() {
               </Col>
             </Row>
           </div>
+          {/* <img className="pawTrail" src={longtrail} alt="pawtrail" />
+          <img className="pawTrail2" src={longtrail} alt="pawtrail" /> */}
           <div className="text-center">
             <h2>Follow Us</h2>
             <Row>
