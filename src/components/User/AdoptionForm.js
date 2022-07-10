@@ -932,7 +932,7 @@ function sendEmail(){
           <br />
           <Container
             className="mb-3"
-            style={{ border: "black solid 1px", borderRadius: "25px" }}
+            style={{ border: "#144771 solid 1px", borderRadius: "25px" }}
           >
             <Form.Label>
               <b>Reference #1</b>
@@ -969,7 +969,7 @@ function sendEmail(){
           </Container>
           <Container
             className="mb-3"
-            style={{ border: "black solid 1px", borderRadius: "25px" }}
+            style={{ border: "#144771 solid 1px", borderRadius: "25px" }}
           >
             <Form.Label>
               <b>Reference #2</b>
