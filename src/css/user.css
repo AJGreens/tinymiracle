@@ -89,6 +89,8 @@ text-align: left;
     /* padding: 20px; */
     padding: 1.5%;
     margin: 2.5% auto;
+    background-color: #FFEFD3;
+    /* background-image: linear-gradient(to right,white, #C7C5C5, white); */
     /* border-right: 6px solid  #144771; */
     border: 6px solid  #144771;
 }
@@ -108,6 +110,11 @@ text-align: left;
     /* padding: 1.5%;
     border-right: 5px solid  #144771;
     border-bottom: 5px solid  #144771; */
+}
+.adoptionFormBox{
+    border-radius: 25px;
+    border: #144771 solid 2px;
+    padding: 10px;
 }
 
 

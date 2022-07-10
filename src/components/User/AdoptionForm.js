@@ -520,7 +520,7 @@ function sendEmail(){
           {hasPets && (
             <>
               <Container
-                style={{ border: "black solid 1px", borderRadius: "25px" }}
+              className = "adoptionFormBox"
               >
                 <p className="mb-1">
                   <b>Current Pet #1</b>
@@ -593,8 +593,7 @@ function sendEmail(){
               <br />
 
               <Container
-                className="mb-3"
-                style={{ border: "black solid 1px", borderRadius: "25px" }}
+                className="mb-3 adoptionFormBox"
               >
                 <p className="mb-1">
                   <b>Current Pet #2</b>
@@ -686,7 +685,7 @@ function sendEmail(){
           <Form.Label>Please list any previous pets:</Form.Label>
           <br />
           <Container
-            style={{ border: "black solid 1px", borderRadius: "25px" }}
+          className = "adoptionFormBox"
           >
             <Form.Label>
               <b>Previous Pet #1</b>
@@ -715,8 +714,7 @@ function sendEmail(){
           </Container>
           <br />
           <Container
-            className="mb-3"
-            style={{ border: "black solid 1px", borderRadius: "25px" }}
+            className="mb-3 adoptionFormBox"
           >
             <Form.Label>
               <b>Previous Pet #2</b>
@@ -931,8 +929,7 @@ function sendEmail(){
           </Form.Label>
           <br />
           <Container
-            className="mb-3"
-            style={{ border: "#144771 solid 1px", borderRadius: "25px" }}
+            className="mb-3 adoptionFormBox"
           >
             <Form.Label>
               <b>Reference #1</b>
@@ -968,8 +965,7 @@ function sendEmail(){
             </Form.Group>
           </Container>
           <Container
-            className="mb-3"
-            style={{ border: "#144771 solid 1px", borderRadius: "25px" }}
+            className="mb-3 adoptionFormBox"
           >
             <Form.Label>
               <b>Reference #2</b>
