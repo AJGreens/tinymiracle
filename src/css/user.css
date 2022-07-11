@@ -148,7 +148,7 @@ text-align: left;
 
 
 p{
-    z-index: 20;
+    /* z-index: 20; */
     position: relative
     /* color: black; */
 }
