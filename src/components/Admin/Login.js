@@ -29,10 +29,14 @@ function Login() {
 
   return (
     <>
+          <div
+        className="container-fluid text-center userHtml themeBlue"
+        id="noPadding"
+      >
       <div className="outer">
         <UserNav/>
         <Card className="innerFlex">
-          <Card.Body className="d-flex align-items-center">
+          <Card.Body className="d-flex align-items-center adminTan">
             <div className="container-fluid">
               <h2 className="text-center">Login</h2>
               {error !== "" && <Alert variant="danger"> {error} </Alert>}
@@ -67,6 +71,7 @@ function Login() {
           </Card.Body>
         </Card>
       </div>
+    </div>
     </>
   );
 }

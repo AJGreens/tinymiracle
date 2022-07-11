@@ -31,6 +31,14 @@
 #readOnly {
     background-color: white;
   }
+  .adminTan{
+    background-color: #FFEFD3;
+    border: solid #144771 4px;
+  }
+  .myForm{
+    border: solid #144771 1px;
+
+  }
 
 .adminNavActiveLink{
     color:black !important;
