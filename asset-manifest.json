@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tinymiracle/static/css/main.a0b654d9.css",
-    "main.js": "/tinymiracle/static/js/main.f65e9f0a.js",
+    "main.js": "/tinymiracle/static/js/main.dd255625.js",
     "static/media/KennelLicense.pdf": "/tinymiracle/static/media/KennelLicense.a624dcbae8d5995ae525.pdf",
     "static/media/wink.png": "/tinymiracle/static/media/wink.5d3f70a37ec982e71206.png",
     "static/media/widedog.jpg": "/tinymiracle/static/media/widedog.c0ea1a4030762ae14251.jpg",
@@ -22,10 +22,10 @@
     "static/media/barkBox.svg": "/tinymiracle/static/media/barkBox.d7c089e2fd6f15e5b36a5069807a73f8.svg",
     "index.html": "/tinymiracle/index.html",
     "main.a0b654d9.css.map": "/tinymiracle/static/css/main.a0b654d9.css.map",
-    "main.f65e9f0a.js.map": "/tinymiracle/static/js/main.f65e9f0a.js.map"
+    "main.dd255625.js.map": "/tinymiracle/static/js/main.dd255625.js.map"
   },
   "entrypoints": [
     "static/css/main.a0b654d9.css",
-    "static/js/main.f65e9f0a.js"
+    "static/js/main.dd255625.js"
   ]
 }
