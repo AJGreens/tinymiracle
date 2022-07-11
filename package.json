@@ -1,6 +1,6 @@
 {
   "name": "tinymiracle",
-  "homepage": "https://ajgreens.github.io/tinymiracle",
+  "homepage": "https://ajgreens.github.io",
   "version": "0.3.0",
   "private": true,
   "dependencies": {
@@ -31,6 +31,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
+    "save-dev": "0.0.1-security",
     "underscore": "^1.13.4",
     "web-vitals": "^2.1.4"
   },
@@ -41,7 +42,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-
   },
   "eslintConfig": {
     "extends": [
