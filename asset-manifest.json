@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/tinymiracle/static/css/main.afa4db31.css",
-    "main.js": "/tinymiracle/static/js/main.0b809383.js",
+    "main.css": "/tinymiracle/static/css/main.3234bdcd.css",
+    "main.js": "/tinymiracle/static/js/main.88b4822d.js",
     "static/media/KennelLicense.pdf": "/tinymiracle/static/media/KennelLicense.a624dcbae8d5995ae525.pdf",
     "static/media/wink.png": "/tinymiracle/static/media/wink.5d3f70a37ec982e71206.png",
     "static/media/widedog.jpg": "/tinymiracle/static/media/widedog.c0ea1a4030762ae14251.jpg",
@@ -21,11 +21,11 @@
     "static/media/amazonSmile.png": "/tinymiracle/static/media/amazonSmile.6278793b58b0196898d7.png",
     "static/media/barkBox.svg": "/tinymiracle/static/media/barkBox.d7c089e2fd6f15e5b36a5069807a73f8.svg",
     "index.html": "/tinymiracle/index.html",
-    "main.afa4db31.css.map": "/tinymiracle/static/css/main.afa4db31.css.map",
-    "main.0b809383.js.map": "/tinymiracle/static/js/main.0b809383.js.map"
+    "main.3234bdcd.css.map": "/tinymiracle/static/css/main.3234bdcd.css.map",
+    "main.88b4822d.js.map": "/tinymiracle/static/js/main.88b4822d.js.map"
   },
   "entrypoints": [
-    "static/css/main.afa4db31.css",
-    "static/js/main.0b809383.js"
+    "static/css/main.3234bdcd.css",
+    "static/js/main.88b4822d.js"
   ]
 }
