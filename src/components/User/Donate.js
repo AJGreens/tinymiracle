@@ -1,7 +1,7 @@
 import React from "react";
 import UserNav from "./UserNav";
 import amazonSmile from "./DonatePics/amazonSmile.png";
-import barkBox from "./DonatePics/barkBox.svg";
+import amazonWishList from "./DonatePics/amazonWishlist.png";
 import paybal from "./DonatePics/paybal.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift } from "@fortawesome/free-solid-svg-icons";
@@ -104,26 +104,21 @@ function Donate() {
                     >
                       <h3 className = "text-center">
                         <a
-                          onClick={(e) => {
-                            e.preventDefault();
-                            document.getElementById("barkForm").submit();
-                          }}
-                          href="/"
+                          target="_blank"
+                          href="https://www.amazon.com/hz/wishlist/ls/28FVI645Q406D?ref_=abls_nvfly_yl"
                           className="donateHeaders"
                         >
-                          Sign up for Bark Box&nbsp;
+                          Check our Amazon wish list&nbsp;
                           <img
                             type="image"
                             className="donatePics"
-                            src={barkBox}
+                            src={amazonWishList}
                             alt="BarkBox"
                           />
                         </a>
                       </h3>
                       <p className="donateP">
-                        Support us AND get 10% off when you use our special code:
-                        TINYMIRACLES. Help us raise some serious bones – we get a
-                        $15 donation with every order! Get started at BarkBox.com!
+                        Purchase something for Tiny Miracles Rescue Animals from our wish list. It's the most personal way to give!
                       </p>
                     </form>
                   </div>

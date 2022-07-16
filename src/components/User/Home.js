@@ -50,7 +50,7 @@ function Home() {
           </div>
           <div className="container text-center" id="extra30MarginTB">
             <Row>
-              <Col>
+              <Col sm={12} md={6}>
                 <h2>Our Inspiration</h2>
                 <p className="text-justify tan">
                   Kim Rutherford is a lifelong animal lover, whose caring and
@@ -62,7 +62,7 @@ function Home() {
                   providing a loving home away from home for your pet!
                 </p>
               </Col>
-              <Col>
+              <Col sm={12} md={6}>
                 <h2>Our History</h2>
                 <p className="text-justify tan">
                   Kim wanted to help animals by finding them their forever

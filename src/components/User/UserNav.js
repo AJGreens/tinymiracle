@@ -20,7 +20,7 @@ function UserNav() {
       <div className="container-fluid userNav text-center">
         <img src={logo} alt="Tiny Miracles" id="logoPic" />
       </div>
-        <Navbar collapseOnSelect expand="lg" variant="dark" className = "stickyNav userNav">
+        <Navbar collapseOnSelect expand="md" variant="dark" className = "stickyNav userNav">
           <Container className="justify-content-center">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

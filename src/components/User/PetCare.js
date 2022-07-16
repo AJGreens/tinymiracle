@@ -99,7 +99,7 @@ function PetCare() {
           <br />
           <br />
           <Row>
-            <Col>
+            <Col sm={12} md={6}>
               <h2>Services</h2>
               <div style={{ textAlign: "left" }}>
                 <p>
@@ -166,7 +166,7 @@ function PetCare() {
                 <br />
               </div>
             </Col>
-            <Col>
+            <Col sm={12} md={6}>
               <h2>Rates</h2>
 
               <div style={{ textAlign: "left" }}>
@@ -220,7 +220,6 @@ function PetCare() {
               </div>
             </Col>
           </Row>
-
           <div style={{ textAlign: "left", marginBottom: "40px" }}>
             <div>
               <span>
