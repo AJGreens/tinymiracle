@@ -19,7 +19,7 @@ function AdminNav() {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" variant="light">
+      <Navbar collapseOnSelect expand="md" variant="light">
         <Container className="justify-content-center">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
