@@ -155,11 +155,16 @@ function sendEmail(){
   let { token } = useParams();
 
   useEffect(() => {
-    const animalToken = ref(database, "animals/adoptable/" + token);
-    onValue(animalToken, (snapshot) => {
-      const data = snapshot.val();
-      setDogName(data["name"]);
-    });
+    if(token!=="general"){
+      const animalToken = ref(database, "animals/adoptable/" + token);
+      onValue(animalToken, (snapshot) => {
+        const data = snapshot.val();
+        setDogName(data["name"]);
+      });
+    }
+    else{
+      setDogName("general")
+    }
 
     const animals = ref(database, "animals/adoptable");
     onValue(animals, (snapshot) => {
@@ -285,7 +290,7 @@ function sendEmail(){
               name="animalName"
               onChange={handleChange}
             >
-              <option>General (any Dog)</option>
+              <option value="general">General (any Dog)</option>
               {adoptableDogs.map((dog, i) => (
                 <option key={i}>{dog.name}</option>
               ))}

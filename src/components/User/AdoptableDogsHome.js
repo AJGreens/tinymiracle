@@ -50,10 +50,11 @@ function AdoptableDogsHome() {
         <UserNav />
         <div id="extra3Padding">
           <h1>Adoptable Dogs</h1>
+          <Button onClick={()=>goToAdoptionProcess("general")} id="applyBtn">General Apply <FontAwesomeIcon icon={faDog} /></Button>
           {dogs.map((dog) => (
             <div className="container mt-4 dogContainer" key={dog.id}>
               <Row>
-                <Col className="dogImgContainer d-flex justify-content-center align-items-center">
+                <Col sm={12} md={6} className="dogImgContainer d-flex justify-content-center align-items-center">
                   <div>
                     {/* <h2>{dog.name}</h2>
                     <h4>
@@ -66,7 +67,7 @@ function AdoptableDogsHome() {
                     />
                   </div>
                 </Col>
-                <Col className="dogTextContainer d-flex justify-content-center align-items-center">
+                <Col sm={12} md={6} className="dogTextContainer d-flex justify-content-center align-items-center">
                   <div>
                     <h2>{dog.name}</h2>
                     <h4>
@@ -75,6 +76,7 @@ function AdoptableDogsHome() {
                     <p className="mt-4" style = {{textAlign: 'left'}}>{dog.description}</p>
                     <Button
                       variant="primary"
+                      id="applyBtn"
                       onClick={() => goToAdoptionProcess(dog.id)}
                     >
                       Apply <FontAwesomeIcon icon={faDog} />
