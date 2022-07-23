@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/tinymiracle/static/css/main.e60cd116.css",
-    "main.js": "/tinymiracle/static/js/main.44adb15e.js",
+    "main.css": "/tinymiracle/static/css/main.e027c5b1.css",
+    "main.js": "/tinymiracle/static/js/main.73cb07b6.js",
     "static/media/KennelLicense.pdf": "/tinymiracle/static/media/KennelLicense.a624dcbae8d5995ae525.pdf",
     "static/media/wink.png": "/tinymiracle/static/media/wink.5d3f70a37ec982e71206.png",
     "static/media/widedog.jpg": "/tinymiracle/static/media/widedog.c0ea1a4030762ae14251.jpg",
@@ -14,18 +14,18 @@
     "static/media/dogC.jpeg": "/tinymiracle/static/media/dogC.d5b6731319ef6f56af29.jpeg",
     "static/media/FosterGuidelines.pdf": "/tinymiracle/static/media/FosterGuidelines.9212a1e1ad98e2afacd6.pdf",
     "static/media/501c3.pdf": "/tinymiracle/static/media/501c3.b93ee39815da6a0acdc9.pdf",
+    "static/media/bestestLogo.png": "/tinymiracle/static/media/bestestLogo.d6f360ac7105ba903a3b.png",
     "static/media/dogE.jpeg": "/tinymiracle/static/media/dogE.5c53e0d08c0e6c8738dc.jpeg",
-    "static/media/weblogo2.png": "/tinymiracle/static/media/weblogo2.b35077805f19a765b946.png",
     "static/media/longtrail-removebg.png": "/tinymiracle/static/media/longtrail-removebg.13dbe271542295dfeffb.png",
     "static/media/LiabilityAgreementWaiver.pdf": "/tinymiracle/static/media/LiabilityAgreementWaiver.59ba040ef16583e585c3.pdf",
     "static/media/amazonWishlist.png": "/tinymiracle/static/media/amazonWishlist.363dac1d20c2fe34bfd9.png",
     "static/media/amazonSmile.png": "/tinymiracle/static/media/amazonSmile.6278793b58b0196898d7.png",
     "index.html": "/tinymiracle/index.html",
-    "main.e60cd116.css.map": "/tinymiracle/static/css/main.e60cd116.css.map",
-    "main.44adb15e.js.map": "/tinymiracle/static/js/main.44adb15e.js.map"
+    "main.e027c5b1.css.map": "/tinymiracle/static/css/main.e027c5b1.css.map",
+    "main.73cb07b6.js.map": "/tinymiracle/static/js/main.73cb07b6.js.map"
   },
   "entrypoints": [
-    "static/css/main.e60cd116.css",
-    "static/js/main.44adb15e.js"
+    "static/css/main.e027c5b1.css",
+    "static/js/main.73cb07b6.js"
   ]
 }
