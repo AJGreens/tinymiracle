@@ -71,4 +71,15 @@
    width: 100%;
    background-color: black;
     
+
+}
+
+.rescueStoryUpdateImg{
+    max-height: 440px;
+    max-width: 240px;
+    /* border-radius: 15px; */
+    /* border: 10px solid #386A92; */
+    border: 4px solid #144771;
+    border: 4px solid #144771;
+
 }

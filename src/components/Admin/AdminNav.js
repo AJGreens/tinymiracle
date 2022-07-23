@@ -110,6 +110,24 @@ function AdminNav() {
                   "nav-link " +
                   (isActive ? "adminNavActiveLink" : "adminNavLink")
                 }
+                to="/viewFosterApps"
+              >
+                Foster Apps
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  "nav-link " +
+                  (isActive ? "adminNavActiveLink" : "adminNavLink")
+                }
+                to="/addRescueStories"
+              >
+                Add Rescue Stories
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  "nav-link " +
+                  (isActive ? "adminNavActiveLink" : "adminNavLink")
+                }
                 to="/changePassword"
               >
                 Change Password

@@ -23,6 +23,11 @@ import SpecificApplication from "./Admin/SpecificApplication";
 import AuthProvider from "./Admin/AuthContext";
 import PrivateRoute from "./Admin/PrivateRoute";
 import ChangePassword from "./Admin/ChangePassword";
+import FosterApplication from "./User/FosterApplication";
+import ViewFosterApps from "./Admin/ViewFosterApps";
+import SpecificFosterApp from "./Admin/SpecificFosterApp";
+import RescueStories from "./User/RescueStories";
+import AddRescueStories from "./Admin/AddRescueStories";
 
 function App() {
   
@@ -34,6 +39,7 @@ function App() {
                 
                 <Route exact path="/" element={<Home/>}/>
                 <Route exact path="/petcare" element={<PetCare/>}/>
+                <Route exact path="/fosterApplication" element={<FosterApplication/>}/>
                 <Route exact path="/donate" element={<Donate/>}/>
                 <Route exact path="/contact" element={<Contact/>}/>
                 <Route path="/login" element={<Login/>}/>
@@ -41,6 +47,7 @@ function App() {
                 <Route path="/adoptionForm/:token" element={<AdoptionForm/>}/>
                 <Route path="/thankyou" element={<ThankYou/>}/>
                 <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
+                <Route path="/rescueStories" element={<RescueStories/>}/>
 
 
                 <Route exact path="/admin" element={<PrivateRoute/>}>
@@ -93,11 +100,17 @@ function App() {
             <Route exact path="/manageAnimals" element={<PrivateRoute />}>
               <Route path="/manageAnimals" element={<ManageAnimals />} />
             </Route>
+            <Route exact path="/viewFosterApps" element={<PrivateRoute />}>
+              <Route path="/viewFosterApps" element={<ViewFosterApps />} />
+            </Route>
             <Route exact path="/manageContacts" element={<PrivateRoute />}>
               <Route path="/manageContacts" element={<ManageContacts />} />
             </Route>
             <Route exact path="/addContact" element={<PrivateRoute />}>
               <Route path="/addContact" element={<AddContact />} />
+            </Route>
+            <Route exact path="/addRescueStories" element={<PrivateRoute />}>
+              <Route path="/addRescueStories" element={<AddRescueStories />} />
             </Route>
             <Route exact path="/downloadDocs" element={<PrivateRoute />}>
               <Route path="/downloadDocs" element={<DownloadDocs />} />
@@ -129,6 +142,16 @@ function App() {
               <Route
                 path="/viewApplications/:token"
                 element={<SpecificApplication />}
+              />
+            </Route>
+            <Route
+              exact
+              path="/viewFosterApps/:token"
+              element={<PrivateRoute />}
+            >
+              <Route
+                path="/viewFosterApps/:token"
+                element={<SpecificFosterApp />}
               />
             </Route>
           </Routes>

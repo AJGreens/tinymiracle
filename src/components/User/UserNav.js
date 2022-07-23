@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import logo from "./DogImages/weblogo2.png";
+import logo from "./DogImages/bestestLogo.png";
 import { useAuth } from "../Admin/AuthContext";
 
 function UserNav() {
@@ -17,7 +17,7 @@ function UserNav() {
 
   return (
     <>
-      <div className="container-fluid userNav text-center">
+      <div className="container-fluid userNav text-center logoDiv">
         <img src={logo} alt="Tiny Miracles" id="logoPic" />
       </div>
         <Navbar collapseOnSelect expand="md" variant="dark" className = "stickyNav userNav">
@@ -48,9 +48,27 @@ function UserNav() {
                     "nav-link " +
                     (isActive ? "homeNavActiveLink" : "homeNavLink")
                   }
+                  to="/fosterApplication"
+                >
+                  Foster Application
+                </NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    "nav-link " +
+                    (isActive ? "homeNavActiveLink" : "homeNavLink")
+                  }
                   to="/petcare"
                 >
                   Pet Care
+                </NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    "nav-link " +
+                    (isActive ? "homeNavActiveLink" : "homeNavLink")
+                  }
+                  to="/rescueStories"
+                >
+                  Rescue Stories
                 </NavLink>
                 <NavLink
                   className={({ isActive }) =>

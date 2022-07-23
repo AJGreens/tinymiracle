@@ -127,6 +127,10 @@ function SpecificApplication() {
                 </div>
               </div>
 
+              {info["hasPets"] === false && info["prevPet1"].prevP1Type ==="" && info["prevPet2"].prevP2Type ==="" && info["prevPet1"].prevP1HowLongOwned ==="" && info["prevPet2"].prevP2HowLongOwned ==="" && (
+                        <hr/>
+                    )}
+
               <div style={{ display: "inline-block" }}>
                 {(info["currPet1"].p1Gender ||
                   info["currPet1"].p1HowLongOwned ||
@@ -223,6 +227,11 @@ function SpecificApplication() {
 
               <div className="col-sm">
                 <div className="inSpecificCol leftAlignDiv">
+                {info["morePetsOther"] && (
+                    <p>
+                      <b>More current pets and "other" types from above:</b> {info["morePetsOther"]}
+                    </p>
+                  )}
                   {info["aboutYourself"] && (
                     <p>
                       <b>Tell Us About Yourself:</b> {info["aboutYourself"]}

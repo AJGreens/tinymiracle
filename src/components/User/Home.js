@@ -16,7 +16,7 @@ import {useEffect, useState} from 'react';
 
 
 function Home() {
-  const [loaded, setLoaded] =useState(false)
+  const [loaded, setLoaded] =useState(false)  //this is here because without it, if you are scrolled down on another page and then click this tab you end up still scrolled down
   useEffect(() => {
     setLoaded(true)
   }, [])

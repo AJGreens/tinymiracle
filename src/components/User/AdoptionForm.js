@@ -86,7 +86,7 @@ function AdoptionForm() {
 
 function sendEmail(){
 
-    emailjs.sendForm('service_6sdkij8', 'template_lel7rzp', form.current, 'xKLZsRGD8_RqxumuA')
+    emailjs.sendForm(process.env.REACT_APP_EMAILJS_ADOPT_SERVICE_ID, process.env.REACT_APP_EMAILJS_ADOPT_TEMPLATE_ID, form.current, process.env.REACT_APP_EMAILJS_ADOPT_USER_ID)
     .then((result) => {
         console.log(result.text);
     }, (error) => {
