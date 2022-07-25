@@ -11,7 +11,6 @@
      padding-right: 15%;
      margin: auto !important;
 }
-
 .inSpecificCol{
 display: inline-block;
 border: red solid 0px;
@@ -170,10 +169,11 @@ div.container-fluid{
 
 
 
-
+@media(max-width: 768px){
 .userNav{
     /* background-color: #386A92; */
     background-color: #144771;
+}
 }
 
 
@@ -188,11 +188,15 @@ div.container-fluid{
 #logoPic{
     height: 160px;
 
+
 }
+
+
+
 
 .homeNavLink{
     /* color:#FFEFD3 !important; */
-    margin: 0 15px;
+    margin: 0 10px;
     padding: 0px;
     color: #C7C5C5 !important;
 }
@@ -215,7 +219,7 @@ div.container-fluid{
 }
 
 .homeNavActiveLink{
-    margin: 0 15px;
+    margin: 0 10px;
     padding: 0px;
     /* color:#FFEFD3 !important; */
     color: #C7C5C5 !important; 
@@ -230,6 +234,22 @@ div.container-fluid{
     display: block;
 }
 
+
+@media(max-width:900px){
+    .homeNavLink{
+        /* color:#FFEFD3 !important; */
+        margin: 0 0px !important;
+        padding: 0px;
+        color: #C7C5C5 !important;
+    }
+    .homeNavActiveLink{
+        margin: 0 0px !important;
+        padding: 0px;
+        /* color:#FFEFD3 !important; */
+        color: #C7C5C5 !important; 
+    }
+
+}
 
 .beegDogFrame{
     width: 100%;
@@ -345,8 +365,64 @@ div.container-fluid{
 }
 .logoDiv{
     padding-top: 2px;
+    position: absolute;
+    z-index:4;
+    left:50%;
+    transform: translate(-50%, -0%);
+    
 }
 
 /* #applyBtn:hover{
     background-color: white;
 } */
+.justBlueBox{
+    height: 166px;
+    background: #144771;
+}
+
+
+@media(min-width: 768px){
+.userNavColDiv{
+    margin-top: 4px;
+    /* border: red solid 2px; */
+    height: 145px;
+    /*  get rid of for juicier */
+    position: relative; 
+    /* width: 25%; */
+    width: 50%;
+
+}
+
+.userNavColDiv.left{
+    /* position: relative; */
+        /* border: green solid 4px; */
+        padding-right: 100px;
+    
+}
+
+.userNavColDiv.right{
+
+    /* border: white solid 4px; */
+/* left: 20px; */
+
+}
+.userNavClass{
+    /* border: black solid 2px; */
+    position: absolute;
+ 
+    bottom: 0;
+}
+
+.userNavClass.left{
+    right: 93px;
+}
+.userNavClass.right{
+    left: 93px;
+}
+.userNavRow{
+    border:0px;
+    margin-right:0;
+    margin-left:0;
+    /* max-width:100%;  */
+}
+}
