@@ -23,7 +23,9 @@ border: green solid 0px;
 float: right;
 text-align: left;
 } */
-
+*{
+    font-family: Optima, sans-serif;
+}
 .leftAlignDiv{
     display: inline-block;
     text-align: left;
@@ -265,6 +267,25 @@ div.container-fluid{
     /* position: absolute; */
 }
 
+.beegDogText{
+
+    position: absolute;
+    top: 20%;
+    left: 10px;
+    background: rgba(20, 71, 113, .8);
+    color:#FFEFD3;
+    padding: 5px;
+    border-radius: 20px;
+
+    /* bottom: 0;
+    right: 0; */
+}
+.beegDogText h2, 
+.beegDogText a{
+
+
+}
+
 
 #extra30MarginTB{
     margin: 3% auto;
@@ -350,9 +371,7 @@ div.container-fluid{
     background-color: #FFEFD3;
 }
 
-*{
-    font-family: Optima, sans-serif;
-}
+
 
 #applyBtn{
     background-color:  #144771;
@@ -425,4 +444,14 @@ div.container-fluid{
     margin-left:0;
     /* max-width:100%;  */
 }
+}
+.customLink{
+    color: #C7C5C5;
+    text-decoration:none;
+
+    
+}
+.customLink:hover{
+    color: #C7C5C5;
+    text-decoration:underline;
 }
