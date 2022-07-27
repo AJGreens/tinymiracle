@@ -6,6 +6,8 @@ import paybal from "./DonatePics/paybal.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import { Row, Col } from "react-bootstrap";
+import donate from "./DogImages/donate.jpg";
 
 function Donate() {
   const [loaded, setLoaded] = useState(false);
@@ -17,14 +19,17 @@ function Donate() {
       {loaded && (
         <div className="container-fluid userHtml" id="noPadding">
           <UserNav />
-          <div className="container themeBlue" id="extra3Padding">
+          <div className="beegDogFrame">
+            <img src={donate} className="beegDog" />
+          </div>
+          <div className="container themeBlue mt-4">
             <div>
               <h1 className="text-center">
                 Many Ways To Give <FontAwesomeIcon icon={faGift} />
               </h1>
               <div className="donateDiv">
-                <ul className="donateList">
-                  <li>
+                <Row className="donateRow">
+                  <Col className="donateCol">
                     <div className="container">
                       <form
                         action="https://www.paypal.com/cgi-bin/webscr"
@@ -71,8 +76,8 @@ function Donate() {
                         </p>
                       </form>
                     </div>
-                  </li>
-                  <li>
+                  </Col>
+                  <Col className="donateCol">
                     <div className="container">
                       <h3 className="text-center">
                         <a
@@ -98,8 +103,8 @@ function Donate() {
                         donation. It doesn’t cost you anything extra.
                       </p>
                     </div>
-                  </li>
-                  <li>
+                  </Col>
+                  <Col className="donateCol">
                     <div className="container">
                       <form
                         id="barkForm"
@@ -113,12 +118,13 @@ function Donate() {
                             href="https://www.amazon.com/hz/wishlist/ls/28FVI645Q406D?ref_=abls_nvfly_yl"
                             className="donateHeaders"
                           >
-                            Check our Amazon wish list&nbsp;
+                            Check our &nbsp;
                             <img
                               type="image"
                               className="donatePics"
                               src={amazonWishList}
                               alt="BarkBox"
+                              style={{ marginTop: "-25px" }}
                             />
                           </a>
                         </h3>
@@ -129,8 +135,8 @@ function Donate() {
                         </p>
                       </form>
                     </div>
-                  </li>
-                </ul>
+                  </Col>
+                </Row>
               </div>
             </div>
           </div>

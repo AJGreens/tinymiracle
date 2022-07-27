@@ -33,7 +33,7 @@ export default function ChangePassword() {
   }
 
   return (
-    <div className="outer">
+    <div className="specialOuter">
       <AdminNav />
       <Card className="innerFlex">
         <Card.Body className="d-flex align-items-center">

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Card, Form, Button, Alert} from "react-bootstrap";
+import { Card, Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-import UserNav from '../User/UserNav'
+import UserNav from "../User/UserNav";
 
 function Login() {
   let navigate = useNavigate();
@@ -29,49 +29,50 @@ function Login() {
 
   return (
     <>
-          <div
+      <div
         className="container-fluid text-center userHtml themeBlue"
+        style={{ border: "green solid 0px" }}
         id="noPadding"
       >
-      <div className="outer">
-        <UserNav/>
-        <Card className="innerFlex">
-          <Card.Body className="d-flex align-items-center adminTan">
-            <div className="container-fluid">
-              <h2 className="text-center">Login</h2>
-              {error !== "" && <Alert variant="danger"> {error} </Alert>}
-              <Form onSubmit={handleSubmit}>
-                <Form.Group>
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    value={email}
-                    type="text"
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                    }}
-                    value={password}
-                    type="password"
-                  />
-                </Form.Group>
-                <div className="text-center">
-                  <Button disabled={loading} type="submit" className="mt-4">
-                    Submit
-                  </Button>
-                </div>
-              </Form>
-            </div>
-          </Card.Body>
-        </Card>
+        <UserNav />
+        <div className="specialOuter">
+          <Card className="innerFlex">
+            <Card.Body className="d-flex align-items-center adminTan">
+              <div className="container-fluid" style={{ zIndex: 0 }}>
+                <h2 className="text-center">Admin Login</h2>
+                {error !== "" && <Alert variant="danger"> {error} </Alert>}
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                      value={email}
+                      type="text"
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                      value={password}
+                      type="password"
+                    />
+                  </Form.Group>
+                  <div className="text-center">
+                    <Button disabled={loading} type="submit" className="mt-4">
+                      Submit
+                    </Button>
+                  </div>
+                </Form>
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
       </div>
-    </div>
     </>
   );
 }

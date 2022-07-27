@@ -1,7 +1,7 @@
 {
   "name": "tinymiracle",
   "homepage": "https://ajgreens.github.io/tinymiracle",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.6.2",

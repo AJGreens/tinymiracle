@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -12,6 +12,10 @@ import widedog from "./DogImages/widedog.jpg";
 // import pawtrail from "./DogImages/pawtrail.png";
 import longtrail from "./DogImages/longtrail-removebg.png";
 import { useEffect, useState } from "react";
+import cutieA from "./DogImages/wink.png";
+import cutieB from "./DogImages/contactUs.jpg";
+import cutieC from "./DogImages/donate.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [loaded, setLoaded] = useState(false); //this is here because without it, if you are scrolled down on another page and then click this tab you end up still scrolled down
@@ -22,6 +26,17 @@ function Home() {
   //   window.scrollTo(0, 0);
   // }
 
+  const nav = useNavigate();
+  function goToPetCare() {
+    nav("/petCare/");
+  }
+  function goToDonate() {
+    nav("/donate/");
+  }
+  function goToRescueStories() {
+    nav("/rescueStories/");
+  }
+
   return (
     <>
       {loaded && (
@@ -30,11 +45,11 @@ function Home() {
           <div className="beegDogFrame">
             <div className="beegDogText">
               <h2>
-                We rescue animals.
+                We give them shelter.
                 <br />
                 You give them a home.
               </h2>
-              <h4>
+              <h4 style={{ marginBottom: 0 }}>
                 <a className="customLink" href="/#/adoptableDogsHome">
                   See Adoptable Animals &gt;
                 </a>
@@ -52,7 +67,7 @@ function Home() {
                 </Col>
                 <Col>
                   <FontAwesomeIcon icon={faPaw} size="3x" />
-                  <h2 className="mt-2">Pet Care</h2>
+                  <h2 className="mt-2">Petcare</h2>
                 </Col>
                 <Col>
                   <FontAwesomeIcon icon={faKitMedical} size="3x" />
@@ -60,39 +75,89 @@ function Home() {
                 </Col>
               </Row>
             </div>
-            <div className="container text-center" id="extra30MarginTB">
-              <Row>
-                <Col sm={12} md={6}>
-                  <h2>Our Inspiration</h2>
-                  <p className="text-justify tan">
-                    Kim Rutherford is a lifelong animal lover, whose caring and
-                    kindness to all creatures is well known in the community.
-                    She was able to turn her passion for animals into a business
-                    that she truly loves. Kim’s farm is an eclectic mix of furry
-                    and feathered friends, and she is always rescuing something
-                    new to add to the farm family. Kim and her staff are
-                    committed to providing a loving home away from home for your
-                    pet!
-                  </p>
+            <div className="container mt-4">
+              <Row className="homeRow">
+                <Col sm={12} md={4} className="homeCol">
+                  <div className="homeColImgDiv">
+                    <img src={cutieA} alt="cuteDogPic" />
+                  </div>
                 </Col>
-                <Col sm={12} md={6}>
-                  <h2>Our History</h2>
-                  <p className="text-justify tan">
-                    Kim wanted to help animals by finding them their forever
-                    homes. She started her rescue in 2011. Every rescue animal
-                    becomes her child, just like her pet care kids. No matter
-                    the situation, Kim wants to save every soul possible. She
-                    wanted to save as many animals from kill shelters and puppy
-                    mills as she could. If she could she would take in every
-                    single dog, who needs help. The dogs that are lucky enough
-                    to be saved by Kim, stay with her until they are ready to
-                    find a forever home. When the match between dog and family
-                    are perfect, Kim makes sure the rescue is going to his
-                    loving, caring, and forever home!
-                  </p>
+                <Col sm={12} md={8} className="homeCol">
+                  <div className="myOuter">
+                    <div className="myMiddle">
+                      <div className="myInner">
+                        <h3>Petcare Paradise on a Farm</h3>
+                        <p>
+                          Kim Rutherford is a lifelong animal lover who was able
+                          to turn her passion for animals into a successful
+                          petcare business that she truly loves. Whether it's
+                          just for the day or an extended stay, Kim and her
+                          staff are committed to providing a loving home away
+                          from home for your pet!
+                        </p>
+                        <Button onClick={goToPetCare}>Learn More &gt;</Button>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <div className="lineDiv"></div>
+              <Row className="homeRow">
+                <Col sm={12} md={4} className="homeCol hideOnBig">
+                  <div className="homeColImgDiv">
+                    <img src={cutieB} alt="cuteDogPic" />
+                  </div>
+                </Col>
+                <Col sm={12} md={8} className="homeCol">
+                  <div className="myOuter">
+                    <div className="myMiddle">
+                      <div className="myInner">
+                        <h3>Saving Animals for Over 10 Years</h3>
+                        <p>
+                          Kim started her rescue in 2011 with a simple goal:
+                          save as many souls as possible. Since then, Tiny
+                          Miracles has helped over a thousand animals find their
+                          forever homes.
+                        </p>
+                        <Button onClick={goToRescueStories}>
+                          See their stories &gt;
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+                <Col sm={12} md={4} className="homeCol hideOnPhone">
+                  <div className="homeColImgDiv">
+                    <img src={cutieB} alt="cuteDogPic" />
+                  </div>
+                </Col>
+              </Row>
+              <div className="lineDiv"></div>
+              <Row className="homeRow">
+                <Col sm={12} md={4} className="homeCol">
+                  <div className="homeColImgDiv">
+                    <img src={cutieC} alt="cuteDogPic" />
+                  </div>
+                </Col>
+                <Col sm={12} md={8} className="homeCol">
+                  <div className="myOuter">
+                    <div className="myMiddle">
+                      <div className="myInner">
+                        <h3>Founded on Love</h3>
+                        <p>
+                          Tiny Miracles Rescue is a non-profit organization that
+                          depends on donations to succeed. We are so thankful
+                          for the many people who have made it possible for us
+                          to continue our work saving animals.
+                        </p>
+                        <Button onClick={goToDonate}>Donate &gt;</Button>
+                      </div>
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </div>
+
             {/* <img className="pawTrail" src={longtrail} alt="pawtrail" />
           <img className="pawTrail2" src={longtrail} alt="pawtrail" /> */}
             <div className="text-center">
