@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 import {
   faTractor,
   faPaw,
@@ -50,9 +51,9 @@ function Home() {
                 You give them a home.
               </h2>
               <h4 style={{ marginBottom: 0 }}>
-                <a className="customLink" href="/#/adoptableDogsHome">
-                  See Adoptable Animals &gt;
-                </a>
+                <Link className="customLink" to="/adoptableDogsHome">
+                  See Adoptable Animals <span className="appleSign">&gt;</span>
+                </Link>
               </h4>
             </div>
 
