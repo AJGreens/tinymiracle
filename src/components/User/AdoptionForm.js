@@ -1076,7 +1076,12 @@ function AdoptionForm() {
               onChange={() => setReadDisclaimer(!readDisclaimer)}
             />
             <br />
-            <Button variant="primary" type="submit" disabled={!readDisclaimer}>
+            <Button
+              style={{ marginBottom: "10px" }}
+              variant="primary"
+              type="submit"
+              disabled={!readDisclaimer}
+            >
               Submit
             </Button>
           </Form>

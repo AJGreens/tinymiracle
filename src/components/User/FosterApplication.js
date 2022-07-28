@@ -614,7 +614,6 @@ export default function FosterApplication() {
                   {/* <p> spayed: {p1Spayed}</p> */}
                 </>
               )}
-
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlTextarea1"
@@ -689,7 +688,6 @@ export default function FosterApplication() {
                 </>
               )}
               {fenced !== "yes" && <br />}
-
               <Form.Group className="mb-3">
                 <Form.Label>
                   How many hours per day will the dog be left alone?
@@ -763,6 +761,7 @@ export default function FosterApplication() {
               />
               <br />
               <Button
+                style={{ marginBottom: "10px" }}
                 variant="primary"
                 type="submit"
                 disabled={!readDisclaimer}

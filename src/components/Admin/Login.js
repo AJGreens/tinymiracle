@@ -31,13 +31,14 @@ function Login() {
     <>
       <div
         className="container-fluid text-center userHtml themeBlue"
+        style={{ border: "green solid 0px" }}
         id="noPadding"
       >
-        <div className="outer">
-          <UserNav />
+        <UserNav />
+        <div className="specialOuter">
           <Card className="innerFlex">
             <Card.Body className="d-flex align-items-center adminTan">
-              <div className="container-fluid">
+              <div className="container-fluid" style={{ zIndex: 0 }}>
                 <h2 className="text-center">Admin Login</h2>
                 {error !== "" && <Alert variant="danger"> {error} </Alert>}
                 <Form onSubmit={handleSubmit}>
