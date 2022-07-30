@@ -8,9 +8,10 @@ import {
   faTractor,
   faPaw,
   faKitMedical,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import UserNav from "./UserNav";
-
+// <FontAwesomeIcon icon={faChevronRight} />
 // import pawtrail from "./DogImages/pawtrail.png";
 import longtrail from "./DogImages/longtrail-removebg.png";
 
@@ -60,8 +61,11 @@ function Home() {
               You give them a home.
             </h2>
             <h4 style={{ marginBottom: 0 }}>
-              <Link className="customLink" to="/adoptableDogsHome">
-                See Adoptable Animals <span className="appleSign">&gt;</span>
+              <Link
+                className="customLink d-flex align-items-center"
+                to="/adoptableDogsHome"
+              >
+                See Adoptable Animals &gt;
               </Link>
             </h4>
           </div>
@@ -180,12 +184,20 @@ function Home() {
             <Row>
               <Col>
                 <a href="https://www.facebook.com/TinyMiraclesPetcare/">
-                  <FontAwesomeIcon icon={faFacebook} size="4x" />
+                  <FontAwesomeIcon
+                    className="themeBlue"
+                    icon={faFacebook}
+                    size="4x"
+                  />
                 </a>
               </Col>
               <Col>
                 <a href="https://www.instagram.com/tinymiraclesrescue/">
-                  <FontAwesomeIcon icon={faInstagram} size="4x" />
+                  <FontAwesomeIcon
+                    className="themeBlue"
+                    icon={faInstagram}
+                    size="4x"
+                  />
                 </a>
               </Col>
             </Row>

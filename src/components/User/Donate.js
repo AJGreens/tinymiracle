@@ -6,6 +6,9 @@ import paybal from "./DonatePics/paybal.gif";
 import { Row, Col } from "react-bootstrap";
 import donate from "./DogImages/donate.jpg";
 import Footer from "./Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGift, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faAmazon, faPaypal } from "@fortawesome/free-brands-svg-icons";
 
 function Donate() {
   return (
@@ -45,18 +48,29 @@ function Donate() {
                         <input type="hidden" name="currency_code" value="USD" />
 
                         <h4 className="text-center">
+                          <FontAwesomeIcon icon={faArrowRight} />{" "}
                           <a
                             className="donateHeaders"
                             target="_blank"
                             href="https://www.paypal.com/donate?business=tinymiraclesfarm@gmail.com&no_recurring=0&item_name=Tiny Miracles Rescue&currency_code=USD"
                             rel="noreferrer"
                           >
-                            Donate via PayPal &nbsp;
+                            Donate via PayPal{" "}
+                            <FontAwesomeIcon
+                              className="themeBlue"
+                              icon={faPaypal}
+                            />
+                            {/* &nbsp;{" "}
                             <img
                               alt="Paybal"
                               src={paybal}
                               className="donatePics"
                             />
+                            &nbsp;&nbsp;
+                            <FontAwesomeIcon
+                              className="themeBlue"
+                              icon={faHandPointLeft}
+                            /> */}
                             {/* <input
                               type="image"
                               src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif"
@@ -76,21 +90,32 @@ function Donate() {
                   <Col xs={12}>
                     <div className="container">
                       <h4 className="text-center">
+                        <FontAwesomeIcon icon={faArrowRight} />{" "}
                         <a
                           className="donateHeaders"
                           target="_blank"
                           href="https://smile.amazon.com/charity?orig=%2F"
                           rel="noreferrer"
                         >
-                          Sign in with&nbsp;
+                          Sign in with Amazon{" "}
+                          <FontAwesomeIcon
+                            className="themeBlue"
+                            icon={faAmazon}
+                          />
+                          {/* &nbsp;
                           <input
                             type="image"
                             className="donatePics"
                             src={amazonSmile}
                             name="submit"
                             alt="AmazonSmile"
-                          />
+                          /> */}
                         </a>
+                        {/* &nbsp;&nbsp;
+                        <FontAwesomeIcon
+                          className="themeBlue"
+                          icon={faHandPointLeft}
+                        /> */}
                       </h4>
                       <p className="donateP">
                         Instead of shopping with your account on amazon.com,
@@ -109,20 +134,31 @@ function Donate() {
                         target="_blank"
                       >
                         <h4 className="text-center">
+                          <FontAwesomeIcon icon={faArrowRight} />{" "}
                           <a
                             target="_blank"
                             href="https://www.amazon.com/hz/wishlist/ls/28FVI645Q406D?ref_=abls_nvfly_yl"
                             className="donateHeaders"
                           >
-                            Check our &nbsp;
+                            Check our WishList{" "}
+                            <FontAwesomeIcon
+                              className="themeBlue"
+                              icon={faGift}
+                            />
+                            {/* &nbsp;
                             <img
                               type="image"
                               className="donatePics"
                               src={amazonWishList}
                               alt="BarkBox"
                               style={{ marginTop: "-25px" }}
-                            />
+                            /> */}
                           </a>
+                          {/* &nbsp;&nbsp;
+                          <FontAwesomeIcon
+                            className="themeBlue"
+                            icon={faHandPointLeft}
+                          /> */}
                         </h4>
                         <p className="donateP">
                           Purchase something for Tiny Miracles Rescue Animals
