@@ -30,6 +30,7 @@ import RescueStories from "./User/RescueStories";
 import AddRescueStories from "./Admin/AddRescueStories";
 import ScrollTop from "./User/ScrollTop";
 import About from "./User/About";
+import FosterHome from "./User/FosterHome";
 
 function App() {
   return (
@@ -44,6 +45,11 @@ function App() {
               exact
               path="/fosterApplication"
               element={<FosterApplication />}
+            />
+            <Route
+              exact
+              path="/fosterHome"
+              element={<FosterHome />}
             />
             <Route exact path="/donate" element={<Donate />} />
             <Route exact path="/contact" element={<Contact />} />

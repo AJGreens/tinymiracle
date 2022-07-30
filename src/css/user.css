@@ -138,19 +138,14 @@ select {
 } */
 
 .dogContainer {
-  /* border-radius: 25px; */
-  /* border: #144771 solid 5px; */
-  /* padding: 20px; */
   padding: 1.5%;
   margin: 2.5% auto;
   background-color: #fff9ee;
-  /* background-color: #dceef8; */
-
-  /* background-image: linear-gradient(to right,white, #C7C5C5, white); */
-  /* border-right: 6px solid  #144771; */
-  border: 4px solid #144771;
-
-  border-radius: 25px;
+  /* border: 1px solid #144771; */
+  border-left: 8px solid #144771;
+  
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .dogImgContainer {
@@ -411,23 +406,22 @@ div.container-fluid {
 }
 
 .themeButton {
-  background-color: #144771 ;
-  border-color: #144771 ;
+  background-color: #144771;
+  border-color: #144771;
   color: #f0f0f0;
   /* background-color:     #DC0404;
     border-color:    #DC0404; */
 }
-#coolBtn{
-    background-color: #144771 ;
-    border-color: #144771 ;
-    color: #f0f0f0;
-    box-shadow: none;
+#coolBtn {
+  background-color: #144771;
+  border-color: #144771;
+  color: #f0f0f0;
+  box-shadow: none;
 }
 
 .logoDiv {
   padding-top: 2px;
 }
-
 
 .justBlueBox {
   height: 166px;
@@ -537,7 +531,7 @@ hr{
 
 .homeCol {
   /* padding-bottom: 0; */
-  
+
   border: green solid 0px;
   /* height: 300px; */
   position: relative;
@@ -607,8 +601,8 @@ hr{
   max-width: 50vw;
   max-height: 50vh;
   /* padding: 5px; */
-  border-top-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border-radius: 25px;
+  /* border-bottom-right-radius: 25px; */
   border: 7px solid #144771;
 }
 

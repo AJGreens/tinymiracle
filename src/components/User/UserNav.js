@@ -59,9 +59,9 @@ function UserNav() {
                 className={({ isActive }) =>
                   "nav-link " + (isActive ? "homeNavActiveLink" : "homeNavLink")
                 }
-                to="/fosterApplication"
+                to="/fosterHome"
               >
-                Foster Application
+                Fostering
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
