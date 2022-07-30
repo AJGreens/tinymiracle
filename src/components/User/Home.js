@@ -10,13 +10,15 @@ import {
   faKitMedical,
 } from "@fortawesome/free-solid-svg-icons";
 import UserNav from "./UserNav";
-import widedog from "./DogImages/widedog.jpg";
+
 // import pawtrail from "./DogImages/pawtrail.png";
 import longtrail from "./DogImages/longtrail-removebg.png";
+
 import { useEffect, useState } from "react";
-import cutieA from "./DogImages/wink.png";
-import cutieB from "./DogImages/contactUs.jpg";
-import cutieC from "./DogImages/donate.jpg";
+import widedog from "./DogImages/WeezyUp.jpg";
+import cutieA from "./DogImages/rainbow.jpg";
+import cutieB from "./DogImages/sitDog.jpg";
+import cutieC from "./DogImages/groupShotA.jpg";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
@@ -111,7 +113,8 @@ function Home() {
                 </div>
               </Col>
             </Row>
-            <div className="lineDiv"></div>
+            {/* <div className="lineDiv"></div> */}
+            <hr></hr>
             <Row className="homeRow">
               <Col sm={12} md={4} className="homeCol hideOnBig">
                 <div className="homeColImgDiv">
@@ -141,7 +144,8 @@ function Home() {
                 </div>
               </Col>
             </Row>
-            <div className="lineDiv"></div>
+            {/* <div className="lineDiv"></div> */}
+            <hr></hr>
             <Row className="homeRow">
               <Col sm={12} md={4} className="homeCol">
                 <div className="homeColImgDiv">
