@@ -6,17 +6,17 @@ import { Button, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDog } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-
+import Footer from "./Footer";
 
 function AdoptableDogsHome() {
   const [dogs, setDogs] = useState([]);
+  // const [loaded, setLoaded] = useState(false);
 
   const navigate = useNavigate();
 
   function goToAdoptionProcess(dogToken) {
     navigate("/adoptionProcess/" + dogToken);
   }
-
 
   useEffect(() => {
     const dogRef = ref(database, "animals/adoptable");
@@ -35,8 +35,10 @@ function AdoptableDogsHome() {
           };
         });
         setDogs(allDogs);
+        // setLoaded(true);
       } else {
         setDogs([]);
+        // setLoaded(true);
       }
     });
   }, []);
@@ -48,13 +50,26 @@ function AdoptableDogsHome() {
         id="noPadding"
       >
         <UserNav />
+        {/* {loaded && (
+          <div> */}
         <div id="extra3Padding">
           <h1>Adoptable Dogs</h1>
-          <Button onClick={()=>goToAdoptionProcess("general")} id="applyBtn">General Apply <FontAwesomeIcon icon={faDog} /></Button>
+          <p className="squishTxt">
+            To meet our adoptable dogs, please submit an application and we will
+            have a representative get back to you ASAP. Most of our rescue dogs
+            are going/are in foster care and not at the farm.
+          </p>
+          <Button onClick={() => goToAdoptionProcess("general")} id="applyBtn">
+            General Apply <FontAwesomeIcon icon={faDog} />
+          </Button>
           {dogs.map((dog) => (
             <div className="container mt-4 dogContainer" key={dog.id}>
               <Row>
-                <Col sm={12} md={6} className="dogImgContainer d-flex justify-content-center align-items-center">
+                <Col
+                  sm={12}
+                  md={6}
+                  className="dogImgContainer d-flex justify-content-center align-items-center"
+                >
                   <div>
                     {/* <h2>{dog.name}</h2>
                     <h4>
@@ -67,13 +82,19 @@ function AdoptableDogsHome() {
                     />
                   </div>
                 </Col>
-                <Col sm={12} md={6} className="dogTextContainer d-flex justify-content-center align-items-center">
+                <Col
+                  sm={12}
+                  md={6}
+                  className="dogTextContainer d-flex justify-content-center align-items-center"
+                >
                   <div>
                     <h2>{dog.name}</h2>
                     <h4>
                       {dog.age} {dog.gender} {dog.breed}
                     </h4>
-                    <p className="mt-4" style = {{textAlign: 'left'}}>{dog.description}</p>
+                    <p className="mt-4" style={{ textAlign: "left" }}>
+                      {dog.description}
+                    </p>
                     <Button
                       variant="primary"
                       id="applyBtn"
@@ -87,6 +108,10 @@ function AdoptableDogsHome() {
             </div>
           ))}
         </div>
+        <div className="pushDown"></div>
+        <Footer />
+        {/* </div>
+        )} */}
       </div>
     </>
   );

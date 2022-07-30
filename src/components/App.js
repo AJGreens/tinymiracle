@@ -28,32 +28,40 @@ import ViewFosterApps from "./Admin/ViewFosterApps";
 import SpecificFosterApp from "./Admin/SpecificFosterApp";
 import RescueStories from "./User/RescueStories";
 import AddRescueStories from "./Admin/AddRescueStories";
+import ScrollTop from "./User/ScrollTop";
+import About from "./User/About";
 
 function App() {
-  
   return (
     <div>
-        <Router>
+      <Router>
+        <ScrollTop />
         <AuthProvider>
-            <Routes>
-                
-                <Route exact path="/" element={<Home/>}/>
-                <Route exact path="/petcare" element={<PetCare/>}/>
-                <Route exact path="/fosterApplication" element={<FosterApplication/>}/>
-                <Route exact path="/donate" element={<Donate/>}/>
-                <Route exact path="/contact" element={<Contact/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/adoptionProcess/:token" element={<AdoptionProcess/>}/>
-                <Route path="/adoptionForm/:token" element={<AdoptionForm/>}/>
-                <Route path="/thankyou" element={<ThankYou/>}/>
-                <Route path="/adoptabledogshome" element={<AdoptableDogsHome/>}/>
-                <Route path="/rescueStories" element={<RescueStories/>}/>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/petcare" element={<PetCare />} />
+            <Route
+              exact
+              path="/fosterApplication"
+              element={<FosterApplication />}
+            />
+            <Route exact path="/donate" element={<Donate />} />
+            <Route exact path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/adoptionProcess/:token"
+              element={<AdoptionProcess />}
+            />
+            <Route path="/adoptionForm/:token" element={<AdoptionForm />} />
+            <Route path="/thankyou" element={<ThankYou />} />
+            <Route path="/adoptabledogshome" element={<AdoptableDogsHome />} />
+            <Route path="/rescueStories" element={<RescueStories />} />
+            <Route path="/about" element={<About />} />
 
-
-                <Route exact path="/admin" element={<PrivateRoute/>}>
-                  <Route exact path="/admin" element={<Admin/>}/>
-                </Route>                
-                {/* <Route exact path="/addAnimal" element={<PrivateRoute/>}>
+            <Route exact path="/admin" element={<PrivateRoute />}>
+              <Route exact path="/admin" element={<Admin />} />
+            </Route>
+            {/* <Route exact path="/addAnimal" element={<PrivateRoute/>}>
                   <Route path="/addAnimal" element={<AddAnimal/>}/>
                 </Route>
                 <Route exact path="/editAnimal/:prevStatus/:token" element={<PrivateRoute/>}>
@@ -160,7 +168,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;

@@ -91,9 +91,9 @@ function UserNav() {
                 className={({ isActive }) =>
                   "nav-link " + (isActive ? "homeNavActiveLink" : "homeNavLink")
                 }
-                to="/contact"
+                to="/about"
               >
-                Contact
+                About
               </NavLink>
               {user && (
                 <NavLink className="nav-link homeNavLink" to="/admin">
