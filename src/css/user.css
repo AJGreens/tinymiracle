@@ -117,13 +117,13 @@ select {
 
 .adoptableImg {
   /* max-height: 35vh; */
-  max-height: 440px;
+  max-height: 100%;
   /* max-width: 440px;  */
   max-width: 100%;
   /* border-radius: 15px; */
   /* border: 10px solid #386A92; */
-  border: 4px solid #144771;
-  border: 4px solid #144771;
+  /* border: 4px solid #144771;
+  border: 4px solid #144771; */
 }
 .adoptableTxtDiv {
   /* border: red solid 2px; */
@@ -178,7 +178,8 @@ select {
 .adoptableImg {
   /* max-height: 35vh; */
   max-height: 440px;
-  max-width: 440px;
+  max-width: 95%;
+
   /* border-radius: 15px; */
   /* border: 10px solid #386A92; */
   /* border: 4px solid #144771; */
@@ -408,20 +409,25 @@ div.container-fluid {
   background-color: #ffefd3;
 }
 
-button {
-  background-color: #144771 !important;
-  border-color: #144771 !important;
-  color: #f0f0f0 !important;
+.themeButton {
+  background-color: #144771 ;
+  border-color: #144771 ;
+  color: #f0f0f0;
   /* background-color:     #DC0404;
     border-color:    #DC0404; */
 }
+#coolBtn{
+    background-color: #144771 ;
+    border-color: #144771 ;
+    color: #f0f0f0;
+    box-shadow: none;
+}
+
 .logoDiv {
   padding-top: 2px;
 }
 
-/* #applyBtn:hover{
-    background-color: white;
-} */
+
 .justBlueBox {
   height: 166px;
   background: #144771;
@@ -502,7 +508,7 @@ button {
   /* border-bottom: #fff9ee solid 10px; */
 
   /* height: 300px; */
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   /* margin-top:20px; */
 }
 .homeRow p {
@@ -510,19 +516,16 @@ button {
 }
 
 .lineDiv {
-  /* width: 100%; */
-  position: absolute;
-  left: 0;
-  right: 0;
+  width: 75%;
+  margin: 20px auto;
 
-  margin-top: -20px;
-  /* need to account for half of homerows margin bottom plus thickness of this line */
 
-  border: #fff9ee solid 5px;
+  border: #144771 solid 2px;
 }
 
 .homeCol {
-  padding-bottom: 0;
+  /* padding-bottom: 0; */
+  
   border: green solid 0px;
   /* height: 300px; */
   position: relative;
@@ -682,7 +685,8 @@ button {
 }
 .footerDiv {
   border: green solid 0px;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
+  padding: 20px;
   /* padding-top:100px; */
   /* border-top: #144771 solid 2px; */
   /* color: #144771;
@@ -691,14 +695,15 @@ button {
   color: #f0f0f0;
   /* border: red solid 2px; */
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  /* vertical-align: bottom; */
+  /* position: absolute;
+  bottom: 0; */
 }
 @media (min-width: 768px) {
   .footColL {
-    /* text-align: left; */
-    position: absolute;
-    bottom: 0;
+    text-align: left;
+    /* position: absolute;
+    bottom: 0; */
   }
   .footColR {
     text-align: right;
@@ -759,4 +764,11 @@ right: 0; */
   .pushDown {
     height: 80px;
   }
+}
+
+.mostOuter{
+    width: 100%;
+    /* border: red solid 3px; */
+    display: inline;
+    /* display: table-cell; */
 }

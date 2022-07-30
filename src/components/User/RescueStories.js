@@ -102,10 +102,11 @@ export default function RescueStories() {
           ))}
         </div>
         <div className="pushDown"></div>
-        <Footer />
+
         {/* </div>
         )} */}
       </div>
+      <Footer />
     </>
   );
 }

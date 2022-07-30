@@ -6,6 +6,7 @@ import dogBench from "./DogImages/dogBench.jpg";
 function About() {
   return (
     <>
+      {/* <div className="mostOuter"> */}
       <div
         className="container-fluid userHtml text-center themeBlue"
         id="noPadding"
@@ -33,9 +34,9 @@ function About() {
           </p>
           <img src={dogBench} className="fullPic" />
         </div>
-
-        <Footer />
       </div>
+      <Footer />
+      {/* </div> */}
     </>
   );
 }

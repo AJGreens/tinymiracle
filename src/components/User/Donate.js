@@ -146,7 +146,7 @@ function Donate() {
           </Col>
         </Row>
       </div>
-      <div className="donatePushDown"></div>
+
       <Footer />
     </>
   );

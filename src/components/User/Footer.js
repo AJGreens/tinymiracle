@@ -7,6 +7,8 @@ export default function Footer() {
         <Row>
           <Col sm={12} md={6} style={{ border: "red solid 0px" }}>
             <p className="mb-0 footColL">
+              Tiny Miracles
+              <br />
               696 New Galena Rd Chalfont, PA 18914
             </p>
           </Col>

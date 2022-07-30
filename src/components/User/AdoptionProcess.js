@@ -14,9 +14,9 @@ function AdoptionProcess() {
 
   return (
     <>
-    <div className = "userHtml container-fluid" id = "noPadding"> 
-      <UserNav />
-      
+      <div className="userHtml container-fluid" id="noPadding">
+        <UserNav />
+
         <Container className="mt-4 themeBlue">
           <h1 style={{ textAlign: "center" }}>Adoption Process</h1>
 
@@ -30,13 +30,13 @@ function AdoptionProcess() {
             <br />
             <li>
               We will call the Personal and Veterinary references you listed on
-              the application and contact you. Note: If you do not have a current
-              / past pet - that is OK.
+              the application and contact you. Note: If you do not have a
+              current / past pet - that is OK.
             </li>
             <br />
           </ol>
           <div style={{ textAlign: "center" }}>
-            <Button onClick={goToAdoptionApplication}>
+            <Button id="coolBtn" onClick={goToAdoptionApplication}>
               Continue to Application
             </Button>
           </div>

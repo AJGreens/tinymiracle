@@ -1077,6 +1077,7 @@ function AdoptionForm() {
             />
             <br />
             <Button
+              id="coolBtn"
               style={{ marginBottom: "10px" }}
               variant="primary"
               type="submit"

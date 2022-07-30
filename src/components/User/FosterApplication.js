@@ -761,6 +761,8 @@ export default function FosterApplication() {
               />
               <br />
               <Button
+                className="themeButton"
+                id="coolBtn"
                 style={{ marginBottom: "10px" }}
                 variant="primary"
                 type="submit"

@@ -251,10 +251,10 @@ function PetCare() {
           </div>
         </div>
         <div className="petCarePushDown"></div>
-        <Footer />
         {/* </div>
         )} */}
       </div>
+      <Footer />
     </>
   );
 }

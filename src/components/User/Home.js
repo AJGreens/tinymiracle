@@ -45,6 +45,7 @@ function Home() {
 
   return (
     <>
+      {/* <div className="mostOuter"> */}
       <div className="container-fluid userHtml" id="noPadding">
         <UserNav />
         {/* {loaded && (
@@ -102,7 +103,9 @@ function Home() {
                         committed to providing a loving home away from home for
                         your pet!
                       </p>
-                      <Button onClick={goToPetCare}>Learn More &gt;</Button>
+                      <Button id="coolBtn" onClick={goToPetCare}>
+                        Learn More &gt;
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -125,7 +128,7 @@ function Home() {
                         as many souls as possible. Since then, Tiny Miracles has
                         helped over a thousand animals find their forever homes.
                       </p>
-                      <Button onClick={goToRescueStories}>
+                      <Button id="coolBtn" onClick={goToRescueStories}>
                         See their stories &gt;
                       </Button>
                     </div>
@@ -156,7 +159,9 @@ function Home() {
                         the many people who have made it possible for us to
                         continue our work saving animals.
                       </p>
-                      <Button onClick={goToDonate}>Donate &gt;</Button>
+                      <Button id="coolBtn" onClick={goToDonate}>
+                        Donate &gt;
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -182,10 +187,12 @@ function Home() {
             </Row>
           </div>
         </div>
-        <Footer />
+
         {/* </div>
         )} */}
       </div>
+      <Footer />
+      {/* </div> */}
     </>
   );
 }

@@ -17,7 +17,6 @@ function AdoptableDogsHome() {
   function goToAdoptionProcess(dogToken) {
     navigate("/adoptionProcess/" + dogToken);
   }
- 
 
   useEffect(() => {
     const dogRef = ref(database, "animals/adoptable");
@@ -60,7 +59,7 @@ function AdoptableDogsHome() {
             have a representative get back to you ASAP. Most of our rescue dogs
             are going/are in foster care and not at the farm.
           </p>
-          <Button onClick={() => goToAdoptionProcess("general")} id="applyBtn">
+          <Button id="coolBtn" onClick={() => goToAdoptionProcess("general")}>
             General Apply <FontAwesomeIcon icon={faDog} />
           </Button>
           {dogs.map((dog) => (
@@ -98,7 +97,7 @@ function AdoptableDogsHome() {
                     </p>
                     <Button
                       variant="primary"
-                      id="applyBtn"
+                      id="coolBtn"
                       onClick={() => goToAdoptionProcess(dog.id)}
                     >
                       Apply <FontAwesomeIcon icon={faDog} />
@@ -110,10 +109,8 @@ function AdoptableDogsHome() {
           ))}
         </div>
         <div className="pushDown"></div>
-        <Footer />
-        {/* </div>
-        )} */}
       </div>
+      <Footer />
     </>
   );
 }
