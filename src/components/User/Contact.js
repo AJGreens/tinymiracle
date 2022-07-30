@@ -1,25 +1,20 @@
 import React from "react";
 import UserNav from "./UserNav";
 import contactUs from "./DogImages/contactUs.jpg";
+import { Row, Col } from "react-bootstrap";
 
 function Contact() {
   return (
     <>
-      <div
-        className="container-fluid userHtml text-center themeBlue"
-        id="noPadding"
-      >
+      <div className="container-fluid userHtml themeBlue" id="noPadding">
         <UserNav />
-        <div className="beegDogFrame">
-          <img src={contactUs} className="beegDog" />
-        </div>
-
-        <div className="container" id="extra3Padding">
-          <div className="row">
-            <div className="col-sm">
-              <div style={{ display: "inline-block", textAlign: "left" }}>
-                <h3>Pet Care & Day Care</h3>
-                <div id="contactOptions">
+        <Row id="noMarginExtraPadding">
+          <Col md={12} lg={6} className="container d-flex align-items-center">
+            <Row>
+              <Col md={3}></Col>
+              <Col xs={12} md={6}>
+                <h3 className="underlineHeading">Pet Care & Day Care</h3>
+                <div>
                   <p>
                     <b>Address:</b> 696 New Galena Rd Chalfont, PA 18914
                   </p>
@@ -30,12 +25,12 @@ function Contact() {
                     <b>Email:</b> tiny_miracles@msn.com
                   </p>
                 </div>
-              </div>
-            </div>
-            <div className="col-sm">
-              <div style={{ display: "inline-block", textAlign: "left" }}>
-                <h3>Rescue</h3>
-                <div id="contactOptions">
+              </Col>
+              <Col md={3}></Col>
+              <Col md={3}></Col>
+              <Col xs={12} md={6}>
+                <h3 className="underlineHeading">Rescue</h3>
+                <div>
                   <p>
                     <b>Phone:</b> 215-997-2844
                   </p>
@@ -50,10 +45,14 @@ function Contact() {
                     farm.
                   </p>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              </Col>
+              <Col lg={3}></Col>
+            </Row>
+          </Col>
+          <Col md={12} lg={6} className="verticalDogPic">
+            <img src={contactUs} />
+          </Col>
+        </Row>
       </div>
     </>
   );

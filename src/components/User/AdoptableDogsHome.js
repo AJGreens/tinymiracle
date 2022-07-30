@@ -16,7 +16,7 @@ function AdoptableDogsHome() {
   function goToAdoptionProcess(dogToken) {
     navigate("/adoptionProcess/" + dogToken);
   }
-
+ 
 
   useEffect(() => {
     const dogRef = ref(database, "animals/adoptable");
