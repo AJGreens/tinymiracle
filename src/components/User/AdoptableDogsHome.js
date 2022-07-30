@@ -50,8 +50,6 @@ function AdoptableDogsHome() {
         id="noPadding"
       >
         <UserNav />
-        {/* {loaded && (
-          <div> */}
         <div id="extra3Padding">
           <h1>Adoptable Dogs</h1>
           <p className="squishTxt">
