@@ -48,6 +48,7 @@ function EditAnimal() {
   const [fileCountError, setFileCountError] = useState("");
   const [currImgFile, setCurrImgFile] = useState();
   const [imageUrl, setImageUrl] = useState();
+  const [oldFiles, setOldFiles] = useState([]);
 
   useEffect(() => {
     const tokenRef = ref(
@@ -61,6 +62,7 @@ function EditAnimal() {
           return { url: val["url"], name: val["name"] };
         });
         setAllFiles(tempArr);
+        setOldFiles(tempArr);
       }
     });
   }, [prevStatus, token]);
@@ -165,23 +167,33 @@ function EditAnimal() {
 
   async function updateAnimal(event) {
     event.preventDefault();
-
-    //CASE 1: Animal was previously adoptable and is now not adoptable
-    if (prevStatus === "adoptable" && status !== "Adoptable") {
-      const deleteable = ref(database, "animals/adoptable/" + token);
-      remove(deleteable);
-    }
-    //CASE 2: Animal was previously not adoptable and is now adoptable
-    else if (prevStatus === "other" && status === "Adoptable") {
-      const deleteable = ref(database, "animals/other/" + token);
-      remove(deleteable);
-    }
-
     let animalRefStr = "animals/other/" + token;
     let animalRef = ref(database, "animals/other/" + token);
     if (status === "Adoptable") {
       animalRef = ref(database, "animals/adoptable/" + token);
       animalRefStr = "animals/adoptable/" + token;
+    }
+
+    //CASE 1: Animal was previously adoptable and is now not adoptable
+    if (prevStatus !== status) {
+      imageUrl && update(animalRef, { img: imageUrl });
+      oldFiles &&
+        oldFiles.forEach((item) => {
+          update(
+            ref(database, animalRefStr + "/pdfs/" + item.name.split(".")[0]),
+            { url: item.url, name: item.name }
+          );
+        });
+      if (prevStatus === "adoptable" && status !== "Adoptable") {
+        const deleteable = ref(database, "animals/adoptable/" + token);
+
+        remove(deleteable);
+      }
+      //CASE 2: Animal was previously not adoptable and is now adoptable
+      else if (prevStatus === "other" && status === "Adoptable") {
+        const deleteable = ref(database, "animals/other/" + token);
+        remove(deleteable);
+      }
     }
 
     // loading for image process 2 needs to be set
@@ -378,15 +390,24 @@ function EditAnimal() {
             allFiles[j].name.split(".")[0]
         );
         remove(deleteFromRTDatabase);
+
+        let temp = [];
+        for (let i = 0; i < allFiles.length; i++) {
+          if (i !== j) {
+            temp.push(allFiles[i]);
+          }
+        }
+        setAllFiles(temp);
       }
-    }
-    let temp = [];
-    for (let i = 0; i < allFiles.length; i++) {
-      if (i !== j) {
-        temp.push(allFiles[i]);
+    } else {
+      let temp = [];
+      for (let i = 0; i < allFiles.length; i++) {
+        if (i !== j) {
+          temp.push(allFiles[i]);
+        }
       }
+      setAllFiles(temp);
     }
-    setAllFiles(temp);
   }
 
   return (

@@ -6,9 +6,11 @@ import { Button, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDog } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 export default function RescueStories() {
   const [dogs, setDogs] = useState([]);
+  //   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const dogRef = ref(database, "rescueStories");
@@ -24,8 +26,10 @@ export default function RescueStories() {
           };
         });
         setDogs(allDogs);
+        // setLoaded(true);
       } else {
         setDogs([]);
+        // setLoaded(true);
       }
     });
   }, []);
@@ -37,8 +41,29 @@ export default function RescueStories() {
         id="noPadding"
       >
         <UserNav />
+        {/* {loaded && (
+          <div> */}
         <div id="extra3Padding">
           <h1>Rescue Stories</h1>
+          <div className="container">
+            {/* <blockquote class="blockquote pb-2"> */}
+            <p>
+              “Rescue animals aren’t broken, they’ve simply experienced more
+              life than other animals. If they were human, we would call them
+              wise. They would be the ones with tales to tell and stories to
+              write, the ones dealt a bad hand who responded with courage. Don’t
+              pity them. Do something. Help to rescue. Donate. Volunteer.
+              Foster. Adopt. And be proud to have their greatness by your side.”
+            </p>
+            {/* </blockquote> */}
+            <p
+              class="blockquote-footer mb-0 font-italic themeBlue"
+              //   style={{ color: "grey" }}
+            >
+              Anonymous
+            </p>
+          </div>
+
           {dogs.map((dog) => (
             <div className="container mt-4 dogContainer" key={dog.id}>
               <Row>
@@ -64,7 +89,7 @@ export default function RescueStories() {
                   md={6}
                   className="dogTextContainer d-flex justify-content-center align-items-center"
                 >
-                  <div>
+                  <div className="adoptableTxtDiv">
                     <h2>{dog.name}</h2>
 
                     <p className="mt-4" style={{ textAlign: "left" }}>
@@ -76,6 +101,10 @@ export default function RescueStories() {
             </div>
           ))}
         </div>
+        <div className="pushDown"></div>
+        <Footer />
+        {/* </div>
+        )} */}
       </div>
     </>
   );
