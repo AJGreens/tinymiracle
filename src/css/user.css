@@ -51,8 +51,13 @@ body{
     body{
         font-size: 120%;
     }
-    
     }
+
+    @media only screen and (min-width: 1800px) {
+        body{
+            font-size: 140%;
+        }
+        }
 
  p,
 div,
@@ -62,6 +67,14 @@ input,
 select {
 font-size: 1em !important;
 /* color: green !important; */
+}
+h2{
+    font-size: 2em;
+    color: purple !important;
+}
+h3{
+    color: orange !important;
+    font-size: 1.75em;
 }
 
 
