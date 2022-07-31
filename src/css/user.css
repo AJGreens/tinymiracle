@@ -27,6 +27,53 @@ text-align: left;
   /* font-size: 1.1vw; */
 }
 
+html{
+    font-size: 18px;
+}
+body{
+    font-size: 100%;
+}
+/* Big screen devices (889px and above) */
+@media only screen and (min-width: 889px) {
+p{
+
+}
+}
+ 
+/* Extra big screen devices (1200px and above) */
+@media only screen and (min-width: 1200px) {
+body{
+}
+
+}
+
+@media only screen and (min-width: 1500px) {
+    body{
+        font-size: 120%;
+    }
+    
+    }
+
+ p,
+div,
+li,
+button,
+input,
+select {
+font-size: 1em !important;
+/* color: green !important; */
+}
+
+
+
+
+
+
+
+
+
+
+
 /* very important fixes a ton of issues on phone screen sizes with 
 extra white space to the right!! */
 html,
@@ -66,14 +113,14 @@ body {
     display: inline-block; */
   /* font-family: Arial, sans-serif; */
 }
-p,
+/* p,
 div,
 li,
 button,
 input,
 select {
   font-size: 18px !important;
-}
+} */
 .leftAlignDiv {
   display: inline-block;
   text-align: left;
@@ -287,6 +334,21 @@ div.container-fluid {
 }
 
 .beegDogFrame {
+    width: 100%;
+    height: 30vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .beegDog {
+    width: 100%;
+    height: 100%;
+    object-position: 0% 40%;
+
+    object-fit:cover;
+  }
+
+  @media(max-width: 768px){
+    .beegDogFrame {
   width: 100%;
   height: 350px;
   position: relative;
@@ -296,7 +358,48 @@ div.container-fluid {
   width: 100%;
   height: 500px;
   object-fit: cover;
+  object-position: 50% 0;
 }
+  }
+
+
+
+
+
+
+
+
+/* .beegDogFrame {
+  width: 100%;
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+}
+.beegDog {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+} */
+
+/* @media only screen and (min-width: 1400px) {
+    .beegDogFrame {
+        height: 450px;
+      }
+      .beegDog {
+        height: 600px;
+      }
+    
+    }
+
+    @media only screen and (min-width: 1650px) {
+        .beegDogFrame {
+            height: 550px;
+          }
+          .beegDog {
+            height: 700px;
+          }
+        
+        } */
 
 .beegDogText {
   position: absolute;
