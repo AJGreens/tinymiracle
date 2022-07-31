@@ -51,7 +51,6 @@ body {
   }
 }
 
-
 .squishTxt {
   padding: 0 20%;
 }
@@ -147,7 +146,7 @@ select {
 }
 
 .dogImgContainer {
-      /* background-color: #F08080; */
+  /* background-color: #F08080; */
   /* max-width: 100%;
     border: red solid 10px; */
   /* background-color: #386A92; */
@@ -416,7 +415,6 @@ div.container-fluid {
   background-color: #144771;
   border-color: #144771;
   color: #f0f0f0;
-  box-shadow: none;
 }
 
 .logoDiv {
@@ -533,7 +531,7 @@ hr {
 
   border: green solid 0px;
   /* height: 300px; */
-  position: relative;
+  /* position: relative; */
 }
 
 @media (min-width: 768px) {
@@ -548,15 +546,16 @@ hr {
   width: 100%;
   height: 300px;
 }
-.homeCol img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain !important;
+
+.homeColImgDiv img {
+  display: block;
+  margin: auto;
+  border: black solid 5px;
 }
 
 @media (min-width: 768px) {
-  .hideOnBig {
-    display: none;
+  #hideOnBig {
+    display: none !important;
   }
   .myOuter {
     display: table;
@@ -586,8 +585,8 @@ hr {
   .homeCol {
     text-align: center;
   }
-  .hideOnPhone {
-    display: none;
+  #hideOnPhone {
+    display: none !important;
   }
 }
 
@@ -595,7 +594,6 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: red solid 0px;
 }
 .verticalDogPic img {
   /* max-width: 50vw;
@@ -604,7 +602,6 @@ hr {
   /* padding: 5px; */
   border-radius: 25px;
   /* border-bottom-right-radius: 25px; */
-  border: 7px solid #144771;
 }
 
 #noMargin {
@@ -628,8 +625,8 @@ hr {
 }
 
 @media (min-width: 768px) {
-  .hideOnBig {
-    display: none;
+  #hideOnBig {
+    display: none !important;
   }
   .myOuter {
     display: table;
@@ -659,12 +656,16 @@ hr {
   border: red solid 0px;
 }
 
+#picB {
+  max-height: 50vh;
+}
+
 @media (max-width: 768px) {
   .homeCol {
     text-align: center;
   }
-  .hideOnPhone {
-    display: none;
+  #hideOnPhone {
+    display: none !important;
   }
 }
 
@@ -743,7 +744,10 @@ right: 0; */
 
 .fullPic {
   /* max-width: 100%; */
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 25px;
+  padding: 0px 10px;
 }
 
 .pushDown {
