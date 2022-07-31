@@ -138,14 +138,11 @@ select {
 } */
 
 .dogContainer {
-  padding: 1.5%;
   margin: 2.5% auto;
   background-color: #fff9ee;
-  /* border: 1px solid #144771; */
-  border-left: 8px solid #144771;
-
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  /* border-top: 8px solid #144771;
+  border-bottom: 8px solid #144771; */
+  border: 8px solid #144771;
 }
 
 .dogImgContainer {
@@ -153,7 +150,8 @@ select {
     border: red solid 10px; */
   /* background-color: #386A92; */
   /* border-radius: 25px; */
-  /* padding: 1.5%; */
+  /* background-color: white; */
+  padding: 3%;
 }
 
 /* .dogImgContainer h2,h4{
@@ -161,9 +159,10 @@ select {
 } */
 
 .dogTextContainer {
-  /* padding: 1.5%;
-    border-right: 5px solid  #144771;
+  padding: 3%;
+  /* border-right: 5px solid  #144771;
     border-bottom: 5px solid  #144771; */
+  /* border-radius: 25px; */
 }
 .adoptionFormBox {
   /* border-radius: 25px; */
