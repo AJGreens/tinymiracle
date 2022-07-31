@@ -27,52 +27,39 @@ text-align: left;
   /* font-size: 1.1vw; */
 }
 
-html{
-    font-size: 18px;
+html {
+  font-size: 18px;
 }
-body{
-    font-size: 100%;
+body {
+  font-size: 100%;
 }
 /* Big screen devices (889px and above) */
 @media only screen and (min-width: 889px) {
-p{
+  p {
+  }
+}
 
-}
-}
- 
 /* Extra big screen devices (1200px and above) */
 @media only screen and (min-width: 1200px) {
-body{
-}
-
+  body {
+  }
 }
 
 @media only screen and (min-width: 1500px) {
-    body{
-        font-size: 120%;
-    }
-    
-    }
+  body {
+    font-size: 120%;
+  }
+}
 
- p,
+p,
 div,
 li,
 button,
 input,
 select {
-font-size: 1em !important;
-/* color: green !important; */
+  font-size: 1em !important;
+  /* color: green !important; */
 }
-
-
-
-
-
-
-
-
-
-
 
 /* very important fixes a ton of issues on phone screen sizes with 
 extra white space to the right!! */
@@ -334,40 +321,33 @@ div.container-fluid {
 }
 
 .beegDogFrame {
-    width: 100%;
-    height: 30vw;
-    position: relative;
-    overflow: hidden;
-  }
-  .beegDog {
-    width: 100%;
-    height: 100%;
-    object-position: 0% 40%;
-
-    object-fit:cover;
-  }
-
-  @media(max-width: 768px){
-    .beegDogFrame {
   width: 100%;
-  height: 350px;
+  height: 30vw;
   position: relative;
   overflow: hidden;
 }
 .beegDog {
   width: 100%;
-  height: 500px;
+  height: 100%;
+  object-position: 0% 40%;
+
   object-fit: cover;
-  object-position: 50% 0;
 }
+
+@media (max-width: 768px) {
+  .beegDogFrame {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
   }
-
-
-
-
-
-
-
+  .beegDog {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: 50% 0;
+  }
+}
 
 /* .beegDogFrame {
   width: 100%;
@@ -448,14 +428,13 @@ div.container-fluid {
   display: inline-block;
   vertical-align: middle;
 }
-@media(max-width: 768px){
-.centerSmall{
+@media (max-width: 768px) {
+  .centerSmall {
     justify-content: center;
-}
-.smallTxtCenter{
+  }
+  .smallTxtCenter {
     text-align: center;
-
-}
+  }
 }
 
 #paypalHeader {
@@ -608,8 +587,6 @@ div.container-fluid {
   position: relative;
 }
 
-
-
 .lineDiv {
   width: 100%;
   margin: 20px auto;
@@ -628,9 +605,7 @@ hr {
   margin-right: -15px;
 }
 
-
 @media (min-width: 768px) {
-
 }
 .homeColImgDiv {
   border: black solid 0px;
@@ -673,7 +648,6 @@ hr {
 }
 
 @media (max-width: 768px) {
-
   #hideOnPhone {
     display: none !important;
   }
@@ -707,7 +681,6 @@ hr {
   margin: 0;
   padding: 3%;
 }
-
 
 @media (min-width: 768px) {
   #hideOnBig {
@@ -750,7 +723,6 @@ hr {
 }
 
 @media (max-width: 768px) {
-
   #hideOnPhone {
     display: none !important;
   }
@@ -858,14 +830,11 @@ right: 0; */
   }
   .fullPic {
     /* max-width: 100%; */
-margin-bottom: 20px;
+    margin-bottom: 20px;
   }
-  #picB{
-    margin-bottom: 20px;;
+  #picB {
+    margin-bottom: 20px;
   }
-  
-  
-  
 }
 
 .mostOuter {
