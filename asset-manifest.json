@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/tinymiracle/static/css/main.3b9c7bb5.css",
+    "main.css": "/tinymiracle/static/css/main.6f5db882.css",
     "main.js": "/tinymiracle/static/js/main.3271f5f8.js",
     "static/media/donate.jpg": "/tinymiracle/static/media/donate.7bb5c75e483c320efad7.jpg",
     "static/media/KennelLicense.pdf": "/tinymiracle/static/media/KennelLicense.a624dcbae8d5995ae525.pdf",
@@ -27,11 +27,11 @@
     "static/media/amazonWishlist.png": "/tinymiracle/static/media/amazonWishlist.18d671e38e5290f29af7.png",
     "static/media/amazonSmile.png": "/tinymiracle/static/media/amazonSmile.6278793b58b0196898d7.png",
     "index.html": "/tinymiracle/index.html",
-    "main.3b9c7bb5.css.map": "/tinymiracle/static/css/main.3b9c7bb5.css.map",
+    "main.6f5db882.css.map": "/tinymiracle/static/css/main.6f5db882.css.map",
     "main.3271f5f8.js.map": "/tinymiracle/static/js/main.3271f5f8.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b9c7bb5.css",
+    "static/css/main.6f5db882.css",
     "static/js/main.3271f5f8.js"
   ]
 }
