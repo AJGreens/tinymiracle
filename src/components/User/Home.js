@@ -62,7 +62,7 @@ function Home() {
             </h2>
             <h4 style={{ marginBottom: 0 }}>
               <Link
-                className="customLink d-flex align-items-center"
+                className="customLink d-flex align-items-center justify-content-center"
                 to="/adoptableDogsHome"
               >
                 See Adoptable Animals &gt;
@@ -89,96 +89,113 @@ function Home() {
               </Col>
             </Row>
           </div>
-          <div className="container mt-4">
+          <div className="container mt-4 homeCol p-5">
             <Row className="homeRow">
-              <Col sm={12} md={4} className="homeCol">
-                <div className="homeColImgDiv">
-                  <img src={cutieA} alt="cuteDogPic" />
-                </div>
+              <Col
+                sm={12}
+                md={4}
+                className="d-flex align-items-center justify-content-center"
+              >
+                <img className="fullPic" src={cutieA} alt="cuteDogPic" />
               </Col>
-              <Col sm={12} md={8} className="homeCol">
-                <div className="myOuter">
-                  <div className="myMiddle">
-                    <div className="myInner">
-                      <h3>Petcare Paradise on a Farm</h3>
-                      <p>
-                        Kim Rutherford is a lifelong animal lover who was able
-                        to turn her passion for animals into a successful
-                        petcare business that she truly loves. Whether it's just
-                        for the day or an extended stay, Kim and her staff are
-                        committed to providing a loving home away from home for
-                        your pet!
-                      </p>
-                      <Button id="coolBtn" onClick={goToPetCare}>
-                        Learn More &gt;
-                      </Button>
-                    </div>
-                  </div>
+              <Col
+                sm={12}
+                md={8}
+                className="d-flex align-items-center justify-content-center"
+              >
+                <div>
+                  <h3>Petcare Paradise on a Farm</h3>
+                  <p>
+                    Kim Rutherford is a lifelong animal lover who was able to
+                    turn her passion for animals into a successful petcare
+                    business that she truly loves. Whether it's just for the day
+                    or an extended stay, Kim and her staff are committed to
+                    providing a loving home away from home for your pet!
+                  </p>
+                  <Button id="coolBtn" onClick={goToPetCare}>
+                    Learn More &gt;
+                  </Button>
                 </div>
               </Col>
             </Row>
             {/* <div className="lineDiv"></div> */}
             <hr></hr>
             <Row className="homeRow">
-              <Col sm={12} md={4} className="homeCol hideOnBig">
-                <div className="homeColImgDiv">
-                  <img src={cutieB} alt="cuteDogPic" />
+              <Col
+                sm={12}
+                md={4}
+                id="hideOnBig"
+                className="d-flex align-items-center justify-content-center"
+              >
+                <img
+                  id="picB"
+                  className="fullPic"
+                  src={cutieB}
+                  alt="cuteDogPic"
+                />
+              </Col>
+              <Col
+                sm={12}
+                md={8}
+                className="d-flex align-items-center justify-content-center"
+              >
+                <div>
+                  <h3>Saving Animals for Over 10 Years</h3>
+                  <p>
+                    Kim started her rescue in 2011 with a simple goal: save as
+                    many souls as possible. Since then, Tiny Miracles has helped
+                    over a thousand animals find their forever homes.
+                  </p>
+                  <Button id="coolBtn" onClick={goToRescueStories}>
+                    See their stories &gt;
+                  </Button>
                 </div>
               </Col>
-              <Col sm={12} md={8} className="homeCol">
-                <div className="myOuter">
-                  <div className="myMiddle">
-                    <div className="myInner">
-                      <h3>Saving Animals for Over 10 Years</h3>
-                      <p>
-                        Kim started her rescue in 2011 with a simple goal: save
-                        as many souls as possible. Since then, Tiny Miracles has
-                        helped over a thousand animals find their forever homes.
-                      </p>
-                      <Button id="coolBtn" onClick={goToRescueStories}>
-                        See their stories &gt;
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col sm={12} md={4} className="homeCol hideOnPhone">
-                <div className="homeColImgDiv">
-                  <img src={cutieB} alt="cuteDogPic" />
-                </div>
+              <Col
+                sm={12}
+                md={4}
+                id="hideOnPhone"
+                className="d-flex align-items-center justify-content-center"
+              >
+                <img
+                  className="fullPic"
+                  id="picB"
+                  src={cutieB}
+                  alt="cuteDogPic"
+                />
               </Col>
             </Row>
             {/* <div className="lineDiv"></div> */}
             <hr></hr>
             <Row className="homeRow">
-              <Col sm={12} md={4} className="homeCol">
-                <div className="homeColImgDiv">
-                  <img src={cutieC} alt="cuteDogPic" />
-                </div>
+              <Col
+                sm={12}
+                md={4}
+                className="d-flex align-items-center justify-content-center"
+              >
+                <img className="fullPic" src={cutieC} alt="cuteDogPic" />
               </Col>
-              <Col sm={12} md={8} className="homeCol">
-                <div className="myOuter">
-                  <div className="myMiddle">
-                    <div className="myInner">
-                      <h3>Founded on Love</h3>
-                      <p>
-                        Tiny Miracles Rescue is a non-profit organization that
-                        depends on donations to succeed. We are so thankful for
-                        the many people who have made it possible for us to
-                        continue our work saving animals.
-                      </p>
-                      <Button id="coolBtn" onClick={goToDonate}>
-                        Donate &gt;
-                      </Button>
-                    </div>
-                  </div>
+              <Col
+                sm={12}
+                md={8}
+                className="d-flex align-items-center justify-content-center"
+              >
+                <div>
+                  <h3>Founded on Love</h3>
+                  <p>
+                    Tiny Miracles Rescue is a non-profit organization that
+                    depends on donations to succeed. We are so thankful for the
+                    many people who have made it possible for us to continue our
+                    work saving animals.
+                  </p>
+                  <Button id="coolBtn" onClick={goToDonate}>
+                    Donate &gt;
+                  </Button>
                 </div>
               </Col>
             </Row>
           </div>
 
-          {/* <img className="pawTrail" src={longtrail} alt="pawtrail" />
-          <img className="pawTrail2" src={longtrail} alt="pawtrail" /> */}
           <div className="text-center followUsDiv">
             <h2>Follow Us</h2>
             <Row>

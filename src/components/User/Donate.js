@@ -4,7 +4,7 @@ import amazonSmile from "./DonatePics/amazonSmile.png";
 import amazonWishList from "./DonatePics/amazonWishlist.png";
 import paybal from "./DonatePics/paybal.gif";
 import { Row, Col } from "react-bootstrap";
-import donate from "./DogImages/donate.jpg";
+import donate from "./DogImages/donateDogPic.jpg";
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift, faArrowRight } from "@fortawesome/free-solid-svg-icons";
