@@ -39,14 +39,10 @@ export default function FosterHome() {
             and simple obedience.
           </p>
           <p className="squishTxt">
-            Things to keep in mind. Everyone in the home should be committed and
-            excited about fostering a dog. The time commitment to foster varies;
-            could be a couple of nights up to 3 weeks. You let us know what fits
-            your family; from puppies to active dogs to seniors. All expenses
-            are taken care of by Tiny Miracles including crate, food, and vet
-            care. Your most important responsibility is to prepare your foster
-            for life in his forever home; meaning socialization, leash skills,
-            and simple obedience.
+            If this experience sounds fun and rewarding to you, please click on
+            this link to complete a foster application. Once received by Tiny
+            Miracles, a volunteer will call you to talk about any questions you
+            may have.
           </p>
           <Button
             onClick={goToFosterApp}

@@ -172,10 +172,11 @@ function Donate() {
               </div>
             </div>
           </Col>
-          <Col lg={1}></Col>
+
           <Col md={12} lg={4} className="verticalDogPic">
             <img src={donate} />
           </Col>
+          <Col lg={1}></Col>
         </Row>
         {/* </Col> */}
 
