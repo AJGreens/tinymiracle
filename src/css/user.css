@@ -1,66 +1,6 @@
-/* *{
-    border: 4px solid red
-} */
-
-/* 
-.specificRow{
-    border: blue solid 0px;
-     width: 100%;
-     padding-left: 15%;
-     padding-right: 15%;
-     margin: auto !important;
-}
-.inSpecificCol{
-display: inline-block;
-border: red solid 0px;
-float: left;
-text-align: left;
-}
-.inSpecificColB{
-display: inline-block;
-border: green solid 0px;
-float: right;
-text-align: left;
-} */
 * {
   font-family: Optima, sans-serif;
-  /* font-size: 1.1vw; */
 }
-
-html {
-  font-size: 18px;
-}
-body {
-  font-size: 100%;
-}
-/* Big screen devices (889px and above) */
-@media only screen and (min-width: 889px) {
-  p {
-  }
-}
-
-/* Extra big screen devices (1200px and above) */
-@media only screen and (min-width: 1200px) {
-  body {
-  }
-}
-
-@media only screen and (min-width: 1500px) {
-  body {
-    font-size: 120%;
-  }
-}
-
-p,
-div,
-li,
-button,
-input,
-select {
-  font-size: 1em !important;
-  /* color: green !important; */
-}
-
 /* very important fixes a ton of issues on phone screen sizes with 
 extra white space to the right!! */
 html,
@@ -71,43 +11,44 @@ body {
   padding: 0px;
   overflow-x: hidden;
 }
-* {
-  font-family: Optima, sans-serif;
-  /* font-size: 18px; */
+html {
+  font-size: 18px;
 }
-@media (min-width: 2000px) {
-  * {
-    border: "red solid 2px";
-  }
-  * {
-    /* font-family: Arial, Helvetica, sans-serif; */
-    /* font-size: 1.1vw; */
-  }
+body {
+  font-size: 100%;
 }
-
-.squishTxt {
-  padding: 0 20%;
+.userHtml {
+  background: #ffefd3;
+  min-height: 100vh;
+  height: 100%;
+  position: relative;
 }
-@media (max-width: 768px) {
-  .squishTxt {
-    padding: 0 10%;
-  }
-}
-.appleSign {
-  /* font-size:20px; */
-  /* font-weight: bolder;
-    transform: scale(.5, 1);
-    display: inline-block; */
-  /* font-family: Arial, sans-serif; */
-}
-/* p,
-div,
+p,
 li,
 button,
 input,
-select {
-  font-size: 18px !important;
-} */
+select,
+a {
+  font-size: 1em !important;
+  /* color: blue !important; */
+}
+h1 {
+  font-size: 2.25em !important;
+  /* color: green !important; */
+}
+h2 {
+  font-size: 2em !important;
+  /* color: purple !important; */
+}
+h3 {
+  /* color: orange !important; */
+  font-size: 1.75em !important;
+}
+h4 {
+  /* color: red !important; */
+  font-size: 1.5em !important;
+}
+
 .leftAlignDiv {
   display: inline-block;
   text-align: left;
@@ -116,10 +57,7 @@ select {
 .dateField {
   width: 140px;
 }
-
 #contactOptions {
-  /* margin-left: 30%;
-    margin-right: 30%; */
   text-align: left;
 }
 
@@ -150,83 +88,32 @@ select {
 }
 
 .adoptableImg {
-  /* max-height: 35vh; */
   max-height: 100%;
-  /* max-width: 440px;  */
   max-width: 100%;
-  /* border-radius: 15px; */
-  /* border: 10px solid #386A92; */
-  /* border: 4px solid #144771;
-  border: 4px solid #144771; */
+  border-radius: 25px;
 }
-.adoptableTxtDiv {
-  /* border: red solid 2px; */
-  /* max-width: 100%; */
-}
-/* @media(max-width: 768px){
-    .adoptableImg {
-        max-height: 440px;
-        max-width: 75%;
-      }
-
-} */
 
 .dogContainer {
   margin: 2.5% auto;
   background-color: #fff9ee;
   border-top: 8px solid #144771;
   border-bottom: 8px solid #144771;
-  /* border: 8px solid #144771; */
 }
 
 .dogImgContainer {
-  /* background-color: #F08080; */
-  /* max-width: 100%;
-    border: red solid 10px; */
-  /* background-color: #386A92; */
-  /* border-radius: 25px; */
-  /* background-color: white; */
   padding: 3%;
 }
-
-/* .dogImgContainer h2,h4{
-    color:white;
-} */
-
 .dogTextContainer {
   padding: 3%;
-  /* border-right: 5px solid  #144771;
-    border-bottom: 5px solid  #144771; */
-  /* border-radius: 25px; */
 }
 .adoptionFormBox {
-  /* border-radius: 25px; */
   border-left: #144771 solid 5px;
   padding: 10px;
 }
-.adoptableImg {
-  /* max-height: 35vh; */
-  max-height: 440px;
-  max-width: 95%;
 
-  /* border-radius: 15px; */
-  /* border: 10px solid #386A92; */
-  /* border: 4px solid #144771; */
-  border-radius: 25px;
-}
-
-.userHtml {
-  background: #ffefd3;
-  border: red solid 0px;
-  /* background: #ffead0; */
-  min-height: 100vh;
-  height: 100%;
-  position: relative;
-}
 .themeBlue .form-control {
   background-color: #ffefd3;
   border: #c7c5c5 solid 1px;
-  /* border:  #f0f0f0 solid 1px; */
   color: #144771;
 }
 .themeBlue .form-control:focus {
@@ -234,9 +121,8 @@ select {
   color: #144771;
   border: #144771 solid 1px;
   box-shadow: none;
-  /* -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(20, 71, 113, .6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(20, 71, 113, .6); */
 }
+
 .themeBlue .form-select {
   background-color: #ffefd3;
   color: #144771;
@@ -250,9 +136,7 @@ select {
 }
 
 p {
-  /* z-index: 20; */
   position: relative;
-  /* color: black; */
 }
 
 div.container-fluid {
@@ -261,8 +145,8 @@ div.container-fluid {
 }
 
 .userNav {
-  /* background-color: #386A92; */
   background-color: #144771;
+  white-space: nowrap;
 }
 
 #noPadding {
@@ -273,12 +157,7 @@ div.container-fluid {
   padding: 3%;
 }
 
-#logoPic {
-  height: 160px;
-}
-
 .homeNavLink {
-  /* color:#FFEFD3 !important; */
   margin: 0 15px;
   padding: 0px;
   color: #c7c5c5 !important;
@@ -296,8 +175,6 @@ div.container-fluid {
 
 .homeNavLink:hover::after {
   width: 100%;
-  /* background-color: white; */
-  /* background-color: #FFEFD3; */
   background-color: #c7c5c5;
   background-color: #f0f0f0;
 }
@@ -305,14 +182,11 @@ div.container-fluid {
 .homeNavActiveLink {
   margin: 0 15px;
   padding: 0px;
-  /* color:#FFEFD3 !important; */
   color: #c7c5c5 !important;
   color: #f0f0f0 !important;
 }
 .homeNavActiveLink::after {
   content: "";
-  /* background-color: white; */
-  /* background-color: #FFEFD3; */
   background-color: #c7c5c5;
   background-color: #f0f0f0;
   height: 4px;
@@ -330,56 +204,8 @@ div.container-fluid {
   width: 100%;
   height: 100%;
   object-position: 0% 40%;
-
   object-fit: cover;
 }
-
-@media (max-width: 768px) {
-  .beegDogFrame {
-    width: 100%;
-    height: 350px;
-    position: relative;
-    overflow: hidden;
-  }
-  .beegDog {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    object-position: 50% 0;
-  }
-}
-
-/* .beegDogFrame {
-  width: 100%;
-  height: 350px;
-  position: relative;
-  overflow: hidden;
-}
-.beegDog {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-} */
-
-/* @media only screen and (min-width: 1400px) {
-    .beegDogFrame {
-        height: 450px;
-      }
-      .beegDog {
-        height: 600px;
-      }
-    
-    }
-
-    @media only screen and (min-width: 1650px) {
-        .beegDogFrame {
-            height: 550px;
-          }
-          .beegDog {
-            height: 700px;
-          }
-        
-        } */
 
 .beegDogText {
   position: absolute;
@@ -389,28 +215,10 @@ div.container-fluid {
   color: #ffefd3;
   padding: 5px 10px;
   border-radius: 20px;
-
-  /* bottom: 0;
-    right: 0; */
 }
 .beegDogText h2,
 .beegDogText a {
   -webkit-font-smoothing: antialiased;
-  /* font-weight:100; */
-}
-
-@media (max-width: 768px) {
-  .beegDogText {
-    top: 0;
-    left: 0;
-    right: 0;
-
-    text-align: center;
-    border-radius: 0;
-  }
-  .beegDogText br {
-    /* display: none; */
-  }
 }
 
 #extra30MarginTB {
@@ -423,18 +231,9 @@ div.container-fluid {
 }
 
 .donatePics {
-  /* max-width: 200px; */
   max-height: 50px;
   display: inline-block;
   vertical-align: middle;
-}
-@media (max-width: 768px) {
-  .centerSmall {
-    justify-content: center;
-  }
-  .smallTxtCenter {
-    text-align: center;
-  }
 }
 
 #paypalHeader {
@@ -449,7 +248,6 @@ div.container-fluid {
   color: #144771;
   display: inline-block;
   font-weight: bolder;
-  /* text-align: center; */
 }
 .donateHeaders:hover {
   color: #144771;
@@ -474,7 +272,6 @@ div.container-fluid {
   margin-top: -10px;
   font-size: large;
   text-align: center;
-  /* text-align: left; */
   margin-bottom: 30px;
 }
 
@@ -488,7 +285,6 @@ div.container-fluid {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  /* border: red solid 2px; */
   z-index: 3;
 }
 .tan {
@@ -499,8 +295,6 @@ div.container-fluid {
   background-color: #144771;
   border-color: #144771;
   color: #f0f0f0;
-  /* background-color:     #DC0404;
-    border-color:    #DC0404; */
 }
 #coolBtn {
   background-color: #144771;
@@ -517,47 +311,6 @@ div.container-fluid {
   background: #144771;
 }
 
-@media (min-width: 768px) {
-  .userNavColDiv {
-    margin-top: 4px;
-    /* border: red solid 2px; */
-    height: 145px;
-    /*  get rid of for juicier */
-    position: relative;
-    /* width: 25%; */
-    width: 50%;
-  }
-
-  .userNavColDiv.left {
-    /* position: relative; */
-    /* border: green solid 4px; */
-    padding-right: 100px;
-  }
-
-  .userNavColDiv.right {
-    /* border: white solid 4px; */
-    /* left: 20px; */
-  }
-  .userNavClass {
-    /* border: black solid 2px; */
-    position: absolute;
-
-    bottom: 0;
-  }
-
-  .userNavClass.left {
-    right: 93px;
-  }
-  .userNavClass.right {
-    left: 93px;
-  }
-  .userNavRow {
-    border: 0px;
-    margin-right: 0;
-    margin-left: 0;
-    /* max-width:100%;  */
-  }
-}
 .customLink {
   color: #c7c5c5;
   color: #f0f0f0;
@@ -587,25 +340,81 @@ div.container-fluid {
   position: relative;
 }
 
-.lineDiv {
+.verticalDogPic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.verticalDogPic img {
+  width: 75%;
+  border-radius: 25px;
+}
+
+#noMargin {
+  margin: 0;
+}
+.underlineHeading {
+  text-align: center;
+  font-weight: bolder;
+  text-decoration: underline;
+  padding: 0;
+}
+#noMarginExtraPadding {
+  margin: 0;
+  padding: 3%;
+}
+
+.fullPage {
+  position: relative;
+}
+
+#picB {
+  max-height: 50vh;
+  max-width: 100%;
+  border-radius: 25px;
+}
+
+.rescueQuoteDiv {
+  width: 75%;
+  margin: auto;
+}
+
+.footerRight {
+  text-align: right;
+}
+.footerDiv {
+  border: green solid 0px;
+  padding: 20px;
+  background-color: #144771;
+  color: #f0f0f0;
   width: 100%;
-  margin: 20px auto;
-  margin-left: -20px;
-  margin-right: -20px;
-
-  border: #144771 solid 2px;
-  /* border: #6CA6C1 solid 5px; */
-  /* border: #fff9ee solid 5px; */
-}
-hr {
-  background: #144771;
-  height: 4px !important;
-  opacity: 1;
-  margin-left: -15px;
-  margin-right: -15px;
 }
 
-@media (min-width: 768px) {
+.fullPic {
+  max-width: 100%;
+  max-height: 50vh;
+  border-radius: 25px;
+  padding: 0px 0px;
+}
+
+.pushDown {
+  height: 40px;
+}
+.donatePushDown {
+  height: 40px;
+}
+
+.epicFlex {
+  align-items: center;
+  height: 100%;
+}
+
+.squishTxt {
+  padding: 0 20%;
+}
+/** @ media this **/
+#logoPic {
+  height: 160px;
 }
 .homeColImgDiv {
   border: black solid 0px;
@@ -619,205 +428,166 @@ hr {
   border: black solid 5px;
 }
 
-@media (min-width: 768px) {
-  #hideOnBig {
-    display: none !important;
-  }
-  .myOuter {
-    display: table;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    border: red solid 0px;
-  }
-
-  .myMiddle {
-    display: table-cell;
-    vertical-align: middle;
-    border: black solid 0px;
-  }
-
-  .myInner {
-    border: white solid 0px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  #hideOnPhone {
-    display: none !important;
-  }
-}
-
-.verticalDogPic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.verticalDogPic img {
-  /* max-width: 50vw;
-  max-height: 50vh; */
-  width: 75%;
-  /* padding: 5px; */
-  border-radius: 25px;
-  /* border-bottom-right-radius: 25px; */
-}
-
-#noMargin {
-  margin: 0;
-}
-.underlineHeading {
-  text-align: center;
-  font-weight: bolder;
-  text-decoration: underline;
-  padding: 0;
-}
-
-#noMarginExtraPadding {
-  margin: 0;
-  padding: 3%;
-}
-
-@media (min-width: 768px) {
-  #hideOnBig {
-    display: none !important;
-  }
-  .myOuter {
-    display: table;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    border: red solid 0px;
-  }
-
-  .myMiddle {
-    display: table-cell;
-    vertical-align: middle;
-    border: black solid 0px;
-  }
-
-  .myInner {
-    border: white solid 0px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-}
-.fullPage {
-  position: relative;
-  border: red solid 0px;
-}
-
-#picB {
-  max-height: 50vh;
-  max-width: 100%;
-  /* max-height: 300px; */
-  border-radius: 25px;
-  border: red solid 0px;
-}
-
-@media (max-width: 768px) {
-  #hideOnPhone {
-    display: none !important;
-  }
-}
-
-.rescueQuoteDiv {
-  width: 75%;
-  margin: auto;
-}
-/* p{
-    color: black;
-} */
-/* .footer{
-    color: #144771;
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 0;
-} */
-.footerRight {
-  text-align: right;
-}
-.footerDiv {
-  border: green solid 0px;
-  /* margin-bottom: 0; */
-  padding: 20px;
-  /* padding-top:100px; */
-  /* border-top: #144771 solid 2px; */
-  /* color: #144771;
-    background-color: #fff9ee; */
-  background-color: #144771;
-  color: #f0f0f0;
-  /* border: red solid 2px; */
-  width: 100%;
-  /* vertical-align: bottom; */
-  /* position: absolute;
-  bottom: 0; */
-}
-@media (min-width: 768px) {
-  .footColL {
-    text-align: left;
-    /* position: absolute;
-    bottom: 0; */
-  }
-  .footColR {
-    text-align: right;
-    /* position: absolute;
-bottom: 0;
-right: 0; */
-  }
-}
-@media (max-width: 768px) {
-  .footColL,
-  .footColR {
-    text-align: center;
-  }
-}
-
 .followUsDiv {
   margin-bottom: 40px;
 }
 
-@media (max-width: 768px) {
-  .followUsDiv {
-    margin-bottom: 80px;
-  }
-}
 .myCoolPic {
   max-width: 75%;
 }
+hr {
+  background: #144771;
+  height: 4px !important;
+  opacity: 1;
+  margin-left: -15px;
+  margin-right: -15px;
+}
 
-/* .fullPicDiv{
+/* X-Small devices (portrait phones, less than 576px)
+No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .userNavClass {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .userNavClass.left {
+    right: 93px;
+  }
+  .userNavClass.right {
+    left: 93px;
+  }
+  .userNavRow {
+    border: 0px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  #hideOnBig {
+    display: none !important;
+  }
+  .footColL {
+    text-align: left;
+  }
+  .footColR {
+    text-align: right;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  body {
+    font-size: 100%;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  body {
+    font-size: 100%;
+  }
+  hr {
+    height: 10px !important;
+  }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1500px) {
+  body {
+    font-size: 120%;
+  }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 2500px) {
+  body {
+    font-size: 150%;
+  }
+  .aboutDogImg,
+  .aboutDogText {
     width: 100%;
-    height: 400px;
+  }
+}
 
+@media (min-width: 3000px) {
+  body {
+    font-size: 200%;
+  }
+  .container {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+}
+
+@media (min-width: 3500px) {
+  body {
+    font-size: 220%;
+  }
+}
+@media (min-width: 4300px) {
+  body {
+    font-size: 250%;
+  }
+  hr {
+    height: 20px !important;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+}
+
+/* XX-Large devices (larger desktops) */
+/* No media query since the xxl breakpoint has no upper bound on its width */
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .centerSmall {
+    justify-content: center;
+  }
+  .smallTxtCenter {
+    text-align: center;
+  }
+  .beegDogText {
+    top: 0;
+    left: 0;
+    right: 0;
+
+    text-align: center;
+    border-radius: 0;
+  }
+  .beegDogFrame {
+    width: 100%;
+    height: 350px;
+    position: relative;
     overflow: hidden;
-
-} */
-
-.fullPic {
-  /* max-width: 100%; */
-  max-width: 100%;
-  max-height: 50vh;
-  border-radius: 25px;
-  padding: 0px 0px;
-  border: red solid 0px;
-}
-
-.pushDown {
-  height: 40px;
-}
-.donatePushDown {
-  height: 40px;
-}
-
-@media (max-width: 768px) {
+  }
+  .beegDog {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: 50% 0;
+  }
+  .squishTxt {
+    padding: 0 10%;
+  }
+  #hideOnPhone {
+    display: none !important;
+  }
+  .footColL,
+  .footColR {
+    text-align: center;
+  }
+  .followUsDiv {
+    margin-bottom: 80px;
+  }
   .donatePushDown {
     height: 100px;
   }
@@ -837,22 +607,14 @@ right: 0; */
   }
 }
 
-.mostOuter {
-  width: 100%;
-  /* border: red solid 3px; */
-  display: inline;
-  /* display: table-cell; */
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
 }
 
-.epicFlex {
-  /* border: red solid 2px; */
-  /* flex-direction: column; */
-
-  align-items: center;
-  /* vertical-align: center;
-    justify-content: center; */
-  height: 100%;
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
 }
-.innerEpicFlex {
-  border: green solid 0px;
+
+/* X-Large devices (large desktops, less than 1400px) */
+@media (max-width: 1399.98px) {
 }

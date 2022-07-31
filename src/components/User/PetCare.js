@@ -10,19 +10,12 @@ import { useEffect, useState } from "react";
 import Footer from "./Footer";
 
 function PetCare() {
-  // const [loaded, setLoaded] = useState(false);
-  // useEffect(() => {
-  //   setLoaded(true);
-  // }, []);
-
   const allPics = [dogA, dogC, dogD, dogE, dogF];
 
   return (
     <>
       <div className="container-fluid userHtml" id="noPadding">
         <UserNav />
-        {/* {loaded && (
-          <div> */}
         <div className="container text-center themeBlue" id="extra3Padding">
           <h1>Your Pet’s Favorite Bucks County Bed & Breakfast!</h1>
           <p>
@@ -51,13 +44,42 @@ function PetCare() {
             </Col>
 
             <Col xs="12" lg="6">
-              <div style={{ border: "red solid 0px", marginTop: "30px" }}>
+              <div className="d-flex justify-content-between h-100 flex-column px-4">
+                <div className="d-flex justify-content-between w-100">
+                  <p>
+                    <b>Monday:</b>
+                  </p>
+                  <div>
+                    <p>8AM-10AM</p>
+                    <p>4PM-6PM</p>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between w-100">
+                  <p>
+                    <b>Sunday:</b>
+                  </p>
+                  <div>
+                    <p>
+                      4PM-6PM <b>Only</b>
+                    </p>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between w-100">
+                  <p>
+                    <b>Daycare:</b>
+                  </p>
+                  <div>
+                    <p>Drop-off during AM hours</p>
+                    <p>Pick-up during PM hours</p>
+                  </div>
+                </div>
+              </div>
+              {/* <div style={{ border: "red solid 0px", marginTop: "30px" }}>
                 <h2>Drop-off/Pick-up Hours</h2>
                 <div
                   style={{
                     textAlign: "left",
                     margin: "auto",
-                    width: "320px",
                   }}
                 >
                   <div style={{ marginBottom: "0" }}>
@@ -94,7 +116,7 @@ function PetCare() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </Col>
           </Row>
           <br />

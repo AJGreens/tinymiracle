@@ -17,8 +17,8 @@ function About() {
         <div id="extra3Padding" style={{ paddingBottom: 0 }}>
           <h1>About</h1>
           <Container>
-            <Row id="extra3Padding">
-              <Col md={12} lg={6}>
+            <Row>
+              <Col md={12} lg={6} className="p-5 aboutDogText">
                 <p style={{ textAlign: "left" }}>
                   Tiny Miracles Rescue is a non profit 501c3 organization
                   dedicated to solving the problem of pet over-population. We
@@ -37,11 +37,9 @@ function About() {
                   tinymiraclespcr@gmail.com or call: 215-997-2844
                 </p>
               </Col>
-              <Col md={12} lg={6}>
-                <div className="d-flex epicFlex">
-                  <div className="innerEpicFlex">
-                    <img src={dogBench} className="fullPic" />
-                  </div>
+              <Col md={12} lg={6} className="aboutDogImg">
+                <div className="d-flex epicFlex justify-content-center">
+                  <img src={dogBench} className="fullPic" />
                 </div>
               </Col>
             </Row>
