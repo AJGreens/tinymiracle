@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
 import widedog from "./DogImages/WeezyUp.jpg";
 import cutieA from "./DogImages/rainbow.jpg";
 import cutieB from "./DogImages/sitDog.jpg";
-import cutieC from "./DogImages/groupShotA.jpg";
+import cutieC from "./DogImages/Sable.jpg";
 import { useNavigate } from "react-router-dom";
 
 function Home() {

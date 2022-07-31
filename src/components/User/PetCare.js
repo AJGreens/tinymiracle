@@ -1,10 +1,10 @@
 import React from "react";
 import UserNav from "./UserNav";
 import { Row, Col, Carousel } from "react-bootstrap";
-import dogA from "./DogImages/A.jpeg";
-import dogC from "./DogImages/dogC.jpeg";
-import dogD from "./DogImages/dogD.jpeg";
-import dogE from "./DogImages/dogE.jpeg";
+import dogA from "./DogImages/groupScream.jpg";
+import dogC from "./DogImages/wolves.jpg";
+import dogD from "./DogImages/ballPit.jpg";
+import dogE from "./DogImages/groupPetCare.jpg";
 import dogF from "./DogImages/dogF.jpeg";
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
@@ -57,7 +57,7 @@ function PetCare() {
                   style={{
                     textAlign: "left",
                     margin: "auto",
-                    width: "290px",
+                    width: "320px",
                   }}
                 >
                   <div style={{ marginBottom: "0" }}>
@@ -73,7 +73,7 @@ function PetCare() {
                     Sunday:
                     <div style={{ float: "right", border: "red solid 0px" }}>
                       <p>
-                        4PM-6PM <b>Only</b>
+                        4PM-6PM <b>Only</b>. No AM Hours.
                       </p>
                     </div>
                   </div>
