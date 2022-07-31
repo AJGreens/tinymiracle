@@ -39,7 +39,7 @@ function About() {
               </Col>
               <Col md={12} lg={6}>
                 <div className="d-flex epicFlex">
-                  <div className="innerEpicFlex container">
+                  <div className="innerEpicFlex">
                     <img src={dogBench} className="fullPic" />
                   </div>
                 </div>

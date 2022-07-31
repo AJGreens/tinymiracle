@@ -5,6 +5,7 @@ import amazonWishList from "./DonatePics/amazonWishlist.png";
 import paybal from "./DonatePics/paybal.gif";
 import { Row, Col } from "react-bootstrap";
 import donate from "./DogImages/donateDogPic.jpg";
+import Benny from "./DogImages/Benny.jpg";
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift, faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -174,7 +175,7 @@ function Donate() {
           </Col>
 
           <Col md={12} lg={4} className="verticalDogPic">
-            <img src={donate} />
+            <img src={Benny} />
           </Col>
           <Col lg={1}></Col>
         </Row>

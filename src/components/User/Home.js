@@ -62,7 +62,7 @@ function Home() {
             </h2>
             <h4 style={{ marginBottom: 0 }}>
               <Link
-                className="customLink d-flex align-items-center justify-content-center"
+                className="customLink d-flex align-items-center centerSmall"
                 to="/adoptableDogsHome"
               >
                 See Adoptable Animals &gt;
@@ -76,6 +76,7 @@ function Home() {
           <div className="container text-center">
             <Row className=" theme">
               <Col>
+                {" "}
                 <FontAwesomeIcon icon={faTractor} size="3x" />
                 <h2 className="mt-2">Farm</h2>
               </Col>
@@ -89,8 +90,8 @@ function Home() {
               </Col>
             </Row>
           </div>
-          <div className="container mt-4 homeCol p-5">
-            <Row className="homeRow">
+          <div className="container mt-4 p-5">
+            <Row className="">
               <Col
                 sm={12}
                 md={4}
@@ -104,7 +105,7 @@ function Home() {
                 className="d-flex align-items-center justify-content-center"
               >
                 <div>
-                  <h3>Petcare Paradise on a Farm</h3>
+                  <h3 className="smallTxtCenter">Petcare Paradise on a Farm</h3>
                   <p>
                     Kim Rutherford is a lifelong animal lover who was able to
                     turn her passion for animals into a successful petcare
@@ -112,9 +113,11 @@ function Home() {
                     or an extended stay, Kim and her staff are committed to
                     providing a loving home away from home for your pet!
                   </p>
-                  <Button id="coolBtn" onClick={goToPetCare}>
-                    Learn More &gt;
-                  </Button>
+                  <div className="smallTxtCenter">
+                    <Button id="coolBtn" onClick={goToPetCare}>
+                      Learn More &gt;
+                    </Button>
+                  </div>
                 </div>
               </Col>
             </Row>
@@ -127,12 +130,7 @@ function Home() {
                 id="hideOnBig"
                 className="d-flex align-items-center justify-content-center"
               >
-                <img
-                  id="picB"
-                  className="fullPic"
-                  src={cutieB}
-                  alt="cuteDogPic"
-                />
+                <img id="picB" src={cutieB} alt="cuteDogPic" />
               </Col>
               <Col
                 sm={12}
@@ -140,15 +138,19 @@ function Home() {
                 className="d-flex align-items-center justify-content-center"
               >
                 <div>
-                  <h3>Saving Animals for Over 10 Years</h3>
+                  <h3 className="smallTxtCenter">
+                    Saving Animals for Over 10 Years
+                  </h3>
                   <p>
                     Kim started her rescue in 2011 with a simple goal: save as
                     many souls as possible. Since then, Tiny Miracles has helped
                     over a thousand animals find their forever homes.
                   </p>
-                  <Button id="coolBtn" onClick={goToRescueStories}>
-                    See their stories &gt;
-                  </Button>
+                  <div className="smallTxtCenter">
+                    <Button id="coolBtn" onClick={goToRescueStories}>
+                      See their stories &gt;
+                    </Button>
+                  </div>
                 </div>
               </Col>
               <Col
@@ -157,12 +159,7 @@ function Home() {
                 id="hideOnPhone"
                 className="d-flex align-items-center justify-content-center"
               >
-                <img
-                  className="fullPic"
-                  id="picB"
-                  src={cutieB}
-                  alt="cuteDogPic"
-                />
+                <img id="picB" src={cutieB} alt="cuteDogPic" />
               </Col>
             </Row>
             {/* <div className="lineDiv"></div> */}
@@ -181,16 +178,18 @@ function Home() {
                 className="d-flex align-items-center justify-content-center"
               >
                 <div>
-                  <h3>Founded on Love</h3>
+                  <h3 className="smallTxtCenter">Founded on Love</h3>
                   <p>
                     Tiny Miracles Rescue is a non-profit organization that
                     depends on donations to succeed. We are so thankful for the
                     many people who have made it possible for us to continue our
                     work saving animals.
                   </p>
-                  <Button id="coolBtn" onClick={goToDonate}>
-                    Donate &gt;
-                  </Button>
+                  <div className="smallTxtCenter">
+                    <Button id="coolBtn" onClick={goToDonate}>
+                      Donate &gt;
+                    </Button>
+                  </div>
                 </div>
               </Col>
             </Row>
