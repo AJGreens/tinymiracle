@@ -434,7 +434,7 @@ export default function FosterApplication() {
               ))}
               {hasPets && (
                 <>
-                  <Container className="adoptionFormBox">
+                  <Container id="fullContainer" className="adoptionFormBox">
                     <p className="mb-1">
                       <b>Current Pet #1</b>
                     </p>
@@ -507,7 +507,10 @@ export default function FosterApplication() {
                   </Container>
                   <br />
 
-                  <Container className="mb-3 adoptionFormBox">
+                  <Container
+                    id="fullContainer"
+                    className="mb-3 adoptionFormBox"
+                  >
                     <p className="mb-1">
                       <b>Current Pet #2</b>
                     </p>

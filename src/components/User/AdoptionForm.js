@@ -272,7 +272,7 @@ function AdoptionForm() {
       readDisclaimer: readDisclaimer,
     });
 
-    sendEmail()  
+    sendEmail();
     navigate("/thankyou");
   }
 
@@ -527,7 +527,7 @@ function AdoptionForm() {
             ))}
             {hasPets && (
               <>
-                <Container className="adoptionFormBox">
+                <Container id="fullContainer" className="adoptionFormBox">
                   <p className="mb-1">
                     <b>Current Pet #1</b>
                   </p>
@@ -598,7 +598,7 @@ function AdoptionForm() {
                 </Container>
                 <br />
 
-                <Container className="mb-3 adoptionFormBox">
+                <Container id="fullContainer" className="mb-3 adoptionFormBox">
                   <p className="mb-1">
                     <b>Current Pet #2</b>
                   </p>
@@ -687,7 +687,7 @@ function AdoptionForm() {
             )}
             <Form.Label>Please list any previous pets:</Form.Label>
             <br />
-            <Container className="adoptionFormBox">
+            <Container id="fullContainer" className="adoptionFormBox">
               <Form.Label>
                 <b>Previous Pet #1</b>
               </Form.Label>
@@ -714,7 +714,7 @@ function AdoptionForm() {
               </Form.Group>
             </Container>
             <br />
-            <Container className="mb-3 adoptionFormBox">
+            <Container id="fullContainer" className="mb-3 adoptionFormBox">
               <Form.Label>
                 <b>Previous Pet #2</b>
               </Form.Label>
@@ -938,7 +938,7 @@ function AdoptionForm() {
               relationship to you:
             </Form.Label>
             <br />
-            <Container className="mb-3 adoptionFormBox">
+            <Container id="fullContainer" className="mb-3 adoptionFormBox">
               <Form.Label>
                 <b>Reference #1</b>
               </Form.Label>
@@ -972,7 +972,7 @@ function AdoptionForm() {
                 />
               </Form.Group>
             </Container>
-            <Container className="mb-3 adoptionFormBox">
+            <Container id="fullContainer" className="mb-3 adoptionFormBox">
               <Form.Label>
                 <b>Reference #2</b>
               </Form.Label>
