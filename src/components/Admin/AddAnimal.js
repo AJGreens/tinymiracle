@@ -304,7 +304,7 @@ function DogForm() {
       <AdminNav />
       {!loading && (
         <div className="container">
-          <h2>AddAnimal</h2>
+          <h2>Add Animal</h2>
           <Form onSubmit={addDog}>
             <Form.Group as={Row} className="mb-3">
               <Form.Label column sm="3">
