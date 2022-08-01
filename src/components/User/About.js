@@ -18,7 +18,7 @@ function About() {
           <h1>About</h1>
           <Container>
             <Row>
-              <Col md={12} lg={6} className="p-5 aboutDogText">
+              <Col md={12} lg={6} className="paddingTopBottom aboutDogText">
                 <p style={{ textAlign: "left" }}>
                   Tiny Miracles Rescue is a non profit 501c3 organization
                   dedicated to solving the problem of pet over-population. We

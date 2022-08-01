@@ -1,6 +1,6 @@
 import React from "react";
 import UserNav from "./UserNav";
-import { Row, Col, Carousel } from "react-bootstrap";
+import { Row, Col, Carousel, Container } from "react-bootstrap";
 import dogA from "./DogImages/groupScream.jpg";
 import dogC from "./DogImages/wolves.jpg";
 import dogD from "./DogImages/ballPit.jpg";
@@ -28,51 +28,116 @@ function PetCare() {
           <br />
           <Row>
             <Col xs="12" lg="6">
-              <Carousel>
-                {allPics.map((pic, i) => {
-                  return (
-                    <Carousel.Item key={i}>
-                      <img
-                        className="d-block w-100 petCareCarouselPics"
-                        src={pic}
-                        alt={"image" + i}
-                      />
-                    </Carousel.Item>
-                  );
-                })}
-              </Carousel>
+              <div className="d-flex justify-content-center align-items-center">
+                <Carousel className="actualCarousel">
+                  {allPics.map((pic, i) => {
+                    return (
+                      <Carousel.Item key={i}>
+                        <img
+                          className="d-block w-100 petCareCarouselPics"
+                          src={pic}
+                          alt={"image" + i}
+                        />
+                      </Carousel.Item>
+                    );
+                  })}
+                </Carousel>
+              </div>
             </Col>
 
-            <Col xs="12" lg="6">
-              <div className="d-flex justify-content-between h-100 flex-column px-4">
-                <div className="d-flex justify-content-between w-100">
-                  <p>
-                    <b>Monday:</b>
-                  </p>
-                  <div>
-                    <p>8AM-10AM</p>
-                    <p>4PM-6PM</p>
-                  </div>
-                </div>
-                <div className="d-flex justify-content-between w-100">
-                  <p>
-                    <b>Sunday:</b>
-                  </p>
-                  <div>
+            <Col
+              xs="12"
+              lg="6"
+              className="d-flex"
+              style={{ border: "red solid 0px" }}
+            >
+              <div className="smushDiv text-center">
+                <h2>Drop-off/Pick-up Hours</h2>
+                <Container
+                  style={{
+                    textAlign: "left",
+                    padding: "0 0",
+                    border: "red solid 0px",
+                  }}
+                >
+                  <Row>
+                    <Col style={{ textAlign: "right" }}>
+                      <p>
+                        <b>Monday-Saturday:</b>
+                      </p>
+                    </Col>
+                    <Col>
+                      <p>
+                        8AM-10AM
+                        <br /> 4PM-6PM
+                      </p>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col style={{ textAlign: "right" }}>
+                      <p>
+                        <b>Sunday:</b>
+                      </p>
+                    </Col>
+                    <Col>
+                      <p>
+                        4PM-6PM <b>Only.</b> No AM hours.
+                      </p>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col style={{ textAlign: "right" }}>
+                      <p>
+                        <b>Daycare:</b>
+                      </p>
+                    </Col>
+                    <Col>
+                      <p>
+                        Drop-off during AM hours
+                        <br />
+                        Pick-up during PM hours
+                      </p>
+                    </Col>
+                  </Row>
+                </Container>
+
+                {/* <div style={{ border: "red solid 2px" }}>
+                  <div className="d-flex justify-content-between w-100">
                     <p>
-                      4PM-6PM <b>Only</b>
+                      <b>Monday-Saturday:</b>
                     </p>
+                    <div>
+                      <p>
+                        8AM-10AM
+                        <br /> 4PM-6PM
+                      </p>
+                      <br />
+                    </div>
                   </div>
-                </div>
-                <div className="d-flex justify-content-between w-100">
-                  <p>
-                    <b>Daycare:</b>
-                  </p>
-                  <div>
-                    <p>Drop-off during AM hours</p>
-                    <p>Pick-up during PM hours</p>
+                  <div className="d-flex justify-content-between w-100">
+                    <p>
+                      <b>Sunday:</b>
+                    </p>
+                    <div>
+                      <p>
+                        4PM-6PM <b>Only.</b> No AM hours.
+                      </p>
+                      <br />
+                    </div>
                   </div>
-                </div>
+                  <div className="d-flex justify-content-between w-100">
+                    <p>
+                      <b>Daycare:</b>
+                    </p>
+                    <div>
+                      <p>
+                        Drop-off during AM hours
+                        <br />
+                        Pick-up during PM hours
+                      </p>
+                    </div>
+                  </div>
+                </div> */}
               </div>
               {/* <div style={{ border: "red solid 0px", marginTop: "30px" }}>
                 <h2>Drop-off/Pick-up Hours</h2>
@@ -122,7 +187,7 @@ function PetCare() {
           <br />
           <br />
           <Row>
-            <Col sm={12} md={6}>
+            <Col xl={6} lg={12}>
               <h2>Services</h2>
               <div style={{ textAlign: "left" }}>
                 <p>
@@ -139,7 +204,7 @@ function PetCare() {
                   }}
                 >
                   <Row>
-                    <Col>
+                    <Col xs={12} sm={6}>
                       <ul>
                         <li>
                           Appropriately sized accommodations
@@ -171,7 +236,7 @@ function PetCare() {
                       </ul>
                     </Col>
 
-                    <Col>
+                    <Col xs={12} sm={6}>
                       <ul>
                         <li>Individual exercise</li>
                         <li>Owner residing on premises</li>
@@ -189,7 +254,7 @@ function PetCare() {
                 <br />
               </div>
             </Col>
-            <Col sm={12} md={6}>
+            <Col xl={6} lg={12}>
               <h2>Rates</h2>
 
               <div style={{ textAlign: "left" }}>
@@ -243,7 +308,10 @@ function PetCare() {
               </div>
             </Col>
           </Row>
-          <div style={{ textAlign: "left", marginBottom: "40px" }}>
+          <div
+            className="petCareNotice"
+            style={{ textAlign: "left", marginBottom: "40px" }}
+          >
             <div>
               <span>
                 <span>

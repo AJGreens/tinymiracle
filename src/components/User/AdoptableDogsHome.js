@@ -64,8 +64,8 @@ function AdoptableDogsHome() {
             <div className="container mt-4 dogContainer" key={dog.id}>
               <Row>
                 <Col
-                  sm={12}
-                  md={6}
+                  md={12}
+                  lg={6}
                   className="dogImgContainer d-flex justify-content-center align-items-center"
                 >
                   <div>
@@ -81,8 +81,8 @@ function AdoptableDogsHome() {
                   </div>
                 </Col>
                 <Col
-                  sm={12}
-                  md={6}
+                  md={12}
+                  lg={6}
                   className="dogTextContainer d-flex justify-content-center align-items-center"
                 >
                   <div>
