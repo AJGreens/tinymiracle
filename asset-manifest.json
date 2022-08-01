@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.fa0cf516.css",
-    "main.js": "/static/js/main.e2d97a9d.js",
+    "main.js": "/static/js/main.75b6678f.js",
     "static/media/Benny.jpg": "/static/media/Benny.4b2edeca9c17151847dd.jpg",
     "static/media/KennelLicense.pdf": "/static/media/KennelLicense.a624dcbae8d5995ae525.pdf",
     "static/media/wolves.jpg": "/static/media/wolves.eb5452635e0a3ba3c102.jpg",
@@ -24,10 +24,10 @@
     "static/media/LiabilityAgreementWaiver.pdf": "/static/media/LiabilityAgreementWaiver.59ba040ef16583e585c3.pdf",
     "index.html": "/index.html",
     "main.fa0cf516.css.map": "/static/css/main.fa0cf516.css.map",
-    "main.e2d97a9d.js.map": "/static/js/main.e2d97a9d.js.map"
+    "main.75b6678f.js.map": "/static/js/main.75b6678f.js.map"
   },
   "entrypoints": [
     "static/css/main.fa0cf516.css",
-    "static/js/main.e2d97a9d.js"
+    "static/js/main.75b6678f.js"
   ]
 }
