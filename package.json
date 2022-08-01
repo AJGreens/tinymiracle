@@ -1,7 +1,7 @@
 {
   "name": "tinymiracle",
   "homepage": "tinymiraclespcr.org",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
