@@ -30,6 +30,7 @@ function AdminNav() {
                   (isActive ? "adminNavActiveLink" : "adminNavLink")
                 }
                 to="/"
+                id="specialAdminNavLink"
               >
                 View Site
               </NavLink>
@@ -65,24 +66,6 @@ function AdminNav() {
                   "nav-link " +
                   (isActive ? "adminNavActiveLink" : "adminNavLink")
                 }
-                to="/addContact"
-              >
-                Add Contact
-              </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  "nav-link " +
-                  (isActive ? "adminNavActiveLink" : "adminNavLink")
-                }
-                to="/addAnimal"
-              >
-                Add Animal
-              </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  "nav-link " +
-                  (isActive ? "adminNavActiveLink" : "adminNavLink")
-                }
                 to="/downloadDocs"
               >
                 Download Docs
@@ -103,7 +86,7 @@ function AdminNav() {
                 }
                 to="/viewApplications"
               >
-                View Applications
+                Adoption Apps
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
@@ -121,7 +104,7 @@ function AdminNav() {
                 }
                 to="/addRescueStories"
               >
-                Add Rescue Stories
+                Rescue Stories
               </NavLink>
               <NavLink
                 className={({ isActive }) =>

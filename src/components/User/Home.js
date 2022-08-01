@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
@@ -8,14 +8,8 @@ import {
   faTractor,
   faPaw,
   faKitMedical,
-  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import UserNav from "./UserNav";
-// <FontAwesomeIcon icon={faChevronRight} />
-// import pawtrail from "./DogImages/pawtrail.png";
-import longtrail from "./DogImages/longtrail-removebg.png";
-
-import { useEffect, useState } from "react";
 import widedog from "./DogImages/WeezyUp.jpg";
 import cutieA from "./DogImages/rainbow.jpg";
 import cutieB from "./DogImages/sitDog.jpg";
@@ -23,18 +17,6 @@ import cutieC from "./DogImages/Sable.jpg";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const [loaded, setLoaded] = useState(false); //this is here because without it, if you are scrolled down on another page and then click this tab you end up still scrolled down
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
-  // window.onbeforeunload = function () {
-  //   window.scrollTo(0, 0);
-  // }
-
-  // useLayoutEffect(() => {
-  //   window.scrollTo(0, 0);
-  // });
-
   const nav = useNavigate();
   function goToPetCare() {
     nav("/petCare/");
@@ -48,11 +30,8 @@ function Home() {
 
   return (
     <>
-      {/* <div className="mostOuter"> */}
       <div className="container-fluid userHtml" id="noPadding">
         <UserNav />
-        {/* {loaded && (
-          <div> */}
         <div className="beegDogFrame">
           <div className="beegDogText">
             <h2>
@@ -124,7 +103,6 @@ function Home() {
                   </div>
                 </Col>
               </Row>
-              {/* <div className="lineDiv"></div> */}
               <hr></hr>
               <Row className="homeRow">
                 <Col
@@ -165,7 +143,6 @@ function Home() {
                   <img id="picB" src={cutieB} alt="cuteDogPic" />
                 </Col>
               </Row>
-              {/* <div className="lineDiv"></div> */}
               <hr></hr>
               <Row className="homeRow">
                 <Col
@@ -203,7 +180,11 @@ function Home() {
             <h2>Follow Us</h2>
             <Row>
               <Col>
-                <a href="https://www.facebook.com/TinyMiraclesPetcare/">
+                <a
+                  target="_blank"
+                  href="https://www.facebook.com/TinyMiraclesPetcare/"
+                  rel="noreferrer"
+                >
                   <FontAwesomeIcon
                     className="themeBlue"
                     icon={faFacebook}
@@ -212,7 +193,11 @@ function Home() {
                 </a>
               </Col>
               <Col>
-                <a href="https://www.instagram.com/tinymiraclesrescue/">
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/tinymiraclesrescue/"
+                  rel="noreferrer"
+                >
                   <FontAwesomeIcon
                     className="themeBlue"
                     icon={faInstagram}
@@ -223,12 +208,8 @@ function Home() {
             </Row>
           </div>
         </div>
-
-        {/* </div>
-        )} */}
       </div>
       <Footer />
-      {/* </div> */}
     </>
   );
 }

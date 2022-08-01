@@ -109,6 +109,7 @@ function ManageContacts() {
       text: "Delete",
       formatter: (cell, row) => (
         <Button
+          className="d-block m-auto"
           onClick={() => handleDeleteContact(row.activeFoster, row.token)}
           variant="danger"
         >
@@ -147,10 +148,14 @@ function ManageContacts() {
   function handleDeleteContact(activeFoster, token) {
     if (activeFoster) {
       const deleteContactRef = ref(database, "contacts/active/" + token);
-      remove(deleteContactRef);
+      if (window.confirm("Are you sure you want to delete this item?")) {
+        remove(deleteContactRef);
+      }
     } else {
       const deleteContactRef = ref(database, "contacts/nonactive/" + token);
-      remove(deleteContactRef);
+      if (window.confirm("Are you sure you want to delete this item?")) {
+        remove(deleteContactRef);
+      }
     }
   }
   function handleUpdateContact(activeFoster, token) {

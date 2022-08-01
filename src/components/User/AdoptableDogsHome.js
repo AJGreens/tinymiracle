@@ -10,7 +10,6 @@ import Footer from "./Footer";
 
 function AdoptableDogsHome() {
   const [dogs, setDogs] = useState([]);
-  // const [loaded, setLoaded] = useState(false);
 
   const navigate = useNavigate();
 
@@ -35,10 +34,8 @@ function AdoptableDogsHome() {
           };
         });
         setDogs(allDogs);
-        // setLoaded(true);
       } else {
         setDogs([]);
-        // setLoaded(true);
       }
     });
   }, []);
@@ -69,10 +66,6 @@ function AdoptableDogsHome() {
                   className="dogImgContainer d-flex justify-content-center align-items-center"
                 >
                   <div>
-                    {/* <h2>{dog.name}</h2>
-                    <h4>
-                      {dog.age} {dog.gender} {dog.breed}
-                    </h4> */}
                     <img
                       src={dog.img}
                       alt={dog.name}

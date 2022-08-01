@@ -226,16 +226,16 @@ div.container-fluid {
 }
 
 .petCareCarouselPics {
-    border-radius: 25px;
+  border-radius: 25px;
 
   height: 400px;
   /* height: 100%; */
-  object-fit: cover; 
+  object-fit: cover;
   object-position: center;
 }
-.actualCarousel{
-    border-radius: 25px;
- width: 500px;
+.actualCarousel {
+  border-radius: 25px;
+  width: 500px;
 }
 
 .donatePics {
@@ -256,13 +256,12 @@ div.container-fluid {
   color: #144771;
   display: inline-block;
   font-weight: bolder;
-
 }
 .donateHeaders:hover {
   color: #144771;
 }
-.noWrap{
-    white-space: nowrap;
+.noWrap {
+  white-space: nowrap;
 }
 
 .donateHeaders::after {
@@ -381,7 +380,7 @@ div.container-fluid {
 }
 
 #picB {
-    max-height: 400px;
+  max-height: 400px;
   /* max-height: 50vh; */
   max-width: 100%;
   border-radius: 25px;
@@ -426,8 +425,8 @@ div.container-fluid {
   padding: 0 20%;
 }
 .squishTxtMini {
-    padding: 0 10%;
-  }
+  padding: 0 10%;
+}
 /** @ media this **/
 #logoPic {
   height: 160px;
@@ -459,10 +458,15 @@ hr {
   margin-right: -15px;
 }
 
-.smushDiv{
-    border: green solid 0px;
-    width:100%;
-    margin: auto;
+.smushDiv {
+  border: green solid 0px;
+  width: 100%;
+  margin: auto;
+}
+
+#thankYouDog {
+  width: 50%;
+  border-radius: 25px;
 }
 
 /* X-Small devices (portrait phones, less than 576px)
@@ -474,12 +478,10 @@ No media query for `xs` since this is the default in Bootstrap */
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
- 
-
-    .homeNavLink {
-        margin: 0 15px;
-        padding: 0px;
-    }
+  .homeNavLink {
+    margin: 0 15px;
+    padding: 0px;
+  }
   .userNavClass {
     position: absolute;
     bottom: 0;
@@ -509,18 +511,18 @@ No media query for `xs` since this is the default in Bootstrap */
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    .fullPic {
-        max-width: 100%;
-        max-height: 25vw;
-        border-radius: 25px;
-        padding: 0px 0px;
-      }
-      #picB {
-        max-height: 25vw;
-      /* max-height: 50vh; */
-      max-width: 100%;
-      border-radius: 25px;
-    }
+  .fullPic {
+    max-width: 100%;
+    max-height: 25vw;
+    border-radius: 25px;
+    padding: 0px 0px;
+  }
+  #picB {
+    max-height: 25vw;
+    /* max-height: 50vh; */
+    max-width: 100%;
+    border-radius: 25px;
+  }
   body {
     font-size: 100%;
   }
@@ -528,7 +530,6 @@ No media query for `xs` since this is the default in Bootstrap */
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
   body {
     font-size: 100%;
   }
@@ -538,14 +539,13 @@ No media query for `xs` since this is the default in Bootstrap */
   #picB {
     max-height: 20vh;
   } */
-
 }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 1500px) {
-        #logoPic {
-        height: 200px;
-      }
+  #logoPic {
+    height: 200px;
+  }
   body {
     font-size: 120%;
   }
@@ -560,15 +560,14 @@ No media query for `xs` since this is the default in Bootstrap */
   }
 }
 
-
 /* XX-Large devices (larger desktops, 1400px and up) */
 @media (min-width: 2500px) {
-    #logoPic {
-        height: 250px;
-      }
-    hr {
-        height: 10px !important;
-      }
+  #logoPic {
+    height: 250px;
+  }
+  hr {
+    height: 10px !important;
+  }
   body {
     font-size: 150%;
   }
@@ -579,7 +578,7 @@ No media query for `xs` since this is the default in Bootstrap */
   .petCareCarouselPics {
     height: 600px;
   }
-  .actualCarousel{
+  .actualCarousel {
     width: 75%;
   }
 
@@ -597,15 +596,15 @@ No media query for `xs` since this is the default in Bootstrap */
 }
 
 @media (min-width: 3000px) {
-    #logoPic {
-        height: 300px;
-      }
-      .petCareCarouselPics {
-        height: 700px;
-      }
-      .actualCarousel{
-        width: 75%;
-      }
+  #logoPic {
+    height: 300px;
+  }
+  .petCareCarouselPics {
+    height: 700px;
+  }
+  .actualCarousel {
+    width: 75%;
+  }
   body {
     font-size: 200%;
   }
@@ -617,34 +616,34 @@ No media query for `xs` since this is the default in Bootstrap */
 }
 
 @media (min-width: 3500px) {
-    #logoPic {
-        height: 350px;
-      }
-      .petCareCarouselPics {
-        height: 700px;
-      }
-      .actualCarousel{
-        width: 65%;
-      }
+  #logoPic {
+    height: 350px;
+  }
+  .petCareCarouselPics {
+    height: 700px;
+  }
+  .actualCarousel {
+    width: 65%;
+  }
   body {
     font-size: 220%;
   }
 }
 @media (min-width: 4000px) {
-    .petCareCarouselPics {
-        height: 800px;
-      }
-      .actualCarousel{
-        width: 65%;
-      }
-    /* .petCareCarouselPics {
+  .petCareCarouselPics {
+    height: 800px;
+  }
+  .actualCarousel {
+    width: 65%;
+  }
+  /* .petCareCarouselPics {
         height: 1200px;
       } */
 }
 @media (min-width: 4300px) {
-    #logoPic {
-        height: 400px;
-      }
+  #logoPic {
+    height: 400px;
+  }
   body {
     font-size: 250%;
   }
@@ -653,64 +652,59 @@ No media query for `xs` since this is the default in Bootstrap */
     margin-top: 80px;
     margin-bottom: 80px;
   }
-
 }
 @media (min-width: 4500px) {
-    .fullPic {
-        max-height: 18vw;
-      }
-      #picB {
-        max-height: 18vw;
-      }
-    .petCareCarouselPics {
-        height: 900px;
-      }
-      .actualCarousel{
-        width: 65%;
-      }
+  .fullPic {
+    max-height: 18vw;
+  }
+  #picB {
+    max-height: 18vw;
+  }
+  .petCareCarouselPics {
+    height: 900px;
+  }
+  .actualCarousel {
+    width: 65%;
+  }
 }
 @media (min-width: 5000px) {
-    .petCareCarouselPics {
-        height: 900px;
-      }
-      .actualCarousel{
-        width: 55%;
-      }
+  .petCareCarouselPics {
+    height: 900px;
+  }
+  .actualCarousel {
+    width: 55%;
+  }
 }
 
 /* XX-Large devices (larger desktops) */
 /* No media query since the xxl breakpoint has no upper bound on its width */
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-
 }
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+  #thankYouDog {
+    width: 100%;
+    border-radius: 25px;
+  }
 
-    /* .homeMainPart .container{
-        padding-left: 0;
-        padding-right:0;
-        margin-left: 0;
-        margin-right: 0;
-    } */
+  .actualCarousel {
+    border-radius: 25px;
+    width: 100%;
+  }
 
-    .actualCarousel{
-        border-radius: 25px;
-     width: 100%;
-    }
-
-    .donateDiv .container{
-        padding-left: 0;
-        padding-right:0;
-        /* border: red solid 2px; */
-    }
-    .dogImgContainer {
-        padding: 3%
-      }
-      .dogTextContainer {
-        padding: 3%;
-      }
+  .donateDiv .container {
+    padding-left: 0;
+    padding-right: 0;
+    /* border: red solid 2px; */
+  }
+  .dogImgContainer {
+    padding: 3%;
+  }
+  .dogTextContainer {
+    padding: 3%;
+  }
   .centerSmall {
     justify-content: center;
   }
@@ -774,26 +768,26 @@ No media query for `xs` since this is the default in Bootstrap */
 
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
-    .p-5 {
-        padding: 0 5px 3rem 5px !important
-    }
-    .actualCarousel{
-        margin-bottom:20px;
-            }
+  .p-5 {
+    padding: 0 5px 3rem 5px !important;
+  }
+  .actualCarousel {
+    margin-bottom: 20px;
+  }
 }
 
 /* Large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
-    .petCareNotice{
-        margin-top: 2rem;
-    }
+  .petCareNotice {
+    margin-top: 2rem;
+  }
 }
 
 /* X-Large devices (large desktops, less than 1400px) */
 @media (max-width: 1399.98px) {
 }
 
-.paddingTopBottom{
-    padding-top: 3rem;
-    padding-Bottom: 3rem;
+.paddingTopBottom {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }

@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-
 import { useParams } from "react-router-dom";
-
 import { database } from "../Firebase";
 import { ref, onValue, set, push } from "firebase/database";
 import UserNav from "./UserNav";
@@ -274,8 +272,7 @@ function AdoptionForm() {
       readDisclaimer: readDisclaimer,
     });
 
-    // sendEmail()  //commented out so we dont send too many emails
-
+    sendEmail()  
     navigate("/thankyou");
   }
 
@@ -686,8 +683,6 @@ function AdoptionForm() {
                     onChange={(e) => setMorePetsOther(e.target.value)}
                   />
                 </Form.Group>
-
-                {/* <p> spayed: {p1Spayed}</p> */}
               </>
             )}
             <Form.Label>Please list any previous pets:</Form.Label>

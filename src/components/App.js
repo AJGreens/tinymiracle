@@ -4,7 +4,6 @@ import ManageAnimals from "./Admin/ManageAnimals";
 import AddContact from "./Admin/AddContact";
 import AddAnimal from "./Admin/AddAnimal";
 import Home from "./User/Home";
-import Contact from "./User/Contact";
 import Donate from "./User/Donate";
 import PetCare from "./User/PetCare";
 import Login from "./Admin/Login";
@@ -28,7 +27,7 @@ import ViewFosterApps from "./Admin/ViewFosterApps";
 import SpecificFosterApp from "./Admin/SpecificFosterApp";
 import RescueStories from "./User/RescueStories";
 import AddRescueStories from "./Admin/AddRescueStories";
-import ScrollTop from "./User/ScrollTop";
+import ScrollToTop from "./User/ScrollToTop";
 import About from "./User/About";
 import FosterHome from "./User/FosterHome";
 
@@ -36,7 +35,6 @@ function App() {
   return (
     <div>
       <Router>
-        <ScrollTop />
         <AuthProvider>
           <Routes>
             <Route exact path="/" element={<Home />} />
@@ -46,13 +44,8 @@ function App() {
               path="/fosterApplication"
               element={<FosterApplication />}
             />
-            <Route
-              exact
-              path="/fosterHome"
-              element={<FosterHome />}
-            />
+            <Route exact path="/fosterHome" element={<FosterHome />} />
             <Route exact path="/donate" element={<Donate />} />
-            <Route exact path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route
               path="/adoptionProcess/:token"
@@ -67,37 +60,6 @@ function App() {
             <Route exact path="/admin" element={<PrivateRoute />}>
               <Route exact path="/admin" element={<Admin />} />
             </Route>
-            {/* <Route exact path="/addAnimal" element={<PrivateRoute/>}>
-                  <Route path="/addAnimal" element={<AddAnimal/>}/>
-                </Route>
-                <Route exact path="/editAnimal/:prevStatus/:token" element={<PrivateRoute/>}>
-                  <Route path="/editAnimal/:prevStatus/:token" element={<EditAnimal/>}/>
-                </Route>
-                <Route exact path="/manageAnimals" element={<PrivateRoute/>}>
-                  <Route path="/manageAnimals" element={<ManageAnimals/>}/>
-                </Route>
-                <Route exact path="/manageContacts" element={<PrivateRoute/>}>
-                  <Route path="/manageContacts" element={<ManageContacts/>}/>
-                </Route>
-                <Route exact path="/addContact" element={<PrivateRoute/>}>
-                  <Route path="/addContact" element={<AddContact/>}/>
-                </Route>
-                <Route exact path="/downloadDocs" element={<PrivateRoute/>}>
-                  <Route path="/downloadDocs" element={<DownloadDocs/>}/>
-                </Route>
-                <Route exact path="/dogWarden" element={<PrivateRoute/>}>
-                  <Route path="/dogWarden" element={<DogWarden/>}/>
-                </Route>
-                <Route exact path="/updateContact/:sub/:token" element={<PrivateRoute/>}>
-                  <Route path="/updateContact/:sub/:token" element={<UpdateContact/>}/>
-                </Route>
-                <Route exact path="/viewApplications" element={<PrivateRoute/>}>
-                  <Route path="/viewApplications" element={<ViewApplications/>}/>
-                </Route>
-                <Route exact path="/viewApplications/:token" element={<PrivateRoute/>}>
-                  <Route path="/viewApplications/:token" element={<SpecificApplication/>}/>
-                </Route> */}
-
             <Route exact path="/addAnimal" element={<PrivateRoute />}>
               <Route path="/addAnimal" element={<AddAnimal />} />
             </Route>

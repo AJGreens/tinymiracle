@@ -10,7 +10,6 @@ import {
 import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 import AdminNav from "./AdminNav";
 import { useParams } from "react-router";
-// import {Circles} from 'react-loader-spinner';
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -668,6 +667,7 @@ function EditAnimal() {
           <Form.Group className="mb-3 dateField">
             <Form.Label>Approx Birth Date</Form.Label>
             <Form.Control
+              className="calendar"
               type="date"
               name="birthDate"
               onChange={handleChange}
@@ -755,6 +755,7 @@ function EditAnimal() {
           <Form.Group className="mb-3 dateField">
             <Form.Label>Date Due</Form.Label>
             <Form.Control
+              className="calendar"
               type="date"
               onChange={handleChange}
               name="dateDue"

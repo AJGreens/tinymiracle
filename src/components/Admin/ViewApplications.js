@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "./AdminNav";
 import { database } from "../Firebase";
-import { ref, onValue } from "firebase/database";
+import { ref, onValue, remove } from "firebase/database";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, {
@@ -9,6 +9,7 @@ import ToolkitProvider, {
 } from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
 import filterFactory, { textFilter } from "react-bootstrap-table2-filter";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function ViewApplications() {
   const [allAdoptionForms, setAllAdoptionForms] = useState([]);
@@ -65,7 +66,53 @@ function ViewApplications() {
       text: "State",
       filter: textFilter(),
     },
+    {
+      dataField: "delete",
+      text: "Delete",
+      formatter: (cell, row) => {
+        return (
+          <Button
+            className="d-block m-auto"
+            variant="danger"
+            onClick={() => {
+              handleDelete(row.token);
+            }}
+          >
+            Delete
+          </Button>
+        );
+      },
+    },
   ];
+
+  const ClearSearchButton = (props) => {
+    const handleClick = () => {
+      props.onSearch("");
+    };
+
+    return (
+      <Button className="m-2" variant="secondary" onClick={handleClick}>
+        Clear
+      </Button>
+    );
+  };
+  const ExportCSV = (props) => {
+    const handleClick = () => {
+      props.onExport();
+    };
+    return (
+      <Button className="m-2" variant="success" onClick={handleClick}>
+        Download List
+      </Button>
+    );
+  };
+
+  function handleDelete(token) {
+    const deleteApplication = ref(database, "adoptionForms/" + token);
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      remove(deleteApplication);
+    }
+  }
 
   return (
     <>
@@ -79,14 +126,27 @@ function ViewApplications() {
             data={allAdoptionForms}
             columns={columns}
             search
+            exportCSV={{
+              exportAll: false,
+              onlyExportFiltered: true,
+            }}
           >
             {(props) => (
               <>
-                <SearchBar {...props.searchProps} className="mb-4" />
+                <div className="mb-4 text-center">
+                  <h4>General Search</h4>
+                  <SearchBar {...props.searchProps} />
+                  <br />
+                  <ClearSearchButton {...props.searchProps} />
+                  <ExportCSV {...props.csvProps} />
+                </div>
                 <BootstrapTable
                   {...props.baseProps}
                   pagination={paginationFactory({ sizePerPage: 10 })}
                   filter={filterFactory()}
+                  noDataIndication="No Match"
+                  striped
+                  hover
                 />
               </>
             )}

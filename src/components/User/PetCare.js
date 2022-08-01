@@ -5,8 +5,7 @@ import dogA from "./DogImages/groupScream.jpg";
 import dogC from "./DogImages/wolves.jpg";
 import dogD from "./DogImages/ballPit.jpg";
 import dogE from "./DogImages/groupPetCare.jpg";
-import dogF from "./DogImages/dogF.jpeg";
-import { useEffect, useState } from "react";
+import dogF from "./DogImages/dogE.jpeg";
 import Footer from "./Footer";
 
 function PetCare() {
@@ -100,88 +99,7 @@ function PetCare() {
                     </Col>
                   </Row>
                 </Container>
-
-                {/* <div style={{ border: "red solid 2px" }}>
-                  <div className="d-flex justify-content-between w-100">
-                    <p>
-                      <b>Monday-Saturday:</b>
-                    </p>
-                    <div>
-                      <p>
-                        8AM-10AM
-                        <br /> 4PM-6PM
-                      </p>
-                      <br />
-                    </div>
-                  </div>
-                  <div className="d-flex justify-content-between w-100">
-                    <p>
-                      <b>Sunday:</b>
-                    </p>
-                    <div>
-                      <p>
-                        4PM-6PM <b>Only.</b> No AM hours.
-                      </p>
-                      <br />
-                    </div>
-                  </div>
-                  <div className="d-flex justify-content-between w-100">
-                    <p>
-                      <b>Daycare:</b>
-                    </p>
-                    <div>
-                      <p>
-                        Drop-off during AM hours
-                        <br />
-                        Pick-up during PM hours
-                      </p>
-                    </div>
-                  </div>
-                </div> */}
               </div>
-              {/* <div style={{ border: "red solid 0px", marginTop: "30px" }}>
-                <h2>Drop-off/Pick-up Hours</h2>
-                <div
-                  style={{
-                    textAlign: "left",
-                    margin: "auto",
-                  }}
-                >
-                  <div style={{ marginBottom: "0" }}>
-                    Monday-Saturday:
-                    <div style={{ float: "right" }}>
-                      <p style={{ marginBottom: "0" }}>8AM-10AM</p>
-                      <p style={{ marginBottom: "0" }}>4PM-6PM</p>
-                    </div>
-                  </div>
-                  <br />
-                  <br />
-                  <div style={{ marginBottom: "0" }}>
-                    Sunday:
-                    <div style={{ float: "right", border: "red solid 0px" }}>
-                      <p>
-                        4PM-6PM <b>Only</b>. No AM Hours.
-                      </p>
-                    </div>
-                  </div>
-                  <br />
-                  <div>
-                    Daycare:
-                    <div
-                      style={{
-                        float: "right",
-                        border: "red solid 0px",
-                        overflow: "hidden",
-                      }}
-                    >
-                      Drop-off during AM hours
-                      <p style={{ paddingBottom: "0", marginBottom: "0" }}>
-                        Pick-up during PM hours
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </Col>
           </Row>
           <br />
@@ -341,8 +259,6 @@ function PetCare() {
           </div>
         </div>
         <div className="petCarePushDown"></div>
-        {/* </div>
-        )} */}
       </div>
       <Footer />
     </>

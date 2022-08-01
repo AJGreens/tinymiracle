@@ -1,10 +1,6 @@
 import React from "react";
 import UserNav from "./UserNav";
-import amazonSmile from "./DonatePics/amazonSmile.png";
-import amazonWishList from "./DonatePics/amazonWishlist.png";
-import paybal from "./DonatePics/paybal.gif";
 import { Row, Col } from "react-bootstrap";
-import donate from "./DogImages/donateDogPic.jpg";
 import Benny from "./DogImages/Benny.jpg";
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,12 +12,6 @@ function Donate() {
     <>
       <div className="container-fluid userHtml" id="noPadding">
         <UserNav />
-        {/* <Row id="noMarginExtraPadding"> */}
-        {/* <Col
-            md={12}
-            lg={6}
-            className="container themeBlue d-flex align-items-center"
-          > */}
         <Row id="noMarginExtraPadding">
           <Col lg={1}></Col>
           <Col lg={6} className="d-flex align-items-center">
@@ -61,24 +51,6 @@ function Donate() {
                               className="themeBlue"
                               icon={faPaypal}
                             />
-                            {/* &nbsp;{" "}
-                            <img
-                              alt="Paybal"
-                              src={paybal}
-                              className="donatePics"
-                            />
-                            &nbsp;&nbsp;
-                            <FontAwesomeIcon
-                              className="themeBlue"
-                              icon={faHandPointLeft}
-                            /> */}
-                            {/* <input
-                              type="image"
-                              src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif"
-                              className="donatePics"
-                              name="submit"
-                              alt="PayPal - The safer, easier way to pay online!"
-                              /> */}
                           </a>
                         </h4>
                         <p className="donateP">
@@ -103,20 +75,7 @@ function Donate() {
                             className="themeBlue"
                             icon={faAmazon}
                           />
-                          {/* &nbsp;
-                          <input
-                            type="image"
-                            className="donatePics"
-                            src={amazonSmile}
-                            name="submit"
-                            alt="AmazonSmile"
-                          /> */}
                         </a>
-                        {/* &nbsp;&nbsp;
-                        <FontAwesomeIcon
-                          className="themeBlue"
-                          icon={faHandPointLeft}
-                        /> */}
                       </h4>
                       <p className="donateP">
                         Instead of shopping with your account on amazon.com,
@@ -137,6 +96,7 @@ function Donate() {
                         <h4 className="text-center">
                           <FontAwesomeIcon icon={faArrowRight} />{" "}
                           <a
+                            rel="noreferrer"
                             target="_blank"
                             href="https://www.amazon.com/hz/wishlist/ls/28FVI645Q406D?ref_=abls_nvfly_yl"
                             className="donateHeaders"
@@ -146,20 +106,7 @@ function Donate() {
                               className="themeBlue"
                               icon={faGift}
                             />
-                            {/* &nbsp;
-                            <img
-                              type="image"
-                              className="donatePics"
-                              src={amazonWishList}
-                              alt="BarkBox"
-                              style={{ marginTop: "-25px" }}
-                            /> */}
                           </a>
-                          {/* &nbsp;&nbsp;
-                          <FontAwesomeIcon
-                            className="themeBlue"
-                            icon={faHandPointLeft}
-                          /> */}
                         </h4>
                         <p className="donateP">
                           Purchase something for Tiny Miracles Rescue Animals
@@ -175,15 +122,11 @@ function Donate() {
           </Col>
 
           <Col md={12} lg={4} className="verticalDogPic">
-            <img src={Benny} />
+            <img alt="cute dog" src={Benny} />
           </Col>
           <Col lg={1}></Col>
         </Row>
-        {/* </Col> */}
-
-        {/* </Row> */}
       </div>
-
       <Footer />
     </>
   );

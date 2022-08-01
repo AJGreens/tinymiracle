@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-
-import { useParams } from "react-router-dom";
-
 import { database } from "../Firebase";
-import { ref, onValue, set, push } from "firebase/database";
+import { ref, set, push } from "firebase/database";
 import UserNav from "./UserNav";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
@@ -189,7 +186,7 @@ export default function FosterApplication() {
       readDisclaimer: readDisclaimer,
     });
 
-    //   sendEmail()  //commented out so we dont send too many emails
+    sendEmail();
 
     navigate("/thankyou"); //need to add back in toward end
   }

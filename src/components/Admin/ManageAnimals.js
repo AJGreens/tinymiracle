@@ -156,6 +156,7 @@ function ManageAnimals() {
       formatter: (cell, row) => {
         return (
           <Button
+            className="d-block m-auto"
             onClick={() => deleteFunc(row.token, row.status, row.fosterToken)}
             variant="danger"
           >

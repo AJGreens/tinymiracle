@@ -5,10 +5,6 @@ import {ref, push, set, onValue} from "firebase/database";
 import AdminNav from "./AdminNav"
 import { useNavigate } from 'react-router-dom';
 
-
-
-
-
 function AddContact(){
     const [Name, setName] = useState("");
     const [Address, setAddress] = useState("");

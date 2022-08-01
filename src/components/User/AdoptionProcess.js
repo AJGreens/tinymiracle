@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import UserNav from "./UserNav";
 import { Container, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-
+import Footer from "./Footer";
 function AdoptionProcess() {
   const navigate = useNavigate();
   let { token } = useParams();
@@ -42,6 +42,7 @@ function AdoptionProcess() {
           </div>
         </Container>
       </div>
+      <Footer />
     </>
   );
 }
