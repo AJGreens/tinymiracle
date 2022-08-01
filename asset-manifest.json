@@ -1,37 +1,33 @@
 {
   "files": {
-    "main.css": "/tinymiracle/static/css/main.6f5db882.css",
-    "main.js": "/tinymiracle/static/js/main.3271f5f8.js",
-    "static/media/donate.jpg": "/tinymiracle/static/media/donate.7bb5c75e483c320efad7.jpg",
+    "main.css": "/tinymiracle/static/css/main.fa0cf516.css",
+    "main.js": "/tinymiracle/static/js/main.acccfd8b.js",
+    "static/media/Benny.jpg": "/tinymiracle/static/media/Benny.4b2edeca9c17151847dd.jpg",
     "static/media/KennelLicense.pdf": "/tinymiracle/static/media/KennelLicense.a624dcbae8d5995ae525.pdf",
-    "static/media/contactUs.jpg": "/tinymiracle/static/media/contactUs.df6ba027ee920e6848db.jpg",
+    "static/media/wolves.jpg": "/tinymiracle/static/media/wolves.eb5452635e0a3ba3c102.jpg",
+    "static/media/groupScream.jpg": "/tinymiracle/static/media/groupScream.0b8bea4f66267d458c2d.jpg",
+    "static/media/Sable.jpg": "/tinymiracle/static/media/Sable.6d0fe0aaa2e6615b6bb7.jpg",
     "static/media/dogBench.jpg": "/tinymiracle/static/media/dogBench.cf023187f42205e9179a.jpg",
     "static/media/wink.png": "/tinymiracle/static/media/wink.5d3f70a37ec982e71206.png",
+    "static/media/ballPit.jpg": "/tinymiracle/static/media/ballPit.41c3af3f532087c7976a.jpg",
     "static/media/sitDog.jpg": "/tinymiracle/static/media/sitDog.9c03b13f248d961f35f1.jpg",
-    "static/media/groupShotA.jpg": "/tinymiracle/static/media/groupShotA.e601732f572cb7d7e1bb.jpg",
     "static/media/WeezyUp.jpg": "/tinymiracle/static/media/WeezyUp.58b3a61a50e6b3f8188e.jpg",
+    "static/media/groupPetCare.jpg": "/tinymiracle/static/media/groupPetCare.7e157bb3a21de662581a.jpg",
     "static/media/rainbow.jpg": "/tinymiracle/static/media/rainbow.7a3ce95a3e5113d63312.jpg",
     "static/media/AdoptionContract.pdf": "/tinymiracle/static/media/AdoptionContract.a870fec6e94808f0385a.pdf",
-    "static/media/A.jpeg": "/tinymiracle/static/media/A.6ce158d77e030c32861e.jpeg",
     "static/media/FosterApplication.pdf": "/tinymiracle/static/media/FosterApplication.c678cb7dadecbadab8be.pdf",
-    "static/media/dogD.jpeg": "/tinymiracle/static/media/dogD.b2c164fbba2e7b98ef20.jpeg",
     "static/media/OwnerSurrender.pdf": "/tinymiracle/static/media/OwnerSurrender.acd39885375a650b75c4.pdf",
-    "static/media/dogF.jpeg": "/tinymiracle/static/media/dogF.ca58885b0fa4ecc91d59.jpeg",
-    "static/media/dogC.jpeg": "/tinymiracle/static/media/dogC.d5b6731319ef6f56af29.jpeg",
     "static/media/FosterGuidelines.pdf": "/tinymiracle/static/media/FosterGuidelines.9212a1e1ad98e2afacd6.pdf",
     "static/media/501c3.pdf": "/tinymiracle/static/media/501c3.b93ee39815da6a0acdc9.pdf",
     "static/media/bestestLogo.png": "/tinymiracle/static/media/bestestLogo.d6f360ac7105ba903a3b.png",
     "static/media/dogE.jpeg": "/tinymiracle/static/media/dogE.5c53e0d08c0e6c8738dc.jpeg",
-    "static/media/longtrail-removebg.png": "/tinymiracle/static/media/longtrail-removebg.13dbe271542295dfeffb.png",
     "static/media/LiabilityAgreementWaiver.pdf": "/tinymiracle/static/media/LiabilityAgreementWaiver.59ba040ef16583e585c3.pdf",
-    "static/media/amazonWishlist.png": "/tinymiracle/static/media/amazonWishlist.18d671e38e5290f29af7.png",
-    "static/media/amazonSmile.png": "/tinymiracle/static/media/amazonSmile.6278793b58b0196898d7.png",
     "index.html": "/tinymiracle/index.html",
-    "main.6f5db882.css.map": "/tinymiracle/static/css/main.6f5db882.css.map",
-    "main.3271f5f8.js.map": "/tinymiracle/static/js/main.3271f5f8.js.map"
+    "main.fa0cf516.css.map": "/tinymiracle/static/css/main.fa0cf516.css.map",
+    "main.acccfd8b.js.map": "/tinymiracle/static/js/main.acccfd8b.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f5db882.css",
-    "static/js/main.3271f5f8.js"
+    "static/css/main.fa0cf516.css",
+    "static/js/main.acccfd8b.js"
   ]
 }
