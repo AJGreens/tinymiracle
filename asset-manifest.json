@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.fa0cf516.css",
-    "main.js": "/static/js/main.75b6678f.js",
+    "main.css": "/static/css/main.dab46d8a.css",
+    "main.js": "/static/js/main.25a5e3fa.js",
     "static/media/Benny.jpg": "/static/media/Benny.4b2edeca9c17151847dd.jpg",
     "static/media/KennelLicense.pdf": "/static/media/KennelLicense.a624dcbae8d5995ae525.pdf",
     "static/media/wolves.jpg": "/static/media/wolves.eb5452635e0a3ba3c102.jpg",
     "static/media/groupScream.jpg": "/static/media/groupScream.0b8bea4f66267d458c2d.jpg",
     "static/media/Sable.jpg": "/static/media/Sable.6d0fe0aaa2e6615b6bb7.jpg",
-    "static/media/dogBench.jpg": "/static/media/dogBench.cf023187f42205e9179a.jpg",
+    "static/media/diaperBoys.jpeg": "/static/media/diaperBoys.b4e9ccf23ff5f3cb5ca0.jpeg",
     "static/media/wink.png": "/static/media/wink.5d3f70a37ec982e71206.png",
     "static/media/ballPit.jpg": "/static/media/ballPit.41c3af3f532087c7976a.jpg",
     "static/media/sitDog.jpg": "/static/media/sitDog.9c03b13f248d961f35f1.jpg",
@@ -23,11 +23,11 @@
     "static/media/dogE.jpeg": "/static/media/dogE.5c53e0d08c0e6c8738dc.jpeg",
     "static/media/LiabilityAgreementWaiver.pdf": "/static/media/LiabilityAgreementWaiver.59ba040ef16583e585c3.pdf",
     "index.html": "/index.html",
-    "main.fa0cf516.css.map": "/static/css/main.fa0cf516.css.map",
-    "main.75b6678f.js.map": "/static/js/main.75b6678f.js.map"
+    "main.dab46d8a.css.map": "/static/css/main.dab46d8a.css.map",
+    "main.25a5e3fa.js.map": "/static/js/main.25a5e3fa.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa0cf516.css",
-    "static/js/main.75b6678f.js"
+    "static/css/main.dab46d8a.css",
+    "static/js/main.25a5e3fa.js"
   ]
 }
