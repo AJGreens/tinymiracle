@@ -184,7 +184,12 @@ export default function RescueStory(props) {
         )}
         <br />
         <br />
-        <Button onClick={(e) => eraseStory(e)} type="button" variant="danger">
+        <Button
+          onClick={(e) => eraseStory(e)}
+          type="button"
+          variant="danger"
+          className="mb-4"
+        >
           Erase Story
         </Button>
       </Form>

@@ -722,7 +722,7 @@ function DogForm() {
             </Form.Group>
             <br />
 
-            <Button type="submit" variant="primary">
+            <Button type="submit" variant="primary" className="mb-4">
               Submit
             </Button>
           </Form>
