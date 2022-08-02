@@ -97,7 +97,7 @@ h4 {
 }
 
 .adoptableImg {
-  max-height: 50vw;
+  max-height: 100vw;
   max-width: 100%;
   border-radius: 25px;
 }
@@ -514,6 +514,9 @@ No media query for `xs` since this is the default in Bootstrap */
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+    .adoptableImg {
+        max-height: 50vw;
+      }
     #specialShrinkh2{
         font-size: 2em !important; 
            }
