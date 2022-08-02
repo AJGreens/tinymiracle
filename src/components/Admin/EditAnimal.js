@@ -542,6 +542,7 @@ function EditAnimal() {
               <option value="Sheltie">Sheltie</option>
               <option value="Shepherd">Shepherd</option>
               <option value="Shih Tzu">Shih Tzu</option>
+              <option value="Shiba Inu">Shiba Inu</option>
               <option value="Spaniel">Spaniel</option>
               <option value="Staffordshire Terrier">
                 Staffordshire Terrier
@@ -635,6 +636,7 @@ function EditAnimal() {
               <option value="Sheltie">Sheltie</option>
               <option value="Shepherd">Shepherd</option>
               <option value="Shih Tzu">Shih Tzu</option>
+              <option value="Shiba Inu">Shiba Inu</option>
               <option value="Spaniel">Spaniel</option>
               <option value="Staffordshire Terrier">
                 Staffordshire Terrier

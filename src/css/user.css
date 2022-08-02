@@ -6,11 +6,12 @@ extra white space to the right!! */
 html,
 body {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   margin: 0px;
   padding: 0px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
+
 html {
   font-size: 18px;
 }
@@ -164,6 +165,9 @@ div.container-fluid {
 #extra3Padding {
   padding: 3%;
 }
+#extra3PaddingTop {
+    padding: 3%;
+  }
 
 .homeNavLink {
   /* margin: 0 15px;
@@ -236,7 +240,7 @@ div.container-fluid {
 .petCareCarouselPics {
   border-radius: 25px;
 
-  height: 400px;
+  height: 325px;
   /* height: 100%; */
   object-fit: cover;
   object-position: center;
@@ -416,6 +420,11 @@ div.container-fluid {
   border-radius: 25px;
   padding: 0px 0px;
 }
+.diaperPic{
+    max-width: 100%;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
 
 .pushDown {
   height: 40px;
@@ -435,7 +444,7 @@ div.container-fluid {
 .squishTxtMini {
   padding: 0 10%;
 }
-/** @ media this **/
+/** @ media this .**/
 #logoPic {
   height: 160px;
 }
@@ -485,12 +494,15 @@ No media query for `xs` since this is the default in Bootstrap */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+    .petCareCarouselPics {
+        height: 400px;
+      }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .homeNavLink {
-    margin: 0 15px;
+    margin: 0 4px;
     padding: 0px;
   }
   .userNavClass {
@@ -522,6 +534,17 @@ No media query for `xs` since this is the default in Bootstrap */
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+    .homeNavLink {
+        margin: 0 15px;
+        padding: 0px;
+      }
+    .specialPadTopBottom{
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+    .diaperPic{
+        max-height: 80%;
+    }
   .fullPic {
     max-width: 100%;
     max-height: 25vw;
@@ -590,7 +613,7 @@ No media query for `xs` since this is the default in Bootstrap */
     height: 600px;
   }
   .actualCarousel {
-    width: 75%;
+    width: 85%;
   }
 
   .container {
@@ -598,7 +621,7 @@ No media query for `xs` since this is the default in Bootstrap */
     max-width: none;
     /* padding: 0; */
   }
-  .fullPic {
+  .fullPic, .diaperPic {
     max-height: 20vw;
   }
   #picB {
@@ -614,7 +637,7 @@ No media query for `xs` since this is the default in Bootstrap */
     height: 700px;
   }
   .actualCarousel {
-    width: 75%;
+    width: 85%;
   }
   body {
     font-size: 200%;
@@ -634,7 +657,7 @@ No media query for `xs` since this is the default in Bootstrap */
     height: 700px;
   }
   .actualCarousel {
-    width: 65%;
+    width: 75%;
   }
   body {
     font-size: 220%;
@@ -645,7 +668,7 @@ No media query for `xs` since this is the default in Bootstrap */
     height: 800px;
   }
   .actualCarousel {
-    width: 65%;
+    width: 75%;
   }
   /* .petCareCarouselPics {
         height: 1200px;
@@ -665,7 +688,7 @@ No media query for `xs` since this is the default in Bootstrap */
   }
 }
 @media (min-width: 4500px) {
-  .fullPic {
+  .fullPic, .diaperPic {
     max-height: 18vw;
   }
   #picB {
@@ -675,16 +698,16 @@ No media query for `xs` since this is the default in Bootstrap */
     height: 900px;
   }
   .actualCarousel {
-    width: 65%;
+    width: 75%;
   }
 }
 @media (min-width: 5000px) {
   .petCareCarouselPics {
     height: 900px;
   }
-  .actualCarousel {
+  /* .actualCarousel {
     width: 55%;
-  }
+  } */
 }
 
 /* XX-Large devices (larger desktops) */
@@ -802,4 +825,9 @@ No media query for `xs` since this is the default in Bootstrap */
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+.pb-1{
+    padding-bottom: 1rem !important;
+
+}
+
 

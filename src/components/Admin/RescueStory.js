@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { database, storage } from "../Firebase";
-import { ref, onValue, update } from "firebase/database";
+import { ref, onValue, update, remove } from "firebase/database";
 import {
   ref as sRef,
   uploadBytesResumable,
   getDownloadURL,
+  deleteObject,
+  listAll,
 } from "firebase/storage";
-import { Form, Button, Col, Row } from "react-bootstrap";
+
+import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 
 export default function RescueStory(props) {
-  const [name, setName] = useState();
-  const [description, setDescription] = useState();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [currImgFile, setCurrImgFile] = useState();
-  const [imageUrl, setImageUrl] = useState();
-  const [uniqueImageID, setUniqueImageID] = useState();
+  const [imageUrl, setImageUrl] = useState("");
+  const [uniqueImageID, setUniqueImageID] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
     const tokenRef = ref(database, "rescueStories/" + props.storyNum);
@@ -27,6 +32,13 @@ export default function RescueStory(props) {
     });
     setUniqueImageID("uniqueImg" + props.storyNum);
   }, [props.storyNum]);
+
+  function timeClearShowSuccess() {
+    const timeId = setTimeout(() => {
+      // After 3 seconds set the show value to false
+      setShowSuccess(false);
+    }, 2000);
+  }
 
   function handleChange(event) {
     switch (event.target.name) {
@@ -44,6 +56,7 @@ export default function RescueStory(props) {
 
   async function updateAnimal(event) {
     event.preventDefault();
+    console.log("tryingtoupdate");
 
     let animalRef = ref(database, "rescueStories/" + props.storyNum);
 
@@ -54,7 +67,8 @@ export default function RescueStory(props) {
 
     //Image in storage
     if (currImgFile !== undefined) {
-      const uploadRef = sRef(storage, `story`);
+      setShowLoading(true);
+      const uploadRef = sRef(storage, props.storyNum);
       const uploadTask = uploadBytesResumable(uploadRef, currImgFile);
 
       uploadTask.on(
@@ -80,9 +94,25 @@ export default function RescueStory(props) {
             update(animalRef, {
               img: downloadURL,
             });
+            setShowLoading(false);
+            setShowSuccess(true);
+            timeClearShowSuccess();
           });
         }
       );
+    } else {
+      setShowSuccess(true);
+      timeClearShowSuccess();
+    }
+  }
+
+  function eraseStory(e) {
+    let deleteable = ref(database, "rescueStories/" + props.storyNum);
+
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      remove(deleteable);
+      deleteObject(sRef(storage, props.storyNum));
+      window.location.reload();
     }
   }
 
@@ -108,7 +138,6 @@ export default function RescueStory(props) {
             />
           </Col>
         </Form.Group>
-
         <Form.Group className="mb-3">
           <Form.Label>Rescue Story</Form.Label>
           <Form.Control
@@ -120,7 +149,6 @@ export default function RescueStory(props) {
             type="text"
           />
         </Form.Group>
-
         <Form.Group className="mb-3">
           <Form.Control
             name="panda"
@@ -143,9 +171,21 @@ export default function RescueStory(props) {
             />
           )}
         </Form.Group>
-
         <Button type="submit" variant="primary">
           Submit
+        </Button>
+        &nbsp;
+        {showLoading && <p>Loading...</p>}
+        <br />
+        {showSuccess && (
+          <Alert style={{ marginBottom: 0, marginTop: "10px" }}>
+            Story Updated!
+          </Alert>
+        )}
+        <br />
+        <br />
+        <Button onClick={(e) => eraseStory(e)} type="button" variant="danger">
+          Erase Story
         </Button>
       </Form>
     </>

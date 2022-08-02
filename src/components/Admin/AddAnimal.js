@@ -433,6 +433,7 @@ function DogForm() {
                 <option value="Scottish Terrier">Scottish Terrier</option>
                 <option value="Sheltie">Sheltie</option>
                 <option value="Shepherd">Shepherd</option>
+                <option value="Shiba Inu">Shiba Inu</option>
                 <option value="Shih Tzu">Shih Tzu</option>
                 <option value="Spaniel">Spaniel</option>
                 <option value="Staffordshire Terrier">
@@ -529,6 +530,7 @@ function DogForm() {
                 <option value="Scottish Terrier">Scottish Terrier</option>
                 <option value="Sheltie">Sheltie</option>
                 <option value="Shepherd">Shepherd</option>
+                <option value="Shiba Inu">Shiba Inu</option>
                 <option value="Shih Tzu">Shih Tzu</option>
                 <option value="Spaniel">Spaniel</option>
                 <option value="Staffordshire Terrier">

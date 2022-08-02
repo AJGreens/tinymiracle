@@ -1,7 +1,7 @@
 import React from "react";
 import UserNav from "./UserNav";
 import Footer from "./Footer";
-import dogBench from "./DogImages/dogBench.jpg";
+import diaperBoys from "./DogImages/diaperBoys.jpeg";
 import { Row, Col, Container } from "react-bootstrap";
 function About() {
   return (
@@ -15,7 +15,7 @@ function About() {
           <h1>About</h1>
           <Container>
             <Row>
-              <Col md={12} lg={6} className="paddingTopBottom aboutDogText">
+              <Col md={12} lg={6} className="specialPadTopBottom aboutDogText">
                 <p style={{ textAlign: "left" }}>
                   Tiny Miracles Rescue is a non profit 501c3 organization
                   dedicated to solving the problem of pet over-population. We
@@ -36,7 +36,7 @@ function About() {
               </Col>
               <Col md={12} lg={6} className="aboutDogImg">
                 <div className="d-flex epicFlex justify-content-center">
-                  <img src={dogBench} alt="Cute Dog" className="fullPic" />
+                  <img src={diaperBoys} alt="Cute Dog" className="diaperPic" />
                 </div>
               </Col>
             </Row>

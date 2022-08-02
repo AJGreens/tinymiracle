@@ -176,7 +176,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="text-center followUsDiv">
+          <div className="text-center followUsDiv container">
             <h2>Follow Us</h2>
             <Row>
               <Col>

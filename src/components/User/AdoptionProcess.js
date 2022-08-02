@@ -17,7 +17,7 @@ function AdoptionProcess() {
       <div className="userHtml container-fluid" id="noPadding">
         <UserNav />
 
-        <Container className="mt-4 themeBlue">
+        <Container id="extra3PaddingTop" className="themeBlue pb-1">
           <h1 style={{ textAlign: "center" }}>Adoption Process</h1>
 
           <ol>

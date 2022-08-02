@@ -18,7 +18,7 @@ export default function FosterHome() {
     <>
       <div className="container-fluid userHtml" id="noPadding">
         <UserNav />
-        <Container className="mt-4 themeBlue p-3">
+        <Container id="extra3PaddingTop" className="themeBlue pb-1">
           <h1 className="text-center">Interested in Fostering?</h1>
           <p className="squishTxtMini">
             Thank you for your interest in fostering a dog. Being a foster home
