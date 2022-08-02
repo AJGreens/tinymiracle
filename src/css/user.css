@@ -488,12 +488,25 @@ hr {
 #fullContainer{
     width:100%;
 }
+#specialShrinkh2{
+    font-size: 1.60em !important; 
+       }
+       #specialShrinkh4{
+        font-size: 1.35em !important; 
+           }
 
 /* X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap */
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+    #specialShrinkh2{
+        font-size: 1.75em !important; 
+           }
+           #specialShrinkh4{
+            font-size: 1.5em !important; 
+               }
+
     .petCareCarouselPics {
         height: 400px;
       }
@@ -501,6 +514,10 @@ No media query for `xs` since this is the default in Bootstrap */
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+    #specialShrinkh2{
+        font-size: 2em !important; 
+           }
+
   .homeNavLink {
     margin: 0 4px;
     padding: 0px;
@@ -710,14 +727,19 @@ No media query for `xs` since this is the default in Bootstrap */
   } */
 }
 
+
+
 /* XX-Large devices (larger desktops) */
 /* No media query since the xxl breakpoint has no upper bound on its width */
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+
 }
 
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+
+
   #thankYouDog {
     width: 100%;
     border-radius: 25px;
@@ -765,6 +787,7 @@ No media query for `xs` since this is the default in Bootstrap */
     object-fit: cover;
     object-position: 50% 0;
   }
+
   .squishTxt {
     padding: 0 10%;
   }

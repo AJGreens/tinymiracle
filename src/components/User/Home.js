@@ -34,12 +34,12 @@ function Home() {
         <UserNav />
         <div className="beegDogFrame">
           <div className="beegDogText">
-            <h2>
+            <h2 id="specialShrinkh2">
               We give them shelter.
               <br />
               You give them a home.
             </h2>
-            <h4 style={{ marginBottom: 0 }}>
+            <h4 id="specialShrinkh4" style={{ marginBottom: 0 }}>
               <Link
                 className="customLink d-flex align-items-center centerSmall"
                 to="/adoptableDogsHome"
