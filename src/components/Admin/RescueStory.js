@@ -68,7 +68,7 @@ export default function RescueStory(props) {
     //Image in storage
     if (currImgFile !== undefined) {
       setShowLoading(true);
-      const uploadRef = sRef(storage, props.storyNum);
+      const uploadRef = sRef(storage, "stories/" + props.storyNum);
       const uploadTask = uploadBytesResumable(uploadRef, currImgFile);
 
       uploadTask.on(
@@ -111,7 +111,7 @@ export default function RescueStory(props) {
 
     if (window.confirm("Are you sure you want to delete this item?")) {
       remove(deleteable);
-      deleteObject(sRef(storage, props.storyNum));
+      deleteObject(sRef(storage, "stories/" + props.storyNum));
       window.location.reload();
     }
   }

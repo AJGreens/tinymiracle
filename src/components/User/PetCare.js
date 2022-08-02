@@ -238,7 +238,7 @@ function PetCare() {
               <span>
                 <span>
                   <b>NOTICE: </b>We will need your pet’s license number as well
-                  as a proof of the following up to date vaccines: DOGS
+                  as proof of the following up to date vaccines: DOGS
                   –&nbsp;Distemper, Parvo, Bordetella and Rabies; CATS – rabies
                   and FVRCP (current within six months). Flea and tick
                   prevention is greatly appreciated!

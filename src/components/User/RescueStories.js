@@ -46,9 +46,7 @@ export default function RescueStories() {
               pity them. Do something. Help to rescue. Donate. Volunteer.
               Foster. Adopt. And be proud to have their greatness by your side.”
             </p>
-            <p
-              className="blockquote-footer mb-0 font-italic themeBlue"
-            >
+            <p className="blockquote-footer mb-0 font-italic themeBlue">
               Anonymous
             </p>
           </div>
