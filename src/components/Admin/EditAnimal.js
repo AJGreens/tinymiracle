@@ -13,6 +13,7 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf, faXmark } from "@fortawesome/free-solid-svg-icons";
+import Resizer from "react-image-file-resizer";
 
 function EditAnimal() {
   const { token } = useParams();
@@ -369,10 +370,38 @@ function EditAnimal() {
       setAllFiles([...allFiles, ...e.target.files]);
     }
   }
+  //trying to compress image
+  const resizeFile = (file) =>
+    new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        1500,
+        1500,
+        "JPEG",
+        90,
+        0,
+        (uri) => {
+          resolve(uri);
+        },
+        "file"
+      );
+    });
 
-  function handleChangeImg(e) {
-    setCurrImgFile(e.target.files[0]);
-    setImageUrl(URL.createObjectURL(e.target.files[0]));
+  //////End of trying to compress image
+
+  async function handleChangeImg(e) {
+    try {
+      const myImage = e.target.files[0];
+      const resizedImage = await resizeFile(myImage);
+      console.log(resizedImage);
+      setCurrImgFile(resizedImage);
+      setImageUrl(URL.createObjectURL(resizedImage));
+    } catch (err) {
+      console.log(err);
+    }
+
+    // setCurrImgFile(e.target.files[0]);
+    // setImageUrl(URL.createObjectURL(e.target.files[0]));
   }
 
   function handleDeleteFile(j) {
