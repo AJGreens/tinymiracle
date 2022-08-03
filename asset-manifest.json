@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ade197b7.css",
-    "main.js": "/static/js/main.58128a43.js",
+    "main.js": "/static/js/main.06d73f4a.js",
     "static/media/Benny.jpg": "/static/media/Benny.4b2edeca9c17151847dd.jpg",
     "static/media/KennelLicense.pdf": "/static/media/KennelLicense.a624dcbae8d5995ae525.pdf",
     "static/media/wolves.jpg": "/static/media/wolves.eb5452635e0a3ba3c102.jpg",
@@ -19,15 +19,15 @@
     "static/media/OwnerSurrender.pdf": "/static/media/OwnerSurrender.acd39885375a650b75c4.pdf",
     "static/media/FosterGuidelines.pdf": "/static/media/FosterGuidelines.9212a1e1ad98e2afacd6.pdf",
     "static/media/501c3.pdf": "/static/media/501c3.b93ee39815da6a0acdc9.pdf",
-    "static/media/bestestLogo.png": "/static/media/bestestLogo.d6f360ac7105ba903a3b.png",
     "static/media/dogE.jpeg": "/static/media/dogE.5c53e0d08c0e6c8738dc.jpeg",
+    "static/media/biggestHighDLogo.svg": "/static/media/biggestHighDLogo.dc0d8f1f785027858bd43f5c95674f8b.svg",
     "static/media/LiabilityAgreementWaiver.pdf": "/static/media/LiabilityAgreementWaiver.59ba040ef16583e585c3.pdf",
     "index.html": "/index.html",
     "main.ade197b7.css.map": "/static/css/main.ade197b7.css.map",
-    "main.58128a43.js.map": "/static/js/main.58128a43.js.map"
+    "main.06d73f4a.js.map": "/static/js/main.06d73f4a.js.map"
   },
   "entrypoints": [
     "static/css/main.ade197b7.css",
-    "static/js/main.58128a43.js"
+    "static/js/main.06d73f4a.js"
   ]
 }
