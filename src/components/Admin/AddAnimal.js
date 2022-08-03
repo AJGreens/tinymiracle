@@ -285,7 +285,7 @@ function DogForm() {
     }
   }
 
-  //trying to compress image
+  //trying to compress image, this settings make imgs around 500-800kb.
   const resizeFile = (file) =>
     new Promise((resolve) => {
       Resizer.imageFileResizer(
