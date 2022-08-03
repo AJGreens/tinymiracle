@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
-import logo from "./DogImages/bestestLogo.png";
+import logo from "./DogImages/biggestHighDLogo.svg";
 import { useAuth } from "../Admin/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
