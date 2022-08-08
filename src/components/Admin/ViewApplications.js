@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "./AdminNav";
 import { database } from "../Firebase";
-import { ref, onValue, remove } from "firebase/database";
+import { ref, onValue, remove, update } from "firebase/database";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, {
@@ -107,10 +107,28 @@ function ViewApplications() {
     );
   };
 
-  function handleDelete(token) {
-    const deleteApplication = ref(database, "adoptionForms/" + token);
+  async function handleDelete(token) {
+    const deleteApplication = ref(database, "adoptionForms/" + token); //original delete functionality, also function not originally async
+
+    const saveDeletedApplication = ref(
+      database,
+      "deletedAdoptionForms/" + token
+    );
     if (window.confirm("Are you sure you want to delete this item?")) {
+      await onValue(deleteApplication, (snapshot) => {
+        const data = snapshot.val();
+        if (data !== null) {
+          update(saveDeletedApplication, {
+            name: data["applicantName"],
+            dog: data["name"],
+          });
+        }
+
+        // remove(deleteApplication);
+      }); //end of onvalue
       remove(deleteApplication);
+
+      // remove(deleteApplication); //original delete functionality
     }
   }
 
