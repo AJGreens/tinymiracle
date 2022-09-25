@@ -1,10 +1,13 @@
 * {
   font-family: Optima, sans-serif;
+  /* border: 1px solid red; */
+  /* font-family: arial; */
 }
 /* very important fixes a ton of issues on phone screen sizes with 
 extra white space to the right!! */
 html,
 body {
+
   width: 100%;
   /* height: 100%; */
   margin: 0px;
@@ -407,11 +410,13 @@ div.container-fluid {
   text-align: right;
 }
 .footerDiv {
-  border: green solid 0px;
+  /* border: green solid 0px; */
   padding: 20px;
   background-color: #144771;
   color: #f0f0f0;
   width: 100%;
+  /* overflow: hidden; */
+
 }
 
 .fullPic {

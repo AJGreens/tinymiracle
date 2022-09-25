@@ -53,7 +53,7 @@ function UserNav() {
                 }
                 to="/adoptabledogshome"
               >
-                Adoptable Dogs
+                Adoptable
               </NavLink>
               <NavLink
                 className={({ isActive }) =>

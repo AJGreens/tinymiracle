@@ -48,11 +48,11 @@ function AdoptableDogsHome() {
       >
         <UserNav />
         <div id="extra3Padding">
-          <h1>Adoptable Dogs</h1>
+          <h1>Adoptable</h1>
           <p className="squishTxt">
-            To meet our adoptable dogs, please submit an application and we will
-            have a representative get back to you ASAP. Most of our rescue dogs
-            are going/are in foster care and not at the farm.
+            To meet our adoptable animals, please submit an application and we
+            will have a representative get back to you ASAP. Most of our rescue
+            dogs are going/are in foster care and not at the farm.
           </p>
           <Button id="coolBtn" onClick={() => goToAdoptionProcess("general")}>
             General Apply <FontAwesomeIcon icon={faDog} />
