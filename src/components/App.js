@@ -13,7 +13,7 @@ import UpdateContact from "./Admin/UpdateContact";
 import AdoptableDogsHome from "./User/AdoptableDogsHome";
 import DownloadDocs from "./Admin/DownloadDocs";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
