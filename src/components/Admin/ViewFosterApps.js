@@ -29,7 +29,7 @@ export default function ViewFosterApps() {
             state: value["address"].state,
           };
         });
-        setAllAdoptionForms(formArr);
+        setAllAdoptionForms(formArr.reverse());
       }
     }); //end of onvalue
   }, []);

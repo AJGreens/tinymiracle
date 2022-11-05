@@ -30,7 +30,7 @@ function ViewApplications() {
             state: value["address"].state,
           };
         });
-        setAllAdoptionForms(formArr);
+        setAllAdoptionForms(formArr.reverse());
       }
     }); //end of onvalue
   }, []);

@@ -69,7 +69,10 @@ function SpecificApplication() {
                   )}
                   {info["emailAddress"] && (
                     <p>
-                      <b>Email:</b> {info["emailAddress"]}
+                      <b>Email:</b>{" "}
+                      <a href={`mailto: ${info["emailAddress"]}`}>
+                        {info["emailAddress"]}
+                      </a>
                     </p>
                   )}
                 </div>
@@ -127,9 +130,11 @@ function SpecificApplication() {
                 </div>
               </div>
 
-              {info["hasPets"] === false && info["prevPet1"].prevP1Type ==="" && info["prevPet2"].prevP2Type ==="" && info["prevPet1"].prevP1HowLongOwned ==="" && info["prevPet2"].prevP2HowLongOwned ==="" && (
-                        <hr/>
-                    )}
+              {info["hasPets"] === false &&
+                info["prevPet1"].prevP1Type === "" &&
+                info["prevPet2"].prevP2Type === "" &&
+                info["prevPet1"].prevP1HowLongOwned === "" &&
+                info["prevPet2"].prevP2HowLongOwned === "" && <hr />}
 
               <div style={{ display: "inline-block" }}>
                 {(info["currPet1"].p1Gender ||
@@ -227,9 +232,10 @@ function SpecificApplication() {
 
               <div className="col-sm">
                 <div className="inSpecificCol leftAlignDiv">
-                {info["morePetsOther"] && (
+                  {info["morePetsOther"] && (
                     <p>
-                      <b>More current pets and "other" types from above:</b> {info["morePetsOther"]}
+                      <b>More current pets and "other" types from above:</b>{" "}
+                      {info["morePetsOther"]}
                     </p>
                   )}
                   {info["aboutYourself"] && (

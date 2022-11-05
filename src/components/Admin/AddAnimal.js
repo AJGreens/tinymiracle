@@ -431,6 +431,8 @@ function DogForm() {
                 <option value="Foxhound">Foxhound</option>
                 <option value="French Bulldog">French Bulldog</option>
                 <option value="German Shepherd">German Shepherd</option>
+                <option value="Golden Retriever">Golden Retriever</option>
+                <option value="Goldendoodle">Goldendoodle</option>
                 <option value="Great Dane">Great Dane</option>
                 <option value="Great Pyrenesse">Great Pyrenesse</option>
                 <option value="Greyhound">Greyhound</option>
@@ -442,11 +444,13 @@ function DogForm() {
                 <option value="Jack Russell Terrier">
                   Jack Russell Terrier
                 </option>
+                <option value="Labradoodle">Labradoodle</option>
                 <option value="Labrador Retreiver">Labrador Retreiver</option>
                 <option value="Malamute">Malamute</option>
                 <option value="Maltese">Maltese</option>
                 <option value="Mastiff">Mastiff</option>
                 <option value="Miniature Pinscher">Miniature Pinscher</option>
+                <option value="Mixed Breed">Mixed Breed</option>
                 <option value="Mountain Cur">Mountain Cur</option>
                 <option value="Olde English Bulldogge">
                   Olde English Bulldogge
@@ -528,6 +532,8 @@ function DogForm() {
                 <option value="Foxhound">Foxhound</option>
                 <option value="French Bulldog">French Bulldog</option>
                 <option value="German Shepherd">German Shepherd</option>
+                <option value="Golden Retriever">Golden Retriever</option>
+                <option value="Goldendoodle">Goldendoodle</option>
                 <option value="Great Dane">Great Dane</option>
                 <option value="Great Pyrenesse">Great Pyrenesse</option>
                 <option value="Greyhound">Greyhound</option>
@@ -539,11 +545,13 @@ function DogForm() {
                 <option value="Jack Russell Terrier">
                   Jack Russell Terrier
                 </option>
+                <option value="Labradoodle">Labradoodle</option>
                 <option value="Labrador Retreiver">Labrador Retreiver</option>
                 <option value="Malamute">Malamute</option>
                 <option value="Maltese">Maltese</option>
                 <option value="Mastiff">Mastiff</option>
                 <option value="Miniature Pinscher">Miniature Pinscher</option>
+                <option value="Mixed Breed">Mixed Breed</option>
                 <option value="Mountain Cur">Mountain Cur</option>
                 <option value="Olde English Bulldogge">
                   Olde English Bulldogge

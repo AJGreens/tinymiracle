@@ -57,7 +57,7 @@ function ManageAnimals() {
                   dateAdopted: value["dateAdopted"],
                 };
               });
-        setDogs([...adoptableDogs, ...otherDogs]);
+        setDogs([...adoptableDogs.reverse(), ...otherDogs.reverse()]);
       } else {
         setDogs([]);
       }
