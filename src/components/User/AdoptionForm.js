@@ -81,8 +81,30 @@ function AdoptionForm() {
   const [adoptableDogs, setAdoptableDogs] = useState([]);
 
   const form = useRef();
-
   function sendEmail() {
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAILJS_ADOPT_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_ADOPT_TEMPLATE_ID,
+        form.current,
+        process.env.REACT_APP_EMAILJS_ADOPT_USER_ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  }
+
+  function sendError(error) {
+    let errorInput = document.createElement("input");
+    errorInput.value = error;
+    errorInput.name = "error";
+    errorInput.style.display = "none";
+    form.current.append(errorInput);
     emailjs
       .sendForm(
         process.env.REACT_APP_EMAILJS_ADOPT_SERVICE_ID,
@@ -270,10 +292,17 @@ function AdoptionForm() {
       vetState: vetState,
       petNamesOnFile: petNamesOnFile,
       readDisclaimer: readDisclaimer,
-    });
-
-    sendEmail();
-    navigate("/thankyou");
+    })
+      .then(() => {
+        sendEmail();
+        navigate("/thankyou");
+      })
+      .catch((error) => {
+        sendError(error);
+        alert(
+          "Unable to send application. Please try submitting again. Contact tinymiraclespcr@gmail.com if the problem persists."
+        );
+      });
   }
 
   return (
