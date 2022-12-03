@@ -240,7 +240,7 @@ function AdoptionForm() {
       },
       prevPet2: {
         prevP2Type: prevP2Type,
-        prevP2HowLongOwned: prevP1HowLongOwned,
+        prevP2HowLongOwned: prevP2HowLongOwned,
       },
       aboutYourself: aboutYourself,
       activityLevel: activityLevel,
