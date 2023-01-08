@@ -193,16 +193,16 @@ function PetCare() {
                       </span>
                       <ul>
                         <li>
-                          <span>$60.00 / Overnight </span>
+                          <span>$70.00 / Overnight </span>
                         </li>
                         <li>
-                          <span>$30.00 / Half Day</span>
+                          <span>$35.00 / Half Day</span>
                         </li>
                         <li>
                           <span>Daycare (Dogs Only) updated</span>
                           <ul>
                             <li>
-                              <span>$35.00 / Dog</span>
+                              <span>$40.00 / Dog</span>
                             </li>
                             <li>
                               <span>
@@ -221,7 +221,7 @@ function PetCare() {
                       </span>
                       <ul>
                         <li>
-                          <span>$40.00 / Overnight</span>
+                          <span>$50.00 / Overnight</span>
                         </li>
                       </ul>
                     </li>
