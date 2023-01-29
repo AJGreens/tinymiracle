@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import AdoptionContract from "./DownloadedDocs/AdoptionContract.pdf";
-import FosterApplication from "./DownloadedDocs/FosterApplication.pdf";
+import FosterContract from "./DownloadedDocs/FosterContract.pdf";
 import LiabilityAgreementWaiver from "./DownloadedDocs/LiabilityAgreementWaiver.pdf";
 import OwnerSurrender from "./DownloadedDocs/OwnerSurrender.pdf";
 import FosterGuidelines from "./DownloadedDocs/FosterGuidelines.pdf";
@@ -22,19 +22,9 @@ function DownloadDocs() {
             </Button>
           </a>
           <br />
-          <a href={FosterApplication} rel="noopener noreferrer" target="_blank">
+          <a href={FosterContract} rel="noopener noreferrer" target="_blank">
             <Button size="lg" className="downloadBtns">
-              Foster Application
-            </Button>
-          </a>
-          <br />
-          <a
-            href={LiabilityAgreementWaiver}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Button size="lg" className="downloadBtns">
-              Foster/Volunteer Waiver
+              Foster Contract
             </Button>
           </a>
           <br />
