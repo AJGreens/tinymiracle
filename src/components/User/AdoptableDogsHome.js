@@ -33,7 +33,7 @@ function AdoptableDogsHome() {
             img: value["img"],
           };
         });
-        setDogs(allDogs);
+        setDogs(allDogs.reverse());
       } else {
         setDogs([]);
       }
