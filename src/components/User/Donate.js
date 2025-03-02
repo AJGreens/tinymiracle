@@ -16,7 +16,6 @@ function Donate() {
           <Col lg={1}></Col>
           <Col lg={6} className="d-flex align-items-center">
             <div>
-              <h3 className="underlineHeading themeBlue">Many Ways To Give</h3>
               <div className="donateDiv themeBlue">
                 <Row className="donateRow themeBlue">
                   <Col xs={12}>
@@ -58,31 +57,6 @@ function Donate() {
                           Make a direct, tax deductible donation.{" "}
                         </p>
                       </form>
-                    </div>
-                  </Col>
-                  <Col xs={12}>
-                    <div className="container">
-                      <h4 className="text-center">
-                        <FontAwesomeIcon icon={faArrowRight} />{" "}
-                        <a
-                          className="donateHeaders"
-                          target="_blank"
-                          href="https://smile.amazon.com/charity?orig=%2F"
-                          rel="noreferrer"
-                        >
-                          Sign in with Amazon{" "}
-                          <FontAwesomeIcon
-                            className="themeBlue"
-                            icon={faAmazon}
-                          />
-                        </a>
-                      </h4>
-                      <p className="donateP">
-                        Instead of shopping with your account on amazon.com,
-                        start shopping on smile.amazon.com supporting Tiny
-                        Miracles Rescue. Each time you shop amazon sends us a
-                        donation. It doesn’t cost you anything extra.
-                      </p>
                     </div>
                   </Col>
                   <Col xs={12}>
