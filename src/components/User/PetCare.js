@@ -188,21 +188,37 @@ function PetCare() {
                   <ul>
                     <li>
                       <span>
-                        DOGS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp;{" "}
+                        <h5
+                          style={{
+                            fontWeight: "700",
+                            textDecoration: "underline",
+                          }}
+                        >
+                          DOGS
+                        </h5>
                       </span>
                       <ul>
                         <li>
-                          <span>$75.00 / Overnight </span>
+                          <span>
+                            <b>$78 / Full Day</b> (AM drop off to AM pickup or
+                            PM drop off to PM pickup){" "}
+                          </span>
                         </li>
                         <li>
-                          <span>$40.00 / Half Day</span>
+                          <span>
+                            <b>$45 / Half Day</b> (PM drop off to AM pickup or
+                            vice versa){" "}
+                          </span>
                         </li>
                         <li>
-                          <span>Daycare (Dogs Only) updated</span>
+                          <span>
+                            <b>Daycare</b> (Dogs Only)
+                          </span>
                           <ul>
                             <li>
-                              <span>$45.00 / Dog</span>
+                              <span>
+                                <b>$45 / Day</b>
+                              </span>
                             </li>
                             <li>
                               <span>
@@ -213,18 +229,47 @@ function PetCare() {
                             </li>
                           </ul>
                         </li>
+                        <li>
+                          <span>
+                            <b>Bath w/ our products: $25</b>
+                          </span>
+                        </li>
+                        <li>
+                          <span>
+                            <b>Bath w/ your own products: $15</b>
+                          </span>
+                        </li>
+                        <li>
+                          <span>
+                            <b>Nails: $15</b>
+                          </span>
+                        </li>
                       </ul>
                     </li>
+                    <br />
                     <li>
                       <span>
-                        CATS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h5
+                          style={{
+                            fontWeight: "700",
+                            textDecoration: "underline",
+                          }}
+                        >
+                          CATS
+                        </h5>
                       </span>
                       <ul>
                         <li>
-                          <span>$55.00 / Overnight</span>
+                          <span>
+                            <b>$55 / Full Day</b> (AM drop off to AM pickup or
+                            PM drop off to PM pickup){" "}
+                          </span>
                         </li>
                         <li>
-                          <span>$25.00 / Half Day</span>
+                          <span>
+                            <b>$25 / Half Day</b> (PM drop off to AM pickup or
+                            vice versa){" "}
+                          </span>
                         </li>
                       </ul>
                     </li>

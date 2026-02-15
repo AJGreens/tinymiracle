@@ -42,7 +42,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "echo 'tinymiraclespcr.org' > ./build/CNAME && gh-pages -d build"
-
   },
   "eslintConfig": {
     "extends": [
