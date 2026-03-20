@@ -1084,7 +1084,7 @@ function AdoptionForm() {
               to determine the best placement for our dogs. <br />
               <b>
                 Please Note: The application is not a guarantee of any dog
-                placement, and if you are selected the adoption fee is $425.
+                placement, and if you are selected the adoption fee is $495.
               </b>
             </p>
             <Form.Label>

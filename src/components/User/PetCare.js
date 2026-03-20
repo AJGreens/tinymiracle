@@ -231,17 +231,12 @@ function PetCare() {
                         </li>
                         <li>
                           <span>
-                            <b>Bath w/ our products: $25</b>
+                            <b>Bath: $25</b>
                           </span>
                         </li>
                         <li>
                           <span>
-                            <b>Bath w/ your own products: $15</b>
-                          </span>
-                        </li>
-                        <li>
-                          <span>
-                            <b>Nails: $15</b>
+                            <b>Nails: $20</b>
                           </span>
                         </li>
                       </ul>
