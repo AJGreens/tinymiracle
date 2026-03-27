@@ -166,7 +166,7 @@ function PetCare() {
                           <li>Plenty of TLC </li>
                           <li>Music played for all tastes</li>
                           <li>Bathing ($25.00)</li>
-                          <li>Nails ($15.00)</li>
+                          <li>Nails ($20.00)</li>
                         </ul>
                       </Col>
                     </Row>
