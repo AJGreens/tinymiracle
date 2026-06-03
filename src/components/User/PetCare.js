@@ -239,6 +239,11 @@ function PetCare() {
                             <b>Nails: $20</b>
                           </span>
                         </li>
+                        <li>
+                          <span>
+                            Please be advised that at this time we are only taking dogs 30 lbs & under
+                          </span>
+                        </li>
                       </ul>
                     </li>
                     <br />
